@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useRef, useEffect, useCallback } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Play,
@@ -227,14 +228,45 @@ export default function CinemaPlayer({ film, onNextFilm, onPrevFilm, autoPlay = 
         ref={containerRef}
         onMouseMove={handleMouseMove}
         onMouseLeave={() => isPlaying && setControlsVisible(false)}
-        className={`relative rounded-3xl overflow-hidden bg-stone-950 border border-white/10 shadow-2xl group select-none ${
-          isTheaterMode ? 'relative z-50 ring-2 ring-[#859F3C]/50 shadow-[0_0_80px_rgba(133,159,60,0.25)]' : ''
+        className={`relative rounded-3xl overflow-hidden bg-[#0e0e0e] border border-white/10 shadow-2xl group select-none flex items-center justify-center min-h-[460px] sm:min-h-[580px] lg:min-h-[660px] max-h-[82vh] ${
+          isTheaterMode ? 'relative z-50 ring-2 ring-[#859F3C]/50 shadow-[0_0_90px_rgba(133,159,60,0.35)]' : ''
         }`}
       >
-        {/* Ambient Cinema Halo Glow behind video */}
-        <div className="absolute inset-0 bg-radial from-[#859F3C]/20 via-transparent to-transparent opacity-60 pointer-events-none -z-10" />
+        {/* Ambient Video Color Glow (Bleeds colors into the theater background) */}
+        <video
+          src={film.src}
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover blur-3xl opacity-30 scale-125 pointer-events-none -z-10"
+        />
 
-        {/* The HTML5 Video Element */}
+        {/* Ambient Radial Halos & Brand Olive Glow */}
+        <div className="absolute inset-0 bg-radial from-[#859F3C]/15 via-black/60 to-[#0e0e0e] opacity-90 pointer-events-none -z-10" />
+
+        {/* Luxury Brand Logo Hallmark Watermark in Stage Background */}
+        <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none opacity-20 select-none -z-10">
+          <div className="relative w-64 sm:w-80 md:w-96 h-28">
+            <Image
+              src="/assets/iconfurniture-logo.png"
+              alt="Icon Furniture Logo"
+              fill
+              className="object-contain filter drop-shadow-[0_0_20px_rgba(133,159,60,0.4)]"
+            />
+          </div>
+          <div className="mt-2 flex items-center gap-3">
+            <span className="h-px w-12 bg-gradient-to-r from-transparent via-[#859F3C] to-transparent" />
+            <span className="text-[10px] tracking-[0.3em] uppercase font-mono text-stone-300 font-semibold">
+              Atelier Cinema Series
+            </span>
+            <span className="h-px w-12 bg-gradient-to-r from-transparent via-[#859F3C] to-transparent" />
+          </div>
+        </div>
+
+        {/* Subtle Architectural Border Lines */}
+        <div className="absolute inset-0 border border-white/5 rounded-3xl pointer-events-none" />
+
+        {/* The HTML5 Video Element (Maintains 100% Original Aspect Ratio, Never Zoomed/Cropped) */}
         <video
           ref={videoRef}
           src={film.src}
@@ -251,7 +283,7 @@ export default function CinemaPlayer({ film, onNextFilm, onPrevFilm, autoPlay = 
             setIsPlaying(false);
             if (onNextFilm) onNextFilm();
           }}
-          className="w-full aspect-16/9 object-cover cursor-pointer"
+          className="relative z-10 w-full h-full max-h-[78vh] object-contain cursor-pointer drop-shadow-[0_15px_40px_rgba(0,0,0,0.9)]"
         />
 
         {/* Center Big Play Flash */}
@@ -262,7 +294,7 @@ export default function CinemaPlayer({ film, onNextFilm, onPrevFilm, autoPlay = 
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 1.1, opacity: 0 }}
               onClick={togglePlay}
-              className="absolute inset-0 flex items-center justify-center bg-black/30 backdrop-blur-xs cursor-pointer z-20"
+              className="absolute inset-0 flex items-center justify-center bg-black/25 backdrop-blur-xs cursor-pointer z-20"
             >
               <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-white/15 backdrop-blur-md border border-white/30 flex items-center justify-center text-white shadow-2xl hover:scale-110 hover:bg-[#859F3C] transition-all duration-300 group/btn">
                 <Play className="w-8 h-8 sm:w-10 sm:h-10 fill-white ml-1 text-white" />

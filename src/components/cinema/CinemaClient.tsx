@@ -298,21 +298,42 @@ export default function CinemaClient() {
                   }`}
                 >
                   {/* Video Thumbnail / Live Preview Stage */}
-                  <div className="relative aspect-16/9 bg-stone-950 overflow-hidden">
+                  <div className="relative aspect-16/9 bg-[#0e0e0e] overflow-hidden flex items-center justify-center">
+                    {/* Ambient Background Video Glow */}
+                    <video
+                      src={film.src}
+                      muted
+                      loop
+                      playsInline
+                      className="absolute inset-0 w-full h-full object-cover blur-2xl opacity-30 scale-125 pointer-events-none"
+                    />
+
+                    {/* Logo Hallmark Watermark in Card Background */}
+                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-15">
+                      <Image
+                        src="/assets/iconfurniture-logo.png"
+                        alt="Icon Furniture"
+                        width={120}
+                        height={32}
+                        className="object-contain"
+                      />
+                    </div>
+
+                    {/* The Video Element (Keeps Original Aspect Ratio) */}
                     <video
                       src={film.src}
                       muted
                       loop
                       playsInline
                       autoPlay={isHovered}
-                      className="w-full h-full object-cover group-hover:scale-104 transition-transform duration-700 opacity-90 group-hover:opacity-100"
+                      className="relative z-10 w-full h-full object-contain group-hover:scale-103 transition-transform duration-500"
                     />
 
                     {/* Gradient Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30 pointer-events-none z-10" />
 
                     {/* Top Badges */}
-                    <div className="absolute top-3 left-3 right-3 flex items-center justify-between text-white text-[10px] font-mono">
+                    <div className="absolute top-3 left-3 right-3 flex items-center justify-between text-white text-[10px] font-mono z-20">
                       <span className="px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-xs font-bold border border-white/10">
                         {film.category}
                       </span>
@@ -322,7 +343,7 @@ export default function CinemaClient() {
                     </div>
 
                     {/* Center Play Button on Hover */}
-                    <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
                       <div
                         className={`w-12 h-12 rounded-full flex items-center justify-center text-white transition-all duration-300 ${
                           isCurrent
@@ -335,7 +356,7 @@ export default function CinemaClient() {
                     </div>
 
                     {/* Bottom Duration & Equalizer */}
-                    <div className="absolute bottom-3 inset-x-3 flex items-center justify-between text-white text-[11px] font-mono">
+                    <div className="absolute bottom-3 inset-x-3 flex items-center justify-between text-white text-[11px] font-mono z-20">
                       <div className="flex items-center gap-1.5">
                         <Clock className="w-3.5 h-3.5 text-[#859F3C]" />
                         <span>{film.duration}</span>

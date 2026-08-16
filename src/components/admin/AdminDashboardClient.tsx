@@ -41,12 +41,11 @@ import {
 } from 'lucide-react';
 import { useStore } from '@/lib/store';
 import { Product, Category } from '@/types';
-import { CustomerInquiry, InquiryStatus, BrandSettings } from '@/types/admin';
+import { BrandSettings } from '@/types/admin';
 import { CinemaFilm } from '@/components/cinema/CinemaPlayer';
 import ProductEditorModal from '@/components/admin/ProductEditorModal';
 import FilmEditorModal from '@/components/admin/FilmEditorModal';
 import CategoryEditorModal from '@/components/admin/CategoryEditorModal';
-import InquiryEditorModal from '@/components/admin/InquiryEditorModal';
 import PhotoUploadDropzone from '@/components/admin/PhotoUploadDropzone';
 
 type AdminTab =
@@ -54,7 +53,6 @@ type AdminTab =
   | 'products'
   | 'categories'
   | 'cinema'
-  | 'inquiries'
   | 'settings'
   | 'media';
 
@@ -89,9 +87,6 @@ export default function AdminDashboardClient() {
     addFilm,
     updateFilm,
     deleteFilm,
-    addInquiry,
-    updateInquiryStatus,
-    deleteInquiry,
     updateBrandSettings,
     resetToDefaults,
     exportBackupJson,
@@ -113,9 +108,6 @@ export default function AdminDashboardClient() {
 
   const [isCategoryModalOpen, setIsCategoryModalOpen] = useState(false);
   const [editingCategory, setEditingCategory] = useState<Category | null>(null);
-
-  const [isInquiryModalOpen, setIsInquiryModalOpen] = useState(false);
-  const [editingInquiry, setEditingInquiry] = useState<CustomerInquiry | null>(null);
 
   // Notification Toast
   const [toastMessage, setToastMessage] = useState<string | null>(null);
@@ -324,8 +316,7 @@ export default function AdminDashboardClient() {
               { id: 'overview', label: 'Overview & Metrics', icon: TrendingUp },
               { id: 'products', label: `Dining Tables (${products.length})`, icon: Award },
               { id: 'categories', label: `Collections (${categories.length})`, icon: Layers },
-              { id: 'cinema', label: `Atelier Cinema (${films.length})`, icon: Film },
-              { id: 'inquiries', label: `Commissions & Inquiries (${inquiries.length})`, icon: Crown },
+              { id: 'cinema', label: `Video Chapters (${films.length})`, icon: Film },
               { id: 'settings', label: 'Brand & Site Settings', icon: Settings },
               { id: 'media', label: 'Photo & Video Vault', icon: ImageIcon },
             ] as const
@@ -381,25 +372,25 @@ export default function AdminDashboardClient() {
                 </div>
               </div>
 
-              {/* Card 2: Active Bespoke Pipeline */}
+              {/* Card 2: Videos */}
               <div className="bg-[#1C1C1C] border border-white/10 rounded-3xl p-6 relative overflow-hidden group hover:border-[#859F3C]/50 transition-all">
                 <div className="flex items-center justify-between">
                   <span className="text-xs uppercase tracking-widest font-mono text-stone-400">
-                    Bespoke Pipeline
+                    Video Chapters
                   </span>
                   <div className="w-8 h-8 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center">
-                    <Crown className="w-4 h-4" />
+                    <Film className="w-4 h-4" />
                   </div>
                 </div>
                 <div className="mt-4 flex items-baseline gap-2">
                   <span className="font-serif text-2xl sm:text-3xl font-bold text-white">
-                    {stats.pipeline_value_etb.toLocaleString()}
+                    {films.length}
                   </span>
-                  <span className="text-xs font-mono text-[#859F3C] font-bold">ETB</span>
+                  <span className="text-xs font-mono text-amber-400 font-bold">Videos</span>
                 </div>
                 <div className="mt-3 pt-3 border-t border-white/5 flex items-center justify-between text-xs text-stone-400">
-                  <span>{stats.active_commissions} Active Inquiries</span>
-                  <span className="text-amber-400 font-semibold">{inquiries.length} Total</span>
+                  <span>All Uploaded Locally</span>
+                  <span className="text-amber-300">4K Quality</span>
                 </div>
               </div>
 
@@ -473,17 +464,6 @@ export default function AdminDashboardClient() {
                 </button>
 
                 <button
-                  onClick={() => {
-                    setEditingInquiry(null);
-                    setIsInquiryModalOpen(true);
-                  }}
-                  className="px-4 py-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-semibold border border-white/10 flex items-center gap-1.5 cursor-pointer"
-                >
-                  <Crown className="w-4 h-4 text-amber-400" />
-                  <span>Log Client Order</span>
-                </button>
-
-                <button
                   onClick={() => setActiveTab('settings')}
                   className="px-4 py-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-semibold border border-white/10 flex items-center gap-1.5 cursor-pointer"
                 >
@@ -493,125 +473,6 @@ export default function AdminDashboardClient() {
               </div>
             </div>
 
-            {/* Recent Inquiries & Activity Feed */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-              {/* Left 7 Cols: Client Commission Stream */}
-              <div className="lg:col-span-7 bg-[#1A1A1A] border border-white/10 rounded-3xl p-6 sm:p-7 space-y-4">
-                <div className="flex items-center justify-between pb-4 border-b border-white/10">
-                  <div>
-                    <h3 className="font-serif text-lg font-bold text-white">
-                      Recent Bespoke Commission Stream
-                    </h3>
-                    <p className="text-xs text-stone-400 font-sans">
-                      Client inquiries routed from website, Telegram, and direct phone contact.
-                    </p>
-                  </div>
-                  <button
-                    onClick={() => setActiveTab('inquiries')}
-                    className="text-xs font-semibold text-[#859F3C] hover:underline flex items-center gap-1"
-                  >
-                    <span>View All ({inquiries.length})</span>
-                    <ChevronRight className="w-3.5 h-3.5" />
-                  </button>
-                </div>
-
-                <div className="space-y-3">
-                  {inquiries.slice(0, 4).map((inq) => (
-                    <div
-                      key={inq.id}
-                      className="p-4 rounded-2xl bg-[#222222] border border-white/5 flex items-center justify-between gap-4 hover:border-[#859F3C]/40 transition-all"
-                    >
-                      <div className="space-y-1">
-                        <div className="flex items-center gap-2">
-                          <span className="font-serif font-bold text-white text-sm">
-                            {inq.customer_name}
-                          </span>
-                          <span className="font-mono text-xs text-[#859F3C]">{inq.phone}</span>
-                          <span className="text-[10px] uppercase font-mono px-2 py-0.5 rounded-full bg-white/10 text-stone-300">
-                            {inq.channel}
-                          </span>
-                        </div>
-                        <p className="text-xs text-stone-300 font-sans">
-                          {inq.table_interest} •{' '}
-                          <span className="text-stone-400">{inq.seating_preference}</span>
-                        </p>
-                      </div>
-
-                      <div className="text-right">
-                        <span className="font-serif text-sm font-bold text-white block">
-                          {inq.estimated_budget_etb?.toLocaleString()} ETB
-                        </span>
-                        <span
-                          className={`text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full inline-block mt-1 ${
-                            inq.status === 'completed'
-                              ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'
-                              : inq.status === 'production'
-                              ? 'bg-amber-500/20 text-amber-300 border border-amber-500/30'
-                              : 'bg-[#859F3C]/20 text-[#859F3C] border border-[#859F3C]/30'
-                          }`}
-                        >
-                          {inq.status}
-                        </span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Right 5 Cols: Catalog Spotlight */}
-              <div className="lg:col-span-5 bg-[#1A1A1A] border border-white/10 rounded-3xl p-6 sm:p-7 space-y-4">
-                <div className="flex items-center justify-between pb-4 border-b border-white/10">
-                  <div>
-                    <h3 className="font-serif text-lg font-bold text-white">Flagship Highlights</h3>
-                    <p className="text-xs text-stone-400 font-sans">
-                      Dining tables currently spotlighted on the home showcase.
-                    </p>
-                  </div>
-                  <button
-                    onClick={() => setActiveTab('products')}
-                    className="text-xs font-semibold text-[#859F3C] hover:underline flex items-center gap-1"
-                  >
-                    <span>Manage Catalog</span>
-                    <ChevronRight className="w-3.5 h-3.5" />
-                  </button>
-                </div>
-
-                <div className="space-y-3">
-                  {products
-                    .filter((p) => p.featured)
-                    .slice(0, 4)
-                    .map((prod) => (
-                      <div
-                        key={prod.id}
-                        className="flex items-center gap-3.5 p-3 rounded-2xl bg-[#222222] border border-white/5"
-                      >
-                        <div className="relative w-14 h-14 rounded-xl overflow-hidden bg-stone-900 shrink-0">
-                          <Image
-                            src={prod.image_url}
-                            alt={prod.name}
-                            fill
-                            className="object-cover"
-                            unoptimized
-                          />
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <h4 className="font-serif text-sm font-semibold text-white truncate">
-                            {prod.name}
-                          </h4>
-                          <span className="text-xs text-stone-400 font-sans truncate block">
-                            {prod.materials}
-                          </span>
-                        </div>
-                        <div className="text-right">
-                          <span className="font-serif text-sm font-bold text-stone-200">
-                            {prod.price.toLocaleString()} ETB
-                          </span>
-                        </div>
-                      </div>
-                    ))}
-                </div>
-              </div>
-            </div>
           </div>
         )}
 
@@ -1026,144 +887,9 @@ export default function AdminDashboardClient() {
         )}
 
         {/* ======================================================== */}
-        {/* TAB 5: BESPOKE COMMISSIONS & INQUIRIES */}
+        {/* TAB 5: BRAND & SITE SETTINGS */}
         {/* ======================================================== */}
-        {activeTab === 'inquiries' && (
-          <div className="space-y-6">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#1A1A1A] p-6 rounded-3xl border border-white/10">
-              <div>
-                <h2 className="font-serif text-2xl font-bold text-white">
-                  Bespoke Commissions & Leads ({inquiries.length})
-                </h2>
-                <p className="text-xs text-stone-400 font-sans mt-0.5">
-                  Track client consultation stages, timber selections, phone contact, and ETB quote values.
-                </p>
-              </div>
-              <button
-                onClick={() => {
-                  setEditingInquiry(null);
-                  setIsInquiryModalOpen(true);
-                }}
-                className="px-5 py-2.5 rounded-full bg-[#859F3C] hover:bg-[#738b32] text-white text-xs uppercase tracking-wider font-bold shadow-md flex items-center gap-2 cursor-pointer w-fit"
-              >
-                <Plus className="w-4 h-4" />
-                <span>Log Client Order</span>
-              </button>
-            </div>
 
-            <div className="bg-[#1A1A1A] border border-white/10 rounded-3xl overflow-hidden shadow-xl">
-              <div className="overflow-x-auto">
-                <table className="w-full text-left text-xs">
-                  <thead className="bg-[#222222] text-stone-400 uppercase font-mono tracking-wider border-b border-white/10">
-                    <tr>
-                      <th className="px-6 py-4">Client Name</th>
-                      <th className="px-4 py-4">Contact</th>
-                      <th className="px-4 py-4">Dining Table Model</th>
-                      <th className="px-4 py-4">Seating / Specs</th>
-                      <th className="px-4 py-4">Budget / Quote</th>
-                      <th className="px-4 py-4">Status Stage</th>
-                      <th className="px-6 py-4 text-right">Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-white/5 text-stone-200 font-sans">
-                    {inquiries.map((inq) => (
-                      <tr key={inq.id} className="hover:bg-white/5 transition-colors">
-                        <td className="px-6 py-4">
-                          <span className="font-serif font-bold text-white text-sm block">
-                            {inq.customer_name}
-                          </span>
-                          <span className="text-[10px] text-stone-400 font-mono">
-                            {new Date(inq.created_at).toLocaleDateString()}
-                          </span>
-                        </td>
-
-                        <td className="px-4 py-4 space-y-1">
-                          <a
-                            href={`tel:${inq.phone}`}
-                            className="font-mono text-xs text-[#859F3C] font-semibold hover:underline block flex items-center gap-1"
-                          >
-                            <Phone className="w-3 h-3" />
-                            <span>{inq.phone}</span>
-                          </a>
-                          {inq.telegram && (
-                            <span className="text-[11px] text-sky-400 font-mono block">
-                              {inq.telegram}
-                            </span>
-                          )}
-                        </td>
-
-                        <td className="px-4 py-4 font-serif font-medium text-white">
-                          {inq.table_interest}
-                        </td>
-
-                        <td className="px-4 py-4 text-stone-300">
-                          <span>{inq.seating_preference}</span>
-                          {inq.custom_dimensions && (
-                            <span className="block text-[11px] text-stone-500 font-mono">
-                              {inq.custom_dimensions}
-                            </span>
-                          )}
-                        </td>
-
-                        <td className="px-4 py-4 font-serif font-bold text-white">
-                          {inq.estimated_budget_etb?.toLocaleString()}{' '}
-                          <span className="text-[10px] font-mono text-[#859F3C]">ETB</span>
-                        </td>
-
-                        <td className="px-4 py-4">
-                          <select
-                            value={inq.status}
-                            onChange={(e) => {
-                              updateInquiryStatus(inq.id, e.target.value as InquiryStatus);
-                              showToast(`Updated status for ${inq.customer_name}`);
-                            }}
-                            className="px-2.5 py-1 bg-[#222222] border border-white/10 rounded-lg text-xs font-semibold text-stone-200 focus:border-[#859F3C]"
-                          >
-                            <option value="new">New Lead</option>
-                            <option value="consultation">Consultation Scheduled</option>
-                            <option value="design">CAD Design</option>
-                            <option value="production">In Joinery Workshop</option>
-                            <option value="completed">Installed & Delivered</option>
-                            <option value="archived">Archived</option>
-                          </select>
-                        </td>
-
-                        <td className="px-6 py-4 text-right">
-                          <div className="flex items-center justify-end gap-2">
-                            <button
-                              onClick={() => {
-                                setEditingInquiry(inq);
-                                setIsInquiryModalOpen(true);
-                              }}
-                              className="p-2 rounded-xl bg-white/5 hover:bg-[#859F3C] text-stone-400 hover:text-white transition-colors cursor-pointer"
-                            >
-                              <Edit3 className="w-4 h-4" />
-                            </button>
-                            <button
-                              onClick={() => {
-                                if (confirm(`Delete inquiry from ${inq.customer_name}?`)) {
-                                  deleteInquiry(inq.id);
-                                  showToast('Inquiry record deleted');
-                                }
-                              }}
-                              className="p-2 rounded-xl bg-white/5 hover:bg-red-500/20 text-stone-400 hover:text-red-300 transition-colors cursor-pointer"
-                            >
-                              <Trash2 className="w-4 h-4" />
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* ======================================================== */}
-        {/* TAB 6: BRAND & SITE SETTINGS */}
-        {/* ======================================================== */}
         {activeTab === 'settings' && (
           <div className="space-y-6">
             <div className="bg-[#1A1A1A] p-6 rounded-3xl border border-white/10">
@@ -1552,21 +1278,6 @@ export default function AdminDashboardClient() {
           } else {
             addCategory(data as any);
             showToast(`Created category "${data.name}"`);
-          }
-        }}
-      />
-
-      <InquiryEditorModal
-        isOpen={isInquiryModalOpen}
-        onClose={() => setIsInquiryModalOpen(false)}
-        inquiry={editingInquiry}
-        onSave={(data) => {
-          if (editingInquiry) {
-            updateInquiryStatus(editingInquiry.id, data.status as any, data.notes);
-            showToast(`Updated record for ${data.customer_name}`);
-          } else {
-            addInquiry(data as any);
-            showToast(`Logged bespoke commission from ${data.customer_name}`);
           }
         }}
       />

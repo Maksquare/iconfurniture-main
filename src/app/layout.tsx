@@ -28,6 +28,8 @@ export const metadata: Metadata = {
   },
 };
 
+import AppProviders from '@/components/providers/AppProviders';
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -36,7 +38,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${playfair.variable} ${jakarta.variable}`}>
       <body className="antialiased min-h-screen flex flex-col bg-[#f7f5f0] text-[#121417]">
-        {children}
+        <AppProviders>{children}</AppProviders>
       </body>
     </html>
   );

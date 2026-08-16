@@ -24,12 +24,17 @@ import {
   OFFICIAL_CONTACTS,
 } from '@/components/common/ProductContactChannels';
 
+import { useStore } from '@/lib/store';
+
 interface ShopClientProps {
   initialProducts: Product[];
   categories: Category[];
 }
 
 export default function ShopClient({ initialProducts, categories }: ShopClientProps) {
+  const { products: storeProducts, categories: storeCategories } = useStore();
+  const activeProducts = storeProducts && storeProducts.length > 0 ? storeProducts : initialProducts;
+  const activeCategories = storeCategories && storeCategories.length > 0 ? storeCategories : categories;
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -111,11 +116,11 @@ export default function ShopClient({ initialProducts, categories }: ShopClientPr
 
   // Filter and sort products
   const filteredProducts = useMemo(() => {
-    return initialProducts
+    return activeProducts
       .filter((product) => {
         // Category filter
         if (selectedCategory !== 'all') {
-          const categoryObj = categories.find((c) => c.slug === selectedCategory);
+          const categoryObj = activeCategories.find((c) => c.slug === selectedCategory);
           if (categoryObj && product.category_id !== categoryObj.id) {
             return false;
           }
@@ -139,7 +144,7 @@ export default function ShopClient({ initialProducts, categories }: ShopClientPr
         if (sortBy === 'name') return a.name.localeCompare(b.name);
         return (b.featured ? 1 : 0) - (a.featured ? 1 : 0);
       });
-  }, [initialProducts, categories, selectedCategory, searchTerm, sortBy]);
+  }, [activeProducts, activeCategories, selectedCategory, searchTerm, sortBy]);
 
   // Pagination Calculations
   const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
@@ -161,31 +166,34 @@ export default function ShopClient({ initialProducts, categories }: ShopClientPr
     params.set('page', String(newPage));
     router.replace(`${pathname}?${params.toString()}`, { scroll: false });
 
-    // Smooth scroll to top of collection
-    gridAnchorRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // Smooth scroll back to grid top with gentle luxury easing
+    if (gridAnchorRef.current) {
+      const topOffset = gridAnchorRef.current.getBoundingClientRect().top + window.scrollY - 100;
+      window.scrollTo({ top: topOffset, behavior: 'smooth' });
+    }
   };
 
-  const handleItemsPerPageChange = (newSize: number) => {
-    setItemsPerPage(newSize);
+  const handleItemsPerPageChange = (count: number) => {
+    setItemsPerPage(count);
     setCurrentPage(1);
     const params = new URLSearchParams(searchParams.toString());
     params.delete('page');
     router.replace(`${pathname}?${params.toString()}`, { scroll: false });
   };
 
-  // Live autocomplete suggestions
-  const suggestions = useMemo(() => {
+  // Search suggestions
+  const searchSuggestions = useMemo(() => {
     if (!searchInput.trim() || searchInput.length < 2) return [];
     const term = searchInput.toLowerCase();
-    return initialProducts
-      .filter((p) => p.name.toLowerCase().includes(term))
-      .slice(0, 4);
-  }, [initialProducts, searchInput]);
+    return activeProducts
+      .filter((p) => p.name.toLowerCase().includes(term) || p.category?.name?.toLowerCase().includes(term))
+      .slice(0, 5);
+  }, [searchInput, activeProducts]);
 
   const [showSuggestions, setShowSuggestions] = useState(false);
   useEffect(() => {
-    setShowSuggestions(searchFocused && suggestions.length > 0 && searchInput.length >= 2);
-  }, [searchFocused, suggestions, searchInput]);
+    setShowSuggestions(searchFocused && searchSuggestions.length > 0 && searchInput.length >= 2);
+  }, [searchFocused, searchSuggestions, searchInput]);
 
   return (
     <div className="py-12 bg-[#FDFCF7] min-h-screen">
@@ -321,7 +329,7 @@ export default function ShopClient({ initialProducts, categories }: ShopClientPr
                   <div className="px-3 py-2 border-b border-stone-100">
                     <span className="text-[10px] uppercase tracking-widest text-stone-400 font-bold">Suggestions</span>
                   </div>
-                  {suggestions.map((product) => {
+                  {searchSuggestions.map((product: Product) => {
                     const highlighted = product.name.replace(
                       new RegExp(`(${searchInput.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi'),
                       '|||$1|||'
@@ -339,7 +347,7 @@ export default function ShopClient({ initialProducts, categories }: ShopClientPr
                       >
                         <Search className="w-3.5 h-3.5 text-stone-400 shrink-0" />
                         <span className="text-sm text-stone-800 leading-tight">
-                          {highlighted.map((part, i) =>
+                          {highlighted.map((part: string, i: number) =>
                             part.toLowerCase() === searchInput.toLowerCase() ? (
                               <mark key={i} className="bg-[#859F3C]/25 text-[#47571e] rounded px-0.5 font-semibold not-italic">
                                 {part}

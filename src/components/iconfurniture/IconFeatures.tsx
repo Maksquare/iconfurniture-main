@@ -5,11 +5,11 @@ import {
   Sparkles,
   Layers,
   Compass,
-  Palette,
+  Ruler,
   CheckCircle2,
   ArrowUpRight,
-  ShieldCheck,
   Award,
+  Users,
 } from 'lucide-react';
 import Link from 'next/link';
 
@@ -25,34 +25,34 @@ const features: FeatureItem[] = [
   {
     id: 'craftsmanship',
     icon: Award,
-    title: 'Bespoke Joinery',
+    title: 'Master Joinery',
     description:
-      'Hand-finished solid American walnut and white oak with generational mortise and tenon joinery.',
-    tag: 'Generational Oak',
+      'Every dining table is hand-crafted using time-honored mortise and tenon joinery in kiln-dried solid hardwood — built to be passed down through generations.',
+    tag: 'Solid Hardwood',
   },
   {
     id: 'stonework',
     icon: Layers,
-    title: 'Architectural Stone',
+    title: 'Stone & Marble Tops',
     description:
-      'Honed Italian travertine and Nero Marquina marble carved into sculptural, fluted centerpieces.',
-    tag: 'Tuscan Travertine',
+      'Honed travertine, Nero Marquina, and book-matched marble slabs transform each dining surface into an architectural statement piece.',
+    tag: 'Natural Stone',
   },
   {
-    id: 'textiles',
-    icon: Palette,
-    title: 'Tactile Textiles',
+    id: 'seating',
+    icon: Users,
+    title: 'Grand Seating Scales',
     description:
-      'Heavyweight custom bouclé, Italian semi-aniline leathers, and breathable organic stonewashed linens.',
-    tag: 'Italian Bouclé',
+      'From intimate 4-seater round tables to 18-seater banquet masterpieces — every dimension is engineered for comfort, proportion, and presence.',
+    tag: 'Tailored Seating',
   },
   {
-    id: 'studio-3d',
-    icon: Compass,
-    title: 'Spatial 3D Studio',
+    id: 'bespoke',
+    icon: Ruler,
+    title: 'Bespoke Commission',
     description:
-      'Visualize bespoke dimensions and finishes directly inside your floor plans with AR scale preview.',
-    tag: 'Bespoke Concierge',
+      'Design your ideal dining table — choose wood species, finish, leg profile, top shape, and seating count. Crafted exclusively for your dining space.',
+    tag: 'Custom Made',
   },
 ];
 
@@ -69,9 +69,9 @@ export default function IconFeatures() {
         {/* Main Headline with Brand Primary Capsule */}
         <div className="text-center mb-16 sm:mb-20 max-w-3xl">
           <h2 className="text-3xl sm:text-5xl md:text-[54px] font-serif font-normal tracking-tight leading-[1.18] text-white">
-            All the must haves of a{' '}
+            The art of the{' '}
             <span className="inline-flex items-center gap-1.5 px-5 py-1 rounded-full bg-[#859F3C] text-white font-serif font-bold tracking-tight text-3xl sm:text-5xl md:text-[50px] shadow-[0_0_24px_rgba(133,159,60,0.45)] my-1 align-middle">
-              luxury home.
+              dining table.
             </span>
           </h2>
         </div>
@@ -135,20 +135,26 @@ export default function IconFeatures() {
             </div>
             <div>
               <div className="text-sm font-bold text-white font-serif">
-                Complimentary Material Swatch Kit
+                Commission Your Dining Table Today
               </div>
               <div className="text-xs text-stone-400 font-sans">
-                Experience tactile bouclé, solid walnut finishes, and travertine samples delivered to your door
+                Speak with our master craftsmen to design a dining table built exclusively for your home
               </div>
             </div>
           </div>
 
           <div className="flex items-center gap-3 w-full md:w-auto">
             <Link
-              href="/shop"
+              href="/contact"
               className="flex-1 md:flex-initial px-5 py-2.5 rounded-full bg-[#859F3C] hover:bg-[#738b32] text-white text-xs font-bold transition-all hover:shadow-[0_0_20px_rgba(133,159,60,0.45)] text-center"
             >
-              Browse Complete Catalog
+              Start a Bespoke Order
+            </Link>
+            <Link
+              href="/shop"
+              className="flex-1 md:flex-initial px-5 py-2.5 rounded-full bg-white/5 hover:bg-white/10 text-white text-xs font-semibold transition-all border border-white/10 text-center"
+            >
+              Browse Collection
             </Link>
           </div>
         </div>

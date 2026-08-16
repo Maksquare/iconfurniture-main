@@ -13,7 +13,7 @@ export default function Icon3DFurniture({
   className = '',
 }: Icon3DFurnitureProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [currentColor, setCurrentColor] = useState<'olive' | 'boucle' | 'carbon'>('olive');
+  const [currentColor, setCurrentColor] = useState<'olive' | 'ivory' | 'walnut'>('olive');
   
   // Direct mutable refs for 60-120fps animation loop without React state overhead
   const mouseRef = useRef({ x: 0, y: 0, targetX: 0, targetY: 0 });
@@ -21,14 +21,14 @@ export default function Icon3DFurniture({
   const colorTargetRef = useRef(new THREE.Color('#859F3C'));
   const upholsteryMatRef = useRef<THREE.MeshStandardMaterial | null>(null);
 
-  // Color preset palette (Brand Signature Palette)
+  // Color preset palette — Dining Table Wood & Stone Finishes
   const colorPresets = {
-    olive: { hex: '#859F3C', roughness: 0.58, metalness: 0.04 },
-    boucle: { hex: '#ece6da', roughness: 0.85, metalness: 0.02 },
-    carbon: { hex: '#1A1A1A', roughness: 0.45, metalness: 0.12 },
+    olive: { hex: '#859F3C', roughness: 0.58, metalness: 0.04, label: 'Olive Hardwood' },
+    ivory: { hex: '#d6cfc2', roughness: 0.82, metalness: 0.01, label: 'Ivory Travertine' },
+    walnut: { hex: '#2c1a0e', roughness: 0.40, metalness: 0.08, label: 'Dark Walnut' },
   };
 
-  const handleColorChange = useCallback((color: 'olive' | 'boucle' | 'carbon') => {
+  const handleColorChange = useCallback((color: 'olive' | 'ivory' | 'walnut') => {
     setCurrentColor(color);
     colorTargetRef.current.set(colorPresets[color].hex);
     if (upholsteryMatRef.current) {
@@ -369,35 +369,80 @@ export default function Icon3DFurniture({
         aria-hidden="true"
       />
 
-      {/* Floating 3D Material Switcher Capsule */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 pointer-events-auto flex items-center gap-2 bg-white/85 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-stone-200/80 shadow-md">
-        <span className="text-[10px] font-bold uppercase tracking-wider text-stone-500 mr-1 pl-1">
-          Fabric Finish:
+      {/* Floating 3D Wood Finish Switcher Capsule */}
+      <div
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 pointer-events-auto flex items-center gap-2.5 backdrop-blur-md px-4 py-2 rounded-full border shadow-lg transition-all duration-500"
+        style={{
+          background:
+            currentColor === 'olive'
+              ? 'rgba(133,159,60,0.12)'
+              : currentColor === 'ivory'
+              ? 'rgba(214,207,194,0.18)'
+              : 'rgba(44,26,14,0.18)',
+          borderColor:
+            currentColor === 'olive'
+              ? 'rgba(133,159,60,0.4)'
+              : currentColor === 'ivory'
+              ? 'rgba(180,170,155,0.4)'
+              : 'rgba(133,159,60,0.3)',
+        }}
+      >
+        <span className="text-[10px] font-bold uppercase tracking-wider text-stone-500 mr-0.5 pl-0.5 select-none">
+          Wood Finish:
         </span>
+
+        {/* Olive Hardwood */}
         <button
           onClick={() => handleColorChange('olive')}
-          className={`w-5 h-5 rounded-full bg-[#859F3C] transition-transform hover:scale-110 cursor-pointer ${
-            currentColor === 'olive' ? 'ring-2 ring-[#1A1A1A] scale-110 shadow-xs' : ''
-          }`}
-          title="Icon Olive Velvet (Brand Signature)"
-          aria-label="Icon Olive Velvet"
-        />
+          className="relative w-5 h-5 rounded-full cursor-pointer transition-all duration-300 hover:scale-110 focus:outline-none"
+          style={{ background: '#859F3C' }}
+          title="Olive Hardwood (Brand Signature)"
+          aria-label="Olive Hardwood"
+        >
+          {currentColor === 'olive' && (
+            <span
+              className="absolute inset-[-3px] rounded-full border-2 border-[#859F3C] shadow-[0_0_8px_rgba(133,159,60,0.7)] transition-all duration-300"
+            />
+          )}
+        </button>
+
+        {/* Ivory Travertine */}
         <button
-          onClick={() => handleColorChange('boucle')}
-          className={`w-5 h-5 rounded-full bg-[#ece6da] border border-stone-300 transition-transform hover:scale-110 cursor-pointer ${
-            currentColor === 'boucle' ? 'ring-2 ring-[#1A1A1A] scale-110 shadow-xs' : ''
-          }`}
-          title="Ivory Tactile Bouclé"
-          aria-label="Ivory Tactile Bouclé"
-        />
+          onClick={() => handleColorChange('ivory')}
+          className="relative w-5 h-5 rounded-full cursor-pointer transition-all duration-300 hover:scale-110 focus:outline-none border border-stone-300"
+          style={{ background: '#d6cfc2' }}
+          title="Ivory Travertine"
+          aria-label="Ivory Travertine"
+        >
+          {currentColor === 'ivory' && (
+            <span
+              className="absolute inset-[-3px] rounded-full border-2 border-[#859F3C] shadow-[0_0_8px_rgba(133,159,60,0.7)] transition-all duration-300"
+            />
+          )}
+        </button>
+
+        {/* Dark Walnut */}
         <button
-          onClick={() => handleColorChange('carbon')}
-          className={`w-5 h-5 rounded-full bg-[#1A1A1A] transition-transform hover:scale-110 cursor-pointer ${
-            currentColor === 'carbon' ? 'ring-2 ring-[#859F3C] scale-110 shadow-xs' : ''
-          }`}
-          title="Obsidian Charcoal Leather"
-          aria-label="Obsidian Charcoal Leather"
-        />
+          onClick={() => handleColorChange('walnut')}
+          className="relative w-5 h-5 rounded-full cursor-pointer transition-all duration-300 hover:scale-110 focus:outline-none"
+          style={{ background: '#2c1a0e' }}
+          title="Dark Walnut"
+          aria-label="Dark Walnut"
+        >
+          {currentColor === 'walnut' && (
+            <span
+              className="absolute inset-[-3px] rounded-full border-2 border-[#859F3C] shadow-[0_0_8px_rgba(133,159,60,0.7)] transition-all duration-300"
+            />
+          )}
+        </button>
+
+        {/* Live active label */}
+        <span
+          className="ml-1 text-[10px] font-semibold uppercase tracking-wider transition-all duration-300 select-none"
+          style={{ color: '#859F3C' }}
+        >
+          {colorPresets[currentColor].label}
+        </span>
       </div>
     </div>
   );

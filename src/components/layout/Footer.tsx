@@ -12,7 +12,10 @@ import {
   OFFICIAL_CONTACTS,
 } from '@/components/common/ProductContactChannels';
 
+import { useStore } from '@/lib/store';
+
 export default function Footer() {
+  const { brandSettings } = useStore();
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
 
@@ -44,14 +47,14 @@ export default function Footer() {
               />
             </Link>
             <p className="text-stone-400 text-sm leading-relaxed max-w-sm font-sans">
-              Sculptural forms, tactile bouclé fabrics, natural travertine, and sustainably harvested solid timber. Designed for timeless editorial living.
+              {brandSettings?.tagline || 'Master Handcrafted Luxury Dining Tables'}. Solid kiln-dried hardwoods and honed Italian travertine. Handcrafted in Addis Ababa.
             </p>
             <div className="pt-2 text-xs text-stone-300 space-y-1.5 font-sans">
               <div className="flex items-center gap-2">
                 <MapPin className="w-3.5 h-3.5 text-[#859F3C] shrink-0" />
-                <span>Addis Ababa, Ethiopia</span>
+                <span>{brandSettings?.showroom_address || 'Addis Ababa, Ethiopia'}</span>
                 <a
-                  href={OFFICIAL_CONTACTS.mapUrl}
+                  href={brandSettings?.google_maps_url || OFFICIAL_CONTACTS.mapUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[#859F3C] hover:underline font-semibold flex items-center gap-0.5 ml-1"
@@ -62,12 +65,12 @@ export default function Footer() {
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="w-3.5 h-3.5 text-[#859F3C] shrink-0" />
-                <a href={OFFICIAL_CONTACTS.phonePrimary.tel} className="hover:text-[#859F3C] transition-colors">
-                  {OFFICIAL_CONTACTS.phonePrimary.display}
+                <a href={`tel:${brandSettings?.phone_primary || '0911967049'}`} className="hover:text-[#859F3C] transition-colors">
+                  {brandSettings?.phone_primary || OFFICIAL_CONTACTS.phonePrimary.display}
                 </a>
                 <span className="text-stone-500">•</span>
-                <a href={OFFICIAL_CONTACTS.phoneSecondary.tel} className="hover:text-[#859F3C] transition-colors">
-                  {OFFICIAL_CONTACTS.phoneSecondary.display}
+                <a href={`tel:${brandSettings?.phone_secondary || '0910051151'}`} className="hover:text-[#859F3C] transition-colors">
+                  {brandSettings?.phone_secondary || OFFICIAL_CONTACTS.phoneSecondary.display}
                 </a>
               </div>
             </div>
@@ -75,7 +78,7 @@ export default function Footer() {
             {/* Social Channels Icons Strip */}
             <div className="pt-2 flex items-center gap-2">
               <a
-                href={OFFICIAL_CONTACTS.instagram.url}
+                href={brandSettings?.instagram_url || OFFICIAL_CONTACTS.instagram.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 title="Instagram"
@@ -84,7 +87,7 @@ export default function Footer() {
                 <InstagramIcon className="w-3.5 h-3.5" />
               </a>
               <a
-                href={OFFICIAL_CONTACTS.facebook.url}
+                href={brandSettings?.facebook_url || OFFICIAL_CONTACTS.facebook.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 title="Facebook"
@@ -93,7 +96,7 @@ export default function Footer() {
                 <FacebookIcon className="w-3.5 h-3.5" />
               </a>
               <a
-                href={OFFICIAL_CONTACTS.telegram.url}
+                href={brandSettings?.telegram_url || OFFICIAL_CONTACTS.telegram.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 title="Telegram"
@@ -102,7 +105,7 @@ export default function Footer() {
                 <TelegramIcon className="w-3.5 h-3.5" />
               </a>
               <a
-                href={OFFICIAL_CONTACTS.tiktok.url}
+                href={brandSettings?.tiktok_url || OFFICIAL_CONTACTS.tiktok.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 title="TikTok"
@@ -184,9 +187,10 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <span className="hover:text-[#859F3C] transition-colors cursor-pointer">
-                  10-Year Master Joinery Warranty
-                </span>
+                <Link href="/admin" className="text-[#859F3C] hover:underline transition-colors inline-flex items-center gap-1 font-semibold">
+                  <span>Atelier Management Console</span>
+                  <ExternalLink className="w-3 h-3" />
+                </Link>
               </li>
               <li>
                 <span className="hover:text-[#859F3C] transition-colors cursor-pointer">
@@ -236,10 +240,13 @@ export default function Footer() {
         {/* Bottom Bar & Credits */}
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-stone-400 gap-4">
           <p className="text-center md:text-left">
-            © {new Date().getFullYear()} Iconfurniture Design Ltd. All rights reserved.
+            © {new Date().getFullYear()} {brandSettings?.brand_name || 'Icon Furniture'}. All rights reserved.
           </p>
           
           <div className="flex items-center gap-6 text-stone-400">
+            <Link href="/admin" className="text-stone-400 hover:text-[#859F3C] transition-colors">
+              Atelier Console
+            </Link>
             <span className="hover:text-stone-200 transition-colors cursor-pointer">Privacy Policy</span>
             <span className="hover:text-stone-200 transition-colors cursor-pointer">Terms of Service</span>
           </div>
@@ -255,7 +262,7 @@ export default function Footer() {
               Developed by
             </span>
             <span className="font-mono text-xs font-bold text-white group-hover:text-[#859F3C] transition-colors">
-              AME PRIME - 0954944389
+              {brandSettings?.developer_credit || 'AME PRIME - 0954944389'}
             </span>
           </a>
         </div>

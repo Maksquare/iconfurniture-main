@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -158,13 +158,24 @@ const CATEGORIES = [
   'Estate Showcase',
 ];
 
+import { useStore } from '@/lib/store';
+
 export default function CinemaClient() {
-  const [selectedFilm, setSelectedFilm] = useState<CinemaFilm>(CINEMA_FILMS[0]);
+  const { films: storeFilms } = useStore();
+  const allFilms = storeFilms && storeFilms.length > 0 ? storeFilms : CINEMA_FILMS;
+
+  const [selectedFilm, setSelectedFilm] = useState<CinemaFilm>(allFilms[0] || CINEMA_FILMS[0]);
   const [activeCategory, setActiveCategory] = useState<string>('All Chapters');
   const [hoveredFilmId, setHoveredFilmId] = useState<string | null>(null);
   const theaterRef = useRef<HTMLDivElement>(null);
 
-  const filteredFilms = CINEMA_FILMS.filter((film) => {
+  useEffect(() => {
+    if (allFilms.length > 0 && !allFilms.some((f) => f.id === selectedFilm.id)) {
+      setSelectedFilm(allFilms[0]);
+    }
+  }, [allFilms, selectedFilm]);
+
+  const filteredFilms = allFilms.filter((film) => {
     if (activeCategory === 'All Chapters') return true;
     return film.category === activeCategory;
   });
@@ -175,9 +186,9 @@ export default function CinemaClient() {
   };
 
   const handleNextFilm = () => {
-    const currentIndex = CINEMA_FILMS.findIndex((f) => f.id === selectedFilm.id);
-    const nextIndex = (currentIndex + 1) % CINEMA_FILMS.length;
-    setSelectedFilm(CINEMA_FILMS[nextIndex]);
+    const currentIndex = allFilms.findIndex((f) => f.id === selectedFilm.id);
+    const nextIndex = (currentIndex + 1) % allFilms.length;
+    setSelectedFilm(allFilms[nextIndex]);
   };
 
   const handlePrevFilm = () => {

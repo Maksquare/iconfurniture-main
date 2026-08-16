@@ -1,6 +1,38 @@
 import { createClient } from '@/lib/supabase/server';
 import { MOCK_CATEGORIES, MOCK_PRODUCTS } from '@/lib/mockData';
 import { Category, Product } from '@/types';
+import { readFile } from 'fs/promises';
+import path from 'path';
+
+const DATA_DIR = path.join(process.cwd(), 'src', 'data');
+const PRODUCTS_FILE = path.join(DATA_DIR, 'persisted_products.json');
+const CATEGORIES_FILE = path.join(DATA_DIR, 'persisted_categories.json');
+
+async function getStoredProducts(): Promise<Product[]> {
+  try {
+    const data = await readFile(PRODUCTS_FILE, 'utf-8');
+    const parsed = JSON.parse(data);
+    if (Array.isArray(parsed) && parsed.length > 0) {
+      return parsed;
+    }
+  } catch {
+    // Fallback
+  }
+  return MOCK_PRODUCTS;
+}
+
+async function getStoredCategories(): Promise<Category[]> {
+  try {
+    const data = await readFile(CATEGORIES_FILE, 'utf-8');
+    const parsed = JSON.parse(data);
+    if (Array.isArray(parsed) && parsed.length > 0) {
+      return parsed;
+    }
+  } catch {
+    // Fallback
+  }
+  return MOCK_CATEGORIES;
+}
 
 function isSupabaseConfigured(): boolean {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -15,19 +47,18 @@ function isSupabaseConfigured(): boolean {
 
 export async function getCategories(): Promise<Category[]> {
   if (!isSupabaseConfigured()) {
-    return MOCK_CATEGORIES;
+    return await getStoredCategories();
   }
 
   try {
     const supabase = await createClient();
     const { data, error } = await supabase.from('categories').select('*').order('name');
     if (error || !data || data.length === 0) {
-      return MOCK_CATEGORIES;
+      return await getStoredCategories();
     }
     return data as Category[];
-  } catch (err) {
-    console.warn('Falling back to mock categories:', err);
-    return MOCK_CATEGORIES;
+  } catch {
+    return await getStoredCategories();
   }
 }
 
@@ -36,12 +67,13 @@ export async function getProducts(options?: {
   featuredOnly?: boolean;
 }): Promise<Product[]> {
   if (!isSupabaseConfigured()) {
-    let list = [...MOCK_PRODUCTS];
+    let list = await getStoredProducts();
+    const categories = await getStoredCategories();
     if (options?.featuredOnly) {
       list = list.filter((p) => p.featured);
     }
     if (options?.categorySlug && options.categorySlug !== 'all') {
-      const cat = MOCK_CATEGORIES.find((c) => c.slug === options.categorySlug);
+      const cat = categories.find((c) => c.slug === options.categorySlug);
       if (cat) {
         list = list.filter((p) => p.category_id === cat.id);
       }
@@ -75,18 +107,40 @@ export async function getProducts(options?: {
     const { data, error } = await query.order('created_at', { ascending: false });
 
     if (error || !data || data.length === 0) {
-      return MOCK_PRODUCTS;
+      let list = await getStoredProducts();
+      const categories = await getStoredCategories();
+      if (options?.featuredOnly) {
+        list = list.filter((p) => p.featured);
+      }
+      if (options?.categorySlug && options.categorySlug !== 'all') {
+        const cat = categories.find((c) => c.slug === options.categorySlug);
+        if (cat) {
+          list = list.filter((p) => p.category_id === cat.id);
+        }
+      }
+      return list;
     }
     return data as Product[];
-  } catch (err) {
-    console.warn('Falling back to mock products:', err);
-    return MOCK_PRODUCTS;
+  } catch {
+    let list = await getStoredProducts();
+    const categories = await getStoredCategories();
+    if (options?.featuredOnly) {
+      list = list.filter((p) => p.featured);
+    }
+    if (options?.categorySlug && options.categorySlug !== 'all') {
+      const cat = categories.find((c) => c.slug === options.categorySlug);
+      if (cat) {
+        list = list.filter((p) => p.category_id === cat.id);
+      }
+    }
+    return list;
   }
 }
 
 export async function getProductBySlug(slug: string): Promise<Product | null> {
   if (!isSupabaseConfigured()) {
-    const found = MOCK_PRODUCTS.find((p) => p.slug === slug || p.id === slug);
+    const products = await getStoredProducts();
+    const found = products.find((p) => p.slug === slug || p.id === slug);
     return found || null;
   }
 
@@ -102,12 +156,12 @@ export async function getProductBySlug(slug: string): Promise<Product | null> {
       .single();
 
     if (error || !data) {
-      // Fallback search in mock data if slug not found in DB
-      return MOCK_PRODUCTS.find((p) => p.slug === slug) || null;
+      const products = await getStoredProducts();
+      return products.find((p) => p.slug === slug || p.id === slug) || null;
     }
     return data as Product;
-  } catch (err) {
-    console.warn('Falling back to mock product lookup:', err);
-    return MOCK_PRODUCTS.find((p) => p.slug === slug) || null;
+  } catch {
+    const products = await getStoredProducts();
+    return products.find((p) => p.slug === slug || p.id === slug) || null;
   }
 }

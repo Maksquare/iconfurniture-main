@@ -56,7 +56,5 @@ export interface DashboardStats {
   featured_count: number;
   total_categories: number;
   total_films: number;
-  total_inquiries: number;
-  active_commissions: number;
-  pipeline_value_etb: number;
+  films_count: number;
 }

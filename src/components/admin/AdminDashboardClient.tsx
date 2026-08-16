@@ -72,7 +72,6 @@ export default function AdminDashboardClient() {
     products,
     categories,
     films,
-    inquiries,
     brandSettings,
     stats,
     isLoaded,

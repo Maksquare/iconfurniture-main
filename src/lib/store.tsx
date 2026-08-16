@@ -2,7 +2,7 @@
 
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import { Product, Category } from '@/types';
-import { CustomerInquiry, BrandSettings, DashboardStats } from '@/types/admin';
+import { BrandSettings, DashboardStats } from '@/types/admin';
 import { CinemaFilm } from '@/components/cinema/CinemaPlayer';
 import { MOCK_CATEGORIES, MOCK_PRODUCTS } from '@/lib/mockData';
 import { CINEMA_FILMS } from '@/components/cinema/CinemaClient';
@@ -11,18 +11,17 @@ const STORAGE_KEYS = {
   PRODUCTS: 'iconfurniture_store_products',
   CATEGORIES: 'iconfurniture_store_categories',
   FILMS: 'iconfurniture_store_films',
-  INQUIRIES: 'iconfurniture_store_inquiries',
   BRAND_SETTINGS: 'iconfurniture_store_brand_settings',
   LAST_SYNC: 'iconfurniture_store_last_sync',
 };
 
 export const DEFAULT_BRAND_SETTINGS: BrandSettings = {
   brand_name: 'ICON FURNITURE',
-  tagline: 'Master Handcrafted Luxury Dining Tables',
-  hero_headline: 'Architectural Dining Tables',
-  hero_highlight_text: 'Sculpted for Generations',
+  tagline: 'Handmade Luxury Dining Tables',
+  hero_headline: 'Dining Tables Crafted',
+  hero_highlight_text: 'For Your Whole Family',
   hero_description:
-    'Handcrafted kiln-dried solid hardwoods and honed Italian travertine dining tables. Custom-tailored in Addis Ababa for grand estates and modern residences.',
+    'Handmade luxury dining tables built from solid wood and natural marble stone. Built strong to last for generations in your home.',
   primary_color: '#859F3C',
   secondary_color: '#1A1A1A',
   phone_primary: '0911-96-70-49',
@@ -35,94 +34,15 @@ export const DEFAULT_BRAND_SETTINGS: BrandSettings = {
   showroom_address: 'Bole Medhanialem, Addis Ababa, Ethiopia',
   announcement_enabled: true,
   announcement_text:
-    'Complimentary White-Glove Dining Table Installation across Addis Ababa • Handcrafted Mortise & Tenon Joinery',
+    'Free Delivery & Installation Across Addis Ababa • 100% Solid Natural Wood Dining Tables',
   developer_credit: 'AME PRIME - 0954944389',
   currency_symbol: 'ETB',
 };
-
-export const DEFAULT_INQUIRIES: CustomerInquiry[] = [
-  {
-    id: 'inq-101',
-    customer_name: 'Dawit Yohannes',
-    phone: '0911-23-45-67',
-    telegram: '@dawit_yoh',
-    email: 'dawit.y@gmail.com',
-    table_interest: 'Elysian Extendable Grand Banquet Table',
-    seating_preference: '12-Seater (Extendable to 14)',
-    custom_dimensions: '340cm L × 120cm W × 77cm H',
-    estimated_budget_etb: 350000,
-    status: 'production',
-    notes: 'Selected smoked oak with brass cantilever accents. Delivery scheduled for Bole residence.',
-    channel: 'website',
-    created_at: new Date(Date.now() - 2 * 86400000).toISOString(),
-    updated_at: new Date(Date.now() - 1 * 86400000).toISOString(),
-  },
-  {
-    id: 'inq-102',
-    customer_name: 'Sara Mengistu',
-    phone: '0912-88-99-00',
-    telegram: '@saramengistu',
-    email: 'sara.m@outlook.com',
-    table_interest: 'Pavilion Round Gathering Dining Table',
-    seating_preference: '8-Seater Round',
-    custom_dimensions: '180cm Diameter × 76cm H',
-    estimated_budget_etb: 185000,
-    status: 'consultation',
-    notes: 'Requested wood finish sample inspection before finalizing timber shade.',
-    channel: 'telegram',
-    created_at: new Date(Date.now() - 3 * 86400000).toISOString(),
-    updated_at: new Date(Date.now() - 2 * 86400000).toISOString(),
-  },
-  {
-    id: 'inq-103',
-    customer_name: 'Yonas Tadesse',
-    phone: '0920-11-22-33',
-    table_interest: 'Atelier Live-Edge Heritage Dining Table',
-    seating_preference: '10-Seater Grand',
-    custom_dimensions: '300cm L × 110cm W × 76cm H',
-    estimated_budget_etb: 295000,
-    status: 'design',
-    notes: 'Solid single-slab walnut grain matching requested. CAD dimensions sent.',
-    channel: 'phone',
-    created_at: new Date(Date.now() - 5 * 86400000).toISOString(),
-    updated_at: new Date(Date.now() - 4 * 86400000).toISOString(),
-  },
-  {
-    id: 'inq-104',
-    customer_name: 'Bethlehem Alemu',
-    phone: '0913-44-55-66',
-    instagram: '@bethlehem.alemu',
-    table_interest: 'Vesper Nero Marquina Marble Dining Table',
-    seating_preference: '8-Seater',
-    custom_dimensions: '240cm L × 105cm W × 76cm H',
-    estimated_budget_etb: 280000,
-    status: 'new',
-    notes: 'Inquired via Instagram story regarding marble vein patterns and sealing care.',
-    channel: 'instagram',
-    created_at: new Date(Date.now() - 1 * 86400000).toISOString(),
-    updated_at: new Date(Date.now() - 1 * 86400000).toISOString(),
-  },
-  {
-    id: 'inq-105',
-    customer_name: 'Dr. Henok Haile',
-    phone: '0910-66-77-88',
-    table_interest: 'Bespoke Grand Residence Feast Table',
-    seating_preference: '16-Seater Executive Residence',
-    custom_dimensions: '420cm L × 130cm W × 78cm H',
-    estimated_budget_etb: 480000,
-    status: 'completed',
-    notes: 'Successfully installed with white-glove team at Old Airport villa. 5-star feedback received.',
-    channel: 'phone',
-    created_at: new Date(Date.now() - 14 * 86400000).toISOString(),
-    updated_at: new Date(Date.now() - 2 * 86400000).toISOString(),
-  },
-];
 
 interface StoreContextType {
   products: Product[];
   categories: Category[];
   films: CinemaFilm[];
-  inquiries: CustomerInquiry[];
   brandSettings: BrandSettings;
   stats: DashboardStats;
   isLoaded: boolean;
@@ -141,10 +61,6 @@ interface StoreContextType {
   updateFilm: (id: string, film: Partial<CinemaFilm>) => void;
   deleteFilm: (id: string) => void;
   reorderFilms: (films: CinemaFilm[]) => void;
-  // Inquiry actions
-  addInquiry: (inquiry: Omit<CustomerInquiry, 'id' | 'created_at' | 'updated_at'>) => CustomerInquiry;
-  updateInquiryStatus: (id: string, status: CustomerInquiry['status'], notes?: string) => void;
-  deleteInquiry: (id: string) => void;
   // Settings & System actions
   updateBrandSettings: (settings: Partial<BrandSettings>) => void;
   resetToDefaults: () => void;
@@ -158,7 +74,6 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   const [products, setProducts] = useState<Product[]>(MOCK_PRODUCTS);
   const [categories, setCategories] = useState<Category[]>(MOCK_CATEGORIES);
   const [films, setFilms] = useState<CinemaFilm[]>(CINEMA_FILMS);
-  const [inquiries, setInquiries] = useState<CustomerInquiry[]>(DEFAULT_INQUIRIES);
   const [brandSettings, setBrandSettings] = useState<BrandSettings>(DEFAULT_BRAND_SETTINGS);
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -174,9 +89,6 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       const savedFilms = localStorage.getItem(STORAGE_KEYS.FILMS);
       if (savedFilms) setFilms(JSON.parse(savedFilms));
 
-      const savedInquiries = localStorage.getItem(STORAGE_KEYS.INQUIRIES);
-      if (savedInquiries) setInquiries(JSON.parse(savedInquiries));
-
       const savedSettings = localStorage.getItem(STORAGE_KEYS.BRAND_SETTINGS);
       if (savedSettings) setBrandSettings(JSON.parse(savedSettings));
     } catch (e) {
@@ -184,6 +96,46 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     } finally {
       setIsLoaded(true);
     }
+
+    // Hydrate latest data from server database asynchronously
+    async function hydrateFromServer() {
+      try {
+        const [prodRes, catRes] = await Promise.allSettled([
+          fetch('/api/products').then((r) => r.json()),
+          fetch('/api/categories').then((r) => r.json()),
+        ]);
+
+        if (prodRes.status === 'fulfilled' && prodRes.value?.success && Array.isArray(prodRes.value.products)) {
+          const serverProducts: Product[] = prodRes.value.products;
+          if (serverProducts.length > 0) {
+            setProducts((prev) => {
+              // Merge: keep newly created products from client if any, plus server items
+              const serverIds = new Set(serverProducts.map((p) => p.id));
+              const localCustom = prev.filter((p) => !serverIds.has(p.id) && p.id.startsWith('prod-'));
+              const merged = [...localCustom, ...serverProducts];
+              try {
+                localStorage.setItem(STORAGE_KEYS.PRODUCTS, JSON.stringify(merged));
+              } catch {}
+              return merged;
+            });
+          }
+        }
+
+        if (catRes.status === 'fulfilled' && catRes.value?.success && Array.isArray(catRes.value.categories)) {
+          const serverCategories: Category[] = catRes.value.categories;
+          if (serverCategories.length > 0) {
+            setCategories(serverCategories);
+            try {
+              localStorage.setItem(STORAGE_KEYS.CATEGORIES, JSON.stringify(serverCategories));
+            } catch {}
+          }
+        }
+      } catch (err) {
+        console.warn('Background database sync notice:', err);
+      }
+    }
+
+    hydrateFromServer();
   }, []);
 
   // Listen for storage events across tabs
@@ -194,7 +146,6 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         if (e.key === STORAGE_KEYS.PRODUCTS) setProducts(JSON.parse(e.newValue));
         if (e.key === STORAGE_KEYS.CATEGORIES) setCategories(JSON.parse(e.newValue));
         if (e.key === STORAGE_KEYS.FILMS) setFilms(JSON.parse(e.newValue));
-        if (e.key === STORAGE_KEYS.INQUIRIES) setInquiries(JSON.parse(e.newValue));
         if (e.key === STORAGE_KEYS.BRAND_SETTINGS) setBrandSettings(JSON.parse(e.newValue));
       } catch (err) {
         console.warn('Storage sync error:', err);
@@ -210,7 +161,6 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       newProducts?: Product[],
       newCategories?: Category[],
       newFilms?: CinemaFilm[],
-      newInquiries?: CustomerInquiry[],
       newSettings?: BrandSettings
     ) => {
       if (!isLoaded || typeof window === 'undefined') return;
@@ -218,7 +168,6 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         if (newProducts) localStorage.setItem(STORAGE_KEYS.PRODUCTS, JSON.stringify(newProducts));
         if (newCategories) localStorage.setItem(STORAGE_KEYS.CATEGORIES, JSON.stringify(newCategories));
         if (newFilms) localStorage.setItem(STORAGE_KEYS.FILMS, JSON.stringify(newFilms));
-        if (newInquiries) localStorage.setItem(STORAGE_KEYS.INQUIRIES, JSON.stringify(newInquiries));
         if (newSettings) localStorage.setItem(STORAGE_KEYS.BRAND_SETTINGS, JSON.stringify(newSettings));
         localStorage.setItem(STORAGE_KEYS.LAST_SYNC, new Date().toISOString());
       } catch (e) {
@@ -231,16 +180,40 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   // PRODUCT ACTIONS
   const addProduct = useCallback(
     (productData: Omit<Product, 'id'>): Product => {
+      const tempId = `prod-${Date.now()}`;
       const newProduct: Product = {
         ...productData,
-        id: `prod-custom-${Date.now()}`,
+        id: tempId,
         created_at: new Date().toISOString(),
       };
+
+      // 1. Instant local update
       setProducts((prev) => {
         const updated = [newProduct, ...prev];
         saveState(updated);
         return updated;
       });
+
+      // 2. Background database persistence
+      fetch('/api/products', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newProduct),
+      })
+        .then((r) => r.json())
+        .then((data) => {
+          if (data?.success && data.product?.id && data.product.id !== tempId) {
+            setProducts((prev) => {
+              const updated = prev.map((p) => (p.id === tempId ? { ...p, id: data.product.id } : p));
+              saveState(updated);
+              return updated;
+            });
+          }
+        })
+        .catch((err) => {
+          console.warn('Database background insert notice (persisted locally):', err);
+        });
+
       return newProduct;
     },
     [saveState]
@@ -248,10 +221,20 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
   const updateProduct = useCallback(
     (id: string, changes: Partial<Product>) => {
+      // 1. Instant local update
       setProducts((prev) => {
         const updated = prev.map((p) => (p.id === id ? { ...p, ...changes } : p));
         saveState(updated);
         return updated;
+      });
+
+      // 2. Background database update
+      fetch('/api/products', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id, ...changes }),
+      }).catch((err) => {
+        console.warn('Database background update notice:', err);
       });
     },
     [saveState]
@@ -259,10 +242,18 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
   const deleteProduct = useCallback(
     (id: string) => {
+      // 1. Instant local update
       setProducts((prev) => {
         const updated = prev.filter((p) => p.id !== id);
         saveState(updated);
         return updated;
+      });
+
+      // 2. Background database delete
+      fetch(`/api/products?id=${encodeURIComponent(id)}`, {
+        method: 'DELETE',
+      }).catch((err) => {
+        console.warn('Database background delete notice:', err);
       });
     },
     [saveState]
@@ -271,8 +262,18 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   const toggleProductFeatured = useCallback(
     (id: string) => {
       setProducts((prev) => {
-        const updated = prev.map((p) => (p.id === id ? { ...p, featured: !p.featured } : p));
+        const target = prev.find((p) => p.id === id);
+        const newFeatured = target ? !target.featured : false;
+        const updated = prev.map((p) => (p.id === id ? { ...p, featured: newFeatured } : p));
         saveState(updated);
+
+        // Sync to DB
+        fetch('/api/products', {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id, featured: newFeatured }),
+        }).catch(() => {});
+
         return updated;
       });
     },
@@ -282,8 +283,18 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   const toggleProductStock = useCallback(
     (id: string) => {
       setProducts((prev) => {
-        const updated = prev.map((p) => (p.id === id ? { ...p, in_stock: !p.in_stock } : p));
+        const target = prev.find((p) => p.id === id);
+        const newInStock = target ? !target.in_stock : false;
+        const updated = prev.map((p) => (p.id === id ? { ...p, in_stock: newInStock } : p));
         saveState(updated);
+
+        // Sync to DB
+        fetch('/api/products', {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id, in_stock: newInStock }),
+        }).catch(() => {});
+
         return updated;
       });
     },
@@ -293,16 +304,37 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   // CATEGORY ACTIONS
   const addCategory = useCallback(
     (categoryData: Omit<Category, 'id'>): Category => {
+      const tempId = `cat-${Date.now()}`;
       const newCat: Category = {
         ...categoryData,
-        id: `cat-custom-${Date.now()}`,
+        id: tempId,
         created_at: new Date().toISOString(),
       };
+
       setCategories((prev) => {
         const updated = [...prev, newCat];
         saveState(undefined, updated);
         return updated;
       });
+
+      // Sync to DB
+      fetch('/api/categories', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newCat),
+      })
+        .then((r) => r.json())
+        .then((data) => {
+          if (data?.success && data.category?.id && data.category.id !== tempId) {
+            setCategories((prev) => {
+              const updated = prev.map((c) => (c.id === tempId ? { ...c, id: data.category.id } : c));
+              saveState(undefined, updated);
+              return updated;
+            });
+          }
+        })
+        .catch(() => {});
+
       return newCat;
     },
     [saveState]
@@ -315,6 +347,12 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         saveState(undefined, updated);
         return updated;
       });
+
+      fetch('/api/categories', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id, ...changes }),
+      }).catch(() => {});
     },
     [saveState]
   );
@@ -326,6 +364,10 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         saveState(undefined, updated);
         return updated;
       });
+
+      fetch(`/api/categories?id=${encodeURIComponent(id)}`, {
+        method: 'DELETE',
+      }).catch(() => {});
     },
     [saveState]
   );
@@ -377,121 +419,67 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     [saveState]
   );
 
-  // INQUIRY ACTIONS
-  const addInquiry = useCallback(
-    (inquiryData: Omit<CustomerInquiry, 'id' | 'created_at' | 'updated_at'>): CustomerInquiry => {
-      const now = new Date().toISOString();
-      const newInq: CustomerInquiry = {
-        ...inquiryData,
-        id: `inq-${Date.now()}`,
-        created_at: now,
-        updated_at: now,
-      };
-      setInquiries((prev) => {
-        const updated = [newInq, ...prev];
-        saveState(undefined, undefined, undefined, updated);
-        return updated;
-      });
-      return newInq;
-    },
-    [saveState]
-  );
-
-  const updateInquiryStatus = useCallback(
-    (id: string, status: CustomerInquiry['status'], notes?: string) => {
-      setInquiries((prev) => {
-        const updated = prev.map((inq) =>
-          inq.id === id
-            ? {
-                ...inq,
-                status,
-                notes: notes !== undefined ? notes : inq.notes,
-                updated_at: new Date().toISOString(),
-              }
-            : inq
-        );
-        saveState(undefined, undefined, undefined, updated);
-        return updated;
-      });
-    },
-    [saveState]
-  );
-
-  const deleteInquiry = useCallback(
-    (id: string) => {
-      setInquiries((prev) => {
-        const updated = prev.filter((inq) => inq.id !== id);
-        saveState(undefined, undefined, undefined, updated);
-        return updated;
-      });
-    },
-    [saveState]
-  );
-
   // BRAND SETTINGS ACTIONS
   const updateBrandSettings = useCallback(
-    (changes: Partial<BrandSettings>) => {
+    (settings: Partial<BrandSettings>) => {
       setBrandSettings((prev) => {
-        const updated = { ...prev, ...changes };
-        saveState(undefined, undefined, undefined, undefined, updated);
+        const updated = { ...prev, ...settings };
+        saveState(undefined, undefined, undefined, updated);
         return updated;
       });
     },
     [saveState]
   );
 
-  // RESET & BACKUP ACTIONS
+  // RESET TO DEFAULTS
   const resetToDefaults = useCallback(() => {
+    setProducts(MOCK_PRODUCTS);
+    setCategories(MOCK_CATEGORIES);
+    setFilms(CINEMA_FILMS);
+    setBrandSettings(DEFAULT_BRAND_SETTINGS);
+
     if (typeof window !== 'undefined') {
       localStorage.removeItem(STORAGE_KEYS.PRODUCTS);
       localStorage.removeItem(STORAGE_KEYS.CATEGORIES);
       localStorage.removeItem(STORAGE_KEYS.FILMS);
-      localStorage.removeItem(STORAGE_KEYS.INQUIRIES);
       localStorage.removeItem(STORAGE_KEYS.BRAND_SETTINGS);
+      localStorage.setItem(STORAGE_KEYS.LAST_SYNC, new Date().toISOString());
     }
-    setProducts(MOCK_PRODUCTS);
-    setCategories(MOCK_CATEGORIES);
-    setFilms(CINEMA_FILMS);
-    setInquiries(DEFAULT_INQUIRIES);
-    setBrandSettings(DEFAULT_BRAND_SETTINGS);
   }, []);
 
+  // EXPORT BACKUP
   const exportBackupJson = useCallback((): string => {
-    const backup = {
-      version: '1.0',
+    const backupData = {
+      version: '1.0.0',
       exported_at: new Date().toISOString(),
       products,
       categories,
       films,
-      inquiries,
       brandSettings,
     };
-    return JSON.stringify(backup, null, 2);
-  }, [products, categories, films, inquiries, brandSettings]);
+    return JSON.stringify(backupData, null, 2);
+  }, [products, categories, films, brandSettings]);
 
+  // IMPORT BACKUP
   const importBackupJson = useCallback(
     (jsonData: string): boolean => {
       try {
         const data = JSON.parse(jsonData);
-        if (data.products) {
+        if (data.products && Array.isArray(data.products)) {
           setProducts(data.products);
-          saveState(data.products);
+          localStorage.setItem(STORAGE_KEYS.PRODUCTS, JSON.stringify(data.products));
         }
-        if (data.categories) {
+        if (data.categories && Array.isArray(data.categories)) {
           setCategories(data.categories);
-          saveState(undefined, data.categories);
+          localStorage.setItem(STORAGE_KEYS.CATEGORIES, JSON.stringify(data.categories));
         }
-        if (data.films) {
+        if (data.films && Array.isArray(data.films)) {
           setFilms(data.films);
-          saveState(undefined, undefined, data.films);
-        }
-        if (data.inquiries) {
-          setInquiries(data.inquiries);
-          saveState(undefined, undefined, undefined, data.inquiries);
+          localStorage.setItem(STORAGE_KEYS.FILMS, JSON.stringify(data.films));
         }
         if (data.brandSettings) {
           setBrandSettings(data.brandSettings);
-          saveState(undefined, undefined, undefined, undefined, data.brandSettings);
+          localStorage.setItem(STORAGE_KEYS.BRAND_SETTINGS, JSON.stringify(data.brandSettings));
         }
         return true;
       } catch (err) {
@@ -499,10 +487,10 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         return false;
       }
     },
-    [saveState]
+    []
   );
 
-  // COMPUTED STATS
+  // COMPUTED DASHBOARD STATS
   const stats: DashboardStats = {
     total_products: products.length,
     in_stock_count: products.filter((p) => p.in_stock).length,
@@ -510,51 +498,41 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     featured_count: products.filter((p) => p.featured).length,
     total_categories: categories.length,
     total_films: films.length,
-    total_inquiries: inquiries.length,
-    active_commissions: inquiries.filter((inq) => inq.status !== 'completed' && inq.status !== 'archived').length,
-    pipeline_value_etb: inquiries.reduce((sum, inq) => sum + (inq.estimated_budget_etb || 0), 0),
+    films_count: films.length,
   };
 
-  return (
-    <StoreContext.Provider
-      value={{
-        products,
-        categories,
-        films,
-        inquiries,
-        brandSettings,
-        stats,
-        isLoaded,
-        addProduct,
-        updateProduct,
-        deleteProduct,
-        toggleProductFeatured,
-        toggleProductStock,
-        addCategory,
-        updateCategory,
-        deleteCategory,
-        addFilm,
-        updateFilm,
-        deleteFilm,
-        reorderFilms,
-        addInquiry,
-        updateInquiryStatus,
-        deleteInquiry,
-        updateBrandSettings,
-        resetToDefaults,
-        exportBackupJson,
-        importBackupJson,
-      }}
-    >
-      {children}
-    </StoreContext.Provider>
-  );
+  const value: StoreContextType = {
+    products,
+    categories,
+    films,
+    brandSettings,
+    stats,
+    isLoaded,
+    addProduct,
+    updateProduct,
+    deleteProduct,
+    toggleProductFeatured,
+    toggleProductStock,
+    addCategory,
+    updateCategory,
+    deleteCategory,
+    addFilm,
+    updateFilm,
+    deleteFilm,
+    reorderFilms,
+    updateBrandSettings,
+    resetToDefaults,
+    exportBackupJson,
+    importBackupJson,
+  };
+
+  return <StoreContext.Provider value={value}>{children}</StoreContext.Provider>;
 };
 
-export const useStore = () => {
+export function useStore(): StoreContextType {
   const context = useContext(StoreContext);
   if (!context) {
     throw new Error('useStore must be used within a StoreProvider');
   }
   return context;
-};
+}

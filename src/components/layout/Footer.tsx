@@ -219,13 +219,30 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar & Credits */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-stone-400 gap-4">
-          <p>© {new Date().getFullYear()} Iconfurniture Design Ltd. All rights reserved.</p>
-          <div className="flex items-center gap-6">
-            <span className="hover:text-stone-300 transition-colors cursor-pointer">Privacy Policy</span>
-            <span className="hover:text-stone-300 transition-colors cursor-pointer">Terms of Service</span>
-            <span className="text-stone-400 font-medium">Developed By - AME PRIME</span>
+        <div className="pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-stone-400 gap-4">
+          <p className="text-center md:text-left">
+            © {new Date().getFullYear()} Iconfurniture Design Ltd. All rights reserved.
+          </p>
+          
+          <div className="flex items-center gap-6 text-stone-400">
+            <span className="hover:text-stone-200 transition-colors cursor-pointer">Privacy Policy</span>
+            <span className="hover:text-stone-200 transition-colors cursor-pointer">Terms of Service</span>
           </div>
+
+          {/* Luxury Developer Hallmark Pill */}
+          <a
+            href="tel:0954944389"
+            className="group inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/15 hover:border-[#859F3C]/60 text-stone-300 hover:text-white transition-all duration-300 shadow-xs hover:shadow-[0_0_20px_rgba(133,159,60,0.3)] hover:scale-102 cursor-pointer"
+            title="Call Developer: 0954944389"
+          >
+            <span className="w-2 h-2 rounded-full bg-[#859F3C] inline-block animate-pulse shadow-[0_0_8px_#859F3C]" />
+            <span className="text-[10.5px] uppercase tracking-wider text-stone-400 font-medium">
+              Developed by
+            </span>
+            <span className="font-mono text-xs font-bold text-white group-hover:text-[#859F3C] transition-colors">
+              AME PRIME - 0954944389
+            </span>
+          </a>
         </div>
       </div>
     </footer>

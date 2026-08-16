@@ -5,6 +5,11 @@ export interface Category {
   created_at?: string;
 }
 
+export interface ProductImageAngle {
+  label: string;
+  url: string;
+}
+
 export interface Product {
   id: string;
   name: string;
@@ -14,6 +19,8 @@ export interface Product {
   category_id: string;
   category?: Category;
   image_url: string;
+  images?: string[];
+  gallery?: ProductImageAngle[];
   in_stock: boolean;
   featured?: boolean;
   dimensions?: string;

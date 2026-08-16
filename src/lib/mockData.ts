@@ -12,11 +12,30 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'p1',
     name: 'Aura Velvet Accent Armchair',
     slug: 'aura-velvet-accent-armchair',
-    description: 'Sculptural lounge chair featuring plush velvet upholstery over a solid oak frame. Ergonomically contoured for effortless lounge comfort with timeless editorial warmth.',
+    description:
+      'Sculptural lounge chair featuring plush velvet upholstery over a solid oak frame. Ergonomically contoured for effortless lounge comfort with timeless editorial warmth.',
     price: 1250,
     category_id: 'c1',
     category: { id: 'c1', name: 'Seating', slug: 'seating' },
     image_url: 'https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=1200&q=85',
+    gallery: [
+      {
+        label: 'Front Silhouette',
+        url: 'https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=1200&q=85',
+      },
+      {
+        label: '3/4 Architectural Profile',
+        url: 'https://images.unsplash.com/photo-1580481077194-406a090a94ca?auto=format&fit=crop&w=1200&q=85',
+      },
+      {
+        label: 'Velvet Texture & Stitching',
+        url: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=85',
+      },
+      {
+        label: 'In-Situ Living Room Setting',
+        url: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=85',
+      },
+    ],
     in_stock: true,
     featured: true,
     dimensions: 'W 34" x D 32" x H 30" | Seat H 17"',
@@ -26,11 +45,30 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'p2',
     name: 'Kanso Organic Walnut Dining Table',
     slug: 'kanso-organic-walnut-dining-table',
-    description: 'Crafted from sustainably sourced solid American Walnut, the Kanso table highlights natural wood grain movement with rounded bevel edges and soft tapered legs.',
+    description:
+      'Crafted from sustainably sourced solid American Walnut, the Kanso table highlights natural wood grain movement with rounded bevel edges and soft tapered legs.',
     price: 2890,
     category_id: 'c2',
     category: { id: 'c2', name: 'Tables', slug: 'tables' },
     image_url: 'https://images.unsplash.com/photo-1615066390971-03e4e1c36ddf?auto=format&fit=crop&w=1200&q=85',
+    gallery: [
+      {
+        label: 'Full Table Silhouette',
+        url: 'https://images.unsplash.com/photo-1615066390971-03e4e1c36ddf?auto=format&fit=crop&w=1200&q=85',
+      },
+      {
+        label: 'Tapered Leg & Joint Detail',
+        url: 'https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&w=1200&q=85',
+      },
+      {
+        label: 'Walnut Grain Macro',
+        url: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1200&q=85',
+      },
+      {
+        label: 'Dining Setting Context',
+        url: 'https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=1200&q=85',
+      },
+    ],
     in_stock: true,
     featured: true,
     dimensions: 'L 84" x W 38" x H 30"',
@@ -40,11 +78,30 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'p3',
     name: 'Mirei Bouclé Modular Sofa',
     slug: 'mirei-boucle-modular-sofa',
-    description: 'Extravagant cloud-like seating upholstered in soft ivory tactile bouclé fabric. Deep proportions designed for relaxed formal hosting or quiet evenings.',
+    description:
+      'Extravagant cloud-like seating upholstered in soft ivory tactile bouclé fabric. Deep proportions designed for relaxed formal hosting or quiet evenings.',
     price: 3450,
     category_id: 'c1',
     category: { id: 'c1', name: 'Seating', slug: 'seating' },
     image_url: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=85',
+    gallery: [
+      {
+        label: 'Modular Front Elevation',
+        url: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=85',
+      },
+      {
+        label: 'Side Profile & Deep Curve',
+        url: 'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=1200&q=85',
+      },
+      {
+        label: 'Tactile Bouclé Fabric Texture',
+        url: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1200&q=85',
+      },
+      {
+        label: 'Architectural Lounge Interior',
+        url: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=85',
+      },
+    ],
     in_stock: true,
     featured: true,
     dimensions: 'W 108" x D 42" x H 28" | Seat H 16.5"',
@@ -54,11 +111,30 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'p4',
     name: 'Lumina Travertine Floor Lamp',
     slug: 'lumina-travertine-floor-lamp',
-    description: 'Architectural monolith floor light anchored by a carved natural travertine stone base with brushed warm brass hardware and hand-loomed linen shade.',
+    description:
+      'Architectural monolith floor light anchored by a carved natural travertine stone base with brushed warm brass hardware and hand-loomed linen shade.',
     price: 780,
     category_id: 'c4',
     category: { id: 'c4', name: 'Lighting', slug: 'lighting' },
     image_url: 'https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=1200&q=85',
+    gallery: [
+      {
+        label: 'Full Monolith Elevation',
+        url: 'https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=1200&q=85',
+      },
+      {
+        label: 'Travertine Stone Base Veining',
+        url: 'https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&w=1200&q=85',
+      },
+      {
+        label: 'Brushed Brass Joint & Shade',
+        url: 'https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?auto=format&fit=crop&w=1200&q=85',
+      },
+      {
+        label: 'Evening Ambient Glow Context',
+        url: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=85',
+      },
+    ],
     in_stock: true,
     featured: false,
     dimensions: 'Base Dia 12" x H 64" | Shade Dia 18"',
@@ -68,11 +144,30 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'p5',
     name: 'Solstice Credenza Sideboard',
     slug: 'solstice-credenza-sideboard',
-    description: 'Mid-century minimalist sideboard featuring fluted tambour oak sliding doors, brass hardware details, and integrated cable management for media or dining storage.',
+    description:
+      'Mid-century minimalist sideboard featuring fluted tambour oak sliding doors, brass hardware details, and integrated cable management for media or dining storage.',
     price: 2150,
     category_id: 'c3',
     category: { id: 'c3', name: 'Storage & Shelving', slug: 'storage' },
     image_url: 'https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=1200&q=85',
+    gallery: [
+      {
+        label: 'Front Credenza View',
+        url: 'https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=1200&q=85',
+      },
+      {
+        label: 'Fluted Tambour Sliding Doors',
+        url: 'https://images.unsplash.com/photo-1538688525198-9b88f6f53126?auto=format&fit=crop&w=1200&q=85',
+      },
+      {
+        label: 'Oak Joinery & Brass Pulls',
+        url: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1200&q=85',
+      },
+      {
+        label: 'Living Room Architecture Context',
+        url: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=85',
+      },
+    ],
     in_stock: true,
     featured: true,
     dimensions: 'W 72" x D 19" x H 31"',
@@ -82,11 +177,30 @@ export const MOCK_PRODUCTS: Product[] = [
     id: 'p6',
     name: 'Brutalist Smoked Glass Coffee Table',
     slug: 'brutalist-smoked-glass-coffee-table',
-    description: 'Thick tempered smoked glass resting atop twin sculptural cast-concrete pedestal blocks. A bold center fixture for contemporary living rooms.',
+    description:
+      'Thick tempered smoked glass resting atop twin sculptural cast-concrete pedestal blocks. A bold center fixture for contemporary living rooms.',
     price: 1420,
     category_id: 'c2',
     category: { id: 'c2', name: 'Tables', slug: 'tables' },
     image_url: 'https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&w=1200&q=85',
+    gallery: [
+      {
+        label: 'Overview & Reflection Angle',
+        url: 'https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&w=1200&q=85',
+      },
+      {
+        label: 'Concrete Pedestal Sculptural Base',
+        url: 'https://images.unsplash.com/photo-1615066390971-03e4e1c36ddf?auto=format&fit=crop&w=1200&q=85',
+      },
+      {
+        label: 'Smoked Beveled Glass Edge',
+        url: 'https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=1200&q=85',
+      },
+      {
+        label: 'Atmospheric Salon Interior',
+        url: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=85',
+      },
+    ],
     in_stock: true,
     featured: false,
     dimensions: 'L 52" x W 32" x H 14"',

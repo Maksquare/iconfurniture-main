@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ShieldCheck, Truck, ArrowLeft, Mail, Check } from 'lucide-react';
 import { Product } from '@/types';
+import ProductGalleryRail from '@/components/shop/ProductGalleryRail';
 import ProductGrid from '@/components/shop/ProductGrid';
 import ProductContactChannels from '@/components/common/ProductContactChannels';
 
@@ -42,38 +43,14 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
 
         {/* Product Showcase Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          {/* Image Gallery */}
+          {/* Smart Multi-Angle Gallery Rail */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             className="lg:col-span-7 space-y-4"
           >
-            <div className="relative aspect-4/3 rounded-3xl overflow-hidden bg-stone-100 border border-stone-200/80 shadow-md">
-              <Image
-                src={product.image_url}
-                alt={product.name}
-                fill
-                priority
-                className="object-cover"
-              />
-              <div className="absolute top-4 left-4 flex gap-2">
-                {product.featured && (
-                  <span className="px-3 py-1 bg-[#1A1A1A] text-white text-[10px] uppercase font-bold tracking-widest rounded-full">
-                    Featured Heirloom
-                  </span>
-                )}
-                {product.in_stock ? (
-                  <span className="px-3 py-1 bg-[#859F3C] text-white text-[10px] uppercase font-bold tracking-widest rounded-full backdrop-blur-xs">
-                    In Stock
-                  </span>
-                ) : (
-                  <span className="px-3 py-1 bg-[#1A1A1A]/80 text-amber-200 text-[10px] uppercase font-bold tracking-widest rounded-full">
-                    Made to Order
-                  </span>
-                )}
-              </div>
-            </div>
+            <ProductGalleryRail product={product} />
 
             {/* Social & Contact Channels Card under image for quick access */}
             <ProductContactChannels productName={product.name} variant="detailed" />

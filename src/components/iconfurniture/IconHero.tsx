@@ -1,7 +1,7 @@
 'use client';
 
-import React from 'react';
-import { Sparkles, Star, ArrowRight } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Star, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -14,6 +14,29 @@ export default function IconHero({
   onOpenAtelier,
   onScrollToFeatures,
 }: IconHeroProps) {
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    let ticking = false;
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setScrollY(window.scrollY);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Calculate smooth scale, translation, and opacity of the giant hero logo as it glides toward the navbar
+  const heroProgress = Math.min(1, Math.max(0, scrollY / 420));
+  const logoScale = 1 - heroProgress * 0.45;
+  const logoTranslateY = -heroProgress * 120;
+  const logoOpacity = Math.max(0, 1 - heroProgress * 1.35);
+
   return (
     <div className="relative w-full min-h-screen flex flex-col justify-between pt-28 pb-12 px-6 sm:px-10 max-w-7xl mx-auto select-none">
       {/* Background Organic Topographic Design Lines */}
@@ -47,29 +70,30 @@ export default function IconHero({
         </svg>
       </div>
 
-      {/* Top Giant Brand Headline */}
-      <div className="w-full flex flex-col items-center justify-center text-center relative z-0 mt-4 md:mt-8">
-        <div className="mb-3 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/85 border border-stone-200/80 backdrop-blur-md shadow-2xs">
+      {/* ─── Giant Brand Logo Behind 3D Furniture (Transitions into navbar on scroll) ─── */}
+      <div
+        className="w-full flex flex-col items-center justify-center text-center relative z-0 mt-2 sm:mt-6 pointer-events-none will-change-transform"
+        style={{
+          transform: `translateY(${logoTranslateY}px) scale(${logoScale})`,
+          opacity: logoOpacity,
+          transition: 'transform 0.1s ease-out, opacity 0.15s ease-out',
+        }}
+      >
+        <div className="relative w-[88vw] max-w-[820px] aspect-[3.2/1] flex items-center justify-center">
           <Image
             src="/assets/iconfurniture-logo.png"
             alt="Icon Furniture"
-            width={120}
-            height={32}
-            className="h-6 w-auto object-contain"
+            fill
             priority
+            className="object-contain drop-shadow-sm select-none"
           />
         </div>
-        <h1
-          className="font-serif font-black tracking-[-0.04em] text-[clamp(4.2rem,13.5vw,12.5rem)] leading-[0.88] text-[#1A1A1A] uppercase"
-        >
-          ICON FURNITURE.
-        </h1>
       </div>
 
       {/* Middle & Lower Hero Content (Framed around center 3D luxury centerpiece) */}
       <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 items-end relative z-10 mt-auto pt-16 sm:pt-24">
         {/* Left Column: Client Heritage & Architectural Tagline */}
-        <div className="flex flex-col gap-5 max-w-md">
+        <div className="flex flex-col gap-5 max-w-md pointer-events-auto">
           {/* Avatar Cluster + 15k+ Counter */}
           <div className="flex items-center gap-3.5 bg-white/85 backdrop-blur-md px-4 py-2.5 rounded-2xl border border-stone-200/70 shadow-xs w-fit">
             <div className="flex -space-x-2.5 overflow-hidden">
@@ -110,7 +134,7 @@ export default function IconHero({
         </div>
 
         {/* Right Column: Metadata Index Markers & Glowing CTA Button */}
-        <div className="flex flex-col items-start md:items-end justify-between gap-6 sm:gap-10">
+        <div className="flex flex-col items-start md:items-end justify-between gap-6 sm:gap-10 pointer-events-auto">
           {/* Metadata Index List - Hidden on mobile */}
           <div className="hidden md:flex flex-col items-start md:items-end gap-1.5 text-stone-500 font-medium text-sm tracking-tight">
             <div className="flex items-center gap-2 hover:text-[#1A1A1A] transition-colors">

@@ -63,8 +63,8 @@ export default function IconExperience() {
         </div>
       </div>
 
-      {/* 3. Hero Section (Luxury Ivory Mode) */}
-      <section className="relative z-20 min-h-screen flex flex-col justify-between">
+      {/* 3. Hero Section (Giant Logo at z-0 behind 3D centerpiece; controls at z-20) */}
+      <section className="relative z-0 min-h-screen flex flex-col justify-between">
         <IconHero
           onOpenAtelier={() => setIsAtelierModalOpen(true)}
           onScrollToFeatures={scrollToFeatures}

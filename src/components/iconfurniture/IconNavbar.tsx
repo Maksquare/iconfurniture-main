@@ -30,8 +30,26 @@ export default function IconNavbar({ isDark = false }: IconNavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [showNavbarLogo, setShowNavbarLogo] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
+
+  // Smooth scroll listener for navbar logo appearance
+  useEffect(() => {
+    let ticking = false;
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setShowNavbarLogo(window.scrollY > 150);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const navLinks = [
     { name: 'Collection', href: '/shop' },
@@ -107,13 +125,18 @@ export default function IconNavbar({ isDark = false }: IconNavbarProps) {
           }`}
         >
           {/* Brand & Left Nav */}
-          <div className="flex items-center gap-7">
+          <div className="flex items-center gap-5 sm:gap-7">
+            {/* Docked Brand Logo from Hero on Scroll */}
             <Link
               href="/"
-              className="flex items-center gap-2.5 transition-transform hover:scale-102"
+              className={`flex items-center gap-2.5 transition-all duration-500 ease-out origin-left ${
+                showNavbarLogo
+                  ? 'opacity-100 scale-100 translate-x-0 max-w-[140px]'
+                  : 'opacity-0 scale-75 -translate-x-3 max-w-0 pointer-events-none overflow-hidden'
+              }`}
               aria-label="Icon Furniture Home"
             >
-              <div className={`transition-all duration-300 ${isDark ? 'bg-white/95 px-3 py-1 rounded-xl shadow-xs' : ''}`}>
+              <div className={`transition-all duration-300 shrink-0 ${isDark ? 'bg-white/95 px-3 py-1 rounded-xl shadow-xs' : ''}`}>
                 <Image
                   src="/assets/iconfurniture-logo.png"
                   alt="Icon Furniture"

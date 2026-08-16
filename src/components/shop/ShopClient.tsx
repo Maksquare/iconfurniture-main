@@ -208,14 +208,14 @@ export default function ShopClient({ initialProducts, categories }: ShopClientPr
               </div>
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-stone-200/80 text-xs font-bold uppercase tracking-widest text-[#859F3C] shadow-2xs">
                 <Sparkles className="w-3.5 h-3.5" />
-                <span>Artisanal Heirloom Collection</span>
+                <span>Bespoke Luxury Dining Tables</span>
               </div>
             </div>
             <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl font-normal text-[#1A1A1A] leading-tight">
-              The Flagship Living Catalog
+              The Dining Table Catalog
             </h1>
             <p className="text-stone-600 text-sm sm:text-base font-sans leading-relaxed">
-              Explore sculptural seating, solid American walnut tables, and architectural stonework designed for timeless contemporary interiors.
+              Explore solid American walnut dining centerpieces, honed Italian travertine stone tables, and circular gathering tables mastercrafted for generational gatherings.
             </p>
             {/* Concierge Strip */}
             <div className="pt-2 flex flex-wrap items-center gap-2.5 text-xs font-medium text-stone-700">
@@ -464,10 +464,10 @@ export default function ShopClient({ initialProducts, categories }: ShopClientPr
         <div className="mt-16 p-8 rounded-3xl bg-[#1A1A1A] text-white border border-white/10 flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl">
           <div className="space-y-1 text-center md:text-left">
             <h3 className="font-serif text-xl font-semibold text-[#859F3C]">
-              Need Bespoke Dimensions or Material Customization?
+              Need Custom Dining Table Length, Seating, or Wood Species?
             </h3>
             <p className="text-xs text-stone-400 font-sans">
-              Our master woodworkers and fabric artisans craft custom dimensions, wood stains, and commercial grade upholstery.
+              Our master woodcrafters hand-build bespoke dining table lengths (6 to 18 seaters), live-edge slabs, wood stains, and monolithic stone tops.
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-3 w-full md:w-auto justify-center">

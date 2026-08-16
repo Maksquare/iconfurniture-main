@@ -15,7 +15,7 @@ interface ProductDetailClientProps {
   relatedProducts: Product[];
 }
 
-const FINISHES = ['Natural White Oak', 'Smoked Walnut', 'Black Ash', 'Custom Stained'];
+const FINISHES = ['Natural Solid White Oak', 'Kiln-Dried American Walnut', 'Smoked Black Ash', 'Custom Heritage Stain'];
 
 export default function ProductDetailClient({ product, relatedProducts }: ProductDetailClientProps) {
   const [selectedFinish, setSelectedFinish] = useState(FINISHES[0]);
@@ -37,7 +37,7 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
             className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-stone-600 hover:text-[#859F3C] transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
-            Back to Furniture Catalog
+            Back to Dining Table Catalog
           </Link>
         </div>
 
@@ -84,7 +84,7 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
             {/* Finish Options */}
             <div className="space-y-3">
               <label className="text-xs uppercase tracking-wider font-semibold text-[#1A1A1A] block">
-                Select Finish / Timber: <span className="text-[#859F3C]">{selectedFinish}</span>
+                Select Hardwood / Finish: <span className="text-[#859F3C]">{selectedFinish}</span>
               </label>
               <div className="grid grid-cols-2 gap-2">
                 {FINISHES.map((finish) => (
@@ -121,7 +121,7 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
                 ) : (
                   <>
                     <Mail className="w-4 h-4" />
-                    <span>Inquire About This Piece • Bespoke Order</span>
+                    <span>Inquire About This Dining Table • Bespoke Order</span>
                   </>
                 )}
               </button>
@@ -130,11 +130,11 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
               <div className="grid grid-cols-2 gap-4 pt-4 border-t border-stone-200 text-xs text-stone-600">
                 <div className="flex items-center gap-2">
                   <Truck className="w-4 h-4 text-[#859F3C]" />
-                  <span>White-Glove In-Home Delivery</span>
+                  <span>White-Glove Dining Room Setup</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <ShieldCheck className="w-4 h-4 text-[#859F3C]" />
-                  <span>10-Year Craftsmanship Warranty</span>
+                  <span>Generational Table Warranty</span>
                 </div>
               </div>
             </div>
@@ -178,10 +178,10 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
                 {activeTab === 'specs' && (
                   <div className="space-y-2">
                     <p>
-                      <strong className="text-[#1A1A1A]">Dimensions:</strong> {product.dimensions || 'W 34" x D 32" x H 30"'}
+                      <strong className="text-[#1A1A1A]">Dimensions & Seating:</strong> {product.dimensions || 'L 84" x W 38" x H 30" | 8-Seater'}
                     </p>
                     <p>
-                      <strong className="text-[#1A1A1A]">Materials:</strong> {product.materials || 'Solid White Oak & Italian Velvet'}
+                      <strong className="text-[#1A1A1A]">Materials:</strong> {product.materials || '100% Solid Kiln-Dried Hardwood'}
                     </p>
                     <p>
                       <strong className="text-[#1A1A1A]">Origin:</strong> Handcrafted in Addis Ababa Atelier
@@ -190,12 +190,12 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
                 )}
                 {activeTab === 'shipping' && (
                   <p>
-                    Includes white-glove inside delivery, room placement, full assembly of hardware, and eco-friendly packing material removal. Scheduled at your convenience.
+                    Includes white-glove dining room delivery, precision leveling, pedestal bolting, and eco-friendly packing material removal.
                   </p>
                 )}
                 {activeTab === 'care' && (
                   <p>
-                    Dust regularly with a dry micro-fiber cloth. Maintain natural wood finish by applying natural beeswax every 12 months. Avoid harsh liquid solvent sprays.
+                    Wipe tabletop with a damp cloth and mild natural soap. Heat- and spill-resistant botanical hardwax oil protects against wine and dining spills. Apply organic botanical wax annually.
                   </p>
                 )}
               </div>
@@ -208,10 +208,10 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
           <div className="pt-12 border-t border-stone-200 space-y-8">
             <div>
               <span className="text-xs uppercase tracking-widest font-semibold text-[#859F3C]">
-                Complementary Pieces
+                Complementary Dining Designs
               </span>
               <h2 className="font-serif text-2xl sm:text-3xl font-normal text-[#1A1A1A] mt-1">
-                You May Also Appreciate
+                Explore Additional Dining Tables
               </h2>
             </div>
             <ProductGrid products={relatedProducts.slice(0, 3)} />

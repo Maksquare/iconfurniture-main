@@ -354,18 +354,18 @@ export default function ContactPage() {
 
                   <div>
                     <label className="text-xs font-semibold uppercase tracking-wider text-stone-700 block mb-1.5">
-                      Interest / Inquiry Type
+                      Dining Table Style / Collection
                     </label>
                     <select
                       value={formData.projectType}
                       onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
                       className="w-full px-4 py-3 bg-stone-50 border border-stone-200/90 rounded-2xl text-xs sm:text-sm focus:outline-hidden focus:border-[#859F3C] focus:bg-white transition-all text-stone-800"
                     >
-                      <option>Living Room & Seating</option>
-                      <option>Dining Tables & Chairs</option>
-                      <option>Bedroom & Bed Sets</option>
-                      <option>Full Home Furnishing</option>
-                      <option>Custom Architectural Commission</option>
+                      <option>Solid Hardwood Dining Tables (Walnut/Oak)</option>
+                      <option>Honed Stone & Travertine Tables</option>
+                      <option>Round & Gathering Pedestal Tables</option>
+                      <option>Extendable & Grand Banquet Tables</option>
+                      <option>Bespoke Custom Table Commission</option>
                     </select>
                   </div>
                 </div>
@@ -373,14 +373,14 @@ export default function ContactPage() {
                 {/* Message */}
                 <div>
                   <label className="text-xs font-semibold uppercase tracking-wider text-stone-700 block mb-1.5">
-                    Your Message / Desired Furniture Piece *
+                    Your Requirements / Seating Capacity / Dimensions *
                   </label>
                   <textarea
                     rows={4}
                     required
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    placeholder="Describe the furniture item, dimensions, colors, or specific model from our catalog..."
+                    placeholder="Describe the dining table style, seating capacity (e.g. 8-seater, 10-seater, 14-seater), wood species, length, or model from our catalog..."
                     className="w-full px-4 py-3 bg-stone-50 border border-stone-200/90 rounded-2xl text-xs sm:text-sm focus:outline-hidden focus:border-[#859F3C] focus:bg-white transition-all placeholder:text-stone-400 leading-relaxed"
                   />
                 </div>

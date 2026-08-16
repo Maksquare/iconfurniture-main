@@ -7,27 +7,27 @@ import { Sparkles, Trees, Truck, ShieldCheck } from 'lucide-react';
 const DARK_FEATURES = [
   {
     icon: Sparkles,
-    title: 'Realtime Concierge',
+    title: 'Bespoke Dimensions',
     description:
-      'Work with our interior design atelier in real-time to customize dimensions, fabric swatches, and finishes.',
+      'Customize table length, width, timber species, edge chamfers, and seating capacity from 6 to 18 guests.',
   },
   {
     icon: Trees,
-    title: 'Sustainable Timber',
+    title: 'Old-Growth Hardwoods',
     description:
-      '100% FSC-certified solid American Walnut and White Oak sourced from managed reforestation reserves.',
+      '100% solid kiln-dried American Walnut, White Oak, and quarter-sawn Ash selected for continuous grain flow.',
   },
   {
     icon: ShieldCheck,
-    title: 'Master Artisanship',
+    title: 'Master Blind Joinery',
     description:
-      'Precision mortise-and-tenon joinery hand-finished with organic natural beeswax and hardwax oils.',
+      'Precision mortise-and-tenon structure finished with heat- and wine-resilient botanical hardwax oils.',
   },
   {
     icon: Truck,
-    title: 'White-Glove Setup',
+    title: 'White-Glove Placement',
     description:
-      'Complimentary room-of-choice placement, unpacking, hardware assembly, and packaging removal.',
+      'Complimentary dining room placement, leveling, solid pedestal bolting, and packaging removal.',
   },
 ];
 
@@ -38,16 +38,16 @@ export default function Features() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-lime-900/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16 relative z-10">
-        {/* Section Header (Matching inspo video dark header style) */}
+        {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-stone-900 border border-stone-800 text-[#84cc16] text-xs font-semibold uppercase tracking-widest rounded-full"
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-stone-900 border border-stone-800 text-[#859F3C] text-xs font-semibold uppercase tracking-widest rounded-full"
           >
             <Sparkles className="w-3.5 h-3.5" />
-            <span>Signature Capabilities</span>
+            <span>Atelier Joinery Standard</span>
           </motion.div>
 
           <motion.h2
@@ -57,8 +57,8 @@ export default function Features() {
             transition={{ delay: 0.1 }}
             className="font-serif text-3xl sm:text-5xl font-normal tracking-tight text-white leading-tight"
           >
-            All the essential details of a{' '}
-            <span className="text-[#84cc16] italic font-light">luxury sanctuary.</span>
+            Mastercrafted for a lifetime of{' '}
+            <span className="text-[#859F3C] italic font-light">shared feasts.</span>
           </motion.h2>
         </div>
 

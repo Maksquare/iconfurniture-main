@@ -64,13 +64,13 @@ export default function Hero() {
               className="space-y-3 max-w-xs"
             >
               <p className="text-stone-700 text-sm font-sans leading-relaxed font-normal">
-                The architectural design software & heirloom craftsmanship that keeps your living spaces in effortless balance with natural material graphics.
+                Handcrafted bespoke luxury dining tables designed as the generational centerpiece of the home, sculpted from old-growth hardwoods and honed natural stone.
               </p>
               <Link
                 href="/shop"
                 className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-[#859F3C] hover:underline"
               >
-                <span>Browse Catalog</span>
+                <span>Browse Dining Tables</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </motion.div>
@@ -99,7 +99,7 @@ export default function Hero() {
             <div className="relative w-full max-w-md aspect-4/5 rounded-3xl overflow-hidden shadow-2xl bg-stone-900 border-4 border-white/80 group">
               <IconImage
                 src="/collections/if001.jpg"
-                alt="Icon Furniture Aura Velvet Lounge Armchair"
+                alt="Icon Furniture Kanso Organic Walnut Dining Table"
                 fill
                 priority
                 className="object-cover group-hover:scale-105 transition-transform duration-1000"
@@ -110,14 +110,14 @@ export default function Hero() {
               <div className="absolute bottom-6 left-6 right-6 p-4 bg-white/90 backdrop-blur-md rounded-2xl border border-white/60 shadow-xl flex items-center justify-between">
                 <div>
                   <span className="text-[10px] uppercase tracking-widest text-[#859F3C] font-bold block">
-                    Flagship Release
+                    Masterpiece Release
                   </span>
                   <h3 className="font-serif text-sm font-semibold text-stone-900">
-                    Aura Velvet Lounge Armchair
+                    Kanso Solid Walnut Dining Table
                   </h3>
-                  <p className="text-[11px] text-stone-500 font-sans">Italian Cotton & White Oak</p>
+                  <p className="text-[11px] text-stone-500 font-sans">8-Seater • Kiln-Dried Hardwood</p>
                 </div>
-                <span className="font-serif text-sm font-bold text-stone-900">$1,250</span>
+                <span className="font-serif text-sm font-bold text-stone-900">$2,890</span>
               </div>
             </div>
           </motion.div>
@@ -132,15 +132,15 @@ export default function Hero() {
               className="bg-white/80 backdrop-blur-md p-5 rounded-2xl border border-stone-200/80 shadow-lg w-full max-w-xs space-y-3 text-right"
             >
               <div className="flex justify-between items-center pb-2 border-b border-stone-100 text-xs text-stone-600 font-sans">
-                <span className="font-medium">Solid White Oak</span>
+                <span className="font-medium">Solid American Walnut</span>
                 <span className="font-mono text-[#859F3C] font-semibold">/01</span>
               </div>
               <div className="flex justify-between items-center pb-2 border-b border-stone-100 text-xs text-stone-600 font-sans">
-                <span className="font-medium">Bouclé & Velvet</span>
+                <span className="font-medium">Honed Roman Travertine</span>
                 <span className="font-mono text-[#859F3C] font-semibold">/02</span>
               </div>
               <div className="flex justify-between items-center text-xs text-stone-600 font-sans">
-                <span className="font-medium">Honed Travertine</span>
+                <span className="font-medium">Sculptural Pedestals</span>
                 <span className="font-mono text-[#859F3C] font-semibold">/03</span>
               </div>
             </motion.div>
@@ -159,7 +159,7 @@ export default function Hero() {
                 <span className="w-7 h-7 rounded-full bg-[#1A1A1A] text-white flex items-center justify-center group-hover:scale-110 transition-transform">
                   <Play className="w-3.5 h-3.5 fill-current ml-0.5" />
                 </span>
-                <span>Our Cataloge</span>
+                <span>Explore Dining Tables</span>
               </Link>
             </motion.div>
           </div>

@@ -15,9 +15,9 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: 'ICON FURNITURE | Editorial Modern Living & Timeless Craftsmanship',
+  title: 'ICON FURNITURE | Master Handcrafted Luxury Dining Tables',
   description:
-    'Curated upscale furniture handcrafted from sustainable solid woods, tactile fabrics, and architectural stonework. Designed to elevate modern living spaces.',
+    'Bespoke luxury dining tables handcrafted from solid kiln-dried American walnut, quarter-sawn white oak, and honed Roman travertine stone. The generational centerpiece of the home.',
   icons: {
     icon: [
       { url: '/assets/if-favicon.png' },

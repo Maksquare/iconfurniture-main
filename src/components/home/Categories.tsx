@@ -8,28 +8,28 @@ import IconImage from '@/components/common/IconImage';
 
 const CATEGORY_CARDS = [
   {
-    title: 'Seating & Loungers',
-    slug: 'seating',
-    itemCount: '18 Designs',
+    title: 'Solid Hardwood Tables',
+    slug: 'solid-hardwood',
+    itemCount: 'Walnut & Oak',
     image: '/collections/if001.jpg',
   },
   {
-    title: 'Dining & Coffee Tables',
-    slug: 'tables',
-    itemCount: '12 Designs',
+    title: 'Stone & Marble Tables',
+    slug: 'stone-marble',
+    itemCount: 'Travertine & Marquina',
+    image: '/collections/if009.jpg',
+  },
+  {
+    title: 'Round & Gathering Tables',
+    slug: 'round-gathering',
+    itemCount: 'Circular & Oval',
     image: '/collections/if005.jpg',
   },
   {
-    title: 'Credenzas & Storage',
-    slug: 'storage',
-    itemCount: '9 Designs',
-    image: '/collections/if017.jpg',
-  },
-  {
-    title: 'Architectural Lighting & Decor',
-    slug: 'lighting',
-    itemCount: '15 Designs',
-    image: '/collections/if013.jpg',
+    title: 'Sculptural Pedestal Tables',
+    slug: 'sculptural-pedestal',
+    itemCount: 'Monolith Pillars',
+    image: '/collections/if021.jpg',
   },
 ];
 
@@ -40,10 +40,10 @@ export default function Categories() {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
           <div>
             <span className="text-xs uppercase tracking-widest font-semibold text-[#859F3C]">
-              Curated Collections
+              Bespoke Dining Editions
             </span>
             <h2 className="font-serif text-3xl sm:text-4xl font-normal text-[#1A1A1A] mt-1">
-              Explore by Category
+              Explore Table Collections
             </h2>
           </div>
           <Link

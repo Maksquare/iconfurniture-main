@@ -140,13 +140,23 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/shop?category=seating" className="hover:text-[#859F3C] transition-colors">
-                  Sculptural Seating
+                <Link href="/shop?category=solid-hardwood" className="hover:text-[#859F3C] transition-colors">
+                  Solid Hardwood Tables
                 </Link>
               </li>
               <li>
-                <Link href="/shop?category=tables" className="hover:text-[#859F3C] transition-colors">
-                  Solid Timber Tables
+                <Link href="/shop?category=stone-marble" className="hover:text-[#859F3C] transition-colors">
+                  Honed Stone & Marble Tables
+                </Link>
+              </li>
+              <li>
+                <Link href="/shop?category=round-gathering" className="hover:text-[#859F3C] transition-colors">
+                  Round Gathering Tables
+                </Link>
+              </li>
+              <li>
+                <Link href="/shop?category=extendable-grand" className="hover:text-[#859F3C] transition-colors">
+                  Extendable Banquet Tables
                 </Link>
               </li>
             </ul>

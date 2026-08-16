@@ -26,7 +26,7 @@ export interface CinemaFilm {
   id: string;
   title: string;
   subtitle: string;
-  category: 'Atelier Craft' | 'Raw Material' | 'Living Vignettes' | 'Upholstery' | 'Showroom Tour';
+  category: 'Atelier Craft' | 'Raw Material' | 'Dining Vignettes' | 'Table Joinery' | 'Estate Showcase';
   src: string;
   duration: string;
   resolution: string;

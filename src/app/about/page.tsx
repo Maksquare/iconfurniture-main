@@ -32,30 +32,30 @@ export default function AboutPage() {
     {
       icon: Compass,
       number: '01',
-      title: 'Architectural Geometry',
-      desc: 'Every silhouette begins with structural discipline. We balance bold geometric mass with gentle organic curves to anchor living spaces with quiet authority.',
-      material: 'Proportion & Negative Space',
+      title: 'Architectural Scale & Proportion',
+      desc: 'Every dining table begins with structural discipline. We calculate optimal legroom clearance, overhang ratios, and spatial balance for 6 to 18 seated guests.',
+      material: 'Ergonomic Clearance & Flow',
     },
     {
       icon: Layers,
       number: '02',
-      title: 'Living Tactility',
-      desc: 'We work exclusively with unadulterated natural materials—solid American walnut, French looped bouclé, honed Roman travertine, and brushed solid brass.',
-      material: 'Natural Grain & Honed Stone',
+      title: 'Continuous Wood Grain',
+      desc: 'We work exclusively with unadulterated natural materials—solid American walnut slabs, quarter-sawn white oak, and hand-honed Roman travertine monoliths.',
+      material: 'Old-Growth Kiln-Dried Hardwoods',
     },
     {
       icon: ShieldCheck,
       number: '03',
-      title: 'Mortise & Tenon Joinery',
-      desc: 'Constructed by master woodworkers using centuries-old blind joinery without artificial fasteners. Engineered to breathe, expand, and age gracefully across decades.',
-      material: '10-Year Joinery Guarantee',
+      title: 'Sub-Millimeter Table Joinery',
+      desc: 'Constructed by master woodcrafters using centuries-old blind mortise-and-tenon and butterfly joints. Engineered to breathe, expand, and age gracefully across decades.',
+      material: 'Generational Joinery Guarantee',
     },
     {
       icon: TreePine,
       number: '04',
-      title: 'Conscious Permanence',
-      desc: 'We reject transient, fast-furniture cycles. Sourced from certified renewable European and North American forestry estates with zero waste manufacturing.',
-      material: 'FSC-Certified Hardwoods',
+      title: 'Spill & Heat Resilience',
+      desc: 'Finished with multi-coat organic botanical hardwax oils that protect against wine and dining spills while celebrating the natural tactile warmth of solid timber.',
+      material: 'Zero-VOC Botanical Hardwax',
     },
   ];
 
@@ -255,17 +255,17 @@ export default function AboutPage() {
                 </div>
 
                 <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-white leading-tight">
-                  &ldquo;We Build Sanctuaries, <br />
-                  <span className="italic text-[#859F3C]">Not Just Furniture.&rdquo;</span>
+                  &ldquo;The Dining Table is the Hearth, <br />
+                  <span className="italic text-[#859F3C]">Where Families Truly Gather.&rdquo;</span>
                 </h2>
               </div>
 
               <p className="text-stone-300 text-sm sm:text-base font-sans leading-relaxed">
-                When Icon Furniture was founded, our mission was defined by a singular ambition: to elevate homegrown Ethiopian craftsmanship into an internationally revered standard of architectural luxury and living comfort.
+                When Icon Furniture was founded, our mission was defined by a singular ambition: to dedicate our entire guild to the master craft of luxury dining tables—the sacred furniture centerpiece where human communion, shared feasts, and generational memories take place.
               </p>
 
               <p className="text-stone-300 text-sm sm:text-base font-sans leading-relaxed">
-                Every silhouette emerging from our showroom is an intersection of disciplined geometry and organic tactile warmth. We combine solid American walnuts and air-dried hardwoods with honed Roman travertine and hand-tailored bouclé upholstery designed to outlive the ephemeral cycles of mass manufacturing.
+                Every dining table emerging from our atelier is an intersection of architectural proportion and natural timber warmth. We combine solid American walnuts and kiln-dried hardwoods with honed Roman travertine stone and food-safe botanical hardwax finishes designed to endure across generations.
               </p>
 
               {/* Founder's 3 Core Commitments */}
@@ -273,19 +273,19 @@ export default function AboutPage() {
                 <div className="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-1.5 hover:border-[#859F3C]/60 transition-colors">
                   <div className="text-xs font-bold text-[#859F3C] font-mono">01. Precision</div>
                   <div className="font-serif text-sm font-semibold text-white">Sub-Millimeter Joinery</div>
-                  <div className="text-[11px] text-stone-400 font-sans">Mortise-and-tenon joints engineered for generational resilience.</div>
+                  <div className="text-[11px] text-stone-400 font-sans">Mortise-and-tenon table joinery engineered for generational structural stability.</div>
                 </div>
 
                 <div className="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-1.5 hover:border-[#859F3C]/60 transition-colors">
                   <div className="text-xs font-bold text-[#859F3C] font-mono">02. Purity</div>
                   <div className="font-serif text-sm font-semibold text-white">100% Solid Hardwood</div>
-                  <div className="text-[11px] text-stone-400 font-sans">Certified renewable timber slabs triple-buffed with botanical wax.</div>
+                  <div className="text-[11px] text-stone-400 font-sans">Certified renewable timber slabs finished with stain- & heat-resilient wax.</div>
                 </div>
 
                 <div className="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-1.5 hover:border-[#859F3C]/60 transition-colors">
-                  <div className="text-xs font-bold text-[#859F3C] font-mono">03. Heritage</div>
-                  <div className="font-serif text-sm font-semibold text-white">1:1 Concierge</div>
-                  <div className="text-[11px] text-stone-400 font-sans">Custom dimensions, fabrics, and stains tailored for each home.</div>
+                  <div className="text-xs font-bold text-[#859F3C] font-mono">03. Customization</div>
+                  <div className="font-serif text-sm font-semibold text-white">Bespoke Dimensions</div>
+                  <div className="text-[11px] text-stone-400 font-sans">6 to 18 seater lengths, custom timber species, and edge chamfers.</div>
                 </div>
               </div>
 

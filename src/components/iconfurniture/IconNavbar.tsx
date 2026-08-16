@@ -12,17 +12,19 @@ interface IconNavbarProps {
 
 // Static quick-links shown in the search overlay before typing
 const QUICK_LINKS = [
-  { label: 'All Furniture Collection', href: '/shop', tag: 'Browse' },
-  { label: 'About Icon Furniture', href: '/about', tag: 'Heritage' },
-  { label: 'Contact & Concierge', href: '/contact', tag: 'Inquire' },
-  { label: 'Seating & Loungers', href: '/shop?category=seating', tag: 'Category' },
-  { label: 'Solid Walnut Tables', href: '/shop?category=tables', tag: 'Category' },
+  { label: 'All Dining Tables', href: '/shop', tag: 'Catalog' },
+  { label: 'Solid Hardwood Tables', href: '/shop?category=solid-hardwood', tag: 'Walnut & Oak' },
+  { label: 'Stone & Marble Tables', href: '/shop?category=stone-marble', tag: 'Travertine' },
+  { label: 'Round Gathering Tables', href: '/shop?category=round-gathering', tag: 'Circular' },
+  { label: 'Atelier Cinema & Films', href: '/cinema', tag: 'Watch' },
+  { label: 'About Icon Atelier', href: '/about', tag: 'Heritage' },
 ];
 
 // Popular search suggestions
 const POPULAR_SEARCHES = [
-  'velvet armchair', 'walnut dining table', 'travertine lamp', 'bookshelf',
-  'lounge sofa', 'coffee table', 'accent chair', 'pendant light',
+  'walnut dining table', 'round gathering table', 'travertine marble table',
+  '8-seater dining table', 'live edge table', 'extendable banquet table',
+  'solid oak trestle', 'fluted pedestal table',
 ];
 
 export default function IconNavbar({ isDark = false }: IconNavbarProps) {

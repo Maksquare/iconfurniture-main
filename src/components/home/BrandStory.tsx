@@ -49,21 +49,21 @@ export default function BrandStory() {
           {/* Story text */}
           <div className="lg:col-span-6 space-y-6 lg:pl-6">
             <span className="text-xs uppercase tracking-widest font-semibold text-[#859F3C]">
-              Design Atelier & Philosophy
+              The Table as Sanctuary & Gathering
             </span>
             
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-[#1A1A1A] leading-tight">
-              Where Architectural Forms Meet Tactical Warmth.
+              The Sacred Anchor of Every Modern Home.
             </h2>
 
             <p className="text-stone-600 text-sm sm:text-base leading-relaxed font-sans">
-              Founded on the belief that environment dictates quiet clarity, Icon Furniture blends architectural minimalism with the welcoming tactile warmth of solid hardwoods, honed travertine, and rich artisanal fabrics.
+              Founded on the belief that human connection begins around the table, Icon Furniture specializes exclusively in bespoke luxury dining centerpieces. We handcraft generational heirloom tables from old-growth walnut, quarter-sawn white oak, and hand-honed Roman travertine.
             </p>
 
             <blockquote className="p-4 border-l-2 border-[#859F3C] bg-white/70 italic font-serif text-stone-800 text-sm rounded-r-xl">
-              &ldquo;We don&apos;t design objects to fill spaces; we sculpt heirlooms that define moments of restful pause.&rdquo;
+              &ldquo;The dining table is not mere furniture—it is the enduring hearth where families gather, feasts are shared, and generational memories are etched into solid timber.&rdquo;
               <cite className="block not-italic font-sans text-xs text-[#859F3C] font-semibold mt-2 uppercase tracking-wider">
-                — Icon Furniture Atelier Guild
+                — Icon Furniture Master Woodcrafters
               </cite>
             </blockquote>
 

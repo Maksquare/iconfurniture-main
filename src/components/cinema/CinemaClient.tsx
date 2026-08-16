@@ -29,87 +29,87 @@ import {
 export const CINEMA_FILMS: CinemaFilm[] = [
   {
     id: 'film-1',
-    title: 'The Sculptural Silhouette',
+    title: 'The Dining Centerpiece Silhouette',
     subtitle: 'Chapter I • Architecture in Motion',
-    category: 'Atelier Craft',
+    category: 'Table Joinery',
     src: '/videos/ifvideo_001.MP4',
     duration: '01:14',
     resolution: '4K Ultra HD',
     description:
-      'A deep visual exploration into the balance of geometric discipline and organic curves. Witness the sculptural contours of our signature armchairs as light moves across the solid wood frames.',
-    featuredProducts: [{ name: 'Aura Velvet Accent Armchair', slug: 'aura-velvet-accent-armchair' }],
+      'A visual study of balanced proportions, softened bullnose edges, and structural timber stability designed for intimate gatherings and grand celebrations.',
+    featuredProducts: [{ name: 'Kanso Organic Walnut Dining Table', slug: 'kanso-organic-walnut-dining-table' }],
   },
   {
     id: 'film-2',
-    title: 'Symphony of Solid Timber',
+    title: 'Symphony of Solid Timber Slabs',
     subtitle: 'Chapter II • Raw Materiality',
     category: 'Raw Material',
     src: '/videos/ifvideo_002.MP4',
     duration: '01:28',
     resolution: '4K Ultra HD',
     description:
-      'From certified forestry estates to our kiln-drying chambers. Inspecting continuous wood grain movement, structural density, and the selection of raw walnut slabs.',
+      'From certified forestry estates to our kiln-drying chambers. Inspecting continuous wood grain movement, structural density, and the selection of raw walnut slabs for dining tops.',
     featuredProducts: [{ name: 'Kanso Organic Walnut Dining Table', slug: 'kanso-organic-walnut-dining-table' }],
   },
   {
     id: 'film-3',
-    title: 'Living Tactility & Bouclé Weave',
-    subtitle: 'Chapter III • Sensory Upholstery',
-    category: 'Upholstery',
+    title: 'Botanical Wax & Spill Resilience',
+    subtitle: 'Chapter III • Surface Finishing',
+    category: 'Atelier Craft',
     src: '/videos/ifvideo_003.MP4',
     duration: '01:42',
     resolution: '1080p Editorial',
     description:
-      'Crafted with textured loops of French bouclé and vegetable-dyed wools. Follow our master tailors as every seam is hand-stretched and blind-stitched for permanent comfort.',
-    featuredProducts: [{ name: 'Mirei Bouclé Modular Sofa', slug: 'mirei-boucle-modular-sofa' }],
+      'Hand-rubbing multi-coat organic hardwax oils into the raw timber grain. Engineered to resist wine, heat, and dining spills while preserving natural wood warmth.',
+    featuredProducts: [{ name: 'Solstice Minimalist Trestle Dining Table', slug: 'solstice-minimalist-trestle-dining-table' }],
   },
   {
     id: 'film-4',
-    title: 'The Pavilion Dining Table',
+    title: 'The Pavilion Round Gathering Table',
     subtitle: 'Chapter IV • Centerpiece Gathering',
-    category: 'Living Vignettes',
+    category: 'Dining Vignettes',
     src: '/videos/ifvideo_004.MP4',
     duration: '01:18',
     resolution: '4K Ultra HD',
     description:
-      'The dining table as a spatial anchor. Highlighting precision bevel edge detailing, conical support columns, and radial timber layouts designed for intimate gatherings.',
+      'The round dining table as a spatial anchor. Highlighting precision radial sunburst layouts, conical pedestal columns, and generous legroom for every guest.',
     featuredProducts: [{ name: 'Pavilion Round Gathering Dining Table', slug: 'pavilion-round-gathering-dining-table' }],
   },
   {
     id: 'film-5',
-    title: 'Honed Travertine Monoliths',
+    title: 'Honed Travertine Dining Monoliths',
     subtitle: 'Chapter V • Natural Stone & Brass',
     category: 'Raw Material',
     src: '/videos/ifvideo_005.MP4',
     duration: '01:30',
     resolution: '4K Ultra HD',
     description:
-      'Carving unpolished Roman travertine with tactile fluting. Balancing cool porous stone surfaces with warm brushed antique brass fixtures.',
-    featuredProducts: [{ name: 'Lumina Travertine Floor Monolith', slug: 'lumina-travertine-floor-monolith' }],
+      'Carving unpolished Roman travertine for monumental dining tabletops. Balancing cool porous stone surfaces with warm brushed antique brass stabilizers.',
+    featuredProducts: [{ name: 'Lumina Travertine & Smoked Oak Dining Table', slug: 'lumina-travertine-smoked-oak-dining-table' }],
   },
   {
     id: 'film-6',
-    title: 'Mid-Century Tambour Slats',
-    subtitle: 'Chapter VI • Precision Storage',
-    category: 'Atelier Craft',
+    title: 'Precision Extension Rails & Mechanics',
+    subtitle: 'Chapter VI • Banquet Engineering',
+    category: 'Table Joinery',
     src: '/videos/ifvideo_006.MP4',
     duration: '01:05',
     resolution: '1080p Editorial',
     description:
-      'The quiet glide of fluted oak tambour doors. An intimate look at blind mortise joinery, custom soft-close brass hardware, and integrated cable routing.',
-    featuredProducts: [{ name: 'Solstice Credenza Sideboard', slug: 'solstice-credenza-sideboard' }],
+      'The quiet glide of concealed German butterfly extension rails, converting an 8-seater family dining table into a 14-person grand banquet table in seconds.',
+    featuredProducts: [{ name: 'Elysian Extendable Grand Banquet Table', slug: 'elysian-extendable-grand-banquet-table' }],
   },
   {
     id: 'film-7',
-    title: 'Atmospheric Salon & Light',
+    title: 'Atmospheric Evening Dining',
     subtitle: 'Chapter VII • Residential Sanctum',
-    category: 'Living Vignettes',
+    category: 'Dining Vignettes',
     src: '/videos/ifvideo_007.mp4',
     duration: '02:04',
     resolution: '4K Ultra HD',
     description:
-      'How architectural furniture shapes emotional space. Ambient evening lighting illuminating layered textures of wool, travertine, smoked glass, and solid oak.',
-    featuredProducts: [{ name: 'Brutalist Smoked Glass Coffee Table', slug: 'brutalist-smoked-glass-coffee-table' }],
+      'How architectural dining tables shape emotional space. Ambient evening lighting illuminating layered textures of solid oak, smoked glass, and fine dining settings.',
+    featuredProducts: [{ name: 'Brutalist Smoked Glass & Timber Dining Table', slug: 'brutalist-smoked-glass-timber-dining-table' }],
   },
   {
     id: 'film-8',
@@ -120,42 +120,42 @@ export const CINEMA_FILMS: CinemaFilm[] = [
     duration: '02:15',
     resolution: '4K Ultra HD',
     description:
-      'Centuries-old Ethiopian artisan techniques elevated to international luxury tolerances. Hand-planing, compound radius shaping, and organic oil nourishing.',
-    featuredProducts: [{ name: 'Sora Sculptural Occasional Lounge', slug: 'sora-sculptural-occasional-lounge' }],
+      'Sub-millimeter blind mortise-and-tenon table joinery. Hand-planing, compound radius shaping, and botanical nourishment for generational structural permanence.',
+    featuredProducts: [{ name: 'Sora Sculptural Oval Dining Table', slug: 'sora-sculptural-oval-dining-table' }],
   },
   {
     id: 'film-9',
-    title: 'Curated Living Space Tour',
-    subtitle: 'Chapter IX • Complete Residence Study',
-    category: 'Showroom Tour',
+    title: 'Grand Residence Dining Suite Tour',
+    subtitle: 'Chapter IX • Complete Estate Study',
+    category: 'Estate Showcase',
     src: '/videos/ifvideo_009.mp4',
     duration: '01:22',
     resolution: '1080p Editorial',
     description:
-      'A cinematic walkthrough of a fully furnished modern residence in Addis Ababa featuring cohesive timber stains, modular seating, and bespoke dining pavilions.',
-    featuredProducts: [{ name: 'Atelier Solid Timber Bookcase', slug: 'atelier-solid-timber-bookcase' }],
+      'A cinematic walkthrough of a fully appointed luxury dining room in Addis Ababa featuring custom 12-seater solid timber tables and architectural stone centerpieces.',
+    featuredProducts: [{ name: 'Bespoke Grand Residence Feast Table', slug: 'bespoke-grand-residence-feast-table' }],
   },
   {
     id: 'film-10',
-    title: 'The Generational Heirloom',
+    title: 'The Generational Heirloom Table',
     subtitle: 'Chapter X • Hallmark & Delivery',
-    category: 'Showroom Tour',
+    category: 'Estate Showcase',
     src: '/videos/ifvideo_010.mp4',
     duration: '01:50',
     resolution: '4K Ultra HD',
     description:
-      'Final inspection, hand-waxing certification, and white-glove packaging. Built to breathe, patina gracefully, and outlive the ephemeral trends of modern mass production.',
-    featuredProducts: [{ name: 'Elysian High-Back Executive Armchair', slug: 'elysian-high-back-executive-armchair' }],
+      'Final tabletop inspection, hand-waxing hallmark certification, and white-glove dining room assembly. Built to outlive the ephemeral trends of modern mass manufacturing.',
+    featuredProducts: [{ name: 'Zenith Elliptical Sculptural Dining Table', slug: 'zenith-elliptical-sculptural-dining-table' }],
   },
 ];
 
 const CATEGORIES = [
   'All Chapters',
-  'Atelier Craft',
+  'Table Joinery',
   'Raw Material',
-  'Living Vignettes',
-  'Upholstery',
-  'Showroom Tour',
+  'Dining Vignettes',
+  'Atelier Craft',
+  'Estate Showcase',
 ];
 
 export default function CinemaClient() {
@@ -213,12 +213,12 @@ export default function CinemaClient() {
             </div>
 
             <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-white leading-[1.12]">
-              Living Form in Motion. <br />
-              <span className="italic font-normal text-[#859F3C]">The Craftsmanship Cinema.</span>
+              Dining Architecture in Motion. <br />
+              <span className="italic font-normal text-[#859F3C]">The Tablecraft Cinema.</span>
             </h1>
 
             <p className="text-stone-300 text-sm sm:text-base font-sans leading-relaxed max-w-2xl">
-              Experience the tactile presence, sub-millimeter timber joinery, and room-filling tranquility of our furniture pieces through high-definition cinematic vignettes.
+              Experience the tactile presence, sub-millimeter timber joinery, and monumental tranquility of our handcrafted dining tables through high-definition cinematic vignettes.
             </p>
           </div>
         </div>
@@ -401,13 +401,13 @@ export default function CinemaClient() {
         <div className="mt-16 p-8 sm:p-12 rounded-3xl bg-[#1A1A1A] text-white border border-white/10 flex flex-col lg:flex-row items-center justify-between gap-8 shadow-2xl">
           <div className="space-y-2 text-center lg:text-left max-w-2xl">
             <span className="text-xs uppercase tracking-widest font-bold text-[#859F3C]">
-              Bespoke Commissioning
+              Bespoke Dining Commissions
             </span>
             <h3 className="font-serif text-2xl sm:text-3xl text-white font-normal leading-tight">
-              Desire a Specific Silhouette Featured in Our Films?
+              Desire a Specific Dining Table Silhouette Featured in Our Films?
             </h3>
             <p className="text-stone-300 text-sm font-sans leading-relaxed">
-              Every timber grain, dimension, and bouclé fabric swatch shown in our cinema can be tailored for private residences and commercial architecture projects.
+              Every timber grain, table length (6 to 18 seaters), and honed stone finish shown in our cinema can be custom tailored for private residences and estate architecture projects.
             </p>
           </div>
 
@@ -416,13 +416,13 @@ export default function CinemaClient() {
               href="/shop"
               className="px-6 py-3.5 rounded-full bg-[#859F3C] hover:bg-[#738b32] text-white font-bold text-xs uppercase tracking-widest transition-all shadow-md hover:shadow-xl"
             >
-              Browse Living Collection
+              Browse Dining Collection
             </Link>
             <Link
               href="/contact"
               className="px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 text-white font-semibold text-xs uppercase tracking-widest transition-all"
             >
-              Private Consultation
+              Table Commission Consultation
             </Link>
           </div>
         </div>

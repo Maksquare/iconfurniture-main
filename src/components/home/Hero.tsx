@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Play, Sparkles, ArrowRight, Star } from 'lucide-react';
+import IconImage from '@/components/common/IconImage';
 
 export default function Hero() {
   return (
@@ -96,9 +97,9 @@ export default function Hero() {
 
             {/* Central Sculptural Furniture Piece Card */}
             <div className="relative w-full max-w-md aspect-4/5 rounded-3xl overflow-hidden shadow-2xl bg-stone-900 border-4 border-white/80 group">
-              <Image
-                src="https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=1200&q=90"
-                alt="Iconfurniture Aura Velvet Lounge Armchair"
+              <IconImage
+                src="/collections/if001.jpg"
+                alt="Icon Furniture Aura Velvet Lounge Armchair"
                 fill
                 priority
                 className="object-cover group-hover:scale-105 transition-transform duration-1000"

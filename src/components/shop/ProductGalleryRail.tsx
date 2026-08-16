@@ -16,6 +16,7 @@ import {
   X,
 } from 'lucide-react';
 import { Product, ProductImageAngle } from '@/types';
+import IconImage from '@/components/common/IconImage';
 
 interface ProductGalleryRailProps {
   product: Product;
@@ -157,7 +158,7 @@ export default function ProductGalleryRail({ product }: ProductGalleryRailProps)
             exit="exit"
             className="relative w-full h-full"
           >
-            <Image
+            <IconImage
               src={activeAngle.url}
               alt={`${product.name} - ${activeAngle.label}`}
               fill
@@ -301,7 +302,7 @@ export default function ProductGalleryRail({ product }: ProductGalleryRailProps)
                     : 'border-stone-200/80 hover:border-stone-400 bg-stone-100 opacity-70 hover:opacity-100'
                 }`}
               >
-                <Image
+                <IconImage
                   src={angle.url}
                   alt={angle.label}
                   fill
@@ -390,7 +391,7 @@ export default function ProductGalleryRail({ product }: ProductGalleryRailProps)
                   transition={{ duration: 0.3 }}
                   className="relative w-full h-full max-w-5xl max-h-[75vh]"
                 >
-                  <Image
+                  <IconImage
                     src={activeAngle.url}
                     alt={activeAngle.label}
                     fill
@@ -431,7 +432,7 @@ export default function ProductGalleryRail({ product }: ProductGalleryRailProps)
                         : 'border-white/20 opacity-50 hover:opacity-90'
                     }`}
                   >
-                    <Image
+                    <IconImage
                       src={angle.url}
                       alt={angle.label}
                       fill

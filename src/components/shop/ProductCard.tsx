@@ -1,11 +1,10 @@
 'use client';
 
-import React from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Product } from '@/types';
+import IconImage from '@/components/common/IconImage';
 import ProductContactChannels from '@/components/common/ProductContactChannels';
 
 interface ProductCardProps {
@@ -52,7 +51,7 @@ export default function ProductCard({ product, searchTerm, viewMode = 'grid' }: 
           href={`/shop/${product.slug}`}
           className="relative w-40 sm:w-52 shrink-0 bg-stone-100 overflow-hidden"
         >
-          <Image
+          <IconImage
             src={product.image_url}
             alt={product.name}
             fill
@@ -124,7 +123,7 @@ export default function ProductCard({ product, searchTerm, viewMode = 'grid' }: 
       {/* Image */}
       <div>
         <Link href={`/shop/${product.slug}`} className="relative aspect-4/3 rounded-2xl bg-stone-100 overflow-hidden block mb-4">
-          <Image
+          <IconImage
             src={product.image_url}
             alt={product.name}
             fill

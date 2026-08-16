@@ -1,10 +1,10 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
+import IconImage from '@/components/common/IconImage';
 
 export default function BrandStory() {
   return (
@@ -18,13 +18,14 @@ export default function BrandStory() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="relative aspect-3/4 rounded-xl overflow-hidden shadow-lg bg-stone-300"
+              className="relative aspect-3/4 rounded-2xl overflow-hidden shadow-lg bg-stone-300 border border-stone-200/60"
             >
-              <Image
-                src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=85"
+              <IconImage
+                src="/collections/if011.jpg"
                 alt="Bouclé Craftsmanship Detail"
                 fill
                 className="object-cover"
+                sizes="(max-width: 1024px) 50vw, 25vw"
               />
             </motion.div>
 
@@ -33,13 +34,14 @@ export default function BrandStory() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative aspect-3/4 rounded-xl overflow-hidden shadow-lg bg-stone-300 mt-8"
+              className="relative aspect-3/4 rounded-2xl overflow-hidden shadow-lg bg-stone-300 border border-stone-200/60 mt-8"
             >
-              <Image
-                src="https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&w=800&q=85"
+              <IconImage
+                src="/collections/if014.jpg"
                 alt="Architectural Material Details"
                 fill
                 className="object-cover"
+                sizes="(max-width: 1024px) 50vw, 25vw"
               />
             </motion.div>
           </div>
@@ -55,13 +57,13 @@ export default function BrandStory() {
             </h2>
 
             <p className="text-stone-600 text-sm sm:text-base leading-relaxed font-sans">
-              Founded on the belief that environment dictates quiet clarity, Iconfurniture blends architectural minimalism with the welcoming tactile warmth of natural oak, honed stone, and rich bouclé fabrics.
+              Founded on the belief that environment dictates quiet clarity, Icon Furniture blends architectural minimalism with the welcoming tactile warmth of solid hardwoods, honed travertine, and rich artisanal fabrics.
             </p>
 
-            <blockquote className="p-4 border-l-2 border-[#859F3C] bg-white/60 italic font-serif text-stone-800 text-sm">
+            <blockquote className="p-4 border-l-2 border-[#859F3C] bg-white/70 italic font-serif text-stone-800 text-sm rounded-r-xl">
               &ldquo;We don&apos;t design objects to fill spaces; we sculpt heirlooms that define moments of restful pause.&rdquo;
               <cite className="block not-italic font-sans text-xs text-[#859F3C] font-semibold mt-2 uppercase tracking-wider">
-                — Julian Vance, Design Director
+                — Icon Furniture Atelier Guild
               </cite>
             </blockquote>
 

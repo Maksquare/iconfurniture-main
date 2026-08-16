@@ -23,6 +23,7 @@ import {
   TikTokIcon,
   OFFICIAL_CONTACTS,
 } from '@/components/common/ProductContactChannels';
+import IconImage from '@/components/common/IconImage';
 
 export default function AboutPage() {
   const [activeTab, setActiveTab] = useState<'philosophy' | 'materials' | 'craft' | 'sustainability'>('philosophy');
@@ -63,25 +64,25 @@ export default function AboutPage() {
       step: '01',
       phase: 'Lumber & Quarry Selection',
       desc: 'Each tree slab and travertine block is individually inspected for grain continuity, moisture stability, and unique tactile character before entering our drying kilns.',
-      image: 'https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&w=800&q=85',
+      image: '/collections/if018.jpg',
     },
     {
       step: '02',
       phase: 'Sculptural Milling',
       desc: 'Primary forms are cut using high-precision 5-axis tooling, followed immediately by artisan hand-planing to achieve seamless compound radiuses.',
-      image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=85',
+      image: '/collections/if006.jpg',
     },
     {
       step: '03',
       phase: 'Artisan Hand Joinery',
       desc: 'Mortise-and-tenon joints are hand-fitted, glued with natural non-toxic resins, and clamped with bespoke jigs to guarantee seamless structural integrity.',
-      image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=85',
+      image: '/collections/if031.jpg',
     },
     {
       step: '04',
       phase: 'Organic Oil & Waxing',
       desc: 'Triple-hand-buffed with organic linseed and beeswax finishes that nourish the wood fibers and cultivate a deep, luminous heirloom patina over time.',
-      image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=85',
+      image: '/collections/if007.jpg',
     },
   ];
 
@@ -324,8 +325,8 @@ export default function AboutPage() {
                 transition={{ duration: 0.6 }}
                 className="relative aspect-3/4 rounded-3xl overflow-hidden shadow-xl bg-stone-200 border border-stone-200/60 group"
               >
-                <Image
-                  src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=900&q=85"
+                <IconImage
+                  src="/collections/if011.jpg"
                   alt="Bouclé Armchair Craftsmanship"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
@@ -342,8 +343,8 @@ export default function AboutPage() {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="relative aspect-3/4 rounded-3xl overflow-hidden shadow-xl bg-stone-200 border border-stone-200/60 mt-8 sm:mt-12 group"
               >
-                <Image
-                  src="https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&w=900&q=85"
+                <IconImage
+                  src="/collections/if035.jpg"
                   alt="Architectural Material Details"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"

@@ -8,7 +8,7 @@ import { ArrowRight } from 'lucide-react';
 
 export default function BrandStory() {
   return (
-    <section id="story" className="py-20 bg-[#F7F4EE] border-t border-stone-200/80">
+    <section id="story" className="py-20 bg-[#F7F6F0] border-t border-stone-200/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Gallery grid */}
@@ -46,11 +46,11 @@ export default function BrandStory() {
 
           {/* Story text */}
           <div className="lg:col-span-6 space-y-6 lg:pl-6">
-            <span className="text-xs uppercase tracking-widest font-semibold text-[#9A6B43]">
+            <span className="text-xs uppercase tracking-widest font-semibold text-[#859F3C]">
               Design Atelier & Philosophy
             </span>
             
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-stone-900 leading-tight">
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-[#1A1A1A] leading-tight">
               Where Architectural Forms Meet Tactical Warmth.
             </h2>
 
@@ -58,17 +58,17 @@ export default function BrandStory() {
               Founded on the belief that environment dictates quiet clarity, Iconfurniture blends architectural minimalism with the welcoming tactile warmth of natural oak, honed stone, and rich bouclé fabrics.
             </p>
 
-            <blockquote className="p-4 border-l-2 border-[#9A6B43] bg-white/60 italic font-serif text-stone-800 text-sm">
+            <blockquote className="p-4 border-l-2 border-[#859F3C] bg-white/60 italic font-serif text-stone-800 text-sm">
               &ldquo;We don&apos;t design objects to fill spaces; we sculpt heirlooms that define moments of restful pause.&rdquo;
-              <cite className="block not-italic font-sans text-xs text-[#9A6B43] font-semibold mt-2 uppercase tracking-wider">
+              <cite className="block not-italic font-sans text-xs text-[#859F3C] font-semibold mt-2 uppercase tracking-wider">
                 — Julian Vance, Design Director
               </cite>
             </blockquote>
 
             <div className="pt-2">
               <Link
-                href="/shop"
-                className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-[#1C1917] hover:text-[#9A6B43] group"
+                href="/about"
+                className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-[#1A1A1A] hover:text-[#859F3C] group"
               >
                 <span>Read Full Design Monograph</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

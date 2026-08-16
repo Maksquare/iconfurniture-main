@@ -47,7 +47,7 @@ export default function IconExperience() {
   return (
     <div
       className={`relative min-h-[250vh] w-full transition-colors duration-700 ease-out ${
-        isDark ? 'bg-[#0e0d0c]' : 'bg-[#f7f5f0]'
+        isDark ? 'bg-[#1A1A1A]' : 'bg-[#fdfcf7]'
       }`}
     >
       {/* 1. Floating Interactive Luxury Navbar */}

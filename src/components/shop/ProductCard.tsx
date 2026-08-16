@@ -14,7 +14,7 @@ interface ProductCardProps {
   viewMode?: 'grid' | 'list';
 }
 
-/** Highlights occurrences of `term` within `text` with a warm gold mark */
+/** Highlights occurrences of `term` within `text` with brand primary mark */
 function HighlightText({ text, term }: { text: string; term?: string }) {
   if (!term || !term.trim()) return <>{text}</>;
   const escaped = term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -25,8 +25,7 @@ function HighlightText({ text, term }: { text: string; term?: string }) {
         part.toLowerCase() === term.toLowerCase() ? (
           <mark
             key={i}
-            className="bg-[#d4a373]/30 text-[#7a5230] rounded px-0.5 not-italic font-semibold"
-            style={{ backgroundColor: 'rgba(212,163,115,0.3)', color: '#7a5230' }}
+            className="bg-[#859F3C]/25 text-[#47571e] rounded px-0.5 not-italic font-semibold"
           >
             {part}
           </mark>
@@ -62,7 +61,7 @@ export default function ProductCard({ product, searchTerm, viewMode = 'grid' }: 
           />
           <div className="absolute top-3 left-3 flex flex-col gap-1 z-10">
             {product.featured && (
-              <span className="px-2 py-0.5 bg-[#1C1917]/90 text-white text-[10px] uppercase font-bold tracking-widest rounded-full backdrop-blur-xs">
+              <span className="px-2 py-0.5 bg-[#1A1A1A]/90 text-white text-[10px] uppercase font-bold tracking-widest rounded-full backdrop-blur-xs">
                 Featured
               </span>
             )}
@@ -73,11 +72,11 @@ export default function ProductCard({ product, searchTerm, viewMode = 'grid' }: 
         <div className="flex flex-col flex-1 p-5 justify-between">
           <div className="space-y-1">
             {product.category && (
-              <span className="text-[10px] uppercase tracking-widest text-[#9A6B43] font-bold block">
+              <span className="text-[10px] uppercase tracking-widest text-[#859F3C] font-bold block">
                 {product.category.name}
               </span>
             )}
-            <Link href={`/shop/${product.slug}`} className="group-hover:text-[#9A6B43] transition-colors block">
+            <Link href={`/shop/${product.slug}`} className="group-hover:text-[#859F3C] transition-colors block">
               <h3 className="font-serif text-lg font-medium text-stone-900 leading-snug">
                 <HighlightText text={product.name} term={searchTerm} />
               </h3>
@@ -100,7 +99,7 @@ export default function ProductCard({ product, searchTerm, viewMode = 'grid' }: 
               <ProductContactChannels productName={product.name} variant="compact" />
               <Link
                 href={`/shop/${product.slug}`}
-                className="text-xs uppercase tracking-wider font-semibold py-1.5 px-3.5 rounded-full bg-stone-50 text-stone-700 hover:text-white hover:bg-[#9A6B43] transition-all inline-flex items-center gap-1 group/btn border border-stone-200/60"
+                className="text-xs uppercase tracking-wider font-semibold py-1.5 px-3.5 rounded-full bg-stone-50 text-stone-700 hover:text-white hover:bg-[#859F3C] transition-all inline-flex items-center gap-1 group/btn border border-stone-200/60"
               >
                 <span>View Details</span>
                 <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 transition-transform" />
@@ -134,12 +133,12 @@ export default function ProductCard({ product, searchTerm, viewMode = 'grid' }: 
           />
           <div className="absolute top-3 left-3 flex flex-col gap-1 z-10">
             {product.featured && (
-              <span className="px-2.5 py-1 bg-[#1C1917]/90 text-white text-[10px] uppercase font-bold tracking-widest rounded-full backdrop-blur-xs">
+              <span className="px-2.5 py-1 bg-[#1A1A1A]/90 text-white text-[10px] uppercase font-bold tracking-widest rounded-full backdrop-blur-xs">
                 Featured
               </span>
             )}
             {!product.in_stock && (
-              <span className="px-2.5 py-1 bg-amber-900/90 text-white text-[10px] uppercase font-bold tracking-widest rounded-full">
+              <span className="px-2.5 py-1 bg-[#859F3C] text-white text-[10px] uppercase font-bold tracking-widest rounded-full">
                 Bespoke
               </span>
             )}
@@ -149,11 +148,11 @@ export default function ProductCard({ product, searchTerm, viewMode = 'grid' }: 
         {/* Info */}
         <div>
           {product.category && (
-            <span className="text-[10px] uppercase tracking-widest text-[#9A6B43] font-bold block mb-1">
+            <span className="text-[10px] uppercase tracking-widest text-[#859F3C] font-bold block mb-1">
               {product.category.name}
             </span>
           )}
-          <Link href={`/shop/${product.slug}`} className="group-hover:text-[#9A6B43] transition-colors">
+          <Link href={`/shop/${product.slug}`} className="group-hover:text-[#859F3C] transition-colors">
             <h3 className="font-serif text-lg font-medium text-stone-900 leading-snug line-clamp-1">
               <HighlightText text={product.name} term={searchTerm} />
             </h3>
@@ -172,7 +171,7 @@ export default function ProductCard({ product, searchTerm, viewMode = 'grid' }: 
           </span>
           <Link
             href={`/shop/${product.slug}`}
-            className="text-xs uppercase tracking-wider font-semibold py-1.5 px-3.5 rounded-full bg-stone-50 text-stone-700 hover:text-white hover:bg-[#9A6B43] transition-all inline-flex items-center gap-1 group/btn border border-stone-200/60"
+            className="text-xs uppercase tracking-wider font-semibold py-1.5 px-3.5 rounded-full bg-stone-50 text-stone-700 hover:text-white hover:bg-[#859F3C] transition-all inline-flex items-center gap-1 group/btn border border-stone-200/60"
           >
             <span>View Details</span>
             <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 transition-transform" />

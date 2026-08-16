@@ -35,20 +35,20 @@ const CATEGORY_CARDS = [
 
 export default function Categories() {
   return (
-    <section className="py-16 bg-[#F7F4EE] border-y border-stone-200/80">
+    <section className="py-16 bg-[#F7F6F0] border-y border-stone-200/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
           <div>
-            <span className="text-xs uppercase tracking-widest font-semibold text-[#9A6B43]">
+            <span className="text-xs uppercase tracking-widest font-semibold text-[#859F3C]">
               Curated Collections
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl font-normal text-stone-900 mt-1">
+            <h2 className="font-serif text-3xl sm:text-4xl font-normal text-[#1A1A1A] mt-1">
               Explore By Category
             </h2>
           </div>
           <Link
             href="/shop"
-            className="mt-4 md:mt-0 text-xs font-semibold uppercase tracking-widest text-stone-800 hover:text-[#9A6B43] inline-flex items-center gap-1 group"
+            className="mt-4 md:mt-0 text-xs font-semibold uppercase tracking-widest text-[#1A1A1A] hover:text-[#859F3C] inline-flex items-center gap-1 group"
           >
             View All Categories
             <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />

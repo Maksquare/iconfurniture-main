@@ -24,14 +24,14 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-[#1C1917] text-[#FDFBF7] pt-16 pb-12 border-t border-stone-800">
+    <footer className="bg-[#1A1A1A] text-[#FDFBF7] pt-16 pb-12 border-t border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-12 pb-16 border-b border-stone-800">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-12 pb-16 border-b border-white/10">
           {/* Brand Info */}
           <div className="lg:col-span-2 space-y-4">
             <Link href="/" className="inline-block">
               <span className="font-serif text-2xl font-bold tracking-wider text-white uppercase">
-                Icon<span className="text-[#C28E58]">furniture</span>
+                Icon<span className="text-[#859F3C]">furniture</span>
               </span>
             </Link>
             <p className="text-stone-400 text-sm leading-relaxed max-w-sm font-sans">
@@ -39,25 +39,25 @@ export default function Footer() {
             </p>
             <div className="pt-2 text-xs text-stone-300 space-y-1.5 font-sans">
               <div className="flex items-center gap-2">
-                <MapPin className="w-3.5 h-3.5 text-[#d4a373] shrink-0" />
+                <MapPin className="w-3.5 h-3.5 text-[#859F3C] shrink-0" />
                 <span>Addis Ababa, Ethiopia</span>
                 <a
                   href={OFFICIAL_CONTACTS.mapUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#d4a373] hover:underline font-semibold flex items-center gap-0.5 ml-1"
+                  className="text-[#859F3C] hover:underline font-semibold flex items-center gap-0.5 ml-1"
                 >
                   <span>Map</span>
                   <ExternalLink className="w-2.5 h-2.5" />
                 </a>
               </div>
               <div className="flex items-center gap-2">
-                <Phone className="w-3.5 h-3.5 text-[#d4a373] shrink-0" />
-                <a href={OFFICIAL_CONTACTS.phonePrimary.tel} className="hover:text-[#d4a373] transition-colors">
+                <Phone className="w-3.5 h-3.5 text-[#859F3C] shrink-0" />
+                <a href={OFFICIAL_CONTACTS.phonePrimary.tel} className="hover:text-[#859F3C] transition-colors">
                   {OFFICIAL_CONTACTS.phonePrimary.display}
                 </a>
                 <span className="text-stone-500">•</span>
-                <a href={OFFICIAL_CONTACTS.phoneSecondary.tel} className="hover:text-[#d4a373] transition-colors">
+                <a href={OFFICIAL_CONTACTS.phoneSecondary.tel} className="hover:text-[#859F3C] transition-colors">
                   {OFFICIAL_CONTACTS.phoneSecondary.display}
                 </a>
               </div>
@@ -70,7 +70,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 title="Instagram"
-                className="w-8 h-8 rounded-full bg-stone-800 hover:bg-gradient-to-tr hover:from-amber-500 hover:to-pink-500 text-stone-300 hover:text-white flex items-center justify-center transition-all duration-300 shadow-2xs"
+                className="w-8 h-8 rounded-full bg-white/10 hover:bg-[#859F3C] text-stone-300 hover:text-white flex items-center justify-center transition-all duration-300 shadow-2xs"
               >
                 <InstagramIcon className="w-3.5 h-3.5" />
               </a>
@@ -79,7 +79,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 title="Facebook"
-                className="w-8 h-8 rounded-full bg-stone-800 hover:bg-[#1877F2] text-stone-300 hover:text-white flex items-center justify-center transition-all duration-300 shadow-2xs"
+                className="w-8 h-8 rounded-full bg-white/10 hover:bg-[#1877F2] text-stone-300 hover:text-white flex items-center justify-center transition-all duration-300 shadow-2xs"
               >
                 <FacebookIcon className="w-3.5 h-3.5" />
               </a>
@@ -88,7 +88,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 title="Telegram"
-                className="w-8 h-8 rounded-full bg-stone-800 hover:bg-[#229ED9] text-stone-300 hover:text-white flex items-center justify-center transition-all duration-300 shadow-2xs"
+                className="w-8 h-8 rounded-full bg-white/10 hover:bg-[#229ED9] text-stone-300 hover:text-white flex items-center justify-center transition-all duration-300 shadow-2xs"
               >
                 <TelegramIcon className="w-3.5 h-3.5" />
               </a>
@@ -97,7 +97,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 title="TikTok"
-                className="w-8 h-8 rounded-full bg-stone-800 hover:bg-stone-900 text-stone-300 hover:text-white flex items-center justify-center transition-all duration-300 shadow-2xs"
+                className="w-8 h-8 rounded-full bg-white/10 hover:bg-[#859F3C] text-stone-300 hover:text-white flex items-center justify-center transition-all duration-300 shadow-2xs"
               >
                 <TikTokIcon className="w-3.5 h-3.5" />
               </a>
@@ -111,27 +111,27 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2.5 text-xs text-stone-400">
               <li>
-                <Link href="/shop" className="hover:text-[#C28E58] transition-colors">
+                <Link href="/shop" className="hover:text-[#859F3C] transition-colors">
                   Flagship Collection
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="hover:text-[#C28E58] transition-colors">
+                <Link href="/about" className="hover:text-[#859F3C] transition-colors">
                   About & Craftsmanship
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-[#C28E58] transition-colors">
+                <Link href="/contact" className="hover:text-[#859F3C] transition-colors">
                   Contact & Concierge
                 </Link>
               </li>
               <li>
-                <Link href="/shop?category=seating" className="hover:text-[#C28E58] transition-colors">
+                <Link href="/shop?category=seating" className="hover:text-[#859F3C] transition-colors">
                   Sculptural Seating
                 </Link>
               </li>
               <li>
-                <Link href="/shop?category=tables" className="hover:text-[#C28E58] transition-colors">
+                <Link href="/shop?category=tables" className="hover:text-[#859F3C] transition-colors">
                   Solid Timber Tables
                 </Link>
               </li>
@@ -145,27 +145,27 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2.5 text-xs text-stone-400">
               <li>
-                <Link href="/contact" className="hover:text-[#C28E58] transition-colors">
+                <Link href="/contact" className="hover:text-[#859F3C] transition-colors">
                   Private Studio Consultation
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-[#C28E58] transition-colors">
+                <Link href="/contact" className="hover:text-[#859F3C] transition-colors">
                   Custom Dimension Requests
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-[#C28E58] transition-colors">
+                <Link href="/contact" className="hover:text-[#859F3C] transition-colors">
                   Trade & Interior Architecture
                 </Link>
               </li>
               <li>
-                <span className="hover:text-[#C28E58] transition-colors cursor-pointer">
+                <span className="hover:text-[#859F3C] transition-colors cursor-pointer">
                   10-Year Master Joinery Warranty
                 </span>
               </li>
               <li>
-                <span className="hover:text-[#C28E58] transition-colors cursor-pointer">
+                <span className="hover:text-[#859F3C] transition-colors cursor-pointer">
                   White-Glove Installation
                 </span>
               </li>
@@ -181,7 +181,7 @@ export default function Footer() {
               Receive private previews of seasonal capsule releases and design monographs.
             </p>
             {subscribed ? (
-              <div className="flex items-center gap-2 text-xs text-[#C28E58] bg-stone-900 p-3 rounded-xs">
+              <div className="flex items-center gap-2 text-xs text-[#859F3C] bg-white/5 p-3 rounded-xl border border-[#859F3C]/30">
                 <CheckCircle2 className="w-4 h-4" />
                 <span>You are now subscribed to the Gazette.</span>
               </div>
@@ -194,11 +194,11 @@ export default function Footer() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter your email address"
-                    className="w-full px-3 py-2.5 bg-stone-900 border border-stone-700 text-xs text-white placeholder-stone-500 rounded-xs focus:outline-hidden focus:border-[#C28E58]"
+                    className="w-full px-3.5 py-2.5 bg-white/5 border border-white/15 text-xs text-white placeholder-stone-500 rounded-xl focus:outline-hidden focus:border-[#859F3C]"
                   />
                   <button
                     type="submit"
-                    className="absolute right-1 top-1 bottom-1 px-3 bg-[#9A6B43] hover:bg-[#C28E58] text-white text-xs transition-colors flex items-center justify-center rounded-xs"
+                    className="absolute right-1 top-1 bottom-1 px-3 bg-[#859F3C] hover:bg-[#738b32] text-white text-xs transition-colors flex items-center justify-center rounded-lg cursor-pointer"
                     aria-label="Subscribe to newsletter"
                   >
                     <ArrowRight className="w-3.5 h-3.5" />

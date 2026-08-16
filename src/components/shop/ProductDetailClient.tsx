@@ -27,13 +27,13 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
   };
 
   return (
-    <div className="py-12 bg-[#FDFBF7] min-h-screen">
+    <div className="py-12 bg-[#FDFCF7] min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
         {/* Back Link */}
         <div>
           <Link
             href="/shop"
-            className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-stone-600 hover:text-[#9A6B43] transition-colors"
+            className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-stone-600 hover:text-[#859F3C] transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
             Back to Furniture Catalog
@@ -59,16 +59,16 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
               />
               <div className="absolute top-4 left-4 flex gap-2">
                 {product.featured && (
-                  <span className="px-3 py-1 bg-[#1C1917] text-white text-[10px] uppercase font-bold tracking-widest rounded-full">
+                  <span className="px-3 py-1 bg-[#1A1A1A] text-white text-[10px] uppercase font-bold tracking-widest rounded-full">
                     Featured Heirloom
                   </span>
                 )}
                 {product.in_stock ? (
-                  <span className="px-3 py-1 bg-emerald-950/80 text-emerald-300 text-[10px] uppercase font-bold tracking-widest rounded-full backdrop-blur-xs">
+                  <span className="px-3 py-1 bg-[#859F3C] text-white text-[10px] uppercase font-bold tracking-widest rounded-full backdrop-blur-xs">
                     In Stock
                   </span>
                 ) : (
-                  <span className="px-3 py-1 bg-amber-950/80 text-amber-300 text-[10px] uppercase font-bold tracking-widest rounded-full">
+                  <span className="px-3 py-1 bg-[#1A1A1A]/80 text-amber-200 text-[10px] uppercase font-bold tracking-widest rounded-full">
                     Made to Order
                   </span>
                 )}
@@ -88,14 +88,14 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
           >
             <div>
               {product.category && (
-                <span className="text-xs uppercase tracking-widest font-semibold text-[#9A6B43] block mb-2">
+                <span className="text-xs uppercase tracking-widest font-semibold text-[#859F3C] block mb-2">
                   {product.category.name}
                 </span>
               )}
-              <h1 className="font-serif text-3xl sm:text-4xl font-normal text-stone-900 leading-tight">
+              <h1 className="font-serif text-3xl sm:text-4xl font-normal text-[#1A1A1A] leading-tight">
                 {product.name}
               </h1>
-              <p className="font-serif text-2xl font-semibold text-stone-900 mt-3">
+              <p className="font-serif text-2xl font-semibold text-[#1A1A1A] mt-3">
                 ${product.price.toLocaleString()}
               </p>
             </div>
@@ -106,17 +106,17 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
 
             {/* Finish Options */}
             <div className="space-y-3">
-              <label className="text-xs uppercase tracking-wider font-semibold text-stone-900 block">
-                Select Finish / Timber: <span className="text-[#9A6B43]">{selectedFinish}</span>
+              <label className="text-xs uppercase tracking-wider font-semibold text-[#1A1A1A] block">
+                Select Finish / Timber: <span className="text-[#859F3C]">{selectedFinish}</span>
               </label>
               <div className="grid grid-cols-2 gap-2">
                 {FINISHES.map((finish) => (
                   <button
                     key={finish}
                     onClick={() => setSelectedFinish(finish)}
-                    className={`p-3 text-xs font-medium rounded-2xl border text-left transition-all ${
+                    className={`p-3 text-xs font-medium rounded-2xl border text-left transition-all cursor-pointer ${
                       selectedFinish === finish
-                        ? 'border-[#9A6B43] bg-[#F4EFE6] text-stone-900 font-semibold'
+                        ? 'border-[#859F3C] bg-[#859F3C]/10 text-[#1A1A1A] font-semibold'
                         : 'border-stone-200 bg-white text-stone-700 hover:bg-stone-50'
                     }`}
                   >
@@ -130,10 +130,10 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
             <div className="space-y-4 pt-2">
               <button
                 onClick={handleInquire}
-                className={`w-full py-4 px-6 rounded-2xl text-xs uppercase tracking-widest font-semibold flex items-center justify-center gap-2 transition-all duration-300 shadow-md ${
+                className={`w-full py-4 px-6 rounded-2xl text-xs uppercase tracking-widest font-semibold flex items-center justify-center gap-2 transition-all duration-300 shadow-md cursor-pointer ${
                   inquirySent
-                    ? 'bg-emerald-700 text-white'
-                    : 'bg-[#1C1917] hover:bg-[#9A6B43] text-white'
+                    ? 'bg-[#859F3C] text-white'
+                    : 'bg-[#1A1A1A] hover:bg-[#859F3C] text-white'
                 }`}
               >
                 {inquirySent ? (
@@ -152,11 +152,11 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
               {/* Guarantees */}
               <div className="grid grid-cols-2 gap-4 pt-4 border-t border-stone-200 text-xs text-stone-600">
                 <div className="flex items-center gap-2">
-                  <Truck className="w-4 h-4 text-[#9A6B43]" />
+                  <Truck className="w-4 h-4 text-[#859F3C]" />
                   <span>White-Glove In-Home Delivery</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <ShieldCheck className="w-4 h-4 text-[#9A6B43]" />
+                  <ShieldCheck className="w-4 h-4 text-[#859F3C]" />
                   <span>10-Year Craftsmanship Warranty</span>
                 </div>
               </div>
@@ -167,30 +167,30 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
               <div className="flex border-b border-stone-200">
                 <button
                   onClick={() => setActiveTab('specs')}
-                  className={`flex-1 py-3 text-xs uppercase tracking-wider font-semibold border-b-2 transition-colors ${
+                  className={`flex-1 py-3 text-xs uppercase tracking-wider font-semibold border-b-2 transition-colors cursor-pointer ${
                     activeTab === 'specs'
-                      ? 'border-[#9A6B43] text-[#9A6B43] bg-[#F4EFE6]/50'
-                      : 'border-transparent text-stone-600 hover:text-stone-900'
+                      ? 'border-[#859F3C] text-[#859F3C] bg-[#859F3C]/10'
+                      : 'border-transparent text-stone-600 hover:text-[#1A1A1A]'
                   }`}
                 >
                   Specifications
                 </button>
                 <button
                   onClick={() => setActiveTab('shipping')}
-                  className={`flex-1 py-3 text-xs uppercase tracking-wider font-semibold border-b-2 transition-colors ${
+                  className={`flex-1 py-3 text-xs uppercase tracking-wider font-semibold border-b-2 transition-colors cursor-pointer ${
                     activeTab === 'shipping'
-                      ? 'border-[#9A6B43] text-[#9A6B43] bg-[#F4EFE6]/50'
-                      : 'border-transparent text-stone-600 hover:text-stone-900'
+                      ? 'border-[#859F3C] text-[#859F3C] bg-[#859F3C]/10'
+                      : 'border-transparent text-stone-600 hover:text-[#1A1A1A]'
                   }`}
                 >
                   Delivery & Assembly
                 </button>
                 <button
                   onClick={() => setActiveTab('care')}
-                  className={`flex-1 py-3 text-xs uppercase tracking-wider font-semibold border-b-2 transition-colors ${
+                  className={`flex-1 py-3 text-xs uppercase tracking-wider font-semibold border-b-2 transition-colors cursor-pointer ${
                     activeTab === 'care'
-                      ? 'border-[#9A6B43] text-[#9A6B43] bg-[#F4EFE6]/50'
-                      : 'border-transparent text-stone-600 hover:text-stone-900'
+                      ? 'border-[#859F3C] text-[#859F3C] bg-[#859F3C]/10'
+                      : 'border-transparent text-stone-600 hover:text-[#1A1A1A]'
                   }`}
                 >
                   Care & Maintenance
@@ -201,13 +201,13 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
                 {activeTab === 'specs' && (
                   <div className="space-y-2">
                     <p>
-                      <strong className="text-stone-900">Dimensions:</strong> {product.dimensions || 'W 34" x D 32" x H 30"'}
+                      <strong className="text-[#1A1A1A]">Dimensions:</strong> {product.dimensions || 'W 34" x D 32" x H 30"'}
                     </p>
                     <p>
-                      <strong className="text-stone-900">Materials:</strong> {product.materials || 'Solid White Oak & Italian Velvet'}
+                      <strong className="text-[#1A1A1A]">Materials:</strong> {product.materials || 'Solid White Oak & Italian Velvet'}
                     </p>
                     <p>
-                      <strong className="text-stone-900">Origin:</strong> Hand-finished in Brooklyn, NY
+                      <strong className="text-[#1A1A1A]">Origin:</strong> Handcrafted in Addis Ababa Atelier
                     </p>
                   </div>
                 )}
@@ -230,10 +230,10 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
         {relatedProducts.length > 0 && (
           <div className="pt-12 border-t border-stone-200 space-y-8">
             <div>
-              <span className="text-xs uppercase tracking-widest font-semibold text-[#9A6B43]">
+              <span className="text-xs uppercase tracking-widest font-semibold text-[#859F3C]">
                 Complementary Pieces
               </span>
-              <h2 className="font-serif text-2xl sm:text-3xl font-normal text-stone-900 mt-1">
+              <h2 className="font-serif text-2xl sm:text-3xl font-normal text-[#1A1A1A] mt-1">
                 You May Also Appreciate
               </h2>
             </div>

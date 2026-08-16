@@ -13,22 +13,22 @@ export default function Icon3DFurniture({
   className = '',
 }: Icon3DFurnitureProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [currentColor, setCurrentColor] = useState<'cognac' | 'boucle' | 'emerald'>('cognac');
+  const [currentColor, setCurrentColor] = useState<'olive' | 'boucle' | 'carbon'>('olive');
   
   // Direct mutable refs for 60-120fps animation loop without React state overhead
   const mouseRef = useRef({ x: 0, y: 0, targetX: 0, targetY: 0 });
   const scrollRef = useRef({ current: 0, target: 0 });
-  const colorTargetRef = useRef(new THREE.Color('#a86538'));
+  const colorTargetRef = useRef(new THREE.Color('#859F3C'));
   const upholsteryMatRef = useRef<THREE.MeshStandardMaterial | null>(null);
 
-  // Color preset palette
+  // Color preset palette (Brand Signature Palette)
   const colorPresets = {
-    cognac: { hex: '#a86538', roughness: 0.55, metalness: 0.05 },
+    olive: { hex: '#859F3C', roughness: 0.58, metalness: 0.04 },
     boucle: { hex: '#ece6da', roughness: 0.85, metalness: 0.02 },
-    emerald: { hex: '#1b3b2b', roughness: 0.6, metalness: 0.08 },
+    carbon: { hex: '#1A1A1A', roughness: 0.45, metalness: 0.12 },
   };
 
-  const handleColorChange = useCallback((color: 'cognac' | 'boucle' | 'emerald') => {
+  const handleColorChange = useCallback((color: 'olive' | 'boucle' | 'carbon') => {
     setCurrentColor(color);
     colorTargetRef.current.set(colorPresets[color].hex);
     if (upholsteryMatRef.current) {
@@ -375,28 +375,28 @@ export default function Icon3DFurniture({
           Fabric Finish:
         </span>
         <button
-          onClick={() => handleColorChange('cognac')}
-          className={`w-5 h-5 rounded-full bg-[#a86538] transition-transform hover:scale-110 cursor-pointer ${
-            currentColor === 'cognac' ? 'ring-2 ring-stone-900 scale-110 shadow-xs' : ''
+          onClick={() => handleColorChange('olive')}
+          className={`w-5 h-5 rounded-full bg-[#859F3C] transition-transform hover:scale-110 cursor-pointer ${
+            currentColor === 'olive' ? 'ring-2 ring-[#1A1A1A] scale-110 shadow-xs' : ''
           }`}
-          title="Cognac Italian Velvet"
-          aria-label="Cognac Italian Velvet"
+          title="Icon Olive Velvet (Brand Signature)"
+          aria-label="Icon Olive Velvet"
         />
         <button
           onClick={() => handleColorChange('boucle')}
           className={`w-5 h-5 rounded-full bg-[#ece6da] border border-stone-300 transition-transform hover:scale-110 cursor-pointer ${
-            currentColor === 'boucle' ? 'ring-2 ring-stone-900 scale-110 shadow-xs' : ''
+            currentColor === 'boucle' ? 'ring-2 ring-[#1A1A1A] scale-110 shadow-xs' : ''
           }`}
           title="Ivory Tactile Bouclé"
           aria-label="Ivory Tactile Bouclé"
         />
         <button
-          onClick={() => handleColorChange('emerald')}
-          className={`w-5 h-5 rounded-full bg-[#1b3b2b] transition-transform hover:scale-110 cursor-pointer ${
-            currentColor === 'emerald' ? 'ring-2 ring-stone-900 scale-110 shadow-xs' : ''
+          onClick={() => handleColorChange('carbon')}
+          className={`w-5 h-5 rounded-full bg-[#1A1A1A] transition-transform hover:scale-110 cursor-pointer ${
+            currentColor === 'carbon' ? 'ring-2 ring-[#859F3C] scale-110 shadow-xs' : ''
           }`}
-          title="Forest Green Velvet"
-          aria-label="Forest Green Velvet"
+          title="Obsidian Charcoal Leather"
+          aria-label="Obsidian Charcoal Leather"
         />
       </div>
     </div>

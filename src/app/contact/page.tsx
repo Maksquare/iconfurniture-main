@@ -85,8 +85,8 @@ export default function ContactPage() {
       handle: OFFICIAL_CONTACTS.tiktok.handle,
       url: OFFICIAL_CONTACTS.tiktok.url,
       icon: TikTokIcon,
-      iconColor: 'text-stone-900',
-      bgHover: 'hover:border-stone-800/40 hover:bg-stone-100/60',
+      iconColor: 'text-[#1A1A1A]',
+      bgHover: 'hover:border-[#1A1A1A]/40 hover:bg-stone-100/60',
       actionText: 'Watch on TikTok',
     },
     {
@@ -94,8 +94,8 @@ export default function ContactPage() {
       handle: OFFICIAL_CONTACTS.phonePrimary.display,
       url: OFFICIAL_CONTACTS.phonePrimary.tel,
       icon: Phone,
-      iconColor: 'text-[#9A6B43]',
-      bgHover: 'hover:border-[#9A6B43]/40 hover:bg-[#F4EFE6]/60',
+      iconColor: 'text-[#859F3C]',
+      bgHover: 'hover:border-[#859F3C]/40 hover:bg-[#859F3C]/10',
       actionText: 'Call 0911-96-70-49',
     },
     {
@@ -103,8 +103,8 @@ export default function ContactPage() {
       handle: OFFICIAL_CONTACTS.phoneSecondary.display,
       url: OFFICIAL_CONTACTS.phoneSecondary.tel,
       icon: Phone,
-      iconColor: 'text-[#9A6B43]',
-      bgHover: 'hover:border-[#9A6B43]/40 hover:bg-[#F4EFE6]/60',
+      iconColor: 'text-[#859F3C]',
+      bgHover: 'hover:border-[#859F3C]/40 hover:bg-[#859F3C]/10',
       actionText: 'Call 0910-05-11-51',
     },
   ];
@@ -129,20 +129,20 @@ export default function ContactPage() {
   ];
 
   return (
-    <div className="bg-[#FDFBF7] text-stone-900 min-h-screen py-12 sm:py-16">
+    <div className="bg-[#FDFCF7] text-[#1A1A1A] min-h-screen py-12 sm:py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16 sm:space-y-20">
         
         {/* ─── 1. Header Banner ───────────────────────────────────── */}
-        <div className="relative rounded-3xl p-8 sm:p-14 bg-gradient-to-b from-[#f7f4ee] to-[#f0e9dc] border border-stone-200/80 shadow-xs overflow-hidden">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-[#d4a373]/12 rounded-full blur-3xl pointer-events-none -z-10" />
+        <div className="relative rounded-3xl p-8 sm:p-14 bg-gradient-to-b from-[#f7f6f0] to-[#f0efe6] border border-stone-200/80 shadow-xs overflow-hidden">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-[#859F3C]/12 rounded-full blur-3xl pointer-events-none -z-10" />
 
           <div className="max-w-3xl space-y-4">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white border border-stone-200/80 text-xs font-bold uppercase tracking-widest text-[#9A6B43] shadow-2xs">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white border border-stone-200/80 text-xs font-bold uppercase tracking-widest text-[#859F3C] shadow-2xs">
               <Sparkles className="w-3.5 h-3.5" />
               <span>Official Icon Furniture Showroom & Concierge</span>
             </div>
 
-            <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl font-normal text-stone-900 leading-tight">
+            <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl font-normal text-[#1A1A1A] leading-tight">
               Let&apos;s Craft Your Living Space.
             </h1>
 
@@ -154,25 +154,25 @@ export default function ContactPage() {
             <div className="pt-2 flex flex-wrap items-center gap-3">
               <a
                 href={OFFICIAL_CONTACTS.phonePrimary.tel}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#1C1917] text-white hover:bg-[#9A6B43] transition-all text-xs font-bold shadow-md"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#1A1A1A] text-white hover:bg-[#859F3C] transition-all text-xs font-bold shadow-md cursor-pointer"
               >
-                <Phone className="w-3.5 h-3.5 text-[#d4a373]" />
+                <Phone className="w-3.5 h-3.5 text-[#859F3C]" />
                 <span>Call: {OFFICIAL_CONTACTS.phonePrimary.display}</span>
               </a>
               <a
                 href={OFFICIAL_CONTACTS.phoneSecondary.tel}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-stone-300 text-stone-900 hover:border-[#9A6B43] transition-all text-xs font-bold shadow-xs"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-stone-300 text-stone-900 hover:border-[#859F3C] hover:text-[#859F3C] transition-all text-xs font-bold shadow-xs cursor-pointer"
               >
-                <Phone className="w-3.5 h-3.5 text-[#9A6B43]" />
+                <Phone className="w-3.5 h-3.5 text-[#859F3C]" />
                 <span>Call: {OFFICIAL_CONTACTS.phoneSecondary.display}</span>
               </a>
               <a
                 href={OFFICIAL_CONTACTS.mapUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-amber-50 border border-amber-200/80 text-amber-900 hover:bg-amber-100 transition-all text-xs font-semibold"
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#859F3C]/15 border border-[#859F3C]/30 text-[#47571e] hover:bg-[#859F3C]/25 transition-all text-xs font-semibold"
               >
-                <MapPin className="w-3.5 h-3.5 text-amber-700" />
+                <MapPin className="w-3.5 h-3.5 text-[#859F3C]" />
                 <span>Open Google Map Location</span>
                 <ArrowUpRight className="w-3 h-3" />
               </a>
@@ -183,11 +183,11 @@ export default function ContactPage() {
         {/* ─── 2. Official Social & Phone Channels Grid ───────────── */}
         <div className="space-y-4">
           <div className="flex items-center justify-between px-1">
-            <h2 className="font-serif text-2xl font-normal text-stone-900">
+            <h2 className="font-serif text-2xl font-normal text-[#1A1A1A]">
               Official Contact & Social Channels
             </h2>
-            <span className="text-xs uppercase tracking-wider font-semibold text-[#9A6B43] flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+            <span className="text-xs uppercase tracking-wider font-semibold text-[#859F3C] flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-[#859F3C] animate-pulse" />
               <span>Concierge Active</span>
             </span>
           </div>
@@ -211,11 +211,11 @@ export default function ContactPage() {
                     </div>
                     <button
                       onClick={() => handleCopy(channel.handle, channel.name)}
-                      className="p-1.5 rounded-xl hover:bg-stone-100 text-stone-400 hover:text-stone-700 transition-colors flex items-center gap-1 text-xs"
+                      className="p-1.5 rounded-xl hover:bg-stone-100 text-stone-400 hover:text-stone-700 transition-colors flex items-center gap-1 text-xs cursor-pointer"
                       title="Copy handle/number"
                     >
                       {isCopied ? (
-                        <span className="text-emerald-600 font-semibold flex items-center gap-1 text-[11px]">
+                        <span className="text-[#859F3C] font-semibold flex items-center gap-1 text-[11px]">
                           <CheckCircle2 className="w-3.5 h-3.5" /> Copied
                         </span>
                       ) : (
@@ -228,7 +228,7 @@ export default function ContactPage() {
                     <span className="text-[10px] uppercase font-bold tracking-widest text-stone-400 block mb-0.5">
                       {channel.name}
                     </span>
-                    <div className="font-serif text-base font-semibold text-stone-900 break-all">
+                    <div className="font-serif text-base font-semibold text-[#1A1A1A] break-all">
                       {channel.handle}
                     </div>
                   </div>
@@ -238,7 +238,7 @@ export default function ContactPage() {
                       href={channel.url}
                       target={isPhone ? undefined : '_blank'}
                       rel="noopener noreferrer"
-                      className="text-xs font-semibold text-[#9A6B43] hover:text-[#7A5230] inline-flex items-center gap-1 group"
+                      className="text-xs font-semibold text-[#859F3C] hover:text-[#738b32] inline-flex items-center gap-1 group"
                     >
                       <span>{channel.actionText}</span>
                       <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -256,11 +256,11 @@ export default function ContactPage() {
           {/* Left: Consultation Form (7 Cols) */}
           <div className="lg:col-span-7 bg-white p-8 sm:p-10 rounded-3xl border border-stone-200/80 shadow-sm space-y-8">
             <div>
-              <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-[#9A6B43] mb-2">
+              <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-[#859F3C] mb-2">
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>Inquiry & Order Request</span>
               </div>
-              <h2 className="font-serif text-3xl font-normal text-stone-900 leading-tight">
+              <h2 className="font-serif text-3xl font-normal text-[#1A1A1A] leading-tight">
                 Send a Message to Icon Furniture
               </h2>
               <p className="text-stone-600 text-xs sm:text-sm font-sans mt-1">
@@ -272,20 +272,20 @@ export default function ContactPage() {
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="py-12 px-6 rounded-2xl bg-[#F4EFE6] border border-[#d4a373]/40 text-center space-y-4"
+                className="py-12 px-6 rounded-2xl bg-[#859F3C]/10 border border-[#859F3C]/30 text-center space-y-4"
               >
-                <div className="w-14 h-14 rounded-full bg-[#1C1917] text-[#d4a373] flex items-center justify-center mx-auto shadow-md">
+                <div className="w-14 h-14 rounded-full bg-[#1A1A1A] text-[#859F3C] flex items-center justify-center mx-auto shadow-md">
                   <CheckCircle2 className="w-7 h-7 stroke-[2]" />
                 </div>
-                <h3 className="font-serif text-2xl font-semibold text-stone-900">
+                <h3 className="font-serif text-2xl font-semibold text-[#1A1A1A]">
                   Message Sent Successfully
                 </h3>
                 <p className="text-xs sm:text-sm text-stone-600 max-w-md mx-auto leading-relaxed">
-                  Thank you, <strong className="text-stone-900">{formData.name || 'Valued Client'}</strong>. We have received your inquiry and will reach out promptly. You may also call us directly at <strong className="text-stone-900">0911-96-70-49</strong>.
+                  Thank you, <strong className="text-[#1A1A1A]">{formData.name || 'Valued Client'}</strong>. We have received your inquiry and will reach out promptly. You may also call us directly at <strong className="text-[#1A1A1A]">0911-96-70-49</strong>.
                 </p>
                 <button
                   onClick={() => setFormSubmitted(false)}
-                  className="px-6 py-2.5 rounded-full bg-[#1C1917] text-white text-xs uppercase tracking-widest font-semibold hover:bg-[#9A6B43] transition-colors"
+                  className="px-6 py-2.5 rounded-full bg-[#1A1A1A] text-white text-xs uppercase tracking-widest font-semibold hover:bg-[#859F3C] transition-colors cursor-pointer"
                 >
                   Send Another Message
                 </button>
@@ -305,7 +305,7 @@ export default function ContactPage() {
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       placeholder="e.g. Samuel Bekele"
-                      className="w-full px-4 py-3 bg-stone-50 border border-stone-200/90 rounded-2xl text-xs sm:text-sm focus:outline-hidden focus:border-[#9A6B43] focus:bg-white transition-all placeholder:text-stone-400"
+                      className="w-full px-4 py-3 bg-stone-50 border border-stone-200/90 rounded-2xl text-xs sm:text-sm focus:outline-hidden focus:border-[#859F3C] focus:bg-white transition-all placeholder:text-stone-400"
                     />
                   </div>
 
@@ -319,7 +319,7 @@ export default function ContactPage() {
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       placeholder="e.g. 0911 00 00 00"
-                      className="w-full px-4 py-3 bg-stone-50 border border-stone-200/90 rounded-2xl text-xs sm:text-sm focus:outline-hidden focus:border-[#9A6B43] focus:bg-white transition-all placeholder:text-stone-400"
+                      className="w-full px-4 py-3 bg-stone-50 border border-stone-200/90 rounded-2xl text-xs sm:text-sm focus:outline-hidden focus:border-[#859F3C] focus:bg-white transition-all placeholder:text-stone-400"
                     />
                   </div>
                 </div>
@@ -335,7 +335,7 @@ export default function ContactPage() {
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       placeholder="samuel@example.com"
-                      className="w-full px-4 py-3 bg-stone-50 border border-stone-200/90 rounded-2xl text-xs sm:text-sm focus:outline-hidden focus:border-[#9A6B43] focus:bg-white transition-all placeholder:text-stone-400"
+                      className="w-full px-4 py-3 bg-stone-50 border border-stone-200/90 rounded-2xl text-xs sm:text-sm focus:outline-hidden focus:border-[#859F3C] focus:bg-white transition-all placeholder:text-stone-400"
                     />
                   </div>
 
@@ -346,7 +346,7 @@ export default function ContactPage() {
                     <select
                       value={formData.projectType}
                       onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
-                      className="w-full px-4 py-3 bg-stone-50 border border-stone-200/90 rounded-2xl text-xs sm:text-sm focus:outline-hidden focus:border-[#9A6B43] focus:bg-white transition-all text-stone-800"
+                      className="w-full px-4 py-3 bg-stone-50 border border-stone-200/90 rounded-2xl text-xs sm:text-sm focus:outline-hidden focus:border-[#859F3C] focus:bg-white transition-all text-stone-800"
                     >
                       <option>Living Room & Seating</option>
                       <option>Dining Tables & Chairs</option>
@@ -368,14 +368,14 @@ export default function ContactPage() {
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     placeholder="Describe the furniture item, dimensions, colors, or specific model from our catalog..."
-                    className="w-full px-4 py-3 bg-stone-50 border border-stone-200/90 rounded-2xl text-xs sm:text-sm focus:outline-hidden focus:border-[#9A6B43] focus:bg-white transition-all placeholder:text-stone-400 leading-relaxed"
+                    className="w-full px-4 py-3 bg-stone-50 border border-stone-200/90 rounded-2xl text-xs sm:text-sm focus:outline-hidden focus:border-[#859F3C] focus:bg-white transition-all placeholder:text-stone-400 leading-relaxed"
                   />
                 </div>
 
                 {/* Submit Button */}
                 <button
                   type="submit"
-                  className="w-full py-4 bg-[#1C1917] hover:bg-[#9A6B43] text-white text-xs uppercase tracking-widest font-semibold rounded-2xl transition-all duration-300 shadow-md hover:shadow-xl flex items-center justify-center gap-2 group cursor-pointer"
+                  className="w-full py-4 bg-[#1A1A1A] hover:bg-[#859F3C] text-white text-xs uppercase tracking-widest font-semibold rounded-2xl transition-all duration-300 shadow-md hover:shadow-xl flex items-center justify-center gap-2 group cursor-pointer"
                 >
                   <Send className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
                   <span>Submit Inquiry</span>
@@ -389,29 +389,29 @@ export default function ContactPage() {
             
             {/* Showroom & Location Card */}
             <div className="bg-white p-7 rounded-3xl border border-stone-200/80 shadow-xs space-y-4">
-              <div className="w-12 h-12 rounded-2xl bg-[#F4EFE6] text-[#9A6B43] flex items-center justify-center">
+              <div className="w-12 h-12 rounded-2xl bg-[#859F3C]/10 text-[#859F3C] flex items-center justify-center">
                 <Building2 className="w-6 h-6 stroke-1.5" />
               </div>
 
               <div>
-                <span className="text-[10px] font-bold uppercase tracking-widest text-[#9A6B43] block mb-0.5">
+                <span className="text-[10px] font-bold uppercase tracking-widest text-[#859F3C] block mb-0.5">
                   Main Showroom & Studio
                 </span>
-                <h3 className="font-serif text-xl font-medium text-stone-900">
+                <h3 className="font-serif text-xl font-medium text-[#1A1A1A]">
                   Icon Furniture Showroom
                 </h3>
               </div>
 
               <div className="space-y-1 text-xs sm:text-sm text-stone-600 font-sans leading-relaxed">
                 <div className="flex items-start gap-2">
-                  <MapPin className="w-4 h-4 text-[#9A6B43] shrink-0 mt-0.5" />
+                  <MapPin className="w-4 h-4 text-[#859F3C] shrink-0 mt-0.5" />
                   <span>Addis Ababa, Ethiopia</span>
                 </div>
                 <a
                   href={OFFICIAL_CONTACTS.mapUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs font-bold text-[#9A6B43] hover:underline pt-1"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-[#859F3C] hover:underline pt-1"
                 >
                   <span>Open exact location in Google Maps</span>
                   <ExternalLink className="w-3 h-3" />
@@ -420,26 +420,26 @@ export default function ContactPage() {
 
               <div className="pt-3 border-t border-stone-100 space-y-2.5 text-xs text-stone-600 font-sans">
                 <div className="flex items-center gap-2">
-                  <Phone className="w-3.5 h-3.5 text-[#9A6B43]" />
+                  <Phone className="w-3.5 h-3.5 text-[#859F3C]" />
                   <span>Primary: <strong>{OFFICIAL_CONTACTS.phonePrimary.display}</strong></span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Phone className="w-3.5 h-3.5 text-[#9A6B43]" />
+                  <Phone className="w-3.5 h-3.5 text-[#859F3C]" />
                   <span>Secondary: <strong>{OFFICIAL_CONTACTS.phoneSecondary.display}</strong></span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Clock className="w-3.5 h-3.5 text-[#9A6B43]" />
+                  <Clock className="w-3.5 h-3.5 text-[#859F3C]" />
                   <span>Mon – Sat: 9:00 AM – 7:30 PM</span>
                 </div>
               </div>
             </div>
 
             {/* Quality & Craftsmanship Pledge */}
-            <div className="p-7 rounded-3xl bg-[#1C1917] text-white border border-white/10 shadow-xl space-y-3">
-              <div className="w-10 h-10 rounded-xl bg-[#d4a373]/20 text-[#d4a373] flex items-center justify-center">
+            <div className="p-7 rounded-3xl bg-[#1A1A1A] text-white border border-white/10 shadow-xl space-y-3">
+              <div className="w-10 h-10 rounded-xl bg-[#859F3C]/20 text-[#859F3C] flex items-center justify-center">
                 <ShieldCheck className="w-5 h-5 stroke-1.5" />
               </div>
-              <h4 className="font-serif text-lg font-medium text-[#d4a373]">
+              <h4 className="font-serif text-lg font-medium text-[#859F3C]">
                 Handcrafted Quality Guarantee
               </h4>
               <p className="text-xs text-stone-300 font-sans leading-relaxed">
@@ -463,7 +463,7 @@ export default function ContactPage() {
                 href={OFFICIAL_CONTACTS.mapUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="absolute bottom-3 right-3 px-3 py-1.5 rounded-full bg-stone-900/90 text-white text-[11px] font-semibold backdrop-blur-xs flex items-center gap-1.5 hover:bg-[#9a6b43] transition-colors shadow-md"
+                className="absolute bottom-3 right-3 px-3 py-1.5 rounded-full bg-[#1A1A1A]/90 text-white text-[11px] font-semibold backdrop-blur-xs flex items-center gap-1.5 hover:bg-[#859F3C] transition-colors shadow-md"
               >
                 <span>View Full Map</span>
                 <ExternalLink className="w-3 h-3" />
@@ -476,10 +476,10 @@ export default function ContactPage() {
         {/* ─── 4. Client FAQ Accordion ─────────────────────────────── */}
         <div className="bg-white p-8 sm:p-12 rounded-3xl border border-stone-200/80 shadow-xs space-y-8">
           <div className="text-center max-w-2xl mx-auto space-y-2">
-            <span className="text-xs uppercase tracking-widest font-bold text-[#9A6B43]">
+            <span className="text-xs uppercase tracking-widest font-bold text-[#859F3C]">
               Frequently Asked Questions
             </span>
-            <h2 className="font-serif text-3xl font-normal text-stone-900">
+            <h2 className="font-serif text-3xl font-normal text-[#1A1A1A]">
               Showroom & Order FAQ
             </h2>
           </div>
@@ -493,12 +493,12 @@ export default function ContactPage() {
                     onClick={() => setOpenFaq(isOpen ? null : index)}
                     className="w-full flex items-center justify-between text-left py-2 group cursor-pointer"
                   >
-                    <span className="font-serif text-base sm:text-lg font-medium text-stone-900 group-hover:text-[#9A6B43] transition-colors pr-4">
+                    <span className="font-serif text-base sm:text-lg font-medium text-[#1A1A1A] group-hover:text-[#859F3C] transition-colors pr-4">
                       {faq.q}
                     </span>
                     <ChevronDown
                       className={`w-4 h-4 text-stone-400 transition-transform duration-300 shrink-0 ${
-                        isOpen ? 'rotate-180 text-[#9A6B43]' : ''
+                        isOpen ? 'rotate-180 text-[#859F3C]' : ''
                       }`}
                     />
                   </button>

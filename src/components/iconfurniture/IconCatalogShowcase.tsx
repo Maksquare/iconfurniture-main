@@ -11,22 +11,22 @@ export default function IconCatalogShowcase() {
   const featuredProducts = MOCK_PRODUCTS.slice(0, 4);
 
   return (
-    <section className="relative w-full bg-[#f8f6f0] text-stone-900 py-24 px-6 sm:px-10 select-none z-20">
+    <section className="relative w-full bg-[#f7f6f0] text-[#1A1A1A] py-24 px-6 sm:px-10 select-none z-20">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-16 pb-6 border-b border-stone-300/80">
           <div>
-            <div className="flex items-center gap-2 text-xs uppercase tracking-widest font-bold text-[#9a6b43] mb-2">
+            <div className="flex items-center gap-2 text-xs uppercase tracking-widest font-bold text-[#859F3C] mb-2">
               <Sparkles className="w-3.5 h-3.5" />
               <span>Curated Editorial Pieces</span>
             </div>
-            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-normal text-stone-900">
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-normal text-[#1A1A1A]">
               The Flagship Collection
             </h2>
           </div>
           <Link
             href="/shop"
-            className="mt-4 sm:mt-0 inline-flex items-center gap-2 text-xs uppercase tracking-widest font-bold text-stone-900 hover:text-[#9a6b43] transition-colors group"
+            className="mt-4 sm:mt-0 inline-flex items-center gap-2 text-xs uppercase tracking-widest font-bold text-[#1A1A1A] hover:text-[#859F3C] transition-colors group"
           >
             <span>Explore Entire Catalog</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -59,7 +59,7 @@ export default function IconCatalogShowcase() {
                 <div>
                   <Link
                     href={`/shop/${product.slug}`}
-                    className="font-serif font-semibold text-lg text-stone-900 hover:text-[#9a6b43] transition-colors line-clamp-1"
+                    className="font-serif font-semibold text-lg text-[#1A1A1A] hover:text-[#859F3C] transition-colors line-clamp-1"
                   >
                     {product.name}
                   </Link>
@@ -71,13 +71,13 @@ export default function IconCatalogShowcase() {
 
               <div className="mt-4 space-y-3">
                 <div className="pt-3 border-t border-stone-100 flex items-center justify-between">
-                  <span className="font-serif text-lg font-bold text-stone-900">
+                  <span className="font-serif text-lg font-bold text-[#1A1A1A]">
                     ${product.price.toLocaleString()}
                   </span>
 
                   <Link
                     href={`/shop/${product.slug}`}
-                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-stone-50 hover:bg-[#9a6b43] text-stone-800 hover:text-white transition-all text-xs font-semibold shadow-xs group/btn border border-stone-200/60"
+                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-stone-50 hover:bg-[#859F3C] text-stone-800 hover:text-white transition-all text-xs font-semibold shadow-xs group/btn border border-stone-200/60"
                   >
                     <span>View Piece</span>
                     <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover/btn:translate-x-0.5" />

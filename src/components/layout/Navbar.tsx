@@ -31,7 +31,7 @@ export default function Navbar() {
     <header className="fixed top-0 inset-x-0 z-50 py-4 px-4 sm:px-6 lg:px-8 pointer-events-none">
       <div className="max-w-7xl mx-auto flex items-center justify-between pointer-events-auto">
         {/* Left Pill Menu */}
-        <nav className="hidden lg:flex items-center bg-white/80 backdrop-blur-md px-6 py-2.5 rounded-full border border-stone-200/80 shadow-xs space-x-6">
+        <nav className="hidden lg:flex items-center bg-white/85 backdrop-blur-md px-6 py-2.5 rounded-full border border-stone-200/80 shadow-xs space-x-6">
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
             return (
@@ -39,7 +39,7 @@ export default function Navbar() {
                 key={link.name}
                 href={link.href}
                 className={`text-xs uppercase tracking-widest font-semibold transition-colors duration-200 ${
-                  isActive ? 'text-[#9A6B43]' : 'text-stone-700 hover:text-stone-950'
+                  isActive ? 'text-[#859F3C]' : 'text-stone-700 hover:text-[#859F3C]'
                 }`}
               >
                 {link.name}
@@ -51,7 +51,7 @@ export default function Navbar() {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="lg:hidden p-3 bg-white/90 backdrop-blur-md rounded-full border border-stone-200 shadow-xs text-stone-800"
+          className="lg:hidden p-3 bg-white/90 backdrop-blur-md rounded-full border border-stone-200 shadow-xs text-[#1A1A1A]"
           aria-label="Toggle Menu"
         >
           {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -60,9 +60,9 @@ export default function Navbar() {
         {/* Center Brand Pill */}
         <Link
           href="/"
-          className="bg-[#1C1917] text-white px-5 py-2.5 rounded-full font-serif font-bold text-sm tracking-wider uppercase shadow-md hover:bg-[#9A6B43] transition-colors"
+          className="bg-[#1A1A1A] text-white px-5 py-2.5 rounded-full font-serif font-bold text-sm tracking-wider uppercase shadow-md hover:bg-[#859F3C] transition-colors"
         >
-          Icon<span className="text-[#C28E58]">furniture</span>
+          Icon<span className="text-[#859F3C]">furniture</span>
         </Link>
 
         {/* Right Actions Pill Container */}
@@ -70,7 +70,7 @@ export default function Navbar() {
           {/* Search Button */}
           <button
             onClick={() => setSearchOpen(!searchOpen)}
-            className="p-2.5 bg-white/80 backdrop-blur-md rounded-full border border-stone-200/80 text-stone-700 hover:text-[#9A6B43] transition-colors shadow-xs"
+            className="p-2.5 bg-white/85 backdrop-blur-md rounded-full border border-stone-200/80 text-stone-700 hover:text-[#859F3C] hover:border-[#859F3C] transition-colors shadow-xs cursor-pointer"
             aria-label="Search"
           >
             <Search className="w-4 h-4" />
@@ -79,7 +79,7 @@ export default function Navbar() {
           {/* Action CTA Pill (Explore Catalog) */}
           <Link
             href="/shop"
-            className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 bg-[#1C1917] hover:bg-[#9A6B43] text-white text-xs uppercase tracking-widest font-semibold rounded-full shadow-md transition-all duration-300 group"
+            className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 bg-[#1A1A1A] hover:bg-[#859F3C] text-white text-xs uppercase tracking-widest font-semibold rounded-full shadow-md transition-all duration-300 group"
           >
             <span>Explore Catalog</span>
             <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
@@ -112,13 +112,13 @@ export default function Navbar() {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Search velvet armchair, walnut table, travertine lamp..."
-                  className="w-full pl-9 pr-4 py-2.5 bg-stone-50 border border-stone-200 rounded-xl text-xs text-stone-900 focus:outline-hidden focus:border-[#9A6B43]"
+                  className="w-full pl-9 pr-4 py-2.5 bg-stone-50 border border-stone-200 rounded-xl text-xs text-stone-900 focus:outline-hidden focus:border-[#859F3C]"
                   autoFocus
                 />
               </div>
               <button
                 type="submit"
-                className="px-4 py-2.5 bg-[#1C1917] text-white text-xs uppercase tracking-wider font-semibold rounded-xl hover:bg-[#9A6B43] transition-colors"
+                className="px-4 py-2.5 bg-[#1A1A1A] text-white text-xs uppercase tracking-wider font-semibold rounded-xl hover:bg-[#859F3C] transition-colors cursor-pointer"
               >
                 Search
               </button>
@@ -142,7 +142,7 @@ export default function Navbar() {
                   key={link.name}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="text-xs uppercase tracking-widest font-semibold text-stone-800 hover:text-[#9A6B43] py-2 border-b border-stone-100"
+                  className="text-xs uppercase tracking-widest font-semibold text-stone-800 hover:text-[#859F3C] py-2 border-b border-stone-100"
                 >
                   {link.name}
                 </Link>
@@ -150,7 +150,7 @@ export default function Navbar() {
               <Link
                 href="/shop"
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-full text-center py-3 bg-[#1C1917] text-white text-xs uppercase tracking-widest font-semibold rounded-xl"
+                className="w-full text-center py-3 bg-[#859F3C] text-white text-xs uppercase tracking-widest font-semibold rounded-xl hover:bg-[#738b32] transition-colors"
               >
                 Explore Catalog →
               </Link>

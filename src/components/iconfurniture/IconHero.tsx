@@ -3,6 +3,7 @@
 import React from 'react';
 import { Sparkles, Star, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface IconHeroProps {
   onOpenAtelier?: () => void;
@@ -47,7 +48,17 @@ export default function IconHero({
       </div>
 
       {/* Top Giant Brand Headline */}
-      <div className="w-full text-center relative z-0 mt-4 md:mt-8">
+      <div className="w-full flex flex-col items-center justify-center text-center relative z-0 mt-4 md:mt-8">
+        <div className="mb-3 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/85 border border-stone-200/80 backdrop-blur-md shadow-2xs">
+          <Image
+            src="/assets/iconfurniture-logo.png"
+            alt="Icon Furniture"
+            width={120}
+            height={32}
+            className="h-6 w-auto object-contain"
+            priority
+          />
+        </div>
         <h1
           className="font-serif font-black tracking-[-0.04em] text-[clamp(4.2rem,13.5vw,12.5rem)] leading-[0.88] text-[#1A1A1A] uppercase"
         >

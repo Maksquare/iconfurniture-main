@@ -102,15 +102,27 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center space-y-6">
             
-            {/* Monograph Badge */}
+            {/* Official Brand Logo + Monograph Badge */}
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-stone-200/80 shadow-xs text-xs font-bold uppercase tracking-widest text-[#859F3C]"
+              className="flex items-center justify-center gap-3 flex-wrap"
             >
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>The Atelier Monograph & Heritage</span>
+              <div className="bg-white px-4 py-1.5 rounded-full border border-stone-200/80 shadow-2xs">
+                <Image
+                  src="/assets/iconfurniture-logo.png"
+                  alt="Icon Furniture"
+                  width={120}
+                  height={32}
+                  className="h-6 w-auto object-contain"
+                  priority
+                />
+              </div>
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-stone-200/80 shadow-2xs text-xs font-bold uppercase tracking-widest text-[#859F3C]">
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>The Atelier Monograph & Heritage</span>
+              </div>
             </motion.div>
 
             {/* Main Headline */}

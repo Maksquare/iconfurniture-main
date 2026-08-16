@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useMemo, useEffect, useRef, useCallback } from 'react';
+import Image from 'next/image';
 import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import ProductGrid from '@/components/shop/ProductGrid';
 import { Category, Product } from '@/types';
@@ -150,9 +151,21 @@ export default function ShopClient({ initialProducts, categories }: ShopClientPr
         <div className="relative rounded-3xl p-8 sm:p-12 bg-gradient-to-b from-[#f7f6f0] to-[#f0efe6] border border-stone-200/80 shadow-xs overflow-hidden">
           <div className="absolute top-0 right-0 w-96 h-96 bg-[#859F3C]/10 rounded-full blur-3xl pointer-events-none" />
           <div className="max-w-3xl space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-stone-200/80 text-xs font-bold uppercase tracking-widest text-[#859F3C] shadow-2xs">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>Artisanal Heirloom Collection</span>
+            <div className="flex items-center gap-3 flex-wrap">
+              <div className="bg-white px-3.5 py-1.5 rounded-full border border-stone-200/80 shadow-2xs">
+                <Image
+                  src="/assets/iconfurniture-logo.png"
+                  alt="Icon Furniture"
+                  width={110}
+                  height={28}
+                  className="h-5.5 w-auto object-contain"
+                  priority
+                />
+              </div>
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-stone-200/80 text-xs font-bold uppercase tracking-widest text-[#859F3C] shadow-2xs">
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>Artisanal Heirloom Collection</span>
+              </div>
             </div>
             <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl font-normal text-[#1A1A1A] leading-tight">
               The Flagship Living Catalog

@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, Menu, X, ArrowRight } from 'lucide-react';
@@ -31,7 +32,7 @@ export default function Navbar() {
     <header className="fixed top-0 inset-x-0 z-50 py-4 px-4 sm:px-6 lg:px-8 pointer-events-none">
       <div className="max-w-7xl mx-auto flex items-center justify-between pointer-events-auto">
         {/* Left Pill Menu */}
-        <nav className="hidden lg:flex items-center bg-white/85 backdrop-blur-md px-6 py-2.5 rounded-full border border-stone-200/80 shadow-xs space-x-6">
+        <nav className="hidden lg:flex items-center bg-white/90 backdrop-blur-md px-6 py-2.5 rounded-full border border-stone-200/80 shadow-xs space-x-6">
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
             return (
@@ -51,18 +52,26 @@ export default function Navbar() {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="lg:hidden p-3 bg-white/90 backdrop-blur-md rounded-full border border-stone-200 shadow-xs text-[#1A1A1A]"
+          className="lg:hidden p-3 bg-white/95 backdrop-blur-md rounded-full border border-stone-200 shadow-xs text-[#1A1A1A] cursor-pointer"
           aria-label="Toggle Menu"
         >
           {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
         </button>
 
-        {/* Center Brand Pill */}
+        {/* Center Brand Pill with Official Logo */}
         <Link
           href="/"
-          className="bg-[#1A1A1A] text-white px-5 py-2.5 rounded-full font-serif font-bold text-sm tracking-wider uppercase shadow-md hover:bg-[#859F3C] transition-colors"
+          className="bg-white/95 px-4 py-2 rounded-full border border-stone-200 shadow-sm hover:shadow-md transition-all flex items-center gap-2 group"
+          aria-label="Icon Furniture Home"
         >
-          Icon<span className="text-[#859F3C]">furniture</span>
+          <Image
+            src="/assets/iconfurniture-logo.png"
+            alt="Icon Furniture"
+            width={120}
+            height={34}
+            className="h-7 w-auto object-contain transition-transform group-hover:scale-103"
+            priority
+          />
         </Link>
 
         {/* Right Actions Pill Container */}
@@ -70,7 +79,7 @@ export default function Navbar() {
           {/* Search Button */}
           <button
             onClick={() => setSearchOpen(!searchOpen)}
-            className="p-2.5 bg-white/85 backdrop-blur-md rounded-full border border-stone-200/80 text-stone-700 hover:text-[#859F3C] hover:border-[#859F3C] transition-colors shadow-xs cursor-pointer"
+            className="p-2.5 bg-white/90 backdrop-blur-md rounded-full border border-stone-200/80 text-stone-700 hover:text-[#859F3C] hover:border-[#859F3C] transition-colors shadow-xs cursor-pointer"
             aria-label="Search"
           >
             <Search className="w-4 h-4" />
@@ -137,6 +146,19 @@ export default function Navbar() {
             className="pointer-events-auto lg:hidden max-w-md mx-auto mt-3 bg-white/95 backdrop-blur-md p-6 rounded-2xl border border-stone-200 shadow-2xl space-y-4"
           >
             <div className="flex flex-col space-y-3">
+              {/* Mobile Drawer Logo */}
+              <div className="pb-3 border-b border-stone-100 flex items-center justify-between">
+                <Link href="/" onClick={() => setMobileMenuOpen(false)}>
+                  <Image
+                    src="/assets/iconfurniture-logo.png"
+                    alt="Icon Furniture"
+                    width={110}
+                    height={30}
+                    className="h-6 w-auto object-contain"
+                  />
+                </Link>
+              </div>
+
               {navLinks.map((link) => (
                 <Link
                   key={link.name}

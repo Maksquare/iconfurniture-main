@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { Search, Menu, X, ArrowRight, ArrowUpRight, Sparkles } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
 interface IconNavbarProps {
@@ -109,12 +110,19 @@ export default function IconNavbar({ isDark = false }: IconNavbarProps) {
           <div className="flex items-center gap-7">
             <Link
               href="/"
-              className={`font-serif font-black tracking-tight text-lg uppercase transition-colors flex items-center gap-2 ${
-                isDark ? 'text-white' : 'text-stone-950'
-              }`}
+              className="flex items-center gap-2.5 transition-transform hover:scale-102"
+              aria-label="Icon Furniture Home"
             >
-              <span className="w-2.5 h-2.5 rounded-full bg-[#859F3C] inline-block animate-pulse shadow-[0_0_10px_#859F3C]" />
-              <span>ICON<span className="text-[#859F3C] font-normal">FURNITURE</span></span>
+              <div className={`transition-all duration-300 ${isDark ? 'bg-white/95 px-3 py-1 rounded-xl shadow-xs' : ''}`}>
+                <Image
+                  src="/assets/iconfurniture-logo.png"
+                  alt="Icon Furniture"
+                  width={118}
+                  height={32}
+                  className="h-7 w-auto object-contain"
+                  priority
+                />
+              </div>
             </Link>
 
             {/* Desktop Nav Links */}
@@ -192,6 +200,21 @@ export default function IconNavbar({ isDark = false }: IconNavbarProps) {
             }`}
           >
             <div className="flex flex-col gap-4 text-sm font-medium">
+              {/* Mobile Drawer Brand Logo */}
+              <div className="pb-2 border-b border-stone-200/50">
+                <Link href="/" onClick={() => setMobileMenuOpen(false)}>
+                  <div className="bg-white/95 px-3 py-1.5 rounded-xl inline-block shadow-2xs">
+                    <Image
+                      src="/assets/iconfurniture-logo.png"
+                      alt="Icon Furniture"
+                      width={110}
+                      height={30}
+                      className="h-6 w-auto object-contain"
+                    />
+                  </div>
+                </Link>
+              </div>
+
               {/* Mobile search entry */}
               <button
                 onClick={openSearch}

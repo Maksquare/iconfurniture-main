@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   MapPin,
@@ -137,9 +138,21 @@ export default function ContactPage() {
           <div className="absolute top-0 right-0 w-96 h-96 bg-[#859F3C]/12 rounded-full blur-3xl pointer-events-none -z-10" />
 
           <div className="max-w-3xl space-y-4">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white border border-stone-200/80 text-xs font-bold uppercase tracking-widest text-[#859F3C] shadow-2xs">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>Official Icon Furniture Showroom & Concierge</span>
+            <div className="flex items-center gap-3 flex-wrap">
+              <div className="bg-white px-4 py-1.5 rounded-full border border-stone-200/80 shadow-2xs">
+                <Image
+                  src="/assets/iconfurniture-logo.png"
+                  alt="Icon Furniture"
+                  width={120}
+                  height={32}
+                  className="h-6 w-auto object-contain"
+                  priority
+                />
+              </div>
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white border border-stone-200/80 text-xs font-bold uppercase tracking-widest text-[#859F3C] shadow-2xs">
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>Official Showroom & Concierge</span>
+              </div>
             </div>
 
             <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl font-normal text-[#1A1A1A] leading-tight">

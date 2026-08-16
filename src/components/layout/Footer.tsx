@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight, CheckCircle2, Phone, MapPin, ExternalLink } from 'lucide-react';
 import {
   InstagramIcon,
@@ -29,10 +30,18 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-12 pb-16 border-b border-white/10">
           {/* Brand Info */}
           <div className="lg:col-span-2 space-y-4">
-            <Link href="/" className="inline-block">
-              <span className="font-serif text-2xl font-bold tracking-wider text-white uppercase">
-                Icon<span className="text-[#859F3C]">furniture</span>
-              </span>
+            <Link
+              href="/"
+              className="inline-block bg-white/95 px-4 py-2 rounded-2xl shadow-sm hover:shadow-md transition-all group"
+              aria-label="Icon Furniture Home"
+            >
+              <Image
+                src="/assets/iconfurniture-logo.png"
+                alt="Icon Furniture"
+                width={130}
+                height={36}
+                className="h-8 w-auto object-contain transition-transform group-hover:scale-103"
+              />
             </Link>
             <p className="text-stone-400 text-sm leading-relaxed max-w-sm font-sans">
               Sculptural forms, tactile bouclé fabrics, natural travertine, and sustainably harvested solid timber. Designed for timeless editorial living.

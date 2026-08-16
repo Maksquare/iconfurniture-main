@@ -18,6 +18,10 @@ export const metadata: Metadata = {
   title: 'ICON FURNITURE | Editorial Modern Living & Timeless Craftsmanship',
   description:
     'Curated upscale furniture handcrafted from sustainable solid woods, tactile fabrics, and architectural stonework. Designed to elevate modern living spaces.',
+  icons: {
+    icon: '/assets/iconfurniture-logo.png',
+    apple: '/assets/iconfurniture-logo.png',
+  },
 };
 
 export default function RootLayout({

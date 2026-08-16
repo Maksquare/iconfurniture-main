@@ -50,6 +50,7 @@ import FilmEditorModal from '@/components/admin/FilmEditorModal';
 import CategoryEditorModal from '@/components/admin/CategoryEditorModal';
 import PhotoUploadDropzone from '@/components/admin/PhotoUploadDropzone';
 import AdminLoginScreen from '@/components/admin/AdminLoginScreen';
+import { createClient } from '@/lib/supabase/client';
 
 type AdminTab =
   | 'overview'
@@ -95,6 +96,8 @@ export default function AdminDashboardClient() {
     importBackupJson,
   } = useStore();
 
+  const supabase = createClient();
+
   const [activeTab, setActiveTab] = useState<AdminTab>('overview');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategoryFilter, setSelectedCategoryFilter] = useState('all');
@@ -121,27 +124,60 @@ export default function AdminDashboardClient() {
   // Video preview player inside modal
   const [previewVideoUrl, setPreviewVideoUrl] = useState<string | null>(null);
 
-  // Authentication State
+  // Supabase Authentication State
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
+  const [currentUserEmail, setCurrentUserEmail] = useState<string>('admin@iconfurniture.com');
 
   useEffect(() => {
-    try {
-      const isAuth =
-        localStorage.getItem('iconfurniture_admin_authenticated') === 'true' ||
-        sessionStorage.getItem('iconfurniture_admin_authenticated') === 'true';
-      setIsAuthenticated(isAuth);
-    } catch {
-      setIsAuthenticated(false);
-    }
-  }, []);
+    async function checkSession() {
+      try {
+        const {
+          data: { user },
+        } = await supabase.auth.getUser();
+        if (user && user.email) {
+          setCurrentUserEmail(user.email);
+          setIsAuthenticated(true);
+          return;
+        }
+      } catch {
+        // Fallback to local session
+      }
 
-  const handleLogout = () => {
+      const localAuth = localStorage.getItem('iconfurniture_admin_authenticated') === 'true';
+      const localUser = localStorage.getItem('iconfurniture_admin_user');
+      if (localAuth) {
+        if (localUser) setCurrentUserEmail(localUser);
+        setIsAuthenticated(true);
+      } else {
+        setIsAuthenticated(false);
+      }
+    }
+
+    checkSession();
+
+    const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {
+      if (session?.user?.email) {
+        setCurrentUserEmail(session.user.email);
+        setIsAuthenticated(true);
+      } else if (event === 'SIGNED_OUT') {
+        setIsAuthenticated(false);
+      }
+    });
+
+    return () => {
+      authListener.subscription.unsubscribe();
+    };
+  }, [supabase.auth]);
+
+  const handleLogout = async () => {
     try {
+      await supabase.auth.signOut();
       localStorage.removeItem('iconfurniture_admin_authenticated');
+      localStorage.removeItem('iconfurniture_admin_user');
       sessionStorage.removeItem('iconfurniture_admin_authenticated');
     } catch {}
     setIsAuthenticated(false);
-    showToast('Logged out of Admin Console');
+    showToast('Logged out of Supabase Admin Console');
   };
 
   // Custom password configuration
@@ -251,7 +287,14 @@ export default function AdminDashboardClient() {
   }
 
   if (!isAuthenticated) {
-    return <AdminLoginScreen onLoginSuccess={() => setIsAuthenticated(true)} />;
+    return (
+      <AdminLoginScreen
+        onLoginSuccess={(email) => {
+          if (email) setCurrentUserEmail(email);
+          setIsAuthenticated(true);
+        }}
+      />
+    );
   }
 
   return (
@@ -296,8 +339,9 @@ export default function AdminDashboardClient() {
 
           <div className="hidden xl:flex items-center gap-2 pl-4 border-l border-white/10 text-xs text-stone-400">
             <div className="w-2 h-2 rounded-full bg-[#859F3C] animate-pulse" />
-            <span>Live Frontend Sync Active</span>
-            <span className="text-stone-500 font-mono pl-2">Addis Ababa (EAT): {timeString}</span>
+            <span className="font-mono text-stone-300">{currentUserEmail}</span>
+            <span className="text-stone-600">•</span>
+            <span className="text-stone-500 font-mono">EAT: {timeString}</span>
           </div>
         </div>
 

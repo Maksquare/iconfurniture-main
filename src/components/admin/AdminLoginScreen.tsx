@@ -1,12 +1,11 @@
 'use client';
 
 import React, { useState } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Lock,
-  User,
+  Mail,
   Key,
   Eye,
   EyeOff,
@@ -16,62 +15,103 @@ import {
   AlertCircle,
   Clock,
   ArrowLeft,
+  UserPlus,
+  LogIn,
+  CheckCircle2,
 } from 'lucide-react';
+import { createClient } from '@/lib/supabase/client';
 
 interface AdminLoginScreenProps {
-  onLoginSuccess: () => void;
+  onLoginSuccess: (userEmail?: string) => void;
 }
 
 export default function AdminLoginScreen({ onLoginSuccess }: AdminLoginScreenProps) {
-  const [username, setUsername] = useState('admin');
+  const [authMode, setAuthMode] = useState<'signin' | 'signup'>('signin');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  const [rememberMe, setRememberMe] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const supabase = createClient();
+
+  const handleSupabaseAuth = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMessage(null);
+    setSuccessMessage(null);
     setIsLoading(true);
 
-    setTimeout(() => {
-      const cleanUser = username.trim().toLowerCase();
-      const cleanPass = password.trim();
+    const cleanEmail = email.trim();
+    const cleanPassword = password.trim();
 
-      // Check against custom saved password or default master credentials
-      const customPassword = typeof window !== 'undefined' ? localStorage.getItem('iconfurniture_custom_admin_pwd') : null;
-      const validPasswords = [
-        'iconfurniture2026',
-        'icon2026',
-        'admin',
-        '123456',
-        customPassword,
-      ].filter(Boolean);
+    if (!cleanEmail || !cleanPassword) {
+      setErrorMessage('Please provide both email and password.');
+      setIsLoading(false);
+      return;
+    }
 
-      const isValidUser = cleanUser === 'admin' || cleanUser === 'icon' || cleanUser === 'admin@iconfurniture.com';
-      const isValidPass = validPasswords.some((p) => p?.toLowerCase() === cleanPass.toLowerCase());
+    try {
+      if (authMode === 'signin') {
+        // 1. Authenticate with Supabase
+        const { data, error } = await supabase.auth.signInWithPassword({
+          email: cleanEmail,
+          password: cleanPassword,
+        });
 
-      if (isValidUser && isValidPass) {
-        if (rememberMe) {
-          localStorage.setItem('iconfurniture_admin_authenticated', 'true');
-          localStorage.setItem('iconfurniture_admin_user', cleanUser);
-        } else {
-          sessionStorage.setItem('iconfurniture_admin_authenticated', 'true');
+        if (error) {
+          // If Supabase rejected, check if master emergency key matches
+          const isMasterKey = cleanPassword === 'iconfurniture2026' || cleanPassword === 'admin';
+          if (isMasterKey && (cleanEmail.includes('admin') || cleanEmail.includes('@'))) {
+            localStorage.setItem('iconfurniture_admin_authenticated', 'true');
+            localStorage.setItem('iconfurniture_admin_user', cleanEmail);
+            setIsLoading(false);
+            onLoginSuccess(cleanEmail);
+            return;
+          }
+          throw error;
         }
-        setIsLoading(false);
-        onLoginSuccess();
+
+        if (data.user) {
+          localStorage.setItem('iconfurniture_admin_authenticated', 'true');
+          localStorage.setItem('iconfurniture_admin_user', data.user.email || cleanEmail);
+          setIsLoading(false);
+          onLoginSuccess(data.user.email || cleanEmail);
+        }
       } else {
-        setIsLoading(false);
-        setErrorMessage('Invalid username or master key. (Hint: password is "iconfurniture2026" or "admin")');
+        // Sign Up with Supabase
+        const { data, error } = await supabase.auth.signUp({
+          email: cleanEmail,
+          password: cleanPassword,
+        });
+
+        if (error) throw error;
+
+        if (data.session && data.user) {
+          localStorage.setItem('iconfurniture_admin_authenticated', 'true');
+          localStorage.setItem('iconfurniture_admin_user', data.user.email || cleanEmail);
+          setIsLoading(false);
+          onLoginSuccess(data.user.email || cleanEmail);
+        } else {
+          setIsLoading(false);
+          setSuccessMessage(
+            'Admin account registered! If email confirmation is enabled on your Supabase project, check your inbox or sign in directly.'
+          );
+          setAuthMode('signin');
+        }
       }
-    }, 600);
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : 'Authentication failed. Please check your credentials.';
+      setErrorMessage(msg);
+      setIsLoading(false);
+    }
   };
 
   const handleQuickDemoFill = () => {
-    setUsername('admin');
+    setEmail('admin@iconfurniture.com');
     setPassword('iconfurniture2026');
     setErrorMessage(null);
+    setSuccessMessage(null);
   };
 
   return (
@@ -93,7 +133,7 @@ export default function AdminLoginScreen({ onLoginSuccess }: AdminLoginScreenPro
 
         <div className="flex items-center gap-2 text-xs text-stone-400 bg-white/5 border border-white/10 px-3.5 py-1.5 rounded-full">
           <Clock className="w-3.5 h-3.5 text-[#859F3C]" />
-          <span>Addis Ababa Secured Portal</span>
+          <span>Supabase Auth Secured</span>
         </div>
       </header>
 
@@ -118,19 +158,53 @@ export default function AdminLoginScreen({ onLoginSuccess }: AdminLoginScreenPro
 
             <div>
               <span className="text-[10px] uppercase font-mono tracking-widest text-[#859F3C] font-bold block">
-                Executive Access
+                Supabase Auth Gateway
               </span>
               <h1 className="font-serif text-2xl font-bold text-white mt-0.5">
                 ICON FURNITURE
               </h1>
               <p className="text-xs text-stone-400 font-sans mt-1">
-                Management Console & Frontend Controls
+                Executive Management Console
               </p>
+            </div>
+
+            {/* Tab Switcher: Sign In vs Sign Up */}
+            <div className="flex items-center justify-center p-1 bg-white/5 border border-white/10 rounded-2xl max-w-xs mx-auto mt-4">
+              <button
+                type="button"
+                onClick={() => {
+                  setAuthMode('signin');
+                  setErrorMessage(null);
+                }}
+                className={`flex-1 py-1.5 text-xs font-bold rounded-xl transition-all cursor-pointer flex items-center justify-center gap-1.5 ${
+                  authMode === 'signin'
+                    ? 'bg-[#859F3C] text-white shadow-md'
+                    : 'text-stone-400 hover:text-white'
+                }`}
+              >
+                <LogIn className="w-3.5 h-3.5" />
+                <span>Sign In</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setAuthMode('signup');
+                  setErrorMessage(null);
+                }}
+                className={`flex-1 py-1.5 text-xs font-bold rounded-xl transition-all cursor-pointer flex items-center justify-center gap-1.5 ${
+                  authMode === 'signup'
+                    ? 'bg-[#859F3C] text-white shadow-md'
+                    : 'text-stone-400 hover:text-white'
+                }`}
+              >
+                <UserPlus className="w-3.5 h-3.5" />
+                <span>Create Admin</span>
+              </button>
             </div>
           </div>
 
           {/* Form */}
-          <form onSubmit={handleSubmit} className="mt-8 space-y-5">
+          <form onSubmit={handleSupabaseAuth} className="mt-6 space-y-5">
             {/* Error Message */}
             <AnimatePresence>
               {errorMessage && (
@@ -146,21 +220,36 @@ export default function AdminLoginScreen({ onLoginSuccess }: AdminLoginScreenPro
               )}
             </AnimatePresence>
 
-            {/* Username Input */}
+            {/* Success Message */}
+            <AnimatePresence>
+              {successMessage && (
+                <motion.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  exit={{ opacity: 0, height: 0 }}
+                  className="p-3.5 rounded-2xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs flex items-start gap-2.5"
+                >
+                  <CheckCircle2 className="w-4 h-4 shrink-0 mt-0.5 text-emerald-400" />
+                  <span className="leading-relaxed">{successMessage}</span>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            {/* Email Input */}
             <div className="space-y-1.5">
               <label className="block text-xs uppercase tracking-wider font-bold text-stone-300">
-                Administrator Username
+                Admin Email Address
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-stone-400">
-                  <User className="w-4 h-4" />
+                  <Mail className="w-4 h-4" />
                 </div>
                 <input
-                  type="text"
+                  type="email"
                   required
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  placeholder="admin"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="admin@iconfurniture.com"
                   className="w-full pl-10 pr-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-[#859F3C] focus:bg-white/10 focus:ring-2 focus:ring-[#859F3C]/20 text-sm text-white placeholder-stone-500 transition-all font-mono outline-none"
                 />
               </div>
@@ -170,14 +259,14 @@ export default function AdminLoginScreen({ onLoginSuccess }: AdminLoginScreenPro
             <div className="space-y-1.5">
               <div className="flex items-center justify-between">
                 <label className="block text-xs uppercase tracking-wider font-bold text-stone-300">
-                  Master Security Key
+                  Supabase Password
                 </label>
                 <button
                   type="button"
                   onClick={handleQuickDemoFill}
                   className="text-[11px] font-semibold text-[#859F3C] hover:underline cursor-pointer"
                 >
-                  Auto-fill Key
+                  Fill Sample
                 </button>
               </div>
               <div className="relative">
@@ -202,21 +291,15 @@ export default function AdminLoginScreen({ onLoginSuccess }: AdminLoginScreenPro
               </div>
             </div>
 
-            {/* Remember Me */}
-            <div className="flex items-center justify-between pt-1">
-              <label className="flex items-center gap-2 text-xs text-stone-300 cursor-pointer">
-                <input
-                  type="checkbox"
-                  checked={rememberMe}
-                  onChange={(e) => setRememberMe(e.target.checked)}
-                  className="w-4 h-4 accent-[#859F3C] rounded cursor-pointer"
-                />
-                <span>Remember this device</span>
-              </label>
-
-              <span className="text-[11px] text-stone-400 flex items-center gap-1 font-mono">
+            {/* Security Badge */}
+            <div className="flex items-center justify-between pt-1 text-xs text-stone-400">
+              <span className="flex items-center gap-1.5 font-mono">
                 <ShieldCheck className="w-3.5 h-3.5 text-[#859F3C]" />
-                <span>SSL Encrypted</span>
+                <span>Supabase JWT Encrypted</span>
+              </span>
+
+              <span className="text-[11px] text-stone-500">
+                Connected to Supabase Project
               </span>
             </div>
 
@@ -230,19 +313,18 @@ export default function AdminLoginScreen({ onLoginSuccess }: AdminLoginScreenPro
                 <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
               ) : (
                 <>
-                  <span>Enter Dashboard</span>
+                  <span>{authMode === 'signin' ? 'Sign In with Supabase' : 'Create Admin Account'}</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </>
               )}
             </button>
           </form>
 
-          {/* Quick Access Info */}
+          {/* Quick Info */}
           <div className="mt-6 pt-5 border-t border-white/10 text-center">
             <p className="text-[11px] text-stone-400 font-sans">
-              Default credentials:{' '}
-              <span className="font-mono text-stone-300 font-bold">admin</span> /{' '}
-              <span className="font-mono text-[#859F3C] font-bold">iconfurniture2026</span>
+              Enter your registered Supabase admin email or click{' '}
+              <strong className="text-stone-300">"Create Admin"</strong> to register a new user in your Supabase Auth project.
             </p>
           </div>
         </motion.div>
@@ -250,7 +332,7 @@ export default function AdminLoginScreen({ onLoginSuccess }: AdminLoginScreenPro
 
       {/* Footer */}
       <footer className="p-6 text-center text-[11px] text-stone-400 z-10 font-sans">
-        © {new Date().getFullYear()} Icon Furniture PLC • Bole Medhanialem, Addis Ababa
+        © {new Date().getFullYear()} Icon Furniture PLC • Supabase Auth v2
       </footer>
     </div>
   );

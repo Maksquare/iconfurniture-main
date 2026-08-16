@@ -18,6 +18,8 @@ import {
 } from 'lucide-react';
 import { Product, Category } from '@/types';
 
+import PhotoUploadDropzone from '@/components/admin/PhotoUploadDropzone';
+
 // Pre-indexed authentic collection images
 const COLLECTION_IMAGES = Array.from({ length: 59 }, (_, i) => {
   const num = String(i + 1).padStart(3, '0');
@@ -63,6 +65,7 @@ export default function ProductEditorModal({
   const [galleryImages, setGalleryImages] = useState<string[]>([]);
   const [showImagePicker, setShowImagePicker] = useState(false);
   const [imagePickerTarget, setImagePickerTarget] = useState<'primary' | 'gallery'>('primary');
+  const [imageSourceTab, setImageSourceTab] = useState<'upload' | 'vault' | 'url'>('upload');
 
   useEffect(() => {
     if (product) {
@@ -114,6 +117,22 @@ export default function ProductEditorModal({
       }
     }
     setShowImagePicker(false);
+  };
+
+  const handleUploadPrimaryComplete = (urls: string[]) => {
+    if (urls.length > 0) {
+      setImageUrl(urls[0]);
+    }
+  };
+
+  const handleUploadGalleryComplete = (urls: string[]) => {
+    const newGallery = [...galleryImages];
+    for (const u of urls) {
+      if (!newGallery.includes(u)) {
+        newGallery.push(u);
+      }
+    }
+    setGalleryImages(newGallery);
   };
 
   const handleRemoveGalleryImage = (imgToRemove: string) => {
@@ -177,7 +196,7 @@ export default function ProductEditorModal({
                   {product ? 'Edit Dining Table Masterpiece' : 'Commission New Dining Table'}
                 </h2>
                 <p className="text-xs text-stone-500 font-sans">
-                  Configure dining table specifications, authentic imagery, pricing in ETB, and seating options.
+                  Upload photos from your device, configure dimensions, pricing in ETB, and seating options.
                 </p>
               </div>
             </div>
@@ -192,49 +211,110 @@ export default function ProductEditorModal({
           {/* Form Content */}
           <form onSubmit={handleSubmit} className="flex-1 overflow-y-auto p-6 sm:p-8 space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
-              {/* Left Column: Image Preview & Selector */}
-              <div className="md:col-span-5 space-y-4">
-                <label className="block text-xs uppercase tracking-wider font-bold text-stone-700">
-                  Primary Dining Table Photograph
-                </label>
-                <div className="relative aspect-4/3 w-full rounded-2xl overflow-hidden bg-stone-100 border border-stone-300 group shadow-inner">
-                  <Image
-                    src={imageUrl}
-                    alt="Preview"
-                    fill
-                    className="object-cover transition-transform group-hover:scale-105 duration-500"
-                    unoptimized
+              {/* Left Column: Image Preview & Device Uploader */}
+              <div className="md:col-span-6 space-y-4">
+                <div className="flex items-center justify-between">
+                  <label className="text-xs uppercase tracking-wider font-bold text-stone-700">
+                    Primary Table Photograph *
+                  </label>
+                  <div className="flex items-center gap-1 bg-stone-100 p-1 rounded-xl">
+                    <button
+                      type="button"
+                      onClick={() => setImageSourceTab('upload')}
+                      className={`px-2.5 py-1 rounded-lg text-[11px] font-bold transition-all cursor-pointer ${
+                        imageSourceTab === 'upload'
+                          ? 'bg-[#859F3C] text-white shadow-xs'
+                          : 'text-stone-600 hover:text-stone-900'
+                      }`}
+                    >
+                      Device / Camera
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setImageSourceTab('vault')}
+                      className={`px-2.5 py-1 rounded-lg text-[11px] font-bold transition-all cursor-pointer ${
+                        imageSourceTab === 'vault'
+                          ? 'bg-[#859F3C] text-white shadow-xs'
+                          : 'text-stone-600 hover:text-stone-900'
+                      }`}
+                    >
+                      59 Vault Photos
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setImageSourceTab('url')}
+                      className={`px-2.5 py-1 rounded-lg text-[11px] font-bold transition-all cursor-pointer ${
+                        imageSourceTab === 'url'
+                          ? 'bg-[#859F3C] text-white shadow-xs'
+                          : 'text-stone-600 hover:text-stone-900'
+                      }`}
+                    >
+                      URL
+                    </button>
+                  </div>
+                </div>
+
+                {/* Tab 1: Upload from Device / Phone Camera */}
+                {imageSourceTab === 'upload' && (
+                  <PhotoUploadDropzone
+                    onUploadComplete={handleUploadPrimaryComplete}
+                    currentPreviewUrl={imageUrl}
+                    label="Upload Dining Table Photo"
+                    sublabel="Drag & drop high-res image, select from phone/PC, or snap directly with camera"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-between p-4">
-                    <span className="text-white text-xs font-mono">{imageUrl}</span>
+                )}
+
+                {/* Tab 2: Vault Selection */}
+                {imageSourceTab === 'vault' && (
+                  <div className="space-y-2">
+                    <div className="relative aspect-4/3 w-full rounded-2xl overflow-hidden bg-stone-100 border border-stone-300">
+                      <Image
+                        src={imageUrl}
+                        alt="Preview"
+                        fill
+                        className="object-cover"
+                        unoptimized
+                      />
+                    </div>
                     <button
                       type="button"
                       onClick={() => {
                         setImagePickerTarget('primary');
                         setShowImagePicker(true);
                       }}
-                      className="px-3 py-1.5 bg-[#859F3C] text-white text-xs font-bold rounded-lg shadow-md cursor-pointer hover:bg-[#738b32]"
+                      className="w-full py-2.5 px-4 rounded-xl border border-stone-300 hover:border-[#859F3C] bg-stone-50 hover:bg-stone-100 text-stone-700 text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer"
                     >
-                      Change Photo
+                      <ImageIcon className="w-4 h-4 text-[#859F3C]" />
+                      <span>Browse 59 Authentic Collection Images</span>
                     </button>
                   </div>
-                </div>
+                )}
 
-                <button
-                  type="button"
-                  onClick={() => {
-                    setImagePickerTarget('primary');
-                    setShowImagePicker(true);
-                  }}
-                  className="w-full py-2.5 px-4 rounded-xl border border-stone-300 hover:border-[#859F3C] bg-stone-50 hover:bg-stone-100 text-stone-700 text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer"
-                >
-                  <ImageIcon className="w-4 h-4 text-[#859F3C]" />
-                  <span>Choose from 59 Authentic Collection Images</span>
-                </button>
+                {/* Tab 3: Direct URL */}
+                {imageSourceTab === 'url' && (
+                  <div className="space-y-2">
+                    <input
+                      type="text"
+                      value={imageUrl}
+                      onChange={(e) => setImageUrl(e.target.value)}
+                      placeholder="https://... or /collections/if001.jpg"
+                      className="w-full px-4 py-2.5 rounded-xl border border-stone-300 text-xs font-mono"
+                    />
+                    <div className="relative aspect-4/3 w-full rounded-2xl overflow-hidden bg-stone-100 border border-stone-300">
+                      <Image
+                        src={imageUrl}
+                        alt="Preview"
+                        fill
+                        className="object-cover"
+                        unoptimized
+                      />
+                    </div>
+                  </div>
+                )}
 
-                {/* Multi-angle Gallery */}
-                <div className="pt-3 border-t border-stone-200">
-                  <div className="flex items-center justify-between mb-2">
+                {/* Multi-angle Gallery Upload */}
+                <div className="pt-3 border-t border-stone-200 space-y-3">
+                  <div className="flex items-center justify-between">
                     <span className="text-xs uppercase tracking-wider font-bold text-stone-700">
                       Multi-Angle Gallery ({galleryImages.length})
                     </span>
@@ -247,27 +327,37 @@ export default function ProductEditorModal({
                       className="text-xs font-semibold text-[#859F3C] hover:underline flex items-center gap-1 cursor-pointer"
                     >
                       <Plus className="w-3.5 h-3.5" />
-                      <span>Add Angle</span>
+                      <span>From Vault</span>
                     </button>
                   </div>
 
-                  <div className="grid grid-cols-4 gap-2">
-                    {galleryImages.map((img, idx) => (
-                      <div
-                        key={idx}
-                        className="relative aspect-square rounded-lg overflow-hidden bg-stone-100 border border-stone-200 group"
-                      >
-                        <Image src={img} alt="Angle" fill className="object-cover" unoptimized />
-                        <button
-                          type="button"
-                          onClick={() => handleRemoveGalleryImage(img)}
-                          className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-red-400 hover:text-red-300"
+                  {/* Dropzone for Multi-file Gallery upload */}
+                  <PhotoUploadDropzone
+                    onUploadComplete={handleUploadGalleryComplete}
+                    multiple={true}
+                    label="Upload Additional Angles"
+                    sublabel="Upload timber grain closeups, joint details, and room views"
+                  />
+
+                  {galleryImages.length > 0 && (
+                    <div className="grid grid-cols-4 gap-2 pt-2">
+                      {galleryImages.map((img, idx) => (
+                        <div
+                          key={idx}
+                          className="relative aspect-square rounded-xl overflow-hidden bg-stone-100 border border-stone-200 group shadow-2xs"
                         >
-                          <Trash2 className="w-4 h-4" />
-                        </button>
-                      </div>
-                    ))}
-                  </div>
+                          <Image src={img} alt="Angle" fill className="object-cover" unoptimized />
+                          <button
+                            type="button"
+                            onClick={() => handleRemoveGalleryImage(img)}
+                            className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-red-400 hover:text-red-300 cursor-pointer"
+                          >
+                            <Trash2 className="w-4 h-4" />
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
 
                 {/* Stock & Feature Toggles */}

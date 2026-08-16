@@ -47,6 +47,7 @@ import ProductEditorModal from '@/components/admin/ProductEditorModal';
 import FilmEditorModal from '@/components/admin/FilmEditorModal';
 import CategoryEditorModal from '@/components/admin/CategoryEditorModal';
 import InquiryEditorModal from '@/components/admin/InquiryEditorModal';
+import PhotoUploadDropzone from '@/components/admin/PhotoUploadDropzone';
 
 type AdminTab =
   | 'overview'
@@ -125,6 +126,29 @@ export default function AdminDashboardClient() {
 
   // Video preview player inside modal
   const [previewVideoUrl, setPreviewVideoUrl] = useState<string | null>(null);
+
+  // Uploaded media vault photos
+  const [uploadedVaultPhotos, setUploadedVaultPhotos] = useState<string[]>([]);
+
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem('iconfurniture_uploaded_photos');
+      if (saved) setUploadedVaultPhotos(JSON.parse(saved));
+    } catch (e) {
+      console.warn('Failed to load uploaded photos:', e);
+    }
+  }, []);
+
+  const handleVaultPhotoUpload = (newUrls: string[]) => {
+    setUploadedVaultPhotos((prev) => {
+      const merged = [...newUrls, ...prev.filter((u) => !newUrls.includes(u))];
+      try {
+        localStorage.setItem('iconfurniture_uploaded_photos', JSON.stringify(merged));
+      } catch (e) {}
+      return merged;
+    });
+    showToast(`Uploaded ${newUrls.length} photo(s) to Atelier Vault!`);
+  };
 
   // Live Addis Ababa clock
   useEffect(() => {
@@ -1348,15 +1372,74 @@ export default function AdminDashboardClient() {
         {/* TAB 7: MEDIA VAULT */}
         {/* ======================================================== */}
         {activeTab === 'media' && (
-          <div className="space-y-6">
-            <div className="bg-[#1A1A1A] p-6 rounded-3xl border border-white/10">
-              <h2 className="font-serif text-2xl font-bold text-white">
-                Authentic Media Vault (59 Photos • 10 Cinema Videos)
-              </h2>
-              <p className="text-xs text-stone-400 font-sans mt-0.5">
-                All authentic photographs and cinema files stored in public/collections/ and public/videos/.
-              </p>
+          <div className="space-y-8">
+            <div className="bg-[#1A1A1A] p-6 rounded-3xl border border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div>
+                <h2 className="font-serif text-2xl font-bold text-white">
+                  Atelier Media Vault &amp; Device Uploader
+                </h2>
+                <p className="text-xs text-stone-400 font-sans mt-0.5">
+                  Upload new dining table photographs from any mobile phone, camera, or laptop directly to the server.
+                </p>
+              </div>
             </div>
+
+            {/* Device Photo Upload Dropzone */}
+            <div className="bg-[#1A1A1A] border border-white/10 rounded-3xl p-6 space-y-4">
+              <h3 className="font-serif text-lg font-bold text-white flex items-center gap-2">
+                <Upload className="w-4 h-4 text-[#859F3C]" />
+                <span>Upload Photos from Any Device</span>
+              </h3>
+              <PhotoUploadDropzone
+                onUploadComplete={handleVaultPhotoUpload}
+                multiple={true}
+                label="Drop Dining Table Photos Here"
+                sublabel="Select from your phone's photo library, take a photo with your camera, or drag & drop high-res image files"
+              />
+            </div>
+
+            {/* Uploaded Photos Section (if any) */}
+            {uploadedVaultPhotos.length > 0 && (
+              <div className="bg-[#1A1A1A] border border-[#859F3C]/30 rounded-3xl p-6 space-y-4">
+                <div className="flex items-center justify-between">
+                  <h3 className="font-serif text-lg font-bold text-white flex items-center gap-2">
+                    <Sparkles className="w-4 h-4 text-[#859F3C]" />
+                    <span>Uploaded Device Photos ({uploadedVaultPhotos.length})</span>
+                  </h3>
+                  <span className="text-xs font-mono text-[#859F3C]">Saved on Server &amp; Storage</span>
+                </div>
+                <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-3">
+                  {uploadedVaultPhotos.map((photo, idx) => (
+                    <div
+                      key={idx}
+                      className="relative aspect-square rounded-2xl bg-stone-900 border border-[#859F3C]/40 overflow-hidden group shadow-md"
+                    >
+                      <Image
+                        src={photo}
+                        alt="Uploaded Photo"
+                        fill
+                        className="object-cover group-hover:scale-110 transition-transform duration-500"
+                        unoptimized
+                      />
+                      <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center p-2 text-center gap-1.5">
+                        <span className="text-[9px] font-mono text-white truncate w-full">
+                          {photo}
+                        </span>
+                        <button
+                          onClick={() => {
+                            navigator.clipboard.writeText(photo);
+                            showToast(`Copied ${photo} to clipboard!`);
+                          }}
+                          className="px-2.5 py-1 bg-[#859F3C] text-white text-[10px] font-bold rounded cursor-pointer"
+                        >
+                          Copy Path
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
 
             {/* 10 Videos Stream */}
             <div className="space-y-3">

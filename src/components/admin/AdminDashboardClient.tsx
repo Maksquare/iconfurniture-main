@@ -35,9 +35,11 @@ import {
   FileText,
   AlertCircle,
   Copy,
-  ChevronRight,
   TrendingUp,
   Award,
+  LogOut,
+  Lock,
+  Key,
 } from 'lucide-react';
 import { useStore } from '@/lib/store';
 import { Product, Category } from '@/types';
@@ -47,6 +49,7 @@ import ProductEditorModal from '@/components/admin/ProductEditorModal';
 import FilmEditorModal from '@/components/admin/FilmEditorModal';
 import CategoryEditorModal from '@/components/admin/CategoryEditorModal';
 import PhotoUploadDropzone from '@/components/admin/PhotoUploadDropzone';
+import AdminLoginScreen from '@/components/admin/AdminLoginScreen';
 
 type AdminTab =
   | 'overview'
@@ -117,6 +120,32 @@ export default function AdminDashboardClient() {
 
   // Video preview player inside modal
   const [previewVideoUrl, setPreviewVideoUrl] = useState<string | null>(null);
+
+  // Authentication State
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    try {
+      const isAuth =
+        localStorage.getItem('iconfurniture_admin_authenticated') === 'true' ||
+        sessionStorage.getItem('iconfurniture_admin_authenticated') === 'true';
+      setIsAuthenticated(isAuth);
+    } catch {
+      setIsAuthenticated(false);
+    }
+  }, []);
+
+  const handleLogout = () => {
+    try {
+      localStorage.removeItem('iconfurniture_admin_authenticated');
+      sessionStorage.removeItem('iconfurniture_admin_authenticated');
+    } catch {}
+    setIsAuthenticated(false);
+    showToast('Logged out of Admin Console');
+  };
+
+  // Custom password configuration
+  const [newPasswordInput, setNewPasswordInput] = useState('');
 
   // Uploaded media vault photos
   const [uploadedVaultPhotos, setUploadedVaultPhotos] = useState<string[]>([]);
@@ -212,6 +241,19 @@ export default function AdminDashboardClient() {
     reader.readAsText(file);
   };
 
+  if (isAuthenticated === null) {
+    return (
+      <div className="min-h-screen bg-[#111111] flex flex-col items-center justify-center text-white space-y-4">
+        <div className="w-10 h-10 border-2 border-[#859F3C] border-t-transparent rounded-full animate-spin" />
+        <span className="text-xs font-mono text-stone-400">Verifying secure admin session...</span>
+      </div>
+    );
+  }
+
+  if (!isAuthenticated) {
+    return <AdminLoginScreen onLoginSuccess={() => setIsAuthenticated(true)} />;
+  }
+
   return (
     <div className="min-h-screen bg-[#141414] text-stone-100 font-sans flex flex-col selection:bg-[#859F3C] selection:text-white">
       {/* Toast Alert */}
@@ -303,6 +345,15 @@ export default function AdminDashboardClient() {
             className="p-2 rounded-full hover:bg-red-500/20 text-stone-400 hover:text-red-300 transition-colors cursor-pointer"
           >
             <RefreshCw className="w-4 h-4" />
+          </button>
+
+          <button
+            onClick={handleLogout}
+            title="Log Out of Admin Console"
+            className="px-3.5 py-1.5 rounded-full bg-red-500/15 hover:bg-red-500/25 text-red-300 hover:text-white text-xs font-semibold transition-all border border-red-500/30 inline-flex items-center gap-1.5 cursor-pointer ml-1"
+          >
+            <LogOut className="w-3.5 h-3.5 text-red-400" />
+            <span className="hidden sm:inline">Log Out</span>
           </button>
         </div>
       </header>
@@ -1089,6 +1140,50 @@ export default function AdminDashboardClient() {
                 onChange={(e) => updateBrandSettings({ announcement_text: e.target.value })}
                 className="w-full px-4 py-2.5 bg-[#222222] border border-white/10 rounded-xl text-xs text-stone-200 focus:border-[#859F3C]"
               />
+            </div>
+
+            {/* Administrator Password & Security */}
+            <div className="bg-[#1A1A1A] border border-white/10 rounded-3xl p-6 space-y-4">
+              <div className="flex items-center justify-between">
+                <div>
+                  <h3 className="font-serif text-lg font-bold text-white flex items-center gap-2">
+                    <Key className="w-4 h-4 text-[#859F3C]" />
+                    <span>Administrator Master Security Key</span>
+                  </h3>
+                  <p className="text-xs text-stone-400 font-sans">
+                    Change the master password used to log in to this management console.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex flex-col sm:flex-row items-center gap-3">
+                <input
+                  type="text"
+                  value={newPasswordInput}
+                  onChange={(e) => setNewPasswordInput(e.target.value)}
+                  placeholder="Enter new master password (e.g. mysecret2026)"
+                  className="flex-1 w-full px-4 py-2.5 bg-[#222222] border border-white/10 rounded-xl font-mono text-xs text-white placeholder-stone-500 focus:border-[#859F3C]"
+                />
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (!newPasswordInput.trim() || newPasswordInput.trim().length < 4) {
+                      alert('Please enter a password with at least 4 characters');
+                      return;
+                    }
+                    localStorage.setItem('iconfurniture_custom_admin_pwd', newPasswordInput.trim());
+                    showToast('Master security key updated successfully!');
+                    setNewPasswordInput('');
+                  }}
+                  className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-[#859F3C] hover:bg-[#738b32] text-white text-xs font-bold transition-all shadow-md cursor-pointer whitespace-nowrap"
+                >
+                  Update Password
+                </button>
+              </div>
+              <p className="text-[11px] text-stone-500 font-sans">
+                Default backup master key:{' '}
+                <span className="font-mono text-stone-400 font-semibold">iconfurniture2026</span>
+              </p>
             </div>
           </div>
         )}

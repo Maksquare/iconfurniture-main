@@ -117,7 +117,7 @@ export default function Hero() {
                   </h3>
                   <p className="text-[11px] text-stone-500 font-sans">8-Seater • Kiln-Dried Hardwood</p>
                 </div>
-                <span className="font-serif text-sm font-bold text-stone-900">$2,890</span>
+                <span className="font-serif text-sm font-bold text-stone-900">185,000 ETB</span>
               </div>
             </div>
           </motion.div>

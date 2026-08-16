@@ -92,7 +92,7 @@ export default function ProductCard({ product, searchTerm, viewMode = 'grid' }: 
 
           <div className="mt-4 flex items-center justify-between flex-wrap gap-3 pt-3 border-t border-stone-100">
             <span className="font-serif text-xl font-semibold text-stone-900">
-              ${product.price.toLocaleString()}
+              {product.price.toLocaleString()} <span className="text-xs font-mono font-bold text-[#859F3C]">ETB</span>
             </span>
             <div className="flex items-center gap-2">
               <ProductContactChannels productName={product.name} variant="compact" />
@@ -166,7 +166,7 @@ export default function ProductCard({ product, searchTerm, viewMode = 'grid' }: 
       <div className="mt-4 space-y-3">
         <div className="flex items-center justify-between pt-2 border-t border-stone-100">
           <span className="font-serif text-lg font-semibold text-stone-900">
-            ${product.price.toLocaleString()}
+            {product.price.toLocaleString()} <span className="text-xs font-mono font-bold text-[#859F3C]">ETB</span>
           </span>
           <Link
             href={`/shop/${product.slug}`}

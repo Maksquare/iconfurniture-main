@@ -72,8 +72,9 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
               <h1 className="font-serif text-3xl sm:text-4xl font-normal text-[#1A1A1A] leading-tight">
                 {product.name}
               </h1>
-              <p className="font-serif text-2xl font-semibold text-[#1A1A1A] mt-3">
-                ${product.price.toLocaleString()}
+              <p className="font-serif text-2xl font-semibold text-[#1A1A1A] mt-3 flex items-baseline gap-2">
+                <span>{product.price.toLocaleString()}</span>
+                <span className="text-sm font-mono font-bold text-[#859F3C]">ETB</span>
               </p>
             </div>
 

@@ -112,7 +112,7 @@ export default function CartDrawer() {
                           </p>
                         )}
                         <p className="text-xs font-semibold text-stone-800 mt-1">
-                          ${item.product.price.toLocaleString()}
+                          {item.product.price.toLocaleString()} ETB
                         </p>
                       </div>
 
@@ -139,8 +139,8 @@ export default function CartDrawer() {
                             <Plus className="w-3 h-3" />
                           </button>
                         </div>
-                        <span className="text-xs font-semibold text-[#9A6B43]">
-                          ${(item.product.price * item.quantity).toLocaleString()}
+                        <span className="text-xs font-semibold text-[#859F3C]">
+                          {(item.product.price * item.quantity).toLocaleString()} ETB
                         </span>
                       </div>
                     </div>
@@ -155,7 +155,7 @@ export default function CartDrawer() {
                 <div className="flex justify-between items-center text-sm">
                   <span className="text-stone-600 font-sans">Subtotal</span>
                   <span className="font-serif text-lg font-semibold text-stone-900">
-                    ${subtotal.toLocaleString()}
+                    {subtotal.toLocaleString()} ETB
                   </span>
                 </div>
                 <p className="text-xs text-stone-500">

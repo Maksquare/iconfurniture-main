@@ -72,7 +72,7 @@ export default function IconCatalogShowcase() {
               <div className="mt-4 space-y-3">
                 <div className="pt-3 border-t border-stone-100 flex items-center justify-between">
                   <span className="font-serif text-lg font-bold text-[#1A1A1A]">
-                    ${product.price.toLocaleString()}
+                    {product.price.toLocaleString()} <span className="text-xs font-mono font-bold text-[#859F3C]">ETB</span>
                   </span>
 
                   <Link

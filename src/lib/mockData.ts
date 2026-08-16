@@ -15,7 +15,7 @@ export const MOCK_PRODUCTS: Product[] = [
     slug: 'kanso-organic-walnut-dining-table',
     description:
       'Mastercrafted from sustainably sourced solid American Walnut. The Kanso dining centerpiece highlights continuous timber grain movement, softened organic bevel edges, and precision mortise-and-tenon joinery.',
-    price: 2890,
+    price: 185000,
     category_id: 'c1',
     category: { id: 'c1', name: 'Solid Hardwood Tables', slug: 'solid-hardwood' },
     image_url: '/collections/if001.jpg',
@@ -36,7 +36,7 @@ export const MOCK_PRODUCTS: Product[] = [
     slug: 'pavilion-round-gathering-dining-table',
     description:
       'An intimate circular dining table designed to inspire continuous conversation. Features a radial sunburst timber layout atop an architectural fluted conical pedestal base.',
-    price: 2450,
+    price: 165000,
     category_id: 'c3',
     category: { id: 'c3', name: 'Round & Gathering Tables', slug: 'round-gathering' },
     image_url: '/collections/if005.jpg',
@@ -57,7 +57,7 @@ export const MOCK_PRODUCTS: Product[] = [
     slug: 'lumina-travertine-smoked-oak-dining-table',
     description:
       'Monumental dining architecture blending a hand-honed porous Italian Travertine stone tabletop with heavy smoked solid oak trestle supports and brushed brass accents.',
-    price: 3850,
+    price: 245000,
     category_id: 'c2',
     category: { id: 'c2', name: 'Stone & Marble Tables', slug: 'stone-marble' },
     image_url: '/collections/if009.jpg',
@@ -78,7 +78,7 @@ export const MOCK_PRODUCTS: Product[] = [
     slug: 'solstice-minimalist-trestle-dining-table',
     description:
       'Refined Nordic clarity. Dual sculpted trestle legs united by an exposed through-tenon structural beam, supporting a monolithic floating tabletop with aerofoil chamfered edges.',
-    price: 2650,
+    price: 175000,
     category_id: 'c1',
     category: { id: 'c1', name: 'Solid Hardwood Tables', slug: 'solid-hardwood' },
     image_url: '/collections/if013.jpg',
@@ -99,7 +99,7 @@ export const MOCK_PRODUCTS: Product[] = [
     slug: 'atelier-live-edge-heritage-dining-table',
     description:
       'Celebrates the raw organic contours of century-old hardwood slabs. Bookmatched pairs connected with hand-inlaid bronze butterfly tenons, preserving natural bark line topography.',
-    price: 4600,
+    price: 295000,
     category_id: 'c1',
     category: { id: 'c1', name: 'Solid Hardwood Tables', slug: 'solid-hardwood' },
     image_url: '/collections/if017.jpg',
@@ -120,7 +120,7 @@ export const MOCK_PRODUCTS: Product[] = [
     slug: 'sora-sculptural-oval-dining-table',
     description:
       'A harmonious racetrack oval dining table anchored by dual monolithic cylindrical columns. Soft curved geometry creates fluid seating flow around the entire perimeter.',
-    price: 3200,
+    price: 210000,
     category_id: 'c4',
     category: { id: 'c4', name: 'Sculptural Pedestal Tables', slug: 'sculptural-pedestal' },
     image_url: '/collections/if021.jpg',
@@ -141,7 +141,7 @@ export const MOCK_PRODUCTS: Product[] = [
     slug: 'elysian-extendable-grand-banquet-table',
     description:
       'Seamless transition from everyday intimate family dining to monumental 14-person celebratory banquets with concealed whisper-glide German butterfly extension mechanics.',
-    price: 4950,
+    price: 320000,
     category_id: 'c5',
     category: { id: 'c5', name: 'Extendable & Grand Tables', slug: 'extendable-grand' },
     image_url: '/collections/if025.jpg',
@@ -162,7 +162,7 @@ export const MOCK_PRODUCTS: Product[] = [
     slug: 'brutalist-smoked-glass-timber-dining-table',
     description:
       'Bold architectural statement featuring an exposed geometric timber frame supporting a floating 19mm heavy tempered smoked crystal glass top with polished bevel edges.',
-    price: 3100,
+    price: 195000,
     category_id: 'c4',
     category: { id: 'c4', name: 'Sculptural Pedestal Tables', slug: 'sculptural-pedestal' },
     image_url: '/collections/if029.jpg',
@@ -183,7 +183,7 @@ export const MOCK_PRODUCTS: Product[] = [
     slug: 'aura-fluted-pillar-round-dining-table',
     description:
       'A compact circular dining centerpiece highlighting a 360-degree hand-fluted solid timber pedestal. Perfect for urban penthouses, breakfast pavilions, and intimate dining alcoves.',
-    price: 2150,
+    price: 145000,
     category_id: 'c3',
     category: { id: 'c3', name: 'Round & Gathering Tables', slug: 'round-gathering' },
     image_url: '/collections/if033.jpg',
@@ -204,7 +204,7 @@ export const MOCK_PRODUCTS: Product[] = [
     slug: 'vesper-nero-marquina-marble-dining-table',
     description:
       'Extravagant Spanish Nero Marquina black marble top adorned with striking organic white and gold calcite veins, anchored by twin monolithic carbon obsidian steel pillars.',
-    price: 4400,
+    price: 280000,
     category_id: 'c2',
     category: { id: 'c2', name: 'Stone & Marble Tables', slug: 'stone-marble' },
     image_url: '/collections/if037.jpg',
@@ -225,7 +225,7 @@ export const MOCK_PRODUCTS: Product[] = [
     slug: 'nordic-minimalist-plank-dining-table',
     description:
       'Two full-length matched solid oak planks separated by a central shadow gap. Exposed through-tenon dowel joints showcase the authentic craftsmanship of heritage woodcraft.',
-    price: 2580,
+    price: 168000,
     category_id: 'c1',
     category: { id: 'c1', name: 'Solid Hardwood Tables', slug: 'solid-hardwood' },
     image_url: '/collections/if041.jpg',
@@ -246,7 +246,7 @@ export const MOCK_PRODUCTS: Product[] = [
     slug: 'kyoto-floating-cantilever-dining-table',
     description:
       'Japanese-inspired spatial dining table featuring recessed shadowline aprons that create the illusion of a floating solid timber plane above angled bridge supports.',
-    price: 3350,
+    price: 215000,
     category_id: 'c1',
     category: { id: 'c1', name: 'Solid Hardwood Tables', slug: 'solid-hardwood' },
     image_url: '/collections/if045.jpg',
@@ -267,7 +267,7 @@ export const MOCK_PRODUCTS: Product[] = [
     slug: 'bespoke-grand-residence-feast-table',
     description:
       'A monumental 14-foot dining table engineered for grand estates, diplomatic residences, and luxury banquet halls. Custom crafted with continuous timber grain and triple pedestal columns.',
-    price: 6800,
+    price: 450000,
     category_id: 'c5',
     category: { id: 'c5', name: 'Extendable & Grand Tables', slug: 'extendable-grand' },
     image_url: '/collections/if049.jpg',
@@ -288,7 +288,7 @@ export const MOCK_PRODUCTS: Product[] = [
     slug: 'terra-fluted-pedestal-dining-table',
     description:
       'Warm artisanal earthy luxury. Rich oiled chestnut tabletop resting atop an architectural fluted terracotta-hued ceramic and timber monolithic column.',
-    price: 2900,
+    price: 190000,
     category_id: 'c3',
     category: { id: 'c3', name: 'Round & Gathering Tables', slug: 'round-gathering' },
     image_url: '/collections/if053.jpg',
@@ -309,7 +309,7 @@ export const MOCK_PRODUCTS: Product[] = [
     slug: 'zenith-elliptical-sculptural-dining-table',
     description:
       'Aerodynamic sculptural dining centerpiece with compound curved aerofoil edge profiling and monolithic angled timber blade legs that maximize legroom for every guest.',
-    price: 3600,
+    price: 235000,
     category_id: 'c4',
     category: { id: 'c4', name: 'Sculptural Pedestal Tables', slug: 'sculptural-pedestal' },
     image_url: '/collections/if057.jpg',

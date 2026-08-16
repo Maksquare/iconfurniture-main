@@ -19,8 +19,12 @@ export const metadata: Metadata = {
   description:
     'Curated upscale furniture handcrafted from sustainable solid woods, tactile fabrics, and architectural stonework. Designed to elevate modern living spaces.',
   icons: {
-    icon: '/assets/iconfurniture-logo.png',
-    apple: '/assets/iconfurniture-logo.png',
+    icon: [
+      { url: '/assets/if-favicon.png' },
+      { url: '/if-favicon.png' },
+    ],
+    shortcut: '/assets/if-favicon.png',
+    apple: '/assets/if-favicon.png',
   },
 };
 

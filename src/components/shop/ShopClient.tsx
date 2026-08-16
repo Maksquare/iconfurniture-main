@@ -4,6 +4,7 @@ import React, { useState, useMemo, useEffect, useRef, useCallback } from 'react'
 import Image from 'next/image';
 import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import ProductGrid from '@/components/shop/ProductGrid';
+import ProductPagination from '@/components/shop/ProductPagination';
 import { Category, Product } from '@/types';
 import {
   Search,
@@ -37,6 +38,11 @@ export default function ShopClient({ initialProducts, categories }: ShopClientPr
   const [sortBy, setSortBy] = useState<'featured' | 'price-low' | 'price-high' | 'name'>('featured');
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
 
+  // Pagination state
+  const [currentPage, setCurrentPage] = useState<number>(Number(searchParams.get('page')) || 1);
+  const [itemsPerPage, setItemsPerPage] = useState<number>(6);
+  const gridAnchorRef = useRef<HTMLDivElement>(null);
+
   // Search state
   const [searchInput, setSearchInput] = useState<string>(searchParams.get('q') || '');
   const [searchTerm, setSearchTerm] = useState<string>(searchParams.get('q') || '');
@@ -49,12 +55,18 @@ export default function ShopClient({ initialProducts, categories }: ShopClientPr
     const q = searchParams.get('q') || '';
     setSearchInput(q);
     setSearchTerm(q);
+    const pageParam = Number(searchParams.get('page'));
+    if (pageParam && !isNaN(pageParam)) {
+      setCurrentPage(pageParam);
+    }
   }, [searchParams]);
 
   // Sync category param with URL
   const handleCategoryChange = (slug: string) => {
     setSelectedCategory(slug);
+    setCurrentPage(1);
     const params = new URLSearchParams(searchParams.toString());
+    params.delete('page');
     if (slug === 'all') {
       params.delete('category');
     } else {
@@ -128,6 +140,38 @@ export default function ShopClient({ initialProducts, categories }: ShopClientPr
         return (b.featured ? 1 : 0) - (a.featured ? 1 : 0);
       });
   }, [initialProducts, categories, selectedCategory, searchTerm, sortBy]);
+
+  // Pagination Calculations
+  const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
+
+  useEffect(() => {
+    if (totalPages > 0 && currentPage > totalPages) {
+      setCurrentPage(1);
+    }
+  }, [totalPages, currentPage]);
+
+  const paginatedProducts = useMemo(() => {
+    const start = (currentPage - 1) * itemsPerPage;
+    return filteredProducts.slice(start, start + itemsPerPage);
+  }, [filteredProducts, currentPage, itemsPerPage]);
+
+  const handlePageChange = (newPage: number) => {
+    setCurrentPage(newPage);
+    const params = new URLSearchParams(searchParams.toString());
+    params.set('page', String(newPage));
+    router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+
+    // Smooth scroll to top of collection
+    gridAnchorRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
+  const handleItemsPerPageChange = (newSize: number) => {
+    setItemsPerPage(newSize);
+    setCurrentPage(1);
+    const params = new URLSearchParams(searchParams.toString());
+    params.delete('page');
+    router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+  };
 
   // Live autocomplete suggestions
   const suggestions = useMemo(() => {
@@ -391,9 +435,12 @@ export default function ShopClient({ initialProducts, categories }: ShopClientPr
           )}
         </div>
 
+        {/* Scroll Anchor */}
+        <div ref={gridAnchorRef} className="scroll-mt-28" />
+
         {/* Product Grid */}
         <ProductGrid
-          products={filteredProducts}
+          products={paginatedProducts}
           searchTerm={searchTerm}
           viewMode={viewMode}
           emptyMessage={
@@ -401,6 +448,16 @@ export default function ShopClient({ initialProducts, categories }: ShopClientPr
               ? `No pieces found for "${searchTerm}"`
               : 'No furniture pieces matched your filters.'
           }
+        />
+
+        {/* Luxury Smart Pagination */}
+        <ProductPagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          totalItems={filteredProducts.length}
+          itemsPerPage={itemsPerPage}
+          onPageChange={handlePageChange}
+          onItemsPerPageChange={handleItemsPerPageChange}
         />
 
         {/* Bottom Concierge Banner */}

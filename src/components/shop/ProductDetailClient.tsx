@@ -117,7 +117,7 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
                 {inquirySent ? (
                   <>
                     <Check className="w-4 h-4" />
-                    <span>Inquiry Request Sent • Atelier Will Contact You</span>
+                    <span>Request Sent • Our Team Will Contact You Shortly</span>
                   </>
                 ) : (
                   <>
@@ -185,7 +185,7 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
                       <strong className="text-[#1A1A1A]">Materials:</strong> {product.materials || '100% Solid Kiln-Dried Hardwood'}
                     </p>
                     <p>
-                      <strong className="text-[#1A1A1A]">Origin:</strong> Handcrafted in Addis Ababa Atelier
+                      <strong className="text-[#1A1A1A]">Origin:</strong> Handcrafted in Addis Ababa, Ethiopia
                     </p>
                   </div>
                 )}

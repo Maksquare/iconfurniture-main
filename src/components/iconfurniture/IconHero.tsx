@@ -115,20 +115,19 @@ export default function IconHero({
                 </span>
               </div>
               <div className="text-[11px] sm:text-[11.5px] font-medium text-stone-500 tracking-tight">
-                Editorial Living Spaces Crafted
+                Dining Tables Crafted
               </div>
             </div>
           </div>
 
-          {/* Tagline - Hidden on small screens to prevent distracting overlap with 3D model */}
+          {/* Tagline - Simple, clear dining table statement */}
           <div className="relative hidden md:block">
             <p className="text-[#1A1A1A] font-serif font-normal text-xl sm:text-[23px] leading-snug tracking-tight">
-              Architectural modern living curated from sustainable solid woods,
-              tactile bouclé fabrics, and honed Italian stonework.
+              Handmade luxury dining tables crafted from solid wood and natural marble stone. Built strong to last for generations in your home.
             </p>
             <div className="mt-3 flex items-center gap-2 text-xs font-semibold text-stone-500">
               <span className="w-2 h-2 rounded-full bg-[#859F3C]" />
-              <span>Bespoke Atelier • Mortise & Tenon Joinery</span>
+              <span>Custom Made to Order • 100% Solid Natural Wood</span>
             </div>
           </div>
         </div>
@@ -142,11 +141,11 @@ export default function IconHero({
               <span className="text-[#859F3C] font-mono text-xs font-semibold">/01</span>
             </div>
             <div className="flex items-center gap-2 hover:text-[#1A1A1A] transition-colors">
-              <span className="text-[#1A1A1A] font-medium">Honed Travertine & Marble</span>
+              <span className="text-[#1A1A1A] font-medium">Natural Marble & Stone</span>
               <span className="text-[#859F3C] font-mono text-xs font-semibold">/02</span>
             </div>
             <div className="flex items-center gap-2 hover:text-[#1A1A1A] transition-colors">
-              <span className="text-[#1A1A1A] font-medium">Bespoke 3D Atelier</span>
+              <span className="text-[#1A1A1A] font-medium">Custom Sizes & Colors</span>
               <span className="text-[#859F3C] font-mono text-xs font-semibold">/03</span>
             </div>
           </div>
@@ -160,7 +159,7 @@ export default function IconHero({
             <span className="w-6 h-6 rounded-full bg-[#1A1A1A] text-white flex items-center justify-center transition-transform duration-300 group-hover:translate-x-0.5 group-hover:scale-110">
               <ArrowRight className="w-3.5 h-3.5 stroke-[2.5]" />
             </span>
-            <span>Our Cataloge</span>
+            <span>View Dining Tables</span>
 
             {/* Pulsing aura */}
             <span className="absolute -inset-1 rounded-full bg-[#859F3C]/40 animate-ping pointer-events-none -z-10 opacity-75" />

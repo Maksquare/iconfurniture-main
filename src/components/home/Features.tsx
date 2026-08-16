@@ -47,7 +47,7 @@ export default function Features() {
             className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-stone-900 border border-stone-800 text-[#859F3C] text-xs font-semibold uppercase tracking-widest rounded-full"
           >
             <Sparkles className="w-3.5 h-3.5" />
-            <span>Atelier Joinery Standard</span>
+            <span>How We Build Our Tables</span>
           </motion.div>
 
           <motion.h2
@@ -57,8 +57,8 @@ export default function Features() {
             transition={{ delay: 0.1 }}
             className="font-serif text-3xl sm:text-5xl font-normal tracking-tight text-white leading-tight"
           >
-            Mastercrafted for a lifetime of{' '}
-            <span className="text-[#859F3C] italic font-light">shared feasts.</span>
+            Built by hand. Built to last{' '}
+            <span className="text-[#859F3C] italic font-light">for your whole family.</span>
           </motion.h2>
         </div>
 

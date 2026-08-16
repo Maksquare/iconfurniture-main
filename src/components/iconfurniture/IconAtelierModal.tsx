@@ -28,9 +28,9 @@ export default function IconAtelierModal({
               <Play className="w-4 h-4 fill-white ml-0.5" />
             </span>
             <div>
-              <h3 className="font-serif font-bold text-lg text-white">Icon Furniture Atelier</h3>
+              <h3 className="font-serif font-bold text-lg text-white">Icon Furniture Workshop</h3>
               <p className="text-xs text-stone-400">
-                Generational woodwork, Italian travertine, and bespoke tailoring
+                How we build solid wood and stone dining tables by hand
               </p>
             </div>
           </div>
@@ -50,10 +50,10 @@ export default function IconAtelierModal({
               <Play className="w-7 h-7 fill-white ml-1" />
             </div>
             <p className="mt-4 font-serif text-base font-semibold text-stone-100">
-              The Atelier Craftsmanship Documentary
+              How Our Dining Tables Are Made
             </p>
             <span className="text-xs text-stone-400 font-sans">
-              Discover how our master woodworkers sculpt solid American Walnut and Italian stone
+              Watch how our skilled carpenters build solid wood and natural stone dining tables by hand
             </span>
           </div>
 
@@ -86,9 +86,9 @@ export default function IconAtelierModal({
                 <Box className="w-4 h-4" />
                 <span>03. Tailored Finishes</span>
               </div>
-              <h4 className="font-serif font-semibold text-sm text-white">Natural Hardwax Oils</h4>
+              <h4 className="font-serif font-semibold text-sm text-white">Natural Wood Oil Finish</h4>
               <p className="text-xs text-stone-400 leading-relaxed font-sans">
-                VOC-free botanical wax oils that preserve the raw tactile touch of wood.
+                Safe, natural oil finish that protects the wood while keeping its natural feel and beauty.
               </p>
             </div>
           </div>

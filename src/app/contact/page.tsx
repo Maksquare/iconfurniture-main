@@ -124,8 +124,8 @@ export default function ContactPage() {
       a: 'We provide comprehensive white-glove delivery and assembly across Addis Ababa and nationwide. Our team ensures careful placement and packaging removal.',
     },
     {
-      q: 'Do you offer custom fabric and wood stain choices?',
-      a: 'Yes. We offer an extensive selection of premium upholstery fabrics (including French bouclé, velvets, and leathers) alongside solid natural walnut, oak, and custom wood stains.',
+      q: 'Can I choose custom dimensions, wood species, and stone tops?',
+      a: 'Yes. We offer solid natural American walnut, white oak, and custom wood stains alongside natural Italian travertine and marble stone tops in any length and seating capacity.',
     },
   ];
 

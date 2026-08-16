@@ -261,11 +261,11 @@ export default function AboutPage() {
               </div>
 
               <p className="text-stone-300 text-sm sm:text-base font-sans leading-relaxed">
-                When Icon Furniture was founded, our mission was defined by a singular ambition: to dedicate our entire guild to the master craft of luxury dining tables—the sacred furniture centerpiece where human communion, shared feasts, and generational memories take place.
+                When Icon Furniture was founded, our mission was simple: to focus 100% on making the best luxury dining tables—the centerpiece of your home where family gatherings, meals, and memories happen.
               </p>
 
               <p className="text-stone-300 text-sm sm:text-base font-sans leading-relaxed">
-                Every dining table emerging from our atelier is an intersection of architectural proportion and natural timber warmth. We combine solid American walnuts and kiln-dried hardwoods with honed Roman travertine stone and food-safe botanical hardwax finishes designed to endure across generations.
+                Every dining table made in our workshop is crafted from solid natural woods and natural stone with safe, durable finishes designed to last for generations.
               </p>
 
               {/* Founder's 3 Core Commitments */}
@@ -327,12 +327,12 @@ export default function AboutPage() {
               >
                 <IconImage
                   src="/collections/if011.jpg"
-                  alt="Bouclé Armchair Craftsmanship"
+                  alt="Solid Wood Dining Table Craftsmanship"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
-                  <span className="text-white text-xs font-serif italic">Artisanal bouclé stitching</span>
+                  <span className="text-white text-xs font-serif italic">Handcrafted solid wood joinery</span>
                 </div>
               </motion.div>
 
@@ -533,13 +533,13 @@ export default function AboutPage() {
             
             <div className="lg:col-span-8 space-y-4">
               <span className="text-xs uppercase tracking-widest font-bold text-[#859F3C]">
-                Collaborate With Our Designers
+                Talk to Our Team
               </span>
               <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal leading-tight">
-                Ready to Commission Your Next Statement Piece?
+                Ready to Order Your Custom Dining Table?
               </h2>
               <p className="text-stone-300 text-sm sm:text-base font-sans leading-relaxed max-w-2xl">
-                Whether you are an architect detailing a full residence or an individual collector seeking custom wood stains and proportions, our master concierge is available across all direct channels.
+                Whether you need a dining table for your home or a large custom table for a special project, our team is ready to assist you directly by phone, Telegram, or message.
               </p>
 
               {/* Instant Social Channels Strip */}

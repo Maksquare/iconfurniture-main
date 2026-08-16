@@ -12,7 +12,7 @@ export default function IconImage({
   src,
   alt,
   fallbackTitle = 'ICON FURNITURE',
-  fallbackSubtitle = 'Living Heirloom • Atelier Craft',
+  fallbackSubtitle = 'Dining Tables • Icon Furniture',
   className = '',
   ...props
 }: IconImageProps) {

@@ -138,7 +138,7 @@ export default function IconFeatures() {
                 Commission Your Dining Table Today
               </div>
               <div className="text-xs text-stone-400 font-sans">
-                Speak with our master craftsmen to design a dining table built exclusively for your home
+                Talk to our team to order a dining table made exactly to your size, wood type, and style
               </div>
             </div>
           </div>
@@ -148,13 +148,13 @@ export default function IconFeatures() {
               href="/contact"
               className="flex-1 md:flex-initial px-5 py-2.5 rounded-full bg-[#859F3C] hover:bg-[#738b32] text-white text-xs font-bold transition-all hover:shadow-[0_0_20px_rgba(133,159,60,0.45)] text-center"
             >
-              Start a Bespoke Order
+              Order a Custom Table
             </Link>
             <Link
               href="/shop"
               className="flex-1 md:flex-initial px-5 py-2.5 rounded-full bg-white/5 hover:bg-white/10 text-white text-xs font-semibold transition-all border border-white/10 text-center"
             >
-              Browse Collection
+              Browse All Tables
             </Link>
           </div>
         </div>

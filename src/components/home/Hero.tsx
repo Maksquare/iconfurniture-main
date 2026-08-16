@@ -52,7 +52,7 @@ export default function Hero() {
               </div>
               <div>
                 <p className="font-serif text-lg font-bold text-[#1A1A1A] leading-tight">15k+ Homes</p>
-                <p className="text-[11px] text-stone-500 font-sans">Curated worldwide active client sanctuaries</p>
+                <p className="text-[11px] text-stone-500 font-sans">Dining tables crafted for families across Addis Ababa</p>
               </div>
             </motion.div>
 
@@ -64,7 +64,7 @@ export default function Hero() {
               className="space-y-3 max-w-xs"
             >
               <p className="text-stone-700 text-sm font-sans leading-relaxed font-normal">
-                Handcrafted bespoke luxury dining tables designed as the generational centerpiece of the home, sculpted from old-growth hardwoods and honed natural stone.
+                Handmade luxury dining tables built from solid wood and natural stone. Designed to bring family and friends together for a lifetime.
               </p>
               <Link
                 href="/shop"

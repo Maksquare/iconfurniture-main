@@ -219,7 +219,7 @@ export default function CinemaClient() {
               </div>
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/15 text-xs font-bold uppercase tracking-widest text-[#859F3C]">
                 <Film className="w-3.5 h-3.5" />
-                <span>Atelier Cinema & Visual Journal</span>
+                <span>Our Films &amp; Making-Of Videos</span>
               </div>
             </div>
 
@@ -261,7 +261,7 @@ export default function CinemaClient() {
                 Curated Film Index
               </span>
               <h2 className="font-serif text-2xl sm:text-3xl text-[#1A1A1A] font-normal">
-                Explore The 10 Atelier Chapters
+                Explore Our 10 Workshop Videos
               </h2>
             </div>
 

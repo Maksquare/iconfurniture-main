@@ -16,8 +16,8 @@ const QUICK_LINKS = [
   { label: 'Solid Hardwood Tables', href: '/shop?category=solid-hardwood', tag: 'Walnut & Oak' },
   { label: 'Stone & Marble Tables', href: '/shop?category=stone-marble', tag: 'Travertine' },
   { label: 'Round Gathering Tables', href: '/shop?category=round-gathering', tag: 'Circular' },
-  { label: 'Atelier Cinema & Films', href: '/cinema', tag: 'Watch' },
-  { label: 'About Icon Atelier', href: '/about', tag: 'Heritage' },
+  { label: 'Our Films & Videos', href: '/cinema', tag: 'Watch' },
+  { label: 'About Icon Furniture', href: '/about', tag: 'Our Story' },
 ];
 
 // Popular search suggestions

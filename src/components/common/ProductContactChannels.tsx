@@ -187,13 +187,13 @@ export default function ProductContactChannels({
       <div className="flex items-center justify-between pb-3 border-b border-stone-200/60">
         <div>
           <h4 className="font-serif font-semibold text-[#1A1A1A] text-sm">
-            Order Inquiries & Direct Concierge
+            Order Inquiries &amp; Contact
           </h4>
           <p className="text-[11px] text-stone-500 font-sans">
             Connect with Icon Furniture directly across your preferred channel:
           </p>
         </div>
-        <span className="w-2 h-2 rounded-full bg-[#859F3C] animate-pulse" title="Atelier Active" />
+        <span className="w-2 h-2 rounded-full bg-[#859F3C] animate-pulse" title="Team Online" />
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">

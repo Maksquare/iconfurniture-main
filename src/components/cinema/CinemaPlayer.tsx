@@ -257,7 +257,7 @@ export default function CinemaPlayer({ film, onNextFilm, onPrevFilm, autoPlay = 
           <div className="mt-2 flex items-center gap-3">
             <span className="h-px w-12 bg-gradient-to-r from-transparent via-[#859F3C] to-transparent" />
             <span className="text-[10px] tracking-[0.3em] uppercase font-mono text-stone-300 font-semibold">
-              Atelier Cinema Series
+              Icon Furniture Video Series
             </span>
             <span className="h-px w-12 bg-gradient-to-r from-transparent via-[#859F3C] to-transparent" />
           </div>

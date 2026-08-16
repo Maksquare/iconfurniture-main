@@ -53,6 +53,7 @@ export default function IconNavbar({ isDark = false }: IconNavbarProps) {
 
   const navLinks = [
     { name: 'Collection', href: '/shop' },
+    { name: 'Cinema', href: '/cinema' },
     { name: 'About', href: '/about' },
     { name: 'Contact', href: '/contact' },
   ];

@@ -24,6 +24,7 @@ export default function Navbar() {
 
   const navLinks = [
     { name: 'Collection', href: '/shop' },
+    { name: 'Cinema', href: '/cinema' },
     { name: 'About', href: '/about' },
     { name: 'Contact', href: '/contact' },
   ];

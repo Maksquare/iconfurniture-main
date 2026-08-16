@@ -125,6 +125,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/cinema" className="hover:text-[#859F3C] transition-colors">
+                  Cinema & Visual Journal
+                </Link>
+              </li>
+              <li>
                 <Link href="/about" className="hover:text-[#859F3C] transition-colors">
                   About & Craftsmanship
                 </Link>

@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-primary: #fdfbf7;
+    --bg-surface: #f7f4ee;
+    --bg-card: #ffffff;
+    --text-primary: #1c1917;
+    --text-muted: #78716c;
+    --accent-wood: #9a6b43;
+    --accent-dark: #292524;
+    --border-light: #e7e5e4;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+  }
+
+  body {
+    font-family: var(--font-sans), 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    background-color: #fdfbf7;
+    color: #1c1917;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, .font-serif {
+    font-family: var(--font-serif), 'Playfair Display', Georgia, serif;
+  }
+}
+
+/* Custom luxury furniture utility classes */
+.bg-warm-neutral {
+  background-color: #fdfbf7;
+}
+
+.bg-linen {
+  background-color: #f4efe6;
+}
+
+.bg-charcoal {
+  background-color: #1c1917;
+}
+
+.text-charcoal {
+  color: #1c1917;
+}
+
+.text-wood {
+  color: #9a6b43;
+}
+
+.border-warm {
+  border-color: #e7e5e4;
+}
+
+.image-zoom-container {
+  overflow: hidden;
+}
+
+.image-zoom-container img {
+  transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.image-zoom-container:hover img {
+  transform: scale(1.05);
+}

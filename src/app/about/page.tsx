@@ -14,6 +14,7 @@ import {
   Star,
   Phone,
   CheckCircle2,
+  Award,
 } from 'lucide-react';
 import {
   InstagramIcon,
@@ -171,7 +172,145 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ─── 2. Editorial Dual-Image & Manifesto Story ────────────── */}
+      {/* ─── 2. Founder & Visionary Spotlight (High-End Editorial Showcase) ─── */}
+      <section className="py-20 sm:py-28 bg-[#1A1A1A] text-white border-y border-white/10 relative overflow-hidden">
+        {/* Ambient Radial Lighting */}
+        <div className="absolute -top-32 -left-32 w-[650px] h-[650px] bg-[#859F3C]/15 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -bottom-32 -right-32 w-[550px] h-[550px] bg-[#859F3C]/10 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            
+            {/* Left: Founder's Framed High-End Editorial Portrait */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 30 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              className="lg:col-span-5 relative"
+            >
+              {/* Outer Luxury Architectural Glow Frame */}
+              <div className="relative rounded-3xl p-3 bg-gradient-to-br from-white/20 via-white/5 to-white/15 border border-white/20 shadow-2xl backdrop-blur-md">
+                
+                {/* Inner Image Container with High-Res Founder Portrait */}
+                <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-stone-950 shadow-inner group">
+                  <Image
+                    src="/about/Founder.jpg"
+                    alt="Founder of Icon Furniture"
+                    fill
+                    priority
+                    className="object-cover object-center group-hover:scale-104 transition-transform duration-700 ease-out"
+                  />
+                  
+                  {/* Subtle Vignette Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-transparent pointer-events-none" />
+
+                  {/* Floating Luxury Founder Hallmark Badge */}
+                  <div className="absolute bottom-4 inset-x-4 p-4 rounded-2xl bg-black/75 backdrop-blur-md border border-white/15 text-white flex items-center justify-between">
+                    <div>
+                      <div className="text-[10px] uppercase font-bold tracking-widest text-[#859F3C]">
+                        Founder & Creative Director
+                      </div>
+                      <div className="font-serif text-base font-semibold text-white">
+                        Icon Furniture Design House
+                      </div>
+                    </div>
+                    <div className="w-10 h-10 rounded-xl bg-[#859F3C] text-white flex items-center justify-center shadow-[0_0_16px_rgba(133,159,60,0.6)]">
+                      <Sparkles className="w-4 h-4 stroke-[2]" />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Subtle Geometric Corner Accents */}
+                <span className="absolute top-2 left-2 w-3.5 h-3.5 border-t-2 border-l-2 border-[#859F3C]" />
+                <span className="absolute top-2 right-2 w-3.5 h-3.5 border-t-2 border-r-2 border-[#859F3C]" />
+                <span className="absolute bottom-2 left-2 w-3.5 h-3.5 border-b-2 border-l-2 border-[#859F3C]" />
+                <span className="absolute bottom-2 right-2 w-3.5 h-3.5 border-b-2 border-r-2 border-[#859F3C]" />
+              </div>
+
+              {/* Floating Quality Badge Behind/Side */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="hidden sm:flex absolute -bottom-6 -left-6 bg-[#859F3C] text-white px-5 py-3 rounded-2xl shadow-xl border border-white/20 items-center gap-3"
+              >
+                <Award className="w-6 h-6 text-white shrink-0" />
+                <div className="text-left">
+                  <div className="text-[10px] uppercase font-bold tracking-wider text-white/90">Ethically Handcrafted</div>
+                  <div className="text-xs font-bold text-white">Master Artisanal Standard</div>
+                </div>
+              </motion.div>
+            </motion.div>
+
+            {/* Right: Founder's Story, Vision & Manifesto */}
+            <div className="lg:col-span-7 space-y-6 lg:pl-4">
+              
+              <div className="space-y-3">
+                <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/10 border border-white/15 text-xs font-bold uppercase tracking-widest text-[#859F3C]">
+                  <Sparkles className="w-3.5 h-3.5" />
+                  <span>The Visionary Monograph</span>
+                </div>
+
+                <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-white leading-tight">
+                  &ldquo;We Build Sanctuaries, <br />
+                  <span className="italic text-[#859F3C]">Not Just Furniture.&rdquo;</span>
+                </h2>
+              </div>
+
+              <p className="text-stone-300 text-sm sm:text-base font-sans leading-relaxed">
+                When Icon Furniture was founded, our mission was defined by a singular ambition: to elevate homegrown Ethiopian craftsmanship into an internationally revered standard of architectural luxury and living comfort.
+              </p>
+
+              <p className="text-stone-300 text-sm sm:text-base font-sans leading-relaxed">
+                Every silhouette emerging from our showroom is an intersection of disciplined geometry and organic tactile warmth. We combine solid American walnuts and air-dried hardwoods with honed Roman travertine and hand-tailored bouclé upholstery designed to outlive the ephemeral cycles of mass manufacturing.
+              </p>
+
+              {/* Founder's 3 Core Commitments */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 pt-2">
+                <div className="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-1.5 hover:border-[#859F3C]/60 transition-colors">
+                  <div className="text-xs font-bold text-[#859F3C] font-mono">01. Precision</div>
+                  <div className="font-serif text-sm font-semibold text-white">Sub-Millimeter Joinery</div>
+                  <div className="text-[11px] text-stone-400 font-sans">Mortise-and-tenon joints engineered for generational resilience.</div>
+                </div>
+
+                <div className="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-1.5 hover:border-[#859F3C]/60 transition-colors">
+                  <div className="text-xs font-bold text-[#859F3C] font-mono">02. Purity</div>
+                  <div className="font-serif text-sm font-semibold text-white">100% Solid Hardwood</div>
+                  <div className="text-[11px] text-stone-400 font-sans">Certified renewable timber slabs triple-buffed with botanical wax.</div>
+                </div>
+
+                <div className="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-1.5 hover:border-[#859F3C]/60 transition-colors">
+                  <div className="text-xs font-bold text-[#859F3C] font-mono">03. Heritage</div>
+                  <div className="font-serif text-sm font-semibold text-white">1:1 Concierge</div>
+                  <div className="text-[11px] text-stone-400 font-sans">Custom dimensions, fabrics, and stains tailored for each home.</div>
+                </div>
+              </div>
+
+              {/* Founder Signature & Contact Link */}
+              <div className="pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-4">
+                <div className="space-y-0.5">
+                  <div className="font-serif font-bold text-lg text-white">Icon Furniture Founder & Atelier</div>
+                  <div className="text-xs text-stone-400 font-sans">Addis Ababa, Ethiopia • Available via Telegram & Direct Concierge</div>
+                </div>
+
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#859F3C] hover:bg-[#738b32] text-white font-bold text-xs uppercase tracking-widest transition-all shadow-md hover:shadow-xl hover:scale-102"
+                >
+                  <span>Private Consultation</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* ─── 3. Editorial Dual-Image & Manifesto Story ────────────── */}
       <section className="py-16 sm:py-24 border-y border-stone-200/70 bg-[#f7f6f0]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
@@ -240,8 +379,8 @@ export default function AboutPage() {
                   &ldquo;We don&apos;t design objects to merely occupy space. We sculpt permanent heirlooms that anchor moments of restful pause and human connection.&rdquo;
                 </p>
                 <div className="flex items-center justify-between text-xs text-[#859F3C] font-bold uppercase tracking-wider pt-2 border-t border-stone-100">
-                  <span>Julian Vance</span>
-                  <span className="text-stone-400 font-sans font-medium">Head of Atelier Design</span>
+                  <span>Icon Furniture Atelier</span>
+                  <span className="text-stone-400 font-sans font-medium">Head of Design Guild</span>
                 </div>
               </div>
             </div>
@@ -249,7 +388,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ─── 3. Four Core Pillars ─────────────────────────────────── */}
+      {/* ─── 4. Four Core Pillars ─────────────────────────────────── */}
       <section className="py-20 sm:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
         <div className="text-center max-w-3xl mx-auto space-y-4">
           <span className="text-xs uppercase tracking-widest font-bold text-[#859F3C]">
@@ -305,7 +444,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ─── 4. The 4-Phase Craftsmanship Journey ─────────────────── */}
+      {/* ─── 5. The 4-Phase Craftsmanship Journey ─────────────────── */}
       <section className="py-20 sm:py-28 bg-[#1A1A1A] text-white border-t border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
           <div className="max-w-3xl space-y-4">
@@ -357,7 +496,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ─── 5. Atelier Key Metrics ───────────────────────────────── */}
+      {/* ─── 6. Atelier Key Metrics ───────────────────────────────── */}
       <section className="py-16 sm:py-24 bg-[#F2EDE4] border-y border-stone-300/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center divide-y sm:divide-y-0 sm:divide-x divide-stone-300/80">
@@ -382,7 +521,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ─── 6. Direct Concierge Channels & Final CTA ─────────────── */}
+      {/* ─── 7. Direct Concierge Channels & Final CTA ─────────────── */}
       <section className="py-20 sm:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative rounded-3xl p-8 sm:p-14 bg-gradient-to-br from-[#1A1A1A] via-[#222222] to-[#141414] text-white border border-white/10 shadow-2xl overflow-hidden">
           

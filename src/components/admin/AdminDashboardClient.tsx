@@ -40,6 +40,7 @@ import {
   LogOut,
   Lock,
   Key,
+  UserPlus2,
 } from 'lucide-react';
 import { useStore } from '@/lib/store';
 import { Product, Category } from '@/types';
@@ -182,6 +183,11 @@ export default function AdminDashboardClient() {
 
   // Custom password configuration
   const [newPasswordInput, setNewPasswordInput] = useState('');
+
+  // Create new admin user
+  const [newAdminEmail, setNewAdminEmail] = useState('');
+  const [newAdminPassword, setNewAdminPassword] = useState('');
+  const [isCreatingAdmin, setIsCreatingAdmin] = useState(false);
 
   // Uploaded media vault photos
   const [uploadedVaultPhotos, setUploadedVaultPhotos] = useState<string[]>([]);
@@ -1227,6 +1233,79 @@ export default function AdminDashboardClient() {
               <p className="text-[11px] text-stone-500 font-sans">
                 Default backup master key:{' '}
                 <span className="font-mono text-stone-400 font-semibold">iconfurniture2026</span>
+              </p>
+            </div>
+
+            {/* Create New Admin User */}
+            <div className="bg-[#1A1A1A] border border-white/10 rounded-3xl p-6 space-y-4">
+              <div>
+                <h3 className="font-serif text-lg font-bold text-white flex items-center gap-2">
+                  <UserPlus2 className="w-4 h-4 text-[#859F3C]" />
+                  <span>Create New Admin Account</span>
+                </h3>
+                <p className="text-xs text-stone-400 font-sans mt-0.5">
+                  Add a new admin user who can log in to this management console.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <input
+                  type="email"
+                  value={newAdminEmail}
+                  onChange={(e) => setNewAdminEmail(e.target.value)}
+                  placeholder="newadmin@iconfurniture.com"
+                  className="px-4 py-2.5 bg-[#222222] border border-white/10 rounded-xl font-mono text-xs text-white placeholder-stone-500 focus:border-[#859F3C] outline-none"
+                />
+                <input
+                  type="text"
+                  value={newAdminPassword}
+                  onChange={(e) => setNewAdminPassword(e.target.value)}
+                  placeholder="Choose a strong password"
+                  className="px-4 py-2.5 bg-[#222222] border border-white/10 rounded-xl font-mono text-xs text-white placeholder-stone-500 focus:border-[#859F3C] outline-none"
+                />
+              </div>
+
+              <button
+                type="button"
+                disabled={isCreatingAdmin}
+                onClick={async () => {
+                  if (!newAdminEmail.trim() || !newAdminPassword.trim()) {
+                    showToast('Please fill in both email and password');
+                    return;
+                  }
+                  if (newAdminPassword.trim().length < 6) {
+                    showToast('Password must be at least 6 characters');
+                    return;
+                  }
+                  setIsCreatingAdmin(true);
+                  try {
+                    const { error } = await supabase.auth.signUp({
+                      email: newAdminEmail.trim(),
+                      password: newAdminPassword.trim(),
+                    });
+                    if (error) throw error;
+                    showToast(`Admin account created for ${newAdminEmail.trim()}!`);
+                    setNewAdminEmail('');
+                    setNewAdminPassword('');
+                  } catch (err: unknown) {
+                    const msg = err instanceof Error ? err.message : 'Failed to create admin';
+                    showToast(`Error: ${msg}`);
+                  } finally {
+                    setIsCreatingAdmin(false);
+                  }
+                }}
+                className="px-5 py-2.5 rounded-xl bg-[#859F3C] hover:bg-[#738b32] disabled:opacity-50 text-white text-xs font-bold transition-all shadow-md cursor-pointer inline-flex items-center gap-2"
+              >
+                {isCreatingAdmin ? (
+                  <div className="w-3.5 h-3.5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                ) : (
+                  <UserPlus2 className="w-3.5 h-3.5" />
+                )}
+                <span>{isCreatingAdmin ? 'Creating...' : 'Create Admin Account'}</span>
+              </button>
+
+              <p className="text-[11px] text-stone-500 font-sans">
+                The new admin can log in immediately using the email and password you set above.
               </p>
             </div>
           </div>

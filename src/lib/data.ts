@@ -120,7 +120,23 @@ export async function getProducts(options?: {
       }
       return list;
     }
-    return data as Product[];
+
+    const stored = await getStoredProducts();
+    const storedMap = new Map(stored.map((p) => [p.slug, p]));
+    const enriched = (data as Product[]).map((p) => {
+      const match = storedMap.get(p.slug) || stored.find((s) => s.id === p.id);
+      if (match) {
+        if ((!p.images || p.images.length === 0) && match.images && match.images.length > 0) {
+          p.images = match.images;
+        }
+        if ((!p.gallery || p.gallery.length === 0) && match.gallery && match.gallery.length > 0) {
+          p.gallery = match.gallery;
+        }
+      }
+      return p;
+    });
+
+    return enriched;
   } catch {
     let list = await getStoredProducts();
     const categories = await getStoredCategories();
@@ -159,7 +175,20 @@ export async function getProductBySlug(slug: string): Promise<Product | null> {
       const products = await getStoredProducts();
       return products.find((p) => p.slug === slug || p.id === slug) || null;
     }
-    return data as Product;
+
+    const product = data as Product;
+    const stored = await getStoredProducts();
+    const match = stored.find((p) => p.slug === slug || p.id === product.id);
+    if (match) {
+      if ((!product.images || product.images.length === 0) && match.images && match.images.length > 0) {
+        product.images = match.images;
+      }
+      if ((!product.gallery || product.gallery.length === 0) && match.gallery && match.gallery.length > 0) {
+        product.gallery = match.gallery;
+      }
+    }
+
+    return product;
   } catch {
     const products = await getStoredProducts();
     return products.find((p) => p.slug === slug || p.id === slug) || null;

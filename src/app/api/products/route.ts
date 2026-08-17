@@ -61,7 +61,21 @@ export async function GET(req: NextRequest) {
       const { data, error } = await query.order('created_at', { ascending: false });
 
       if (!error && data && data.length > 0) {
-        return NextResponse.json({ success: true, source: 'supabase', products: data });
+        const stored = await getStoredProducts();
+        const storedMap = new Map(stored.map((p) => [p.slug, p]));
+        const enriched = data.map((p: any) => {
+          const match = storedMap.get(p.slug) || stored.find((s) => s.id === p.id);
+          if (match) {
+            if ((!p.images || p.images.length === 0) && match.images && match.images.length > 0) {
+              p.images = match.images;
+            }
+            if ((!p.gallery || p.gallery.length === 0) && match.gallery && match.gallery.length > 0) {
+              p.gallery = match.gallery;
+            }
+          }
+          return p;
+        });
+        return NextResponse.json({ success: true, source: 'supabase', products: enriched });
       }
     } catch {
       // Supabase unavailable, fallback to file storage
@@ -103,6 +117,7 @@ export async function POST(req: NextRequest) {
       category,
       image_url,
       images = [],
+      gallery = [],
       dimensions = '',
       materials = '',
       in_stock = true,
@@ -127,7 +142,8 @@ export async function POST(req: NextRequest) {
       category_id: category_id || (category?.id || 'c1'),
       category: category || MOCK_CATEGORIES.find((c) => c.id === category_id),
       image_url,
-      images,
+      images: Array.isArray(images) ? images : [],
+      gallery: Array.isArray(gallery) ? gallery : [],
       dimensions,
       materials,
       in_stock: Boolean(in_stock),
@@ -138,13 +154,14 @@ export async function POST(req: NextRequest) {
     // 1. Try writing to Supabase Database
     try {
       const supabase = await createClient();
-      const dbPayload = {
+      const dbPayload: Record<string, unknown> = {
         name: newProduct.name,
         slug: newProduct.slug,
         description: newProduct.description,
         price: newProduct.price,
         category_id: newProduct.category_id.startsWith('c') ? null : newProduct.category_id,
         image_url: newProduct.image_url,
+        images: newProduct.images,
         in_stock: newProduct.in_stock,
         featured: newProduct.featured,
         dimensions: newProduct.dimensions,
@@ -192,9 +209,13 @@ export async function PUT(req: NextRequest) {
       if (changes.slug !== undefined) dbChanges.slug = changes.slug;
       if (changes.description !== undefined) dbChanges.description = changes.description;
       if (changes.price !== undefined) dbChanges.price = Number(changes.price);
+      if (changes.category_id !== undefined) {
+        dbChanges.category_id = typeof changes.category_id === 'string' && !changes.category_id.startsWith('c')
+          ? changes.category_id
+          : null;
+      }
       if (changes.image_url !== undefined) dbChanges.image_url = changes.image_url;
-      if (changes.images !== undefined) dbChanges.images = changes.images;
-      if (changes.gallery !== undefined) dbChanges.gallery = changes.gallery;
+      if (changes.images !== undefined) dbChanges.images = Array.isArray(changes.images) ? changes.images : [];
       if (changes.in_stock !== undefined) dbChanges.in_stock = Boolean(changes.in_stock);
       if (changes.featured !== undefined) dbChanges.featured = Boolean(changes.featured);
       if (changes.dimensions !== undefined) dbChanges.dimensions = changes.dimensions;

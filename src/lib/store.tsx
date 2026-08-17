@@ -109,14 +109,25 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
           const serverProducts: Product[] = prodRes.value.products;
           if (serverProducts.length > 0) {
             setProducts((prev) => {
-              // Merge: keep newly created products from client if any, plus server items
-              const serverIds = new Set(serverProducts.map((p) => p.id));
+              const merged = serverProducts.map((sp) => {
+                const localMatch = prev.find((lp) => lp.id === sp.id || lp.slug === sp.slug);
+                if (localMatch) {
+                  if ((!sp.images || sp.images.length === 0) && localMatch.images && localMatch.images.length > 0) {
+                    sp.images = localMatch.images;
+                  }
+                  if ((!sp.gallery || sp.gallery.length === 0) && localMatch.gallery && localMatch.gallery.length > 0) {
+                    sp.gallery = localMatch.gallery;
+                  }
+                }
+                return sp;
+              });
+              const serverIds = new Set(merged.map((p) => p.id));
               const localCustom = prev.filter((p) => !serverIds.has(p.id) && p.id.startsWith('prod-'));
-              const merged = [...localCustom, ...serverProducts];
+              const finalMerged = [...localCustom, ...merged];
               try {
-                localStorage.setItem(STORAGE_KEYS.PRODUCTS, JSON.stringify(merged));
+                localStorage.setItem(STORAGE_KEYS.PRODUCTS, JSON.stringify(finalMerged));
               } catch {}
-              return merged;
+              return finalMerged;
             });
           }
         }

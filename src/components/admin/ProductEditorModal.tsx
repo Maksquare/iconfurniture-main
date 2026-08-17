@@ -181,9 +181,9 @@ export default function ProductEditorModal({
   if (!isOpen) return null;
 
   return (
-    <AnimatePresence>
+    <AnimatePresence mode="wait">
       {/* Full-screen scroll container — backdrop + modal inside */}
-      <div className="fixed inset-0 z-50 overflow-y-auto">
+      <div key="product-editor-modal" className="fixed inset-0 z-50 overflow-y-auto">
         {/* Dark backdrop */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -438,8 +438,8 @@ export default function ProductEditorModal({
                         onChange={(e) => setCategoryId(e.target.value)}
                         className="w-full px-3 py-2 rounded-xl border border-stone-300 text-xs font-semibold text-stone-800 bg-white focus:border-[#859F3C]"
                       >
-                        {categories.map((cat) => (
-                          <option key={cat.id} value={cat.id}>
+                        {categories.map((cat, catIdx) => (
+                          <option key={`modal-cat-${cat.id || cat.slug || catIdx}`} value={cat.id}>
                             {cat.name}
                           </option>
                         ))}
@@ -539,9 +539,9 @@ export default function ProductEditorModal({
       </div>
 
       {/* ── IMAGE VAULT PICKER (nested modal) ── */}
-      <AnimatePresence>
+      <AnimatePresence mode="wait">
         {showImagePicker && (
-          <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 sm:p-8">
+          <div key="image-vault-picker" className="fixed inset-0 z-[60] flex items-center justify-center p-4 sm:p-8">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}

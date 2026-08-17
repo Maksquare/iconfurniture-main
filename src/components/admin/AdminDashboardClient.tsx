@@ -767,7 +767,12 @@ export default function AdminDashboardClient() {
                               <button
                                 onClick={() => {
                                   if (confirm(`Delete "${p.name}" from catalog?`)) {
+                                    // Pass both id and slug — store will match by either
                                     deleteProduct(p.id);
+                                    // Also delete by slug in case id doesn't match stored entry
+                                    if (p.slug && p.slug !== p.id) {
+                                      setTimeout(() => deleteProduct(p.slug), 50);
+                                    }
                                     showToast(`Deleted ${p.name} from catalog`);
                                   }
                                 }}

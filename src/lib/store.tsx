@@ -13,6 +13,7 @@ const STORAGE_KEYS = {
   FILMS: 'iconfurniture_store_films',
   BRAND_SETTINGS: 'iconfurniture_store_brand_settings',
   LAST_SYNC: 'iconfurniture_store_last_sync',
+  DELETED_IDS: 'iconfurniture_store_deleted_ids',
 };
 
 export const DEFAULT_BRAND_SETTINGS: BrandSettings = {
@@ -108,8 +109,19 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         if (prodRes.status === 'fulfilled' && prodRes.value?.success && Array.isArray(prodRes.value.products)) {
           const serverProducts: Product[] = prodRes.value.products;
           if (serverProducts.length > 0) {
+            // Load the set of IDs the user has deleted so we never re-add them
+            let deletedIds: Set<string> = new Set();
+            try {
+              const raw = localStorage.getItem(STORAGE_KEYS.DELETED_IDS);
+              if (raw) deletedIds = new Set(JSON.parse(raw));
+            } catch {}
+
             setProducts((prev) => {
-              const merged = serverProducts.map((sp) => {
+              // Filter out any server products the user already deleted
+              const filteredServer = serverProducts.filter(
+                (sp) => !deletedIds.has(sp.id) && !deletedIds.has(sp.slug)
+              );
+              const merged = filteredServer.map((sp) => {
                 const localMatch = prev.find((lp) => lp.id === sp.id || lp.slug === sp.slug);
                 if (localMatch) {
                   if ((!sp.images || sp.images.length === 0) && localMatch.images && localMatch.images.length > 0) {
@@ -122,7 +134,9 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
                 return sp;
               });
               const serverIds = new Set(merged.map((p) => p.id));
-              const localCustom = prev.filter((p) => !serverIds.has(p.id) && p.id.startsWith('prod-'));
+              const localCustom = prev.filter(
+                (p) => !serverIds.has(p.id) && p.id.startsWith('prod-') && !deletedIds.has(p.id)
+              );
               const finalMerged = [...localCustom, ...merged];
               try {
                 localStorage.setItem(STORAGE_KEYS.PRODUCTS, JSON.stringify(finalMerged));
@@ -253,18 +267,41 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
   const deleteProduct = useCallback(
     (id: string) => {
-      // 1. Instant local update
+      // 1. Persist deleted ID so hydrateFromServer never re-adds it
+      try {
+        const raw = localStorage.getItem(STORAGE_KEYS.DELETED_IDS);
+        const existing: string[] = raw ? JSON.parse(raw) : [];
+        if (!existing.includes(id)) {
+          localStorage.setItem(STORAGE_KEYS.DELETED_IDS, JSON.stringify([...existing, id]));
+        }
+      } catch {}
+
+      // 2. Instant local update
       setProducts((prev) => {
         const updated = prev.filter((p) => p.id !== id && p.slug !== id);
+        // Also record the slug in deleted IDs
+        const deletedItem = prev.find((p) => p.id === id);
+        if (deletedItem?.slug) {
+          try {
+            const raw = localStorage.getItem(STORAGE_KEYS.DELETED_IDS);
+            const existing: string[] = raw ? JSON.parse(raw) : [];
+            if (!existing.includes(deletedItem.slug)) {
+              localStorage.setItem(
+                STORAGE_KEYS.DELETED_IDS,
+                JSON.stringify([...existing, deletedItem.slug])
+              );
+            }
+          } catch {}
+        }
         saveState(updated);
         return updated;
       });
 
-      // 2. Background database delete
+      // 3. Server delete (fire-and-forget, but errors are logged)
       fetch(`/api/products?id=${encodeURIComponent(id)}`, {
         method: 'DELETE',
       }).catch((err) => {
-        console.warn('Database background delete notice:', err);
+        console.warn('Database delete error:', err);
       });
     },
     [saveState]
@@ -454,6 +491,7 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       localStorage.removeItem(STORAGE_KEYS.CATEGORIES);
       localStorage.removeItem(STORAGE_KEYS.FILMS);
       localStorage.removeItem(STORAGE_KEYS.BRAND_SETTINGS);
+      localStorage.removeItem(STORAGE_KEYS.DELETED_IDS);
       localStorage.setItem(STORAGE_KEYS.LAST_SYNC, new Date().toISOString());
     }
   }, []);

@@ -241,11 +241,18 @@ export async function PUT(req: NextRequest) {
   }
 }
 
-// DELETE: Delete product by ID
+// DELETE: Delete product by ID or slug
 export async function DELETE(req: NextRequest) {
   try {
     const { searchParams } = new URL(req.url);
-    const id = searchParams.get('id');
+    let id = searchParams.get('id');
+
+    if (!id) {
+      try {
+        const body = await req.json();
+        id = body?.id || body?.slug;
+      } catch {}
+    }
 
     if (!id) {
       return NextResponse.json({ success: false, error: 'Product ID is required' }, { status: 400 });
@@ -255,13 +262,14 @@ export async function DELETE(req: NextRequest) {
     try {
       const supabase = await createClient();
       await supabase.from('products').delete().eq('id', id);
+      await supabase.from('products').delete().eq('slug', id);
     } catch {
       // Supabase optional
     }
 
     // 2. Update local JSON storage
     const currentProducts = await getStoredProducts();
-    const updatedProducts = currentProducts.filter((p) => p.id !== id);
+    const updatedProducts = currentProducts.filter((p) => p.id !== id && p.slug !== id);
     await saveStoredProducts(updatedProducts);
 
     return NextResponse.json({ success: true, id });

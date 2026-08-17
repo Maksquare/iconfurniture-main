@@ -626,8 +626,8 @@ export default function AdminDashboardClient() {
                   className="w-full px-3 py-2 bg-[#222222] border border-white/10 rounded-xl text-xs text-stone-200 focus:outline-none focus:border-[#859F3C]"
                 >
                   <option value="all">All Dining Categories</option>
-                  {categories.map((c) => (
-                    <option key={c.id} value={c.id}>
+                  {categories.map((c, idx) => (
+                    <option key={`cat-opt-${c.id || c.slug || idx}`} value={c.id}>
                       {c.name}
                     </option>
                   ))}
@@ -664,10 +664,10 @@ export default function AdminDashboardClient() {
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-white/5 text-stone-200 font-sans">
-                    {filteredProducts.map((p) => {
+                    {filteredProducts.map((p, pIdx) => {
                       const cat = categories.find((c) => c.id === p.category_id);
                       return (
-                        <tr key={p.id} className="hover:bg-white/5 transition-colors group">
+                        <tr key={`admin-row-${p.id || p.slug || pIdx}`} className="hover:bg-white/5 transition-colors group">
                           {/* Photo & Name */}
                           <td className="px-6 py-4">
                             <div className="flex items-center gap-3">
@@ -815,11 +815,11 @@ export default function AdminDashboardClient() {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-              {categories.map((cat) => {
+              {categories.map((cat, cIdx) => {
                 const count = products.filter((p) => p.category_id === cat.id).length;
                 return (
                   <div
-                    key={cat.id}
+                    key={`cat-card-${cat.id || cat.slug || cIdx}`}
                     className="p-6 rounded-3xl bg-[#1A1A1A] border border-white/10 flex flex-col justify-between space-y-4 hover:border-[#859F3C]/50 transition-all"
                   >
                     <div>
@@ -904,7 +904,7 @@ export default function AdminDashboardClient() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {films.map((film, idx) => (
                 <div
-                  key={film.id}
+                  key={`film-card-${film.id || idx}`}
                   className="rounded-3xl bg-[#1A1A1A] border border-white/10 overflow-hidden flex flex-col justify-between hover:border-[#859F3C]/50 transition-all group"
                 >
                   <div>

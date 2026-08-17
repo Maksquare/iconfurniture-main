@@ -342,7 +342,7 @@ export default function ProductEditorModal({
                       <div className="grid grid-cols-4 gap-2 pt-1">
                         {galleryImages.map((img, idx) => (
                           <div
-                            key={idx}
+                            key={`gallery-preview-${img || ''}-${idx}`}
                             className="relative aspect-square rounded-xl overflow-hidden bg-stone-100 border border-stone-200 group shadow-sm"
                           >
                             <Image src={img} alt="Angle" fill className="object-cover" unoptimized />

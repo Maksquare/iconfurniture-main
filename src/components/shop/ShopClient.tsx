@@ -266,11 +266,11 @@ export default function ShopClient({ initialProducts, categories }: ShopClientPr
             >
               All Pieces ({initialProducts.length})
             </button>
-            {categories.map((cat) => {
+            {categories.map((cat, idx) => {
               const count = initialProducts.filter((p) => p.category_id === cat.id).length;
               return (
                 <button
-                  key={cat.id}
+                  key={`shop-cat-filter-${cat.id || cat.slug || idx}`}
                   onClick={() => handleCategoryChange(cat.slug)}
                   className={`px-5 py-2.5 text-xs uppercase tracking-wider font-semibold rounded-full transition-all duration-300 ${
                     selectedCategory === cat.slug

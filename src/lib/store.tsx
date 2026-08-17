@@ -255,7 +255,7 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     (id: string) => {
       // 1. Instant local update
       setProducts((prev) => {
-        const updated = prev.filter((p) => p.id !== id);
+        const updated = prev.filter((p) => p.id !== id && p.slug !== id);
         saveState(updated);
         return updated;
       });

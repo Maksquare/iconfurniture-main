@@ -1,11 +1,12 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ShieldCheck, Truck, ArrowLeft, Mail, Check } from 'lucide-react';
 import { Product } from '@/types';
+import { useStore } from '@/lib/store';
 import ProductGalleryRail from '@/components/shop/ProductGalleryRail';
 import ProductGrid from '@/components/shop/ProductGrid';
 import ProductContactChannels from '@/components/common/ProductContactChannels';
@@ -17,7 +18,27 @@ interface ProductDetailClientProps {
 
 const FINISHES = ['Natural Solid White Oak', 'Kiln-Dried American Walnut', 'Smoked Black Ash', 'Custom Heritage Stain'];
 
-export default function ProductDetailClient({ product, relatedProducts }: ProductDetailClientProps) {
+export default function ProductDetailClient({
+  product: initialProduct,
+  relatedProducts: initialRelated,
+}: ProductDetailClientProps) {
+  const { products } = useStore();
+
+  // Prefer fresh reactive product from store if available
+  const product = useMemo(() => {
+    const fresh = products.find(
+      (p) => p.id === initialProduct.id || p.slug === initialProduct.slug
+    );
+    return fresh || initialProduct;
+  }, [products, initialProduct]);
+
+  const relatedProducts = useMemo(() => {
+    if (products.length > 0) {
+      return products.filter((p) => p.id !== product.id && p.slug !== product.slug);
+    }
+    return initialRelated;
+  }, [products, product, initialRelated]);
+
   const [selectedFinish, setSelectedFinish] = useState(FINISHES[0]);
   const [inquirySent, setInquirySent] = useState(false);
   const [activeTab, setActiveTab] = useState<'specs' | 'shipping' | 'care'>('specs');

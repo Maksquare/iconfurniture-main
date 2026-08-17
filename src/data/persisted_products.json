@@ -14,14 +14,28 @@
     },
     "image_url": "/uploads/table_ksf006_1786932493999_zq7lq.png",
     "images": [
-      "/uploads/table_sm01__2__1786932514588_etd11.png",
-      "/uploads/table_sm01__3__1786932514598_9hes0.png"
+      "/uploads/table_sm01__2__1786933820404_5ytfl.png",
+      "/uploads/table_sm01__3__1786933820417_6mzcz.png"
     ],
-    "dimensions": "",
-    "materials": "",
+    "dimensions": "260cm L × 105cm W × 76cm H",
+    "materials": "Kiln-dried solid hardwood",
     "in_stock": true,
     "featured": false,
-    "created_at": "2026-08-17T02:09:36.502Z"
+    "created_at": "2026-08-17T02:09:36.502Z",
+    "gallery": [
+      {
+        "label": "Primary Silhouette",
+        "url": "/uploads/table_ksf006_1786932493999_zq7lq.png"
+      },
+      {
+        "label": "Perspective Angle 01",
+        "url": "/uploads/table_sm01__2__1786933820404_5ytfl.png"
+      },
+      {
+        "label": "Perspective Angle 02",
+        "url": "/uploads/table_sm01__3__1786933820417_6mzcz.png"
+      }
+    ]
   },
   {
     "id": "p1",

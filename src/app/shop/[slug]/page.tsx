@@ -3,7 +3,8 @@ import { notFound } from 'next/navigation';
 import { getProductBySlug, getProducts } from '@/lib/data';
 import ProductDetailClient from '@/components/shop/ProductDetailClient';
 
-export const revalidate = 60;
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 interface ProductPageProps {
   params: Promise<{

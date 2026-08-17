@@ -122,6 +122,25 @@ export default function AdminDashboardClient() {
     setTimeout(() => setToastMessage(null), 3500);
   };
 
+  // Inline delete confirmation — avoids window.confirm() blocking
+  const [pendingDeleteId, setPendingDeleteId] = useState<string | null>(null);
+  const handleDeleteConfirm = (product: Product) => {
+    deleteProduct(product.id);
+    if (product.slug && product.slug !== product.id) {
+      setTimeout(() => deleteProduct(product.slug), 50);
+    }
+    setPendingDeleteId(null);
+    showToast(`Deleted "${product.name}" from catalog`);
+  };
+
+  // Inline category delete confirmation
+  const [pendingDeleteCategoryId, setPendingDeleteCategoryId] = useState<string | null>(null);
+  const handleDeleteCategoryConfirm = (cat: Category) => {
+    deleteCategory(cat.id);
+    setPendingDeleteCategoryId(null);
+    showToast(`Deleted category ${cat.name}`);
+  };
+
   // Video preview player inside modal
   const [previewVideoUrl, setPreviewVideoUrl] = useState<string | null>(null);
 
@@ -764,23 +783,32 @@ export default function AdminDashboardClient() {
                               >
                                 <Edit3 className="w-4 h-4" />
                               </button>
-                              <button
-                                onClick={() => {
-                                  if (confirm(`Delete "${p.name}" from catalog?`)) {
-                                    // Pass both id and slug — store will match by either
-                                    deleteProduct(p.id);
-                                    // Also delete by slug in case id doesn't match stored entry
-                                    if (p.slug && p.slug !== p.id) {
-                                      setTimeout(() => deleteProduct(p.slug), 50);
-                                    }
-                                    showToast(`Deleted ${p.name} from catalog`);
-                                  }
-                                }}
-                                title="Delete Table"
-                                className="p-2 rounded-xl bg-white/5 hover:bg-red-500/20 text-stone-400 hover:text-red-300 transition-colors cursor-pointer"
-                              >
-                                <Trash2 className="w-4 h-4" />
-                              </button>
+                              {pendingDeleteId === p.id ? (
+                                // Inline confirm — avoids window.confirm() blocking
+                                <div className="flex items-center gap-1">
+                                  <span className="text-[10px] text-red-400 font-semibold">Delete?</span>
+                                  <button
+                                    onClick={() => handleDeleteConfirm(p)}
+                                    className="px-2 py-1 rounded-lg bg-red-500 text-white text-[10px] font-bold cursor-pointer hover:bg-red-600 transition-colors"
+                                  >
+                                    Yes
+                                  </button>
+                                  <button
+                                    onClick={() => setPendingDeleteId(null)}
+                                    className="px-2 py-1 rounded-lg bg-white/10 text-stone-300 text-[10px] font-bold cursor-pointer hover:bg-white/20 transition-colors"
+                                  >
+                                    No
+                                  </button>
+                                </div>
+                              ) : (
+                                <button
+                                  onClick={() => setPendingDeleteId(p.id)}
+                                  title="Delete Table"
+                                  className="p-2 rounded-xl bg-white/5 hover:bg-red-500/20 text-stone-400 hover:text-red-300 transition-colors cursor-pointer"
+                                >
+                                  <Trash2 className="w-4 h-4" />
+                                </button>
+                              )}
                             </div>
                           </td>
                         </tr>
@@ -860,17 +888,30 @@ export default function AdminDashboardClient() {
                         >
                           <Edit3 className="w-3.5 h-3.5" />
                         </button>
-                        <button
-                          onClick={() => {
-                            if (confirm(`Delete collection "${cat.name}"?`)) {
-                              deleteCategory(cat.id);
-                              showToast(`Deleted category ${cat.name}`);
-                            }
-                          }}
-                          className="p-1.5 rounded-lg bg-white/5 hover:bg-red-500/20 text-stone-400 hover:text-red-300 transition-colors cursor-pointer"
-                        >
-                          <Trash2 className="w-3.5 h-3.5" />
-                        </button>
+                        {pendingDeleteCategoryId === cat.id ? (
+                          <div className="flex items-center gap-1">
+                            <span className="text-[10px] text-red-400 font-semibold">Delete?</span>
+                            <button
+                              onClick={() => handleDeleteCategoryConfirm(cat)}
+                              className="px-2 py-1 rounded-lg bg-red-500 text-white text-[10px] font-bold cursor-pointer hover:bg-red-600 transition-colors"
+                            >
+                              Yes
+                            </button>
+                            <button
+                              onClick={() => setPendingDeleteCategoryId(null)}
+                              className="px-2 py-1 rounded-lg bg-white/10 text-stone-300 text-[10px] font-bold cursor-pointer hover:bg-white/20 transition-colors"
+                            >
+                              No
+                            </button>
+                          </div>
+                        ) : (
+                          <button
+                            onClick={() => setPendingDeleteCategoryId(cat.id)}
+                            className="p-1.5 rounded-lg bg-white/5 hover:bg-red-500/20 text-stone-400 hover:text-red-300 transition-colors cursor-pointer"
+                          >
+                            <Trash2 className="w-3.5 h-3.5" />
+                          </button>
+                        )}
                       </div>
                     </div>
                   </div>

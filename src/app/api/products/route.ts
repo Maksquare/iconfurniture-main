@@ -193,6 +193,8 @@ export async function PUT(req: NextRequest) {
       if (changes.description !== undefined) dbChanges.description = changes.description;
       if (changes.price !== undefined) dbChanges.price = Number(changes.price);
       if (changes.image_url !== undefined) dbChanges.image_url = changes.image_url;
+      if (changes.images !== undefined) dbChanges.images = changes.images;
+      if (changes.gallery !== undefined) dbChanges.gallery = changes.gallery;
       if (changes.in_stock !== undefined) dbChanges.in_stock = Boolean(changes.in_stock);
       if (changes.featured !== undefined) dbChanges.featured = Boolean(changes.featured);
       if (changes.dimensions !== undefined) dbChanges.dimensions = changes.dimensions;

@@ -23,23 +23,60 @@ interface ProductGalleryRailProps {
 }
 
 export default function ProductGalleryRail({ product }: ProductGalleryRailProps) {
-  // Normalize angles gallery
+  // Normalize and aggregate distinct photo angles (primary image + all added angles)
   const angles: ProductImageAngle[] = React.useMemo(() => {
-    if (product.gallery && product.gallery.length > 0) {
-      return product.gallery;
-    }
-    if (product.images && product.images.length > 0) {
-      return product.images.map((url, idx) => ({
-        label: `Perspective Angle 0${idx + 1}`,
+    const angleList: ProductImageAngle[] = [];
+    const seenUrls = new Set<string>();
+
+    const addAngle = (url?: string, label?: string) => {
+      if (!url || typeof url !== 'string' || seenUrls.has(url)) return;
+      seenUrls.add(url);
+      angleList.push({
+        label: label || `Perspective Angle 0${angleList.length + 1}`,
         url,
-      }));
+      });
+    };
+
+    // 1. Primary photo always comes first
+    if (product.image_url) {
+      addAngle(product.image_url, 'Primary Silhouette');
     }
-    return [
-      { label: 'Primary Silhouette', url: product.image_url },
-      { label: 'Architectural Profile', url: product.image_url },
-      { label: 'Material & Texture', url: product.image_url },
-      { label: 'In-Situ Living Context', url: product.image_url },
-    ];
+
+    // 2. Extra angle photos added by admin (product.images)
+    if (Array.isArray(product.images) && product.images.length > 0) {
+      const angleLabels = [
+        'Architectural Profile',
+        'Surface & Timber Grain',
+        'Tenon Joint & Leg Detail',
+        'Top View Perspective',
+        'Dining Room Setting',
+        'Sculptural Base Angle',
+        'Hand-Finished Edge',
+        'Interior Living Ambience',
+      ];
+      product.images.forEach((url, idx) => {
+        if (!seenUrls.has(url)) {
+          const label = angleLabels[angleList.length - 1] || `Angle 0${angleList.length + 1}`;
+          addAngle(url, label);
+        }
+      });
+    }
+
+    // 3. Fallback to product.gallery if present and extra photos weren't already added
+    if (Array.isArray(product.gallery) && product.gallery.length > 0) {
+      product.gallery.forEach((g, idx) => {
+        const url = typeof g === 'string' ? g : g?.url;
+        const label = typeof g === 'object' && g?.label ? g.label : undefined;
+        addAngle(url, label);
+      });
+    }
+
+    // 4. If still empty, use fallback
+    if (angleList.length === 0) {
+      return [{ label: 'Primary Silhouette', url: product.image_url || '/collections/if001.jpg' }];
+    }
+
+    return angleList;
   }, [product]);
 
   const [activeIndex, setActiveIndex] = useState(0);

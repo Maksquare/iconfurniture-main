@@ -49,6 +49,8 @@ export default function ProductEditorModal({
   const [showImagePicker, setShowImagePicker] = useState(false);
   const [imagePickerTarget, setImagePickerTarget] = useState<'primary' | 'gallery'>('primary');
   const [imageSourceTab, setImageSourceTab] = useState<'upload' | 'vault' | 'url'>('upload');
+  // Track pending gallery selections inside the vault picker (multi-select)
+  const [pendingGalleryPicks, setPendingGalleryPicks] = useState<string[]>([]);
 
   useEffect(() => {
     if (product) {
@@ -62,7 +64,24 @@ export default function ProductEditorModal({
       setMaterials(product.materials || 'Kiln-dried solid hardwood');
       setInStock(product.in_stock ?? true);
       setFeatured(product.featured ?? false);
-      setGalleryImages(product.images || []);
+
+      // Extract existing extra angle images (excluding primary image)
+      const existingExtraImages: string[] = [];
+      if (Array.isArray(product.images) && product.images.length > 0) {
+        product.images.forEach((img) => {
+          if (img && img !== product.image_url && !existingExtraImages.includes(img)) {
+            existingExtraImages.push(img);
+          }
+        });
+      } else if (Array.isArray(product.gallery) && product.gallery.length > 0) {
+        product.gallery.forEach((g) => {
+          const u = typeof g === 'string' ? g : g?.url;
+          if (u && u !== product.image_url && !existingExtraImages.includes(u)) {
+            existingExtraImages.push(u);
+          }
+        });
+      }
+      setGalleryImages(existingExtraImages);
     } else {
       setName('');
       setSlug('');
@@ -89,11 +108,24 @@ export default function ProductEditorModal({
   const handleSelectImage = (img: string) => {
     if (imagePickerTarget === 'primary') {
       setImageUrl(img);
+      setShowImagePicker(false);
     } else {
-      if (!galleryImages.includes(img)) {
-        setGalleryImages([...galleryImages, img]);
-      }
+      // Toggle selection in pending list (multi-select for gallery)
+      setPendingGalleryPicks((prev) =>
+        prev.includes(img) ? prev.filter((x) => x !== img) : [...prev, img]
+      );
     }
+  };
+
+  const handleConfirmGalleryPicks = () => {
+    setGalleryImages((prev) => {
+      const next = [...prev];
+      for (const img of pendingGalleryPicks) {
+        if (!next.includes(img)) next.push(img);
+      }
+      return next;
+    });
+    setPendingGalleryPicks([]);
     setShowImagePicker(false);
   };
 
@@ -118,6 +150,16 @@ export default function ProductEditorModal({
     if (!name.trim()) return;
     const finalSlug = slug.trim() || name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
     const selectedCategory = categories.find((c) => c.id === categoryId);
+
+    // Build synchronized angle gallery
+    const synchronizedGallery = [
+      { label: 'Primary Silhouette', url: imageUrl },
+      ...galleryImages.map((url, idx) => ({
+        label: `Perspective Angle 0${idx + 1}`,
+        url,
+      })),
+    ];
+
     onSave({
       name: name.trim(),
       slug: finalSlug,
@@ -127,6 +169,7 @@ export default function ProductEditorModal({
       description: description.trim(),
       image_url: imageUrl,
       images: galleryImages,
+      gallery: synchronizedGallery,
       dimensions: dimensions.trim(),
       materials: materials.trim(),
       in_stock: inStock,
@@ -275,7 +318,11 @@ export default function ProductEditorModal({
                       </span>
                       <button
                         type="button"
-                        onClick={() => { setImagePickerTarget('gallery'); setShowImagePicker(true); }}
+                        onClick={() => {
+                          setImagePickerTarget('gallery');
+                          setPendingGalleryPicks([]);
+                          setShowImagePicker(true);
+                        }}
                         className="text-xs font-semibold text-[#859F3C] hover:underline flex items-center gap-1 cursor-pointer"
                       >
                         <Plus className="w-3.5 h-3.5" />
@@ -284,6 +331,7 @@ export default function ProductEditorModal({
                     </div>
 
                     <PhotoUploadDropzone
+                      key="gallery-uploader"
                       onUploadComplete={handleUploadGalleryComplete}
                       multiple={true}
                       label="Upload Extra Angles"
@@ -525,30 +573,78 @@ export default function ProductEditorModal({
               </div>
 
               <div className="flex-1 overflow-y-auto py-4 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3">
-                {COLLECTION_IMAGES.map((img) => (
-                  <button
-                    key={img}
-                    type="button"
-                    onClick={() => handleSelectImage(img)}
-                    className={`group relative aspect-square rounded-xl overflow-hidden border-2 transition-all cursor-pointer ${
-                      imageUrl === img
-                        ? 'border-[#859F3C] ring-2 ring-[#859F3C]/40 scale-95'
-                        : 'border-stone-200 hover:border-[#859F3C]'
-                    }`}
-                  >
-                    <Image
-                      src={img}
-                      alt="vault"
-                      fill
-                      className="object-cover group-hover:scale-110 transition-transform duration-300"
-                      unoptimized
-                    />
-                    <span className="absolute bottom-1 right-1 px-1 bg-black/70 text-[9px] font-mono text-white rounded">
-                      {img.replace('/collections/', '')}
-                    </span>
-                  </button>
-                ))}
+                {COLLECTION_IMAGES.map((img) => {
+                  const isSelectedPrimary = imagePickerTarget === 'primary' && imageUrl === img;
+                  const isInGallery = galleryImages.includes(img);
+                  const isPendingPick = pendingGalleryPicks.includes(img);
+                  const isHighlighted =
+                    imagePickerTarget === 'primary' ? isSelectedPrimary : isPendingPick;
+
+                  return (
+                    <button
+                      key={img}
+                      type="button"
+                      onClick={() => handleSelectImage(img)}
+                      className={`group relative aspect-square rounded-xl overflow-hidden border-2 transition-all cursor-pointer ${
+                        isHighlighted
+                          ? 'border-[#859F3C] ring-2 ring-[#859F3C]/40 scale-95'
+                          : isInGallery && imagePickerTarget === 'gallery'
+                          ? 'border-stone-400 opacity-50'
+                          : 'border-stone-200 hover:border-[#859F3C]'
+                      }`}
+                    >
+                      <Image
+                        src={img}
+                        alt="vault"
+                        fill
+                        className="object-cover group-hover:scale-110 transition-transform duration-300"
+                        unoptimized
+                      />
+                      <span className="absolute bottom-1 right-1 px-1 bg-black/70 text-[9px] font-mono text-white rounded">
+                        {img.replace('/collections/', '')}
+                      </span>
+                      {/* Check badge for pending gallery picks */}
+                      {isPendingPick && imagePickerTarget === 'gallery' && (
+                        <div className="absolute top-1 right-1 w-5 h-5 rounded-full bg-[#859F3C] flex items-center justify-center shadow">
+                          <Check className="w-3 h-3 text-white" />
+                        </div>
+                      )}
+                      {/* Already-in-gallery badge */}
+                      {isInGallery && !isPendingPick && imagePickerTarget === 'gallery' && (
+                        <div className="absolute top-1 right-1 w-5 h-5 rounded-full bg-stone-500 flex items-center justify-center shadow">
+                          <Check className="w-3 h-3 text-white" />
+                        </div>
+                      )}
+                    </button>
+                  );
+                })}
               </div>
+
+              {/* Confirm button for gallery multi-select */}
+              {imagePickerTarget === 'gallery' && (
+                <div className="pt-4 border-t border-stone-200 flex items-center justify-between gap-3">
+                  <span className="text-xs text-stone-500">
+                    {pendingGalleryPicks.length} photo{pendingGalleryPicks.length !== 1 ? 's' : ''} selected
+                  </span>
+                  <div className="flex gap-2">
+                    <button
+                      type="button"
+                      onClick={() => setShowImagePicker(false)}
+                      className="px-4 py-2 rounded-xl border border-stone-300 text-xs font-semibold text-stone-700 hover:bg-stone-100 cursor-pointer"
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      type="button"
+                      onClick={handleConfirmGalleryPicks}
+                      disabled={pendingGalleryPicks.length === 0}
+                      className="px-5 py-2 rounded-xl bg-[#859F3C] hover:bg-[#738b32] disabled:opacity-40 text-white text-xs font-bold cursor-pointer transition-all"
+                    >
+                      Add {pendingGalleryPicks.length > 0 ? pendingGalleryPicks.length : ''} Photo{pendingGalleryPicks.length !== 1 ? 's' : ''}
+                    </button>
+                  </div>
+                </div>
+              )}
             </motion.div>
           </div>
         )}

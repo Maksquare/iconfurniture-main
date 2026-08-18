@@ -369,12 +369,19 @@ export default function AdminDashboardClient() {
         {/* Brand & Console Status */}
         <div className="flex items-center gap-4">
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative w-8 h-8 rounded-xl bg-[#859F3C] flex items-center justify-center text-white shadow-[0_0_15px_rgba(133,159,60,0.4)]">
-              <Sparkles className="w-4 h-4" />
+            <div className="relative w-9 h-9 rounded-xl bg-white/5 border border-white/10 p-1 flex items-center justify-center overflow-hidden shadow-[0_0_20px_rgba(133,159,60,0.25)] group-hover:border-[#859F3C]/50 transition-colors">
+              <Image
+                src="/assets/if-favicon.png"
+                alt="ICON FURNITURE"
+                width={36}
+                height={36}
+                className="w-full h-full object-contain"
+                priority
+              />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="font-serif text-base font-bold text-white tracking-wider">
+                <span className="font-serif text-base font-bold text-white tracking-wider group-hover:text-[#859F3C] transition-colors">
                   ICON ATELIER
                 </span>
                 <span className="text-[10px] font-mono uppercase tracking-widest px-2 py-0.5 rounded-full bg-[#859F3C]/20 text-[#859F3C] border border-[#859F3C]/40">

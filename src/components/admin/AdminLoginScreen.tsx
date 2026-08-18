@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -108,18 +109,24 @@ export default function AdminLoginScreen({ onLoginSuccess }: AdminLoginScreenPro
           <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#859F3C] to-transparent" />
 
           {/* Header */}
-          <div className="text-center space-y-3 mb-8">
-            <div className="mx-auto w-16 h-16 rounded-2xl bg-gradient-to-br from-[#859F3C] to-[#5e7226] p-0.5 flex items-center justify-center shadow-lg shadow-[#859F3C]/20">
-              <div className="w-full h-full bg-[#1A1A1A] rounded-[14px] flex items-center justify-center">
-                <Lock className="w-7 h-7 text-[#859F3C]" />
-              </div>
+          <div className="text-center space-y-4 mb-8">
+            {/* Brand Logo */}
+            <div className="mx-auto w-20 h-20 rounded-2xl bg-white/5 border border-[#859F3C]/30 p-2 flex items-center justify-center shadow-[0_0_40px_rgba(133,159,60,0.2)]">
+              <Image
+                src="/assets/if-favicon.png"
+                alt="ICON FURNITURE"
+                width={64}
+                height={64}
+                className="w-full h-full object-contain"
+                priority
+              />
             </div>
 
             <div>
-              <h1 className="font-serif text-2xl font-bold text-white">
+              <h1 className="font-serif text-2xl font-bold text-white tracking-wider">
                 ICON FURNITURE
               </h1>
-              <p className="text-xs text-stone-400 font-sans mt-1">
+              <p className="text-xs text-stone-400 font-sans mt-1 tracking-wide">
                 Management Console — Admin Access Only
               </p>
             </div>

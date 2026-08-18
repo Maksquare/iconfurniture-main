@@ -41,11 +41,11 @@ export const metadata: Metadata = {
     'Bespoke luxury dining tables handcrafted from solid kiln-dried American walnut, quarter-sawn white oak, and honed Roman travertine stone. The generational centerpiece of the home.',
   icons: {
     icon: [
-      { url: '/assets/if-favicon.png' },
-      { url: '/if-favicon.png' },
+      { url: '/assets/if-favicon.png', type: 'image/png', sizes: '512x512' },
+      { url: '/if-favicon.png', type: 'image/png' },
     ],
-    shortcut: '/assets/if-favicon.png',
-    apple: '/assets/if-favicon.png',
+    shortcut: { url: '/assets/if-favicon.png', type: 'image/png' },
+    apple: { url: '/assets/if-favicon.png', type: 'image/png', sizes: '512x512' },
   },
 };
 

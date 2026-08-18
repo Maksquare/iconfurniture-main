@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { Playfair_Display, Plus_Jakarta_Sans } from 'next/font/google';
+import localFont from 'next/font/local';
 import './globals.css';
+import AppProviders from '@/components/providers/AppProviders';
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
@@ -11,6 +13,25 @@ const playfair = Playfair_Display({
 const jakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
   variable: '--font-sans',
+  display: 'swap',
+});
+
+// Addis Sans — Ethiopian Amharic luxury typeface
+// Path is relative to THIS file (src/app/layout.tsx → ../../public/fonts/)
+const addisSans = localFont({
+  src: [
+    {
+      path: '../../public/fonts/Addis-Sans.ttf',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../../public/fonts/Addis-Sans-Italic.ttf',
+      weight: '400',
+      style: 'italic',
+    },
+  ],
+  variable: '--font-amharic',
   display: 'swap',
 });
 
@@ -28,15 +49,13 @@ export const metadata: Metadata = {
   },
 };
 
-import AppProviders from '@/components/providers/AppProviders';
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${playfair.variable} ${jakarta.variable}`}>
+    <html lang="en" className={`${playfair.variable} ${jakarta.variable} ${addisSans.variable}`}>
       <body className="antialiased min-h-screen flex flex-col bg-[#f7f5f0] text-[#121417]">
         <AppProviders>{children}</AppProviders>
       </body>

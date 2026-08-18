@@ -38,10 +38,14 @@ export async function POST(req: NextRequest) {
       const buffer = Buffer.from(bytes);
 
       // Safe clean extension
-      const origName = file.name || 'photo.jpg';
+      const origName = file.name || 'file.dat';
       const extMatch = origName.match(/\.([a-zA-Z0-9]+)$/);
       let ext = extMatch ? extMatch[1].toLowerCase() : 'jpg';
       if (ext === 'jpeg') ext = 'jpg';
+
+      const isVideo =
+        file.type?.startsWith('video/') ||
+        ['mp4', 'mov', 'webm', 'm4v', 'avi', 'mkv'].includes(ext);
 
       // Generate clean unique filename
       const cleanBaseName = origName
@@ -49,7 +53,8 @@ export async function POST(req: NextRequest) {
         .replace(/[^a-zA-Z0-9_-]/g, '_')
         .slice(0, 30);
       const uniqueSuffix = `${Date.now()}_${Math.random().toString(36).substring(2, 7)}`;
-      const fileName = `table_${cleanBaseName}_${uniqueSuffix}.${ext}`;
+      const prefix = isVideo ? 'cinema_video' : 'table_photo';
+      const fileName = `${prefix}_${cleanBaseName}_${uniqueSuffix}.${ext}`;
 
       const filePath = path.join(uploadsDir, fileName);
       await writeFile(filePath, buffer);

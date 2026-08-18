@@ -50,6 +50,7 @@ import ProductEditorModal from '@/components/admin/ProductEditorModal';
 import FilmEditorModal from '@/components/admin/FilmEditorModal';
 import CategoryEditorModal from '@/components/admin/CategoryEditorModal';
 import PhotoUploadDropzone from '@/components/admin/PhotoUploadDropzone';
+import VideoUploadDropzone from '@/components/admin/VideoUploadDropzone';
 import AdminLoginScreen from '@/components/admin/AdminLoginScreen';
 import { createClient } from '@/lib/supabase/client';
 
@@ -229,6 +230,30 @@ export default function AdminDashboardClient() {
       return merged;
     });
     showToast(`Uploaded ${newUrls.length} photo(s) to Atelier Vault!`);
+  };
+
+  // Uploaded media vault videos
+  const [uploadedVaultVideos, setUploadedVaultVideos] = useState<{ url: string; duration?: string }[]>([]);
+
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem('iconfurniture_uploaded_videos');
+      if (saved) setUploadedVaultVideos(JSON.parse(saved));
+    } catch (e) {
+      console.warn('Failed to load uploaded videos:', e);
+    }
+  }, []);
+
+  const handleVaultVideoUpload = (newUrl: string, duration?: string) => {
+    setUploadedVaultVideos((prev) => {
+      const item = { url: newUrl, duration };
+      const merged = [item, ...prev.filter((v) => v.url !== newUrl)];
+      try {
+        localStorage.setItem('iconfurniture_uploaded_videos', JSON.stringify(merged));
+      } catch (e) {}
+      return merged;
+    });
+    showToast('Uploaded video clip to Atelier Vault!');
   };
 
   // Live Addis Ababa clock
@@ -1387,6 +1412,64 @@ export default function AdminDashboardClient() {
               />
             </div>
 
+            {/* Device Video Upload Dropzone */}
+            <div className="bg-[#1A1A1A] border border-white/10 rounded-3xl p-6 space-y-4">
+              <h3 className="font-serif text-lg font-bold text-white flex items-center gap-2">
+                <Film className="w-4 h-4 text-[#859F3C]" />
+                <span>Upload Cinema Video Clips from Any Device</span>
+              </h3>
+              <VideoUploadDropzone
+                onUploadComplete={handleVaultVideoUpload}
+                label="Upload 4K/HD Video Clips"
+                sublabel="Record video on mobile camera, browse video files, or drag & drop (MP4, MOV, WebM)"
+              />
+            </div>
+
+            {/* Uploaded Videos Section (if any) */}
+            {uploadedVaultVideos.length > 0 && (
+              <div className="bg-[#1A1A1A] border border-[#859F3C]/30 rounded-3xl p-6 space-y-4">
+                <div className="flex items-center justify-between">
+                  <h3 className="font-serif text-lg font-bold text-white flex items-center gap-2">
+                    <Sparkles className="w-4 h-4 text-[#859F3C]" />
+                    <span>Uploaded Device Videos ({uploadedVaultVideos.length})</span>
+                  </h3>
+                  <span className="text-xs font-mono text-[#859F3C]">Saved on Server Storage</span>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                  {uploadedVaultVideos.map((vid, idx) => (
+                    <div
+                      key={`uploaded-video-${vid.url}-${idx}`}
+                      className="relative aspect-video rounded-2xl bg-black border border-[#859F3C]/40 overflow-hidden group shadow-md flex flex-col justify-between"
+                    >
+                      <video src={vid.url} muted playsInline className="w-full h-full object-cover" />
+                      <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center p-3 text-center gap-2">
+                        <span className="text-[10px] font-mono text-white truncate w-full">
+                          {vid.url}
+                        </span>
+                        <div className="flex items-center gap-2">
+                          <button
+                            onClick={() => setPreviewVideoUrl(vid.url)}
+                            className="px-3 py-1 bg-[#859F3C] text-white text-[10px] font-bold rounded-lg cursor-pointer hover:bg-[#738b32]"
+                          >
+                            Preview
+                          </button>
+                          <button
+                            onClick={() => {
+                              navigator.clipboard.writeText(vid.url);
+                              showToast(`Copied ${vid.url} to clipboard!`);
+                            }}
+                            className="px-3 py-1 bg-white/20 text-white text-[10px] font-bold rounded-lg cursor-pointer hover:bg-white/30"
+                          >
+                            Copy URL
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
             {/* Uploaded Photos Section (if any) */}
             {uploadedVaultPhotos.length > 0 && (
               <div className="bg-[#1A1A1A] border border-[#859F3C]/30 rounded-3xl p-6 space-y-4">
@@ -1400,7 +1483,7 @@ export default function AdminDashboardClient() {
                 <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-3">
                   {uploadedVaultPhotos.map((photo, idx) => (
                     <div
-                      key={idx}
+                      key={`uploaded-photo-${photo}-${idx}`}
                       className="relative aspect-square rounded-2xl bg-stone-900 border border-[#859F3C]/40 overflow-hidden group shadow-md"
                     >
                       <Image

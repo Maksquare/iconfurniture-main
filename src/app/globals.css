@@ -1,5 +1,24 @@
 @import "tailwindcss";
 
+/* ── Luxury Amharic Typography (Addis Sans) ── */
+@font-face {
+  font-family: 'Addis Sans';
+  src: url('/fonts/Addis-Sans.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+1200-137F, U+1380-139F, U+2D80-2DDF, U+AB00-AB2F, U+1360-137C;
+}
+
+@font-face {
+  font-family: 'Addis Sans';
+  src: url('/fonts/Addis-Sans-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+  unicode-range: U+1200-137F, U+1380-139F, U+2D80-2DDF, U+AB00-AB2F, U+1360-137C;
+}
+
 @layer base {
   :root {
     --brand-primary: #859F3C;
@@ -22,14 +41,18 @@
   }
 
   body {
-    font-family: var(--font-sans), 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    font-family: var(--font-sans), 'Addis Sans', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
     background-color: #fdfcf7;
     color: #1A1A1A;
     overflow-x: hidden;
   }
 
   h1, h2, h3, h4, .font-serif {
-    font-family: var(--font-serif), 'Playfair Display', Georgia, serif;
+    font-family: var(--font-serif), 'Addis Sans', 'Playfair Display', Georgia, serif;
+  }
+
+  .font-amharic {
+    font-family: var(--font-amharic), 'Addis Sans', var(--font-sans), sans-serif;
   }
 }
 

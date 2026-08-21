@@ -55,7 +55,7 @@ export default function ProductDetailClient({
         <div>
           <Link
             href="/shop"
-            className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-stone-600 hover:text-[#859F3C] transition-colors"
+            className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-stone-600 hover:text-[#124903] transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
             Back to Dining Table Catalog
@@ -86,7 +86,7 @@ export default function ProductDetailClient({
           >
             <div>
               {product.category && (
-                <span className="text-xs uppercase tracking-widest font-semibold text-[#859F3C] block mb-2">
+                <span className="text-xs uppercase tracking-widest font-semibold text-[#124903] block mb-2">
                   {product.category.name}
                 </span>
               )}
@@ -95,7 +95,7 @@ export default function ProductDetailClient({
               </h1>
               <p className="font-serif text-2xl font-semibold text-[#1A1A1A] mt-3 flex items-baseline gap-2">
                 <span>{product.price.toLocaleString()}</span>
-                <span className="text-sm font-mono font-bold text-[#859F3C]">ETB</span>
+                <span className="text-sm font-mono font-bold text-[#124903]">ETB</span>
               </p>
             </div>
 
@@ -106,7 +106,7 @@ export default function ProductDetailClient({
             {/* Finish Options */}
             <div className="space-y-3">
               <label className="text-xs uppercase tracking-wider font-semibold text-[#1A1A1A] block">
-                Select Hardwood / Finish: <span className="text-[#859F3C]">{selectedFinish}</span>
+                Select Hardwood / Finish: <span className="text-[#124903]">{selectedFinish}</span>
               </label>
               <div className="grid grid-cols-2 gap-2">
                 {FINISHES.map((finish) => (
@@ -115,7 +115,7 @@ export default function ProductDetailClient({
                     onClick={() => setSelectedFinish(finish)}
                     className={`p-3 text-xs font-medium rounded-2xl border text-left transition-all cursor-pointer ${
                       selectedFinish === finish
-                        ? 'border-[#859F3C] bg-[#859F3C]/10 text-[#1A1A1A] font-semibold'
+                        ? 'border-[#124903] bg-[#124903]/10 text-[#1A1A1A] font-semibold'
                         : 'border-stone-200 bg-white text-stone-700 hover:bg-stone-50'
                     }`}
                   >
@@ -131,8 +131,8 @@ export default function ProductDetailClient({
                 onClick={handleInquire}
                 className={`w-full py-4 px-6 rounded-2xl text-xs uppercase tracking-widest font-semibold flex items-center justify-center gap-2 transition-all duration-300 shadow-md cursor-pointer ${
                   inquirySent
-                    ? 'bg-[#859F3C] text-white'
-                    : 'bg-[#1A1A1A] hover:bg-[#859F3C] text-white'
+                    ? 'bg-[#124903] text-white'
+                    : 'bg-[#1A1A1A] hover:bg-[#124903] text-white'
                 }`}
               >
                 {inquirySent ? (
@@ -151,11 +151,11 @@ export default function ProductDetailClient({
               {/* Guarantees */}
               <div className="grid grid-cols-2 gap-4 pt-4 border-t border-stone-200 text-xs text-stone-600">
                 <div className="flex items-center gap-2">
-                  <Truck className="w-4 h-4 text-[#859F3C]" />
+                  <Truck className="w-4 h-4 text-[#124903]" />
                   <span>White-Glove Dining Room Setup</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <ShieldCheck className="w-4 h-4 text-[#859F3C]" />
+                  <ShieldCheck className="w-4 h-4 text-[#124903]" />
                   <span>Generational Table Warranty</span>
                 </div>
               </div>
@@ -168,7 +168,7 @@ export default function ProductDetailClient({
                   onClick={() => setActiveTab('specs')}
                   className={`flex-1 py-3 text-xs uppercase tracking-wider font-semibold border-b-2 transition-colors cursor-pointer ${
                     activeTab === 'specs'
-                      ? 'border-[#859F3C] text-[#859F3C] bg-[#859F3C]/10'
+                      ? 'border-[#124903] text-[#124903] bg-[#124903]/10'
                       : 'border-transparent text-stone-600 hover:text-[#1A1A1A]'
                   }`}
                 >
@@ -178,7 +178,7 @@ export default function ProductDetailClient({
                   onClick={() => setActiveTab('shipping')}
                   className={`flex-1 py-3 text-xs uppercase tracking-wider font-semibold border-b-2 transition-colors cursor-pointer ${
                     activeTab === 'shipping'
-                      ? 'border-[#859F3C] text-[#859F3C] bg-[#859F3C]/10'
+                      ? 'border-[#124903] text-[#124903] bg-[#124903]/10'
                       : 'border-transparent text-stone-600 hover:text-[#1A1A1A]'
                   }`}
                 >
@@ -188,7 +188,7 @@ export default function ProductDetailClient({
                   onClick={() => setActiveTab('care')}
                   className={`flex-1 py-3 text-xs uppercase tracking-wider font-semibold border-b-2 transition-colors cursor-pointer ${
                     activeTab === 'care'
-                      ? 'border-[#859F3C] text-[#859F3C] bg-[#859F3C]/10'
+                      ? 'border-[#124903] text-[#124903] bg-[#124903]/10'
                       : 'border-transparent text-stone-600 hover:text-[#1A1A1A]'
                   }`}
                 >
@@ -229,7 +229,7 @@ export default function ProductDetailClient({
         {relatedProducts.length > 0 && (
           <div className="pt-12 border-t border-stone-200 space-y-8">
             <div>
-              <span className="text-xs uppercase tracking-widest font-semibold text-[#859F3C]">
+              <span className="text-xs uppercase tracking-widest font-semibold text-[#124903]">
                 Complementary Dining Designs
               </span>
               <h2 className="font-serif text-2xl sm:text-3xl font-normal text-[#1A1A1A] mt-1">

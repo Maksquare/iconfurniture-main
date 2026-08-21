@@ -201,7 +201,7 @@ export default function ShopClient({ initialProducts, categories }: ShopClientPr
 
         {/* Luxury Editorial Header */}
         <div className="relative rounded-3xl p-8 sm:p-12 bg-gradient-to-b from-[#f7f6f0] to-[#f0efe6] border border-stone-200/80 shadow-xs overflow-hidden">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-[#859F3C]/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute top-0 right-0 w-96 h-96 bg-[#124903]/10 rounded-full blur-3xl pointer-events-none" />
           <div className="max-w-3xl space-y-4">
             <div className="flex items-center gap-3 flex-wrap">
               <div className="bg-white px-3.5 py-1.5 rounded-full border border-stone-200/80 shadow-2xs">
@@ -214,7 +214,7 @@ export default function ShopClient({ initialProducts, categories }: ShopClientPr
                   priority
                 />
               </div>
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-stone-200/80 text-xs font-bold uppercase tracking-widest text-[#859F3C] shadow-2xs">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-stone-200/80 text-xs font-bold uppercase tracking-widest text-[#124903] shadow-2xs">
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>Bespoke Luxury Dining Tables</span>
               </div>
@@ -229,24 +229,24 @@ export default function ShopClient({ initialProducts, categories }: ShopClientPr
             <div className="pt-2 flex flex-wrap items-center gap-2.5 text-xs font-medium text-stone-700">
               <span className="text-stone-500 font-bold uppercase tracking-wider text-[11px]">Instant Concierge:</span>
               <a href={OFFICIAL_CONTACTS.instagram.url} target="_blank" rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-stone-200/80 hover:border-[#859F3C] hover:text-[#859F3C] transition-all shadow-2xs">
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-stone-200/80 hover:border-[#124903] hover:text-[#124903] transition-all shadow-2xs">
                 <InstagramIcon className="w-3.5 h-3.5 text-pink-600" /><span>{OFFICIAL_CONTACTS.instagram.handle}</span>
               </a>
               <a href={OFFICIAL_CONTACTS.facebook.url} target="_blank" rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-stone-200/80 hover:border-[#859F3C] hover:text-[#859F3C] transition-all shadow-2xs">
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-stone-200/80 hover:border-[#124903] hover:text-[#124903] transition-all shadow-2xs">
                 <FacebookIcon className="w-3.5 h-3.5 text-blue-600" /><span>{OFFICIAL_CONTACTS.facebook.handle}</span>
               </a>
               <a href={OFFICIAL_CONTACTS.telegram.url} target="_blank" rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-stone-200/80 hover:border-[#859F3C] hover:text-[#859F3C] transition-all shadow-2xs">
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-stone-200/80 hover:border-[#124903] hover:text-[#124903] transition-all shadow-2xs">
                 <TelegramIcon className="w-3.5 h-3.5 text-sky-500" /><span>{OFFICIAL_CONTACTS.telegram.handle}</span>
               </a>
               <a href={OFFICIAL_CONTACTS.tiktok.url} target="_blank" rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-stone-200/80 hover:border-[#859F3C] hover:text-[#859F3C] transition-all shadow-2xs">
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-stone-200/80 hover:border-[#124903] hover:text-[#124903] transition-all shadow-2xs">
                 <TikTokIcon className="w-3.5 h-3.5 text-stone-900" /><span>{OFFICIAL_CONTACTS.tiktok.handle}</span>
               </a>
               <a href={OFFICIAL_CONTACTS.phonePrimary.tel}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#1A1A1A] text-white hover:bg-[#859F3C] transition-all shadow-2xs">
-                <Phone className="w-3 h-3 text-[#859F3C]" /><span>{OFFICIAL_CONTACTS.phonePrimary.display}</span>
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#1A1A1A] text-white hover:bg-[#124903] transition-all shadow-2xs">
+                <Phone className="w-3 h-3 text-[#124903]" /><span>{OFFICIAL_CONTACTS.phonePrimary.display}</span>
               </a>
             </div>
           </div>
@@ -291,14 +291,14 @@ export default function ShopClient({ initialProducts, categories }: ShopClientPr
             <div className="relative w-full sm:w-96">
               <div className={`relative flex items-center transition-all duration-300 ${
                 searchFocused
-                  ? 'ring-2 ring-[#859F3C]/50 rounded-2xl'
+                  ? 'ring-2 ring-[#124903]/50 rounded-2xl'
                   : ''
               }`}>
                 {isSearching ? (
-                  <Loader2 className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#859F3C] animate-spin" />
+                  <Loader2 className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#124903] animate-spin" />
                 ) : (
                   <Search className={`absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 transition-colors ${
-                    searchFocused ? 'text-[#859F3C]' : 'text-stone-400'
+                    searchFocused ? 'text-[#124903]' : 'text-stone-400'
                   }`} />
                 )}
                 <input
@@ -310,7 +310,7 @@ export default function ShopClient({ initialProducts, categories }: ShopClientPr
                   onBlur={() => setTimeout(() => setSearchFocused(false), 150)}
                   placeholder="Search by piece, wood, fabric or style..."
                   aria-label="Search furniture catalog"
-                  className="w-full pl-10 pr-10 py-2.5 text-xs bg-stone-50 border border-stone-200/80 rounded-2xl focus:outline-none focus:border-[#859F3C] placeholder:text-stone-400 transition-all"
+                  className="w-full pl-10 pr-10 py-2.5 text-xs bg-stone-50 border border-stone-200/80 rounded-2xl focus:outline-none focus:border-[#124903] placeholder:text-stone-400 transition-all"
                 />
                 {searchInput && (
                   <button
@@ -349,7 +349,7 @@ export default function ShopClient({ initialProducts, categories }: ShopClientPr
                         <span className="text-sm text-stone-800 leading-tight">
                           {highlighted.map((part: string, i: number) =>
                             part.toLowerCase() === searchInput.toLowerCase() ? (
-                              <mark key={i} className="bg-[#859F3C]/25 text-[#47571e] rounded px-0.5 font-semibold not-italic">
+                              <mark key={i} className="bg-[#124903]/25 text-[#0b2e02] rounded px-0.5 font-semibold not-italic">
                                 {part}
                               </mark>
                             ) : (
@@ -378,7 +378,7 @@ export default function ShopClient({ initialProducts, categories }: ShopClientPr
                   id="sort"
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value as typeof sortBy)}
-                  className="py-2 px-3.5 bg-stone-50 border border-stone-200/80 rounded-2xl text-xs font-medium text-stone-800 focus:outline-none focus:border-[#859F3C] cursor-pointer"
+                  className="py-2 px-3.5 bg-stone-50 border border-stone-200/80 rounded-2xl text-xs font-medium text-stone-800 focus:outline-none focus:border-[#124903] cursor-pointer"
                 >
                   <option value="featured">Featured</option>
                   <option value="price-low">Price: Low → High</option>
@@ -416,7 +416,7 @@ export default function ShopClient({ initialProducts, categories }: ShopClientPr
         <div className="flex items-center justify-between text-xs text-stone-500 font-sans px-1">
           <div className="flex items-center gap-2">
             {isSearching ? (
-              <span className="flex items-center gap-1.5 text-[#859F3C]">
+              <span className="flex items-center gap-1.5 text-[#124903]">
                 <Loader2 className="w-3.5 h-3.5 animate-spin" /> Searching…
               </span>
             ) : (
@@ -436,7 +436,7 @@ export default function ShopClient({ initialProducts, categories }: ShopClientPr
                 clearSearch();
                 handleCategoryChange('all');
               }}
-              className="flex items-center gap-1 text-[#859F3C] hover:underline font-medium cursor-pointer"
+              className="flex items-center gap-1 text-[#124903] hover:underline font-medium cursor-pointer"
             >
               <X className="w-3 h-3" /> Clear all filters
             </button>
@@ -471,7 +471,7 @@ export default function ShopClient({ initialProducts, categories }: ShopClientPr
         {/* Bottom Concierge Banner */}
         <div className="mt-16 p-8 rounded-3xl bg-[#1A1A1A] text-white border border-white/10 flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl">
           <div className="space-y-1 text-center md:text-left">
-            <h3 className="font-serif text-xl font-semibold text-[#859F3C]">
+            <h3 className="font-serif text-xl font-semibold text-[#124903]">
               Need Custom Dining Table Length, Seating, or Wood Species?
             </h3>
             <p className="text-xs text-stone-400 font-sans">
@@ -481,7 +481,7 @@ export default function ShopClient({ initialProducts, categories }: ShopClientPr
           <div className="flex flex-wrap items-center gap-3 w-full md:w-auto justify-center">
             <a
               href={OFFICIAL_CONTACTS.phonePrimary.tel}
-              className="px-5 py-2.5 rounded-full bg-[#859F3C] hover:bg-[#738b32] text-white text-xs font-bold transition-all hover:shadow-[0_0_20px_rgba(133,159,60,0.4)] inline-flex items-center gap-2 cursor-pointer"
+              className="px-5 py-2.5 rounded-full bg-[#124903] hover:bg-[#0e3802] text-white text-xs font-bold transition-all hover:shadow-[0_0_20px_rgba(18, 73, 3,0.4)] inline-flex items-center gap-2 cursor-pointer"
             >
               <Phone className="w-3.5 h-3.5" />
               <span>Call: {OFFICIAL_CONTACTS.phonePrimary.display}</span>

@@ -131,13 +131,13 @@ export default function PhotoUploadDropzone({
         }}
         className={`relative rounded-3xl border-2 border-dashed p-6 sm:p-8 flex flex-col items-center justify-center text-center transition-all cursor-pointer overflow-hidden group ${
           isDragging
-            ? 'border-[#859F3C] bg-[#859F3C]/10 shadow-[0_0_30px_rgba(133,159,60,0.35)] scale-[1.01]'
-            : 'border-stone-300 hover:border-[#859F3C] bg-stone-50/70 hover:bg-[#859F3C]/5'
+            ? 'border-[#124903] bg-[#124903]/10 shadow-[0_0_30px_rgba(18, 73, 3,0.35)] scale-[1.01]'
+            : 'border-stone-300 hover:border-[#124903] bg-stone-50/70 hover:bg-[#124903]/5'
         }`}
       >
         {isUploading ? (
           <div className="py-6 flex flex-col items-center gap-3">
-            <div className="w-12 h-12 rounded-2xl bg-[#859F3C]/20 border border-[#859F3C] flex items-center justify-center text-[#859F3C] animate-pulse">
+            <div className="w-12 h-12 rounded-2xl bg-[#124903]/20 border border-[#124903] flex items-center justify-center text-[#124903] animate-pulse">
               <Loader2 className="w-6 h-6 animate-spin" />
             </div>
             <div className="space-y-1">
@@ -151,7 +151,7 @@ export default function PhotoUploadDropzone({
           </div>
         ) : (
           <div className="flex flex-col items-center gap-3">
-            <div className="w-14 h-14 rounded-2xl bg-white border border-stone-200 group-hover:border-[#859F3C] group-hover:bg-[#859F3C] text-stone-600 group-hover:text-white flex items-center justify-center transition-all shadow-sm group-hover:scale-105 duration-300">
+            <div className="w-14 h-14 rounded-2xl bg-white border border-stone-200 group-hover:border-[#124903] group-hover:bg-[#124903] text-stone-600 group-hover:text-white flex items-center justify-center transition-all shadow-sm group-hover:scale-105 duration-300">
               <UploadCloud className="w-7 h-7 stroke-[1.8]" />
             </div>
 
@@ -172,7 +172,7 @@ export default function PhotoUploadDropzone({
               <button
                 type="button"
                 onClick={() => fileInputRef.current?.click()}
-                className="px-4 py-2 rounded-full bg-[#859F3C] hover:bg-[#738b32] text-white text-xs font-bold shadow-sm hover:shadow-md transition-all flex items-center gap-1.5 cursor-pointer"
+                className="px-4 py-2 rounded-full bg-[#124903] hover:bg-[#0e3802] text-white text-xs font-bold shadow-sm hover:shadow-md transition-all flex items-center gap-1.5 cursor-pointer"
               >
                 <ImageIcon className="w-3.5 h-3.5" />
                 <span>Browse Files</span>
@@ -183,7 +183,7 @@ export default function PhotoUploadDropzone({
                 onClick={() => cameraInputRef.current?.click()}
                 className="px-4 py-2 rounded-full bg-white hover:bg-stone-100 text-stone-800 border border-stone-300 text-xs font-semibold shadow-2xs transition-all flex items-center gap-1.5 cursor-pointer"
               >
-                <Camera className="w-3.5 h-3.5 text-[#859F3C]" />
+                <Camera className="w-3.5 h-3.5 text-[#124903]" />
                 <span>Take Photo (Camera)</span>
               </button>
             </div>
@@ -222,7 +222,7 @@ export default function PhotoUploadDropzone({
             <button
               type="button"
               onClick={() => fileInputRef.current?.click()}
-              className="px-3 py-1.5 rounded-lg bg-stone-100 hover:bg-[#859F3C] text-stone-700 hover:text-white text-xs font-semibold transition-colors"
+              className="px-3 py-1.5 rounded-lg bg-stone-100 hover:bg-[#124903] text-stone-700 hover:text-white text-xs font-semibold transition-colors"
             >
               Replace
             </button>

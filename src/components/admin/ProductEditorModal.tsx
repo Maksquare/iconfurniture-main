@@ -206,7 +206,7 @@ export default function ProductEditorModal({
             {/* ── HEADER ── */}
             <div className="px-6 sm:px-8 py-5 border-b border-stone-200 flex items-center justify-between bg-stone-50/80 rounded-t-3xl">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-2xl bg-[#859F3C]/15 border border-[#859F3C]/30 flex items-center justify-center text-[#859F3C]">
+                <div className="w-10 h-10 rounded-2xl bg-[#124903]/15 border border-[#124903]/30 flex items-center justify-center text-[#124903]">
                   <Sparkles className="w-5 h-5" />
                 </div>
                 <div>
@@ -250,7 +250,7 @@ export default function ProductEditorModal({
                             onClick={() => setImageSourceTab(tab)}
                             className={`px-3 py-1 rounded-lg text-[11px] font-bold transition-all cursor-pointer ${
                               imageSourceTab === tab
-                                ? 'bg-[#859F3C] text-white shadow-sm'
+                                ? 'bg-[#124903] text-white shadow-sm'
                                 : 'text-stone-600 hover:text-stone-900'
                             }`}
                           >
@@ -282,9 +282,9 @@ export default function ProductEditorModal({
                         <button
                           type="button"
                           onClick={() => { setImagePickerTarget('primary'); setShowImagePicker(true); }}
-                          className="w-full py-2.5 px-4 rounded-xl border border-stone-300 hover:border-[#859F3C] bg-stone-50 hover:bg-stone-100 text-stone-700 text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer"
+                          className="w-full py-2.5 px-4 rounded-xl border border-stone-300 hover:border-[#124903] bg-stone-50 hover:bg-stone-100 text-stone-700 text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer"
                         >
-                          <ImageIcon className="w-4 h-4 text-[#859F3C]" />
+                          <ImageIcon className="w-4 h-4 text-[#124903]" />
                           <span>Browse 59 Collection Photos</span>
                         </button>
                       </div>
@@ -298,7 +298,7 @@ export default function ProductEditorModal({
                           value={imageUrl}
                           onChange={(e) => setImageUrl(e.target.value)}
                           placeholder="https://... or /collections/if001.jpg"
-                          className="w-full px-4 py-2.5 rounded-xl border border-stone-300 text-xs font-mono focus:border-[#859F3C] focus:ring-2 focus:ring-[#859F3C]/20"
+                          className="w-full px-4 py-2.5 rounded-xl border border-stone-300 text-xs font-mono focus:border-[#124903] focus:ring-2 focus:ring-[#124903]/20"
                         />
                         <div
                           className="relative w-full rounded-2xl overflow-hidden bg-stone-100 border border-stone-300"
@@ -323,7 +323,7 @@ export default function ProductEditorModal({
                           setPendingGalleryPicks([]);
                           setShowImagePicker(true);
                         }}
-                        className="text-xs font-semibold text-[#859F3C] hover:underline flex items-center gap-1 cursor-pointer"
+                        className="text-xs font-semibold text-[#124903] hover:underline flex items-center gap-1 cursor-pointer"
                       >
                         <Plus className="w-3.5 h-3.5" />
                         <span>Add from Vault</span>
@@ -361,7 +361,7 @@ export default function ProductEditorModal({
 
                   {/* Stock & Feature Toggles */}
                   <div className="pt-4 border-t border-stone-200 space-y-3">
-                    <label className="flex items-center justify-between p-3 rounded-xl bg-stone-50 border border-stone-200 cursor-pointer hover:border-[#859F3C]/40 transition-colors">
+                    <label className="flex items-center justify-between p-3 rounded-xl bg-stone-50 border border-stone-200 cursor-pointer hover:border-[#124903]/40 transition-colors">
                       <div>
                         <span className="text-xs font-bold text-stone-900 block">Ready Stock</span>
                         <span className="text-[11px] text-stone-500 font-sans">
@@ -372,11 +372,11 @@ export default function ProductEditorModal({
                         type="checkbox"
                         checked={inStock}
                         onChange={(e) => setInStock(e.target.checked)}
-                        className="w-4 h-4 accent-[#859F3C] rounded cursor-pointer"
+                        className="w-4 h-4 accent-[#124903] rounded cursor-pointer"
                       />
                     </label>
 
-                    <label className="flex items-center justify-between p-3 rounded-xl bg-stone-50 border border-stone-200 cursor-pointer hover:border-[#859F3C]/40 transition-colors">
+                    <label className="flex items-center justify-between p-3 rounded-xl bg-stone-50 border border-stone-200 cursor-pointer hover:border-[#124903]/40 transition-colors">
                       <div>
                         <span className="text-xs font-bold text-stone-900 block">Featured on Homepage</span>
                         <span className="text-[11px] text-stone-500 font-sans">
@@ -387,7 +387,7 @@ export default function ProductEditorModal({
                         type="checkbox"
                         checked={featured}
                         onChange={(e) => setFeatured(e.target.checked)}
-                        className="w-4 h-4 accent-[#859F3C] rounded cursor-pointer"
+                        className="w-4 h-4 accent-[#124903] rounded cursor-pointer"
                       />
                     </label>
                   </div>
@@ -409,7 +409,7 @@ export default function ProductEditorModal({
                       value={name}
                       onChange={handleNameChange}
                       placeholder="e.g. Kanso Solid Walnut Dining Table"
-                      className="w-full px-4 py-2.5 rounded-xl border border-stone-300 focus:border-[#859F3C] focus:ring-2 focus:ring-[#859F3C]/20 text-sm font-medium text-stone-900 transition-all"
+                      className="w-full px-4 py-2.5 rounded-xl border border-stone-300 focus:border-[#124903] focus:ring-2 focus:ring-[#124903]/20 text-sm font-medium text-stone-900 transition-all"
                     />
                   </div>
 
@@ -425,7 +425,7 @@ export default function ProductEditorModal({
                         value={slug}
                         onChange={(e) => setSlug(e.target.value)}
                         placeholder="kanso-walnut-table"
-                        className="w-full px-3 py-2 rounded-xl border border-stone-300 font-mono text-xs text-stone-800 bg-stone-50 focus:border-[#859F3C]"
+                        className="w-full px-3 py-2 rounded-xl border border-stone-300 font-mono text-xs text-stone-800 bg-stone-50 focus:border-[#124903]"
                       />
                     </div>
 
@@ -436,7 +436,7 @@ export default function ProductEditorModal({
                       <select
                         value={categoryId}
                         onChange={(e) => setCategoryId(e.target.value)}
-                        className="w-full px-3 py-2 rounded-xl border border-stone-300 text-xs font-semibold text-stone-800 bg-white focus:border-[#859F3C]"
+                        className="w-full px-3 py-2 rounded-xl border border-stone-300 text-xs font-semibold text-stone-800 bg-white focus:border-[#124903]"
                       >
                         {categories.map((cat, catIdx) => (
                           <option key={`modal-cat-${cat.id || cat.slug || catIdx}`} value={cat.id}>
@@ -460,9 +460,9 @@ export default function ProductEditorModal({
                         step={500}
                         value={price}
                         onChange={(e) => setPrice(Number(e.target.value))}
-                        className="w-full pl-4 pr-16 py-2.5 rounded-xl border border-stone-300 text-base font-serif font-bold text-stone-900 focus:border-[#859F3C] focus:ring-2 focus:ring-[#859F3C]/20"
+                        className="w-full pl-4 pr-16 py-2.5 rounded-xl border border-stone-300 text-base font-serif font-bold text-stone-900 focus:border-[#124903] focus:ring-2 focus:ring-[#124903]/20"
                       />
-                      <span className="absolute right-4 top-1/2 -translate-y-1/2 text-xs font-mono font-bold text-[#859F3C]">
+                      <span className="absolute right-4 top-1/2 -translate-y-1/2 text-xs font-mono font-bold text-[#124903]">
                         ETB
                       </span>
                     </div>
@@ -482,7 +482,7 @@ export default function ProductEditorModal({
                         value={dimensions}
                         onChange={(e) => setDimensions(e.target.value)}
                         placeholder="280cm L × 110cm W × 76cm H"
-                        className="w-full px-3 py-2 rounded-xl border border-stone-300 text-xs text-stone-800 focus:border-[#859F3C]"
+                        className="w-full px-3 py-2 rounded-xl border border-stone-300 text-xs text-stone-800 focus:border-[#124903]"
                       />
                     </div>
 
@@ -495,7 +495,7 @@ export default function ProductEditorModal({
                         value={materials}
                         onChange={(e) => setMaterials(e.target.value)}
                         placeholder="Kiln-dried American walnut"
-                        className="w-full px-3 py-2 rounded-xl border border-stone-300 text-xs text-stone-800 focus:border-[#859F3C]"
+                        className="w-full px-3 py-2 rounded-xl border border-stone-300 text-xs text-stone-800 focus:border-[#124903]"
                       />
                     </div>
                   </div>
@@ -510,7 +510,7 @@ export default function ProductEditorModal({
                       value={description}
                       onChange={(e) => setDescription(e.target.value)}
                       placeholder="Describe the table: wood type, size, shape, finish, and what makes it special..."
-                      className="w-full px-4 py-3 rounded-xl border border-stone-300 focus:border-[#859F3C] focus:ring-2 focus:ring-[#859F3C]/20 text-xs font-sans text-stone-800 leading-relaxed resize-none"
+                      className="w-full px-4 py-3 rounded-xl border border-stone-300 focus:border-[#124903] focus:ring-2 focus:ring-[#124903]/20 text-xs font-sans text-stone-800 leading-relaxed resize-none"
                     />
                   </div>
                 </div>
@@ -527,7 +527,7 @@ export default function ProductEditorModal({
                 </button>
                 <button
                   type="submit"
-                  className="px-6 py-2.5 rounded-full bg-[#859F3C] hover:bg-[#738b32] text-white text-xs uppercase tracking-wider font-bold shadow-lg shadow-[#859F3C]/30 hover:shadow-[#859F3C]/50 transition-all flex items-center gap-2 cursor-pointer"
+                  className="px-6 py-2.5 rounded-full bg-[#124903] hover:bg-[#0e3802] text-white text-xs uppercase tracking-wider font-bold shadow-lg shadow-[#124903]/30 hover:shadow-[#124903]/50 transition-all flex items-center gap-2 cursor-pointer"
                 >
                   <Check className="w-4 h-4" />
                   <span>Save Dining Table</span>
@@ -587,10 +587,10 @@ export default function ProductEditorModal({
                       onClick={() => handleSelectImage(img)}
                       className={`group relative aspect-square rounded-xl overflow-hidden border-2 transition-all cursor-pointer ${
                         isHighlighted
-                          ? 'border-[#859F3C] ring-2 ring-[#859F3C]/40 scale-95'
+                          ? 'border-[#124903] ring-2 ring-[#124903]/40 scale-95'
                           : isInGallery && imagePickerTarget === 'gallery'
                           ? 'border-stone-400 opacity-50'
-                          : 'border-stone-200 hover:border-[#859F3C]'
+                          : 'border-stone-200 hover:border-[#124903]'
                       }`}
                     >
                       <Image
@@ -605,7 +605,7 @@ export default function ProductEditorModal({
                       </span>
                       {/* Check badge for pending gallery picks */}
                       {isPendingPick && imagePickerTarget === 'gallery' && (
-                        <div className="absolute top-1 right-1 w-5 h-5 rounded-full bg-[#859F3C] flex items-center justify-center shadow">
+                        <div className="absolute top-1 right-1 w-5 h-5 rounded-full bg-[#124903] flex items-center justify-center shadow">
                           <Check className="w-3 h-3 text-white" />
                         </div>
                       )}
@@ -638,7 +638,7 @@ export default function ProductEditorModal({
                       type="button"
                       onClick={handleConfirmGalleryPicks}
                       disabled={pendingGalleryPicks.length === 0}
-                      className="px-5 py-2 rounded-xl bg-[#859F3C] hover:bg-[#738b32] disabled:opacity-40 text-white text-xs font-bold cursor-pointer transition-all"
+                      className="px-5 py-2 rounded-xl bg-[#124903] hover:bg-[#0e3802] disabled:opacity-40 text-white text-xs font-bold cursor-pointer transition-all"
                     >
                       Add {pendingGalleryPicks.length > 0 ? pendingGalleryPicks.length : ''} Photo{pendingGalleryPicks.length !== 1 ? 's' : ''}
                     </button>

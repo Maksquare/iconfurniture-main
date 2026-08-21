@@ -51,25 +51,25 @@ export default function Footer() {
             </p>
             <div className="pt-2 text-xs text-stone-300 space-y-1.5 font-sans">
               <div className="flex items-center gap-2">
-                <MapPin className="w-3.5 h-3.5 text-[#859F3C] shrink-0" />
+                <MapPin className="w-3.5 h-3.5 text-[#124903] shrink-0" />
                 <span>{brandSettings?.showroom_address || 'Addis Ababa, Ethiopia'}</span>
                 <a
                   href={brandSettings?.google_maps_url || OFFICIAL_CONTACTS.mapUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#859F3C] hover:underline font-semibold flex items-center gap-0.5 ml-1"
+                  className="text-[#124903] hover:underline font-semibold flex items-center gap-0.5 ml-1"
                 >
                   <span>Map</span>
                   <ExternalLink className="w-2.5 h-2.5" />
                 </a>
               </div>
               <div className="flex items-center gap-2">
-                <Phone className="w-3.5 h-3.5 text-[#859F3C] shrink-0" />
-                <a href={`tel:${brandSettings?.phone_primary || '0911967049'}`} className="hover:text-[#859F3C] transition-colors">
+                <Phone className="w-3.5 h-3.5 text-[#124903] shrink-0" />
+                <a href={`tel:${brandSettings?.phone_primary || '0911967049'}`} className="hover:text-[#124903] transition-colors">
                   {brandSettings?.phone_primary || OFFICIAL_CONTACTS.phonePrimary.display}
                 </a>
                 <span className="text-stone-500">•</span>
-                <a href={`tel:${brandSettings?.phone_secondary || '0910051151'}`} className="hover:text-[#859F3C] transition-colors">
+                <a href={`tel:${brandSettings?.phone_secondary || '0910051151'}`} className="hover:text-[#124903] transition-colors">
                   {brandSettings?.phone_secondary || OFFICIAL_CONTACTS.phoneSecondary.display}
                 </a>
               </div>
@@ -82,7 +82,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 title="Instagram"
-                className="w-8 h-8 rounded-full bg-white/10 hover:bg-[#859F3C] text-stone-300 hover:text-white flex items-center justify-center transition-all duration-300 shadow-2xs"
+                className="w-8 h-8 rounded-full bg-white/10 hover:bg-[#124903] text-stone-300 hover:text-white flex items-center justify-center transition-all duration-300 shadow-2xs"
               >
                 <InstagramIcon className="w-3.5 h-3.5" />
               </a>
@@ -109,7 +109,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 title="TikTok"
-                className="w-8 h-8 rounded-full bg-white/10 hover:bg-[#859F3C] text-stone-300 hover:text-white flex items-center justify-center transition-all duration-300 shadow-2xs"
+                className="w-8 h-8 rounded-full bg-white/10 hover:bg-[#124903] text-stone-300 hover:text-white flex items-center justify-center transition-all duration-300 shadow-2xs"
               >
                 <TikTokIcon className="w-3.5 h-3.5" />
               </a>
@@ -123,42 +123,42 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2.5 text-xs text-stone-400">
               <li>
-                <Link href="/shop" className="hover:text-[#859F3C] transition-colors">
+                <Link href="/shop" className="hover:text-[#124903] transition-colors">
                   Flagship Collection
                 </Link>
               </li>
               <li>
-                <Link href="/cinema" className="hover:text-[#859F3C] transition-colors">
+                <Link href="/cinema" className="hover:text-[#124903] transition-colors">
                   Cinema & Visual Journal
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="hover:text-[#859F3C] transition-colors">
+                <Link href="/about" className="hover:text-[#124903] transition-colors">
                   About & Craftsmanship
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-[#859F3C] transition-colors">
+                <Link href="/contact" className="hover:text-[#124903] transition-colors">
                   Contact & Concierge
                 </Link>
               </li>
               <li>
-                <Link href="/shop?category=solid-hardwood" className="hover:text-[#859F3C] transition-colors">
+                <Link href="/shop?category=solid-hardwood" className="hover:text-[#124903] transition-colors">
                   Solid Hardwood Tables
                 </Link>
               </li>
               <li>
-                <Link href="/shop?category=stone-marble" className="hover:text-[#859F3C] transition-colors">
+                <Link href="/shop?category=stone-marble" className="hover:text-[#124903] transition-colors">
                   Honed Stone & Marble Tables
                 </Link>
               </li>
               <li>
-                <Link href="/shop?category=round-gathering" className="hover:text-[#859F3C] transition-colors">
+                <Link href="/shop?category=round-gathering" className="hover:text-[#124903] transition-colors">
                   Round Gathering Tables
                 </Link>
               </li>
               <li>
-                <Link href="/shop?category=extendable-grand" className="hover:text-[#859F3C] transition-colors">
+                <Link href="/shop?category=extendable-grand" className="hover:text-[#124903] transition-colors">
                   Extendable Banquet Tables
                 </Link>
               </li>
@@ -172,28 +172,28 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2.5 text-xs text-stone-400">
               <li>
-                <Link href="/contact" className="hover:text-[#859F3C] transition-colors">
+                <Link href="/contact" className="hover:text-[#124903] transition-colors">
                   Private Studio Consultation
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-[#859F3C] transition-colors">
+                <Link href="/contact" className="hover:text-[#124903] transition-colors">
                   Custom Dimension Requests
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-[#859F3C] transition-colors">
+                <Link href="/contact" className="hover:text-[#124903] transition-colors">
                   Trade & Interior Architecture
                 </Link>
               </li>
               <li>
-                <Link href="/admin" className="text-[#859F3C] hover:underline transition-colors inline-flex items-center gap-1 font-semibold">
+                <Link href="/admin" className="text-[#124903] hover:underline transition-colors inline-flex items-center gap-1 font-semibold">
                   <span>Atelier Management Console</span>
                   <ExternalLink className="w-3 h-3" />
                 </Link>
               </li>
               <li>
-                <span className="hover:text-[#859F3C] transition-colors cursor-pointer">
+                <span className="hover:text-[#124903] transition-colors cursor-pointer">
                   White-Glove Installation
                 </span>
               </li>
@@ -209,7 +209,7 @@ export default function Footer() {
               Receive private previews of seasonal capsule releases and design monographs.
             </p>
             {subscribed ? (
-              <div className="flex items-center gap-2 text-xs text-[#859F3C] bg-white/5 p-3 rounded-xl border border-[#859F3C]/30">
+              <div className="flex items-center gap-2 text-xs text-[#124903] bg-white/5 p-3 rounded-xl border border-[#124903]/30">
                 <CheckCircle2 className="w-4 h-4" />
                 <span>You are now subscribed to the Gazette.</span>
               </div>
@@ -222,11 +222,11 @@ export default function Footer() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter your email address"
-                    className="w-full px-3.5 py-2.5 bg-white/5 border border-white/15 text-xs text-white placeholder-stone-500 rounded-xl focus:outline-hidden focus:border-[#859F3C]"
+                    className="w-full px-3.5 py-2.5 bg-white/5 border border-white/15 text-xs text-white placeholder-stone-500 rounded-xl focus:outline-hidden focus:border-[#124903]"
                   />
                   <button
                     type="submit"
-                    className="absolute right-1 top-1 bottom-1 px-3 bg-[#859F3C] hover:bg-[#738b32] text-white text-xs transition-colors flex items-center justify-center rounded-lg cursor-pointer"
+                    className="absolute right-1 top-1 bottom-1 px-3 bg-[#124903] hover:bg-[#0e3802] text-white text-xs transition-colors flex items-center justify-center rounded-lg cursor-pointer"
                     aria-label="Subscribe to newsletter"
                   >
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -244,7 +244,7 @@ export default function Footer() {
           </p>
           
           <div className="flex items-center gap-6 text-stone-400">
-            <Link href="/admin" className="text-stone-400 hover:text-[#859F3C] transition-colors">
+            <Link href="/admin" className="text-stone-400 hover:text-[#124903] transition-colors">
               Atelier Console
             </Link>
             <span className="hover:text-stone-200 transition-colors cursor-pointer">Privacy Policy</span>
@@ -254,14 +254,14 @@ export default function Footer() {
           {/* Luxury Developer Hallmark Pill */}
           <a
             href="tel:0954944389"
-            className="group inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/15 hover:border-[#859F3C]/60 text-stone-300 hover:text-white transition-all duration-300 shadow-xs hover:shadow-[0_0_20px_rgba(133,159,60,0.3)] hover:scale-102 cursor-pointer"
+            className="group inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/15 hover:border-[#124903]/60 text-stone-300 hover:text-white transition-all duration-300 shadow-xs hover:shadow-[0_0_20px_rgba(18, 73, 3,0.3)] hover:scale-102 cursor-pointer"
             title="Call Developer: 0954944389"
           >
-            <span className="w-2 h-2 rounded-full bg-[#859F3C] inline-block animate-pulse shadow-[0_0_8px_#859F3C]" />
+            <span className="w-2 h-2 rounded-full bg-[#124903] inline-block animate-pulse shadow-[0_0_8px_#124903]" />
             <span className="text-[10.5px] uppercase tracking-wider text-stone-400 font-medium">
               Developed by
             </span>
-            <span className="font-mono text-xs font-bold text-white group-hover:text-[#859F3C] transition-colors">
+            <span className="font-mono text-xs font-bold text-white group-hover:text-[#124903] transition-colors">
               {brandSettings?.developer_credit || 'AME PRIME - 0954944389'}
             </span>
           </a>

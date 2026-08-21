@@ -100,7 +100,7 @@ export default function InquiryEditorModal({
         >
           <div className="px-6 py-5 border-b border-stone-200 flex items-center justify-between bg-stone-50">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-2xl bg-[#859F3C]/15 border border-[#859F3C]/30 flex items-center justify-center text-[#859F3C]">
+              <div className="w-10 h-10 rounded-2xl bg-[#124903]/15 border border-[#124903]/30 flex items-center justify-center text-[#124903]">
                 <Crown className="w-5 h-5" />
               </div>
               <div>
@@ -130,7 +130,7 @@ export default function InquiryEditorModal({
                   value={customerName}
                   onChange={(e) => setCustomerName(e.target.value)}
                   placeholder="e.g. Almaz Bekele"
-                  className="w-full px-4 py-2.5 rounded-xl border border-stone-300 focus:border-[#859F3C] text-sm text-stone-900"
+                  className="w-full px-4 py-2.5 rounded-xl border border-stone-300 focus:border-[#124903] text-sm text-stone-900"
                 />
               </div>
 
@@ -144,7 +144,7 @@ export default function InquiryEditorModal({
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   placeholder="0911-00-00-00"
-                  className="w-full px-4 py-2.5 rounded-xl border border-stone-300 focus:border-[#859F3C] text-sm font-mono text-stone-900"
+                  className="w-full px-4 py-2.5 rounded-xl border border-stone-300 focus:border-[#124903] text-sm font-mono text-stone-900"
                 />
               </div>
             </div>
@@ -237,7 +237,7 @@ export default function InquiryEditorModal({
                     onChange={(e) => setBudget(Number(e.target.value))}
                     className="w-full pl-3 pr-14 py-2 rounded-xl border border-stone-300 font-mono text-xs font-bold text-stone-900"
                   />
-                  <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-mono font-bold text-[#859F3C]">
+                  <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-mono font-bold text-[#124903]">
                     ETB
                   </span>
                 </div>
@@ -266,7 +266,7 @@ export default function InquiryEditorModal({
                     onClick={() => setStatus(st.id)}
                     className={`py-2 px-2 rounded-xl text-[11px] font-semibold border transition-all cursor-pointer ${
                       status === st.id
-                        ? 'bg-[#859F3C] text-white border-[#859F3C] shadow-sm'
+                        ? 'bg-[#124903] text-white border-[#124903] shadow-sm'
                         : 'bg-stone-50 text-stone-700 border-stone-200 hover:border-stone-400'
                     }`}
                   >
@@ -301,7 +301,7 @@ export default function InquiryEditorModal({
               </button>
               <button
                 type="submit"
-                className="px-6 py-2 rounded-full bg-[#859F3C] hover:bg-[#738b32] text-white text-xs uppercase tracking-wider font-bold shadow-md flex items-center gap-2"
+                className="px-6 py-2 rounded-full bg-[#124903] hover:bg-[#0e3802] text-white text-xs uppercase tracking-wider font-bold shadow-md flex items-center gap-2"
               >
                 <Check className="w-4 h-4" />
                 <span>Save Client Record</span>

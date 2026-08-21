@@ -81,10 +81,10 @@ export default function AdminLoginScreen({ onLoginSuccess }: AdminLoginScreenPro
   };
 
   return (
-    <div className="min-h-screen bg-[#111111] text-white flex flex-col justify-between relative overflow-hidden selection:bg-[#859F3C] selection:text-white">
+    <div className="min-h-screen bg-[#111111] text-white flex flex-col justify-between relative overflow-hidden selection:bg-[#124903] selection:text-white">
       {/* Ambient background glows */}
-      <div className="absolute -top-40 -left-40 w-96 h-96 bg-[#859F3C]/15 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute -bottom-40 -right-40 w-96 h-96 bg-[#859F3C]/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute -top-40 -left-40 w-96 h-96 bg-[#124903]/15 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute -bottom-40 -right-40 w-96 h-96 bg-[#124903]/10 rounded-full blur-3xl pointer-events-none" />
 
       {/* Top Bar */}
       <header className="p-6 sm:p-8 flex items-center justify-between z-10">
@@ -106,12 +106,12 @@ export default function AdminLoginScreen({ onLoginSuccess }: AdminLoginScreenPro
           className="w-full max-w-md bg-[#1A1A1A] border border-white/10 rounded-3xl p-7 sm:p-9 shadow-2xl relative overflow-hidden"
         >
           {/* Top gradient line */}
-          <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#859F3C] to-transparent" />
+          <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#124903] to-transparent" />
 
           {/* Header */}
           <div className="text-center space-y-4 mb-8">
             {/* Brand Logo */}
-            <div className="mx-auto w-20 h-20 rounded-2xl bg-white/5 border border-[#859F3C]/30 p-2 flex items-center justify-center shadow-[0_0_40px_rgba(133,159,60,0.2)]">
+            <div className="mx-auto w-20 h-20 rounded-2xl bg-white/5 border border-[#124903]/30 p-2 flex items-center justify-center shadow-[0_0_40px_rgba(18, 73, 3,0.2)]">
               <Image
                 src="/assets/if-favicon.png"
                 alt="ICON FURNITURE"
@@ -165,7 +165,7 @@ export default function AdminLoginScreen({ onLoginSuccess }: AdminLoginScreenPro
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="admin@iconfurniture.com"
-                  className="w-full pl-10 pr-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-[#859F3C] focus:bg-white/8 focus:ring-2 focus:ring-[#859F3C]/20 text-sm text-white placeholder-stone-600 transition-all outline-none"
+                  className="w-full pl-10 pr-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-[#124903] focus:bg-white/8 focus:ring-2 focus:ring-[#124903]/20 text-sm text-white placeholder-stone-600 transition-all outline-none"
                 />
               </div>
             </div>
@@ -186,7 +186,7 @@ export default function AdminLoginScreen({ onLoginSuccess }: AdminLoginScreenPro
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••••••"
-                  className="w-full pl-10 pr-11 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-[#859F3C] focus:bg-white/8 focus:ring-2 focus:ring-[#859F3C]/20 text-sm text-white placeholder-stone-600 transition-all outline-none"
+                  className="w-full pl-10 pr-11 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-[#124903] focus:bg-white/8 focus:ring-2 focus:ring-[#124903]/20 text-sm text-white placeholder-stone-600 transition-all outline-none"
                 />
                 <button
                   type="button"
@@ -200,7 +200,7 @@ export default function AdminLoginScreen({ onLoginSuccess }: AdminLoginScreenPro
 
             {/* Security note */}
             <div className="flex items-center gap-1.5 text-xs text-stone-500">
-              <ShieldCheck className="w-3.5 h-3.5 text-[#859F3C]" />
+              <ShieldCheck className="w-3.5 h-3.5 text-[#124903]" />
               <span>Secure encrypted session</span>
             </div>
 
@@ -208,7 +208,7 @@ export default function AdminLoginScreen({ onLoginSuccess }: AdminLoginScreenPro
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full py-3.5 px-6 rounded-2xl bg-[#859F3C] hover:bg-[#738b32] disabled:opacity-50 text-white font-bold text-sm shadow-lg shadow-[#859F3C]/30 hover:shadow-[#859F3C]/50 transition-all flex items-center justify-center gap-2 cursor-pointer group"
+              className="w-full py-3.5 px-6 rounded-2xl bg-[#124903] hover:bg-[#0e3802] disabled:opacity-50 text-white font-bold text-sm shadow-lg shadow-[#124903]/30 hover:shadow-[#124903]/50 transition-all flex items-center justify-center gap-2 cursor-pointer group"
             >
               {isLoading ? (
                 <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />

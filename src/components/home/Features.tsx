@@ -44,7 +44,7 @@ export default function Features() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-stone-900 border border-stone-800 text-[#859F3C] text-xs font-semibold uppercase tracking-widest rounded-full"
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-stone-900 border border-stone-800 text-[#124903] text-xs font-semibold uppercase tracking-widest rounded-full"
           >
             <Sparkles className="w-3.5 h-3.5" />
             <span>How We Build Our Tables</span>
@@ -58,7 +58,7 @@ export default function Features() {
             className="font-serif text-3xl sm:text-5xl font-normal tracking-tight text-white leading-tight"
           >
             Built by hand. Built to last{' '}
-            <span className="text-[#859F3C] italic font-light">for your whole family.</span>
+            <span className="text-[#124903] italic font-light">for your whole family.</span>
           </motion.h2>
         </div>
 

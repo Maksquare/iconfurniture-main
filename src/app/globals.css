@@ -21,8 +21,8 @@
 
 @layer base {
   :root {
-    --brand-primary: #859F3C;
-    --brand-primary-hover: #738b32;
+    --brand-primary: #124903;
+    --brand-primary-hover: #0e3802;
     --brand-primary-light: #f3f6ea;
     --brand-secondary: #1A1A1A;
     --brand-dark: #121212;
@@ -58,7 +58,7 @@
 
 /* Custom luxury furniture brand utility classes */
 .bg-brand-primary {
-  background-color: #859F3C;
+  background-color: #124903;
 }
 
 .bg-brand-secondary {
@@ -66,7 +66,7 @@
 }
 
 .text-brand-primary {
-  color: #859F3C;
+  color: #124903;
 }
 
 .text-brand-secondary {
@@ -74,7 +74,7 @@
 }
 
 .border-brand-primary {
-  border-color: #859F3C;
+  border-color: #124903;
 }
 
 .image-zoom-container {

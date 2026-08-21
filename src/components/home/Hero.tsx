@@ -11,7 +11,7 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen bg-[#FDFCF7] pt-28 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden flex flex-col justify-between">
       {/* Background Soft Ambient Light */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-linear-to-tr from-[#859F3C]/15 via-stone-200/50 to-[#859F3C]/10 rounded-full blur-3xl -z-10 pointer-events-none" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-linear-to-tr from-[#124903]/15 via-stone-200/50 to-[#124903]/10 rounded-full blur-3xl -z-10 pointer-events-none" />
 
       {/* 1. GIANT HEADLINE */}
       <div className="relative w-full text-center z-10 pt-4">
@@ -21,7 +21,7 @@ export default function Hero() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="font-sans font-black text-6xl sm:text-8xl md:text-[10rem] lg:text-[13rem] tracking-tighter text-[#1A1A1A] leading-none select-none uppercase"
         >
-          Icon<span className="text-[#859F3C]">furniture.</span>
+          Icon<span className="text-[#124903]">furniture.</span>
         </motion.h1>
       </div>
 
@@ -40,11 +40,11 @@ export default function Hero() {
             >
               <div className="flex items-center space-x-2">
                 <div className="flex -space-x-2 overflow-hidden">
-                  <div className="w-8 h-8 rounded-full bg-[#859F3C] text-white flex items-center justify-center text-xs font-bold ring-2 ring-white">MK</div>
+                  <div className="w-8 h-8 rounded-full bg-[#124903] text-white flex items-center justify-center text-xs font-bold ring-2 ring-white">MK</div>
                   <div className="w-8 h-8 rounded-full bg-[#1A1A1A] text-white flex items-center justify-center text-xs font-bold ring-2 ring-white">AL</div>
-                  <div className="w-8 h-8 rounded-full bg-[#859F3C] text-white flex items-center justify-center text-xs font-bold ring-2 ring-white">SR</div>
+                  <div className="w-8 h-8 rounded-full bg-[#124903] text-white flex items-center justify-center text-xs font-bold ring-2 ring-white">SR</div>
                 </div>
-                <div className="flex items-center text-[#859F3C] gap-0.5">
+                <div className="flex items-center text-[#124903] gap-0.5">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} className="w-3 h-3 fill-current" />
                   ))}
@@ -68,7 +68,7 @@ export default function Hero() {
               </p>
               <Link
                 href="/shop"
-                className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-[#859F3C] hover:underline"
+                className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-[#124903] hover:underline"
               >
                 <span>Browse Dining Tables</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -87,12 +87,12 @@ export default function Hero() {
             <motion.div
               animate={{ rotate: 360 }}
               transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
-              className="absolute w-[320px] sm:w-[460px] h-[320px] sm:h-[460px] rounded-full border-2 border-dashed border-[#859F3C]/30 pointer-events-none -z-10"
+              className="absolute w-[320px] sm:w-[460px] h-[320px] sm:h-[460px] rounded-full border-2 border-dashed border-[#124903]/30 pointer-events-none -z-10"
             />
             <motion.div
               animate={{ rotate: -360 }}
               transition={{ duration: 35, repeat: Infinity, ease: 'linear' }}
-              className="absolute w-[380px] sm:w-[540px] h-[380px] sm:h-[540px] rounded-full border border-[#859F3C]/40 pointer-events-none -z-10"
+              className="absolute w-[380px] sm:w-[540px] h-[380px] sm:h-[540px] rounded-full border border-[#124903]/40 pointer-events-none -z-10"
             />
 
             {/* Central Sculptural Furniture Piece Card */}
@@ -109,7 +109,7 @@ export default function Hero() {
               {/* Overlay Glass Card */}
               <div className="absolute bottom-6 left-6 right-6 p-4 bg-white/90 backdrop-blur-md rounded-2xl border border-white/60 shadow-xl flex items-center justify-between">
                 <div>
-                  <span className="text-[10px] uppercase tracking-widest text-[#859F3C] font-bold block">
+                  <span className="text-[10px] uppercase tracking-widest text-[#124903] font-bold block">
                     Masterpiece Release
                   </span>
                   <h3 className="font-serif text-sm font-semibold text-stone-900">
@@ -133,15 +133,15 @@ export default function Hero() {
             >
               <div className="flex justify-between items-center pb-2 border-b border-stone-100 text-xs text-stone-600 font-sans">
                 <span className="font-medium">Solid American Walnut</span>
-                <span className="font-mono text-[#859F3C] font-semibold">/01</span>
+                <span className="font-mono text-[#124903] font-semibold">/01</span>
               </div>
               <div className="flex justify-between items-center pb-2 border-b border-stone-100 text-xs text-stone-600 font-sans">
                 <span className="font-medium">Honed Roman Travertine</span>
-                <span className="font-mono text-[#859F3C] font-semibold">/02</span>
+                <span className="font-mono text-[#124903] font-semibold">/02</span>
               </div>
               <div className="flex justify-between items-center text-xs text-stone-600 font-sans">
                 <span className="font-medium">Sculptural Pedestals</span>
-                <span className="font-mono text-[#859F3C] font-semibold">/03</span>
+                <span className="font-mono text-[#124903] font-semibold">/03</span>
               </div>
             </motion.div>
 
@@ -154,7 +154,7 @@ export default function Hero() {
             >
               <Link
                 href="/shop"
-                className="group inline-flex items-center gap-3 px-6 py-3.5 bg-[#859F3C] hover:bg-[#738b32] text-white font-bold text-xs uppercase tracking-wider rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1"
+                className="group inline-flex items-center gap-3 px-6 py-3.5 bg-[#124903] hover:bg-[#0e3802] text-white font-bold text-xs uppercase tracking-wider rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1"
               >
                 <span className="w-7 h-7 rounded-full bg-[#1A1A1A] text-white flex items-center justify-center group-hover:scale-110 transition-transform">
                   <Play className="w-3.5 h-3.5 fill-current ml-0.5" />

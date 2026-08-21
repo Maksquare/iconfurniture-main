@@ -31,7 +31,7 @@ interface ColorSwatch {
 }
 
 const FABRIC_PALETTE: ColorSwatch[] = [
-  { name: 'Signature Olive', hex: '#859F3C', category: 'Icon Signature', roughness: 0.65, metalness: 0.05 },
+  { name: 'Signature Olive', hex: '#124903', category: 'Icon Signature', roughness: 0.65, metalness: 0.05 },
   { name: 'Ivory Bouclé', hex: '#E5DEC9', category: 'Warm Neutral', roughness: 0.78, metalness: 0.02 },
   { name: 'Smoked Espresso', hex: '#2B1B14', category: 'Deep Earth', roughness: 0.55, metalness: 0.08 },
   { name: 'Tuscan Terracotta', hex: '#A24936', category: 'Warm Earth', roughness: 0.70, metalness: 0.03 },
@@ -70,7 +70,7 @@ export default function Icon3DFurniture({
 
   // Studio UI State
   const [activeTab, setActiveTab] = useState<'fabric' | 'wood'>('fabric');
-  const [fabricColor, setFabricColor] = useState<string>('#859F3C');
+  const [fabricColor, setFabricColor] = useState<string>('#124903');
   const [fabricColorName, setFabricColorName] = useState<string>('Signature Olive');
   const [woodColor, setWoodColor] = useState<string>('#2E1C12');
   const [woodColorName, setWoodColorName] = useState<string>('American Dark Walnut');
@@ -82,7 +82,7 @@ export default function Icon3DFurniture({
   // Direct mutable refs for 60-120fps Three.js animation loop
   const mouseRef = useRef({ x: 0, y: 0, targetX: 0, targetY: 0 });
   const scrollRef = useRef({ current: 0, target: 0 });
-  const fabricTargetColorRef = useRef(new THREE.Color('#859F3C'));
+  const fabricTargetColorRef = useRef(new THREE.Color('#124903'));
   const woodTargetColorRef = useRef(new THREE.Color('#2E1C12'));
   const fabricMaterialsRef = useRef<THREE.MeshStandardMaterial[]>([]);
   const woodMaterialsRef = useRef<THREE.MeshStandardMaterial[]>([]);
@@ -122,7 +122,7 @@ export default function Icon3DFurniture({
 
   // Reset to Brand Defaults
   const handleResetDefaults = () => {
-    handleFabricColorChange('#859F3C', 'Signature Olive');
+    handleFabricColorChange('#124903', 'Signature Olive');
     handleWoodColorChange('#2E1C12', 'American Dark Walnut');
     handleSheenChange('satin');
   };
@@ -457,7 +457,7 @@ export default function Icon3DFurniture({
       {/* Loading Skeleton Pulse */}
       {isLoading && (
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="w-16 h-16 rounded-full border-2 border-[#859F3C]/30 border-t-[#859F3C] animate-spin" />
+          <div className="w-16 h-16 rounded-full border-2 border-[#124903]/30 border-t-[#124903] animate-spin" />
         </div>
       )}
 
@@ -531,7 +531,7 @@ export default function Icon3DFurniture({
                     onClick={() => setActiveTab('fabric')}
                     className={`px-3 py-1 text-[11px] font-medium rounded-lg transition-all ${
                       activeTab === 'fabric'
-                        ? 'bg-[#859F3C] text-white shadow-xs font-semibold'
+                        ? 'bg-[#124903] text-white shadow-xs font-semibold'
                         : 'text-stone-400 hover:text-white'
                     }`}
                   >
@@ -541,7 +541,7 @@ export default function Icon3DFurniture({
                     onClick={() => setActiveTab('wood')}
                     className={`px-3 py-1 text-[11px] font-medium rounded-lg transition-all ${
                       activeTab === 'wood'
-                        ? 'bg-[#859F3C] text-white shadow-xs font-semibold'
+                        ? 'bg-[#124903] text-white shadow-xs font-semibold'
                         : 'text-stone-400 hover:text-white'
                     }`}
                   >
@@ -556,7 +556,7 @@ export default function Icon3DFurniture({
                   <span className="text-[11px] font-semibold text-stone-300 tracking-wide uppercase">
                     {activeTab === 'fabric' ? 'Upholstery Palette' : 'Hardwood Finishes'}
                   </span>
-                  <span className="text-[11px] font-mono text-[#859F3C]">
+                  <span className="text-[11px] font-mono text-[#124903]">
                     {activeColorName}
                   </span>
                 </div>
@@ -658,7 +658,7 @@ export default function Icon3DFurniture({
                   </div>
 
                   {copiedHex && (
-                    <span className="text-[10px] text-[#859F3C] font-semibold animate-pulse">
+                    <span className="text-[10px] text-[#124903] font-semibold animate-pulse">
                       Copied!
                     </span>
                   )}
@@ -676,7 +676,7 @@ export default function Icon3DFurniture({
 
                   <button
                     onClick={() => setIsExpanded(false)}
-                    className="px-3.5 py-1 rounded-xl text-[11px] font-semibold bg-[#859F3C] text-white hover:bg-[#96b444] transition-colors shadow-xs"
+                    className="px-3.5 py-1 rounded-xl text-[11px] font-semibold bg-[#124903] text-white hover:bg-[#1a6305] transition-colors shadow-xs"
                   >
                     Done
                   </button>
@@ -689,7 +689,7 @@ export default function Icon3DFurniture({
         {/* ─── COMPACT BOTTOM FLOATING ATELIER CAPSULE ─── */}
         <motion.div
           layout
-          className="flex items-center gap-2 sm:gap-3 backdrop-blur-2xl bg-[#141414]/90 border border-white/15 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full shadow-[0_10px_35px_rgba(0,0,0,0.45)] text-white hover:border-[#859F3C]/50 transition-colors"
+          className="flex items-center gap-2 sm:gap-3 backdrop-blur-2xl bg-[#141414]/90 border border-white/15 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full shadow-[0_10px_35px_rgba(0,0,0,0.45)] text-white hover:border-[#124903]/50 transition-colors"
         >
           {/* Active Color Preview Dot with Pulsing Ring */}
           <div className="relative flex items-center justify-center">
@@ -706,13 +706,13 @@ export default function Icon3DFurniture({
           {/* Quick Preset Selector Buttons (3 Key Brand Archetypes) */}
           <div className="flex items-center gap-1.5 sm:gap-2">
             <button
-              onClick={() => handleFabricColorChange('#859F3C', 'Signature Olive')}
+              onClick={() => handleFabricColorChange('#124903', 'Signature Olive')}
               className={`w-4 h-4 rounded-full transition-transform hover:scale-125 focus:outline-none ${
-                fabricColor.toLowerCase() === '#859f3c'
+                fabricColor.toLowerCase() === '#124903'
                   ? 'ring-2 ring-white ring-offset-1 ring-offset-[#141414] scale-110'
                   : 'opacity-70 hover:opacity-100'
               }`}
-              style={{ background: '#859F3C' }}
+              style={{ background: '#124903' }}
               title="Signature Olive"
               aria-label="Signature Olive"
             />
@@ -755,7 +755,7 @@ export default function Icon3DFurniture({
               {isExpanded ? (
                 <ChevronDown className="w-3 h-3" />
               ) : (
-                <Sliders className="w-3 h-3 text-[#859F3C]" />
+                <Sliders className="w-3 h-3 text-[#124903]" />
               )}
             </div>
           </button>

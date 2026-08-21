@@ -120,8 +120,8 @@ export default function ProductContactChannels({
       handle: OFFICIAL_CONTACTS.phonePrimary.display,
       url: OFFICIAL_CONTACTS.phonePrimary.tel,
       icon: Phone,
-      hoverBg: 'hover:bg-[#1A1A1A] hover:text-[#859F3C]',
-      badgeBg: 'bg-[#859F3C]/15 text-[#859F3C] border-[#859F3C]/30',
+      hoverBg: 'hover:bg-[#1A1A1A] hover:text-[#124903]',
+      badgeBg: 'bg-[#124903]/15 text-[#124903] border-[#124903]/30',
       description: 'Direct Call (0911-96-70-49)',
     },
     {
@@ -130,8 +130,8 @@ export default function ProductContactChannels({
       handle: OFFICIAL_CONTACTS.phoneSecondary.display,
       url: OFFICIAL_CONTACTS.phoneSecondary.tel,
       icon: Phone,
-      hoverBg: 'hover:bg-[#1A1A1A] hover:text-[#859F3C]',
-      badgeBg: 'bg-[#859F3C]/15 text-[#859F3C] border-[#859F3C]/30',
+      hoverBg: 'hover:bg-[#1A1A1A] hover:text-[#124903]',
+      badgeBg: 'bg-[#124903]/15 text-[#124903] border-[#124903]/30',
       description: 'Direct Call (0910-05-11-51)',
     },
   ];
@@ -152,7 +152,7 @@ export default function ProductContactChannels({
             Direct Concierge:
           </span>
           {copiedKey && (
-            <span className="text-[10px] font-semibold text-[#859F3C] animate-in fade-in flex items-center gap-1">
+            <span className="text-[10px] font-semibold text-[#124903] animate-in fade-in flex items-center gap-1">
               <Check className="w-3 h-3" /> Copied!
             </span>
           )}
@@ -193,7 +193,7 @@ export default function ProductContactChannels({
             Connect with Icon Furniture directly across your preferred channel:
           </p>
         </div>
-        <span className="w-2 h-2 rounded-full bg-[#859F3C] animate-pulse" title="Team Online" />
+        <span className="w-2 h-2 rounded-full bg-[#124903] animate-pulse" title="Team Online" />
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
@@ -204,7 +204,7 @@ export default function ProductContactChannels({
           return (
             <div
               key={item.key}
-              className="flex items-center justify-between p-3 rounded-2xl bg-white border border-stone-200/80 hover:border-[#859F3C] shadow-2xs hover:shadow-md transition-all duration-300 group"
+              className="flex items-center justify-between p-3 rounded-2xl bg-white border border-stone-200/80 hover:border-[#124903] shadow-2xs hover:shadow-md transition-all duration-300 group"
             >
               <a
                 href={item.url}
@@ -216,7 +216,7 @@ export default function ProductContactChannels({
                   <Icon className="w-4 h-4" />
                 </div>
                 <div className="truncate">
-                  <div className="text-xs font-bold text-[#1A1A1A] leading-tight group-hover:text-[#859F3C] transition-colors">
+                  <div className="text-xs font-bold text-[#1A1A1A] leading-tight group-hover:text-[#124903] transition-colors">
                     {item.name}
                   </div>
                   <div className="text-[11px] text-stone-500 font-mono truncate">
@@ -231,7 +231,7 @@ export default function ProductContactChannels({
                 title="Copy Handle/Number"
               >
                 {isCopied ? (
-                  <Check className="w-3.5 h-3.5 text-[#859F3C]" />
+                  <Check className="w-3.5 h-3.5 text-[#124903]" />
                 ) : (
                   <Copy className="w-3.5 h-3.5" />
                 )}

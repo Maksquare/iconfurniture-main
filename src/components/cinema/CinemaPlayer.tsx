@@ -229,7 +229,7 @@ export default function CinemaPlayer({ film, onNextFilm, onPrevFilm, autoPlay = 
         onMouseMove={handleMouseMove}
         onMouseLeave={() => isPlaying && setControlsVisible(false)}
         className={`relative rounded-3xl overflow-hidden bg-[#0e0e0e] border border-white/10 shadow-2xl group select-none flex items-center justify-center min-h-[460px] sm:min-h-[580px] lg:min-h-[660px] max-h-[82vh] ${
-          isTheaterMode ? 'relative z-50 ring-2 ring-[#859F3C]/50 shadow-[0_0_90px_rgba(133,159,60,0.35)]' : ''
+          isTheaterMode ? 'relative z-50 ring-2 ring-[#124903]/50 shadow-[0_0_90px_rgba(18, 73, 3,0.35)]' : ''
         }`}
       >
         {/* Ambient Video Color Glow (Bleeds colors into the theater background) */}
@@ -242,7 +242,7 @@ export default function CinemaPlayer({ film, onNextFilm, onPrevFilm, autoPlay = 
         />
 
         {/* Ambient Radial Halos & Brand Olive Glow */}
-        <div className="absolute inset-0 bg-radial from-[#859F3C]/15 via-black/60 to-[#0e0e0e] opacity-90 pointer-events-none -z-10" />
+        <div className="absolute inset-0 bg-radial from-[#124903]/15 via-black/60 to-[#0e0e0e] opacity-90 pointer-events-none -z-10" />
 
         {/* Luxury Brand Logo Hallmark Watermark in Stage Background */}
         <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none opacity-20 select-none -z-10">
@@ -251,15 +251,15 @@ export default function CinemaPlayer({ film, onNextFilm, onPrevFilm, autoPlay = 
               src="/assets/iconfurniture-logo.png"
               alt="Icon Furniture Logo"
               fill
-              className="object-contain filter drop-shadow-[0_0_20px_rgba(133,159,60,0.4)]"
+              className="object-contain filter drop-shadow-[0_0_20px_rgba(18, 73, 3,0.4)]"
             />
           </div>
           <div className="mt-2 flex items-center gap-3">
-            <span className="h-px w-12 bg-gradient-to-r from-transparent via-[#859F3C] to-transparent" />
+            <span className="h-px w-12 bg-gradient-to-r from-transparent via-[#124903] to-transparent" />
             <span className="text-[10px] tracking-[0.3em] uppercase font-mono text-stone-300 font-semibold">
               Icon Furniture Video Series
             </span>
-            <span className="h-px w-12 bg-gradient-to-r from-transparent via-[#859F3C] to-transparent" />
+            <span className="h-px w-12 bg-gradient-to-r from-transparent via-[#124903] to-transparent" />
           </div>
         </div>
 
@@ -296,7 +296,7 @@ export default function CinemaPlayer({ film, onNextFilm, onPrevFilm, autoPlay = 
               onClick={togglePlay}
               className="absolute inset-0 flex items-center justify-center bg-black/25 backdrop-blur-xs cursor-pointer z-20"
             >
-              <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-white/15 backdrop-blur-md border border-white/30 flex items-center justify-center text-white shadow-2xl hover:scale-110 hover:bg-[#859F3C] transition-all duration-300 group/btn">
+              <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-white/15 backdrop-blur-md border border-white/30 flex items-center justify-center text-white shadow-2xl hover:scale-110 hover:bg-[#124903] transition-all duration-300 group/btn">
                 <Play className="w-8 h-8 sm:w-10 sm:h-10 fill-white ml-1 text-white" />
               </div>
             </motion.div>
@@ -314,9 +314,9 @@ export default function CinemaPlayer({ film, onNextFilm, onPrevFilm, autoPlay = 
               className="absolute top-0 inset-x-0 p-4 sm:p-6 bg-gradient-to-b from-black/80 via-black/30 to-transparent flex items-center justify-between z-30 pointer-events-auto"
             >
               <div className="flex items-center gap-3">
-                <span className="w-2 h-2 rounded-full bg-[#859F3C] animate-pulse shadow-[0_0_8px_#859F3C]" />
+                <span className="w-2 h-2 rounded-full bg-[#124903] animate-pulse shadow-[0_0_8px_#124903]" />
                 <div>
-                  <div className="text-[10px] uppercase tracking-widest text-[#859F3C] font-mono font-bold">
+                  <div className="text-[10px] uppercase tracking-widest text-[#124903] font-mono font-bold">
                     {film.category} • {film.resolution}
                   </div>
                   <h2 className="font-serif text-sm sm:text-lg text-white font-medium drop-shadow-md">
@@ -331,7 +331,7 @@ export default function CinemaPlayer({ film, onNextFilm, onPrevFilm, autoPlay = 
                   onClick={() => setIsTheaterMode(!isTheaterMode)}
                   className={`p-2 rounded-full backdrop-blur-md text-xs transition-all cursor-pointer border ${
                     isTheaterMode
-                      ? 'bg-[#859F3C] text-white border-[#859F3C]'
+                      ? 'bg-[#124903] text-white border-[#124903]'
                       : 'bg-white/10 hover:bg-white/20 text-white border-white/15'
                   }`}
                   title={isTheaterMode ? 'Exit Theater Mode' : 'Theater Mode (Dim Lights)'}
@@ -344,7 +344,7 @@ export default function CinemaPlayer({ film, onNextFilm, onPrevFilm, autoPlay = 
                   className="p-2 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-md border border-white/15 text-xs transition-all cursor-pointer"
                   title="Share Film Link"
                 >
-                  {copiedLink ? <Check className="w-4 h-4 text-[#859F3C]" /> : <Share2 className="w-4 h-4" />}
+                  {copiedLink ? <Check className="w-4 h-4 text-[#124903]" /> : <Share2 className="w-4 h-4" />}
                 </button>
               </div>
             </motion.div>
@@ -371,11 +371,11 @@ export default function CinemaPlayer({ film, onNextFilm, onPrevFilm, autoPlay = 
               >
                 {/* Buffered/Fill bar */}
                 <div
-                  className="h-full bg-gradient-to-r from-[#859F3C] to-[#a8c950] rounded-full relative"
+                  className="h-full bg-gradient-to-r from-[#124903] to-[#a8c950] rounded-full relative"
                   style={{ width: `${(currentTime / (duration || 1)) * 100}%` }}
                 >
                   {/* Glowing Thumb Handle */}
-                  <span className="absolute right-0 top-1/2 -translate-y-1/2 w-3.5 h-3.5 rounded-full bg-white shadow-[0_0_10px_#859F3C] scale-0 group-hover/bar:scale-100 transition-transform" />
+                  <span className="absolute right-0 top-1/2 -translate-y-1/2 w-3.5 h-3.5 rounded-full bg-white shadow-[0_0_10px_#124903] scale-0 group-hover/bar:scale-100 transition-transform" />
                 </div>
 
                 {/* Hover Time Tooltip */}
@@ -428,7 +428,7 @@ export default function CinemaPlayer({ film, onNextFilm, onPrevFilm, autoPlay = 
                       step="0.05"
                       value={isMuted ? 0 : volume}
                       onChange={(e) => handleVolumeChange(parseFloat(e.target.value))}
-                      className="w-16 sm:w-20 accent-[#859F3C] h-1 bg-white/20 rounded-lg cursor-pointer"
+                      className="w-16 sm:w-20 accent-[#124903] h-1 bg-white/20 rounded-lg cursor-pointer"
                     />
                   </div>
 
@@ -478,7 +478,7 @@ export default function CinemaPlayer({ film, onNextFilm, onPrevFilm, autoPlay = 
       {/* ─── 2. Film Monograph Details & Featured Furniture Links ─── */}
       <div className="p-6 sm:p-8 rounded-3xl bg-white border border-stone-200/80 shadow-sm flex flex-col lg:flex-row lg:items-center justify-between gap-6">
         <div className="space-y-2 max-w-2xl">
-          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#859F3C]">
+          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#124903]">
             <Sparkles className="w-3.5 h-3.5" />
             <span>{film.subtitle}</span>
           </div>
@@ -496,7 +496,7 @@ export default function CinemaPlayer({ film, onNextFilm, onPrevFilm, autoPlay = 
             href={OFFICIAL_CONTACTS.telegram.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-6 py-3 rounded-full bg-[#1A1A1A] hover:bg-[#859F3C] text-white text-xs uppercase tracking-widest font-bold transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer group"
+            className="px-6 py-3 rounded-full bg-[#1A1A1A] hover:bg-[#124903] text-white text-xs uppercase tracking-widest font-bold transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer group"
           >
             <span>Inquire About Featured Pieces</span>
             <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
@@ -505,7 +505,7 @@ export default function CinemaPlayer({ film, onNextFilm, onPrevFilm, autoPlay = 
             href={OFFICIAL_CONTACTS.phonePrimary.tel}
             className="px-6 py-3 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-800 text-xs uppercase tracking-widest font-bold transition-all flex items-center justify-center gap-2 cursor-pointer"
           >
-            <Phone className="w-3.5 h-3.5 text-[#859F3C]" />
+            <Phone className="w-3.5 h-3.5 text-[#124903]" />
             <span>Direct Concierge: {OFFICIAL_CONTACTS.phonePrimary.display}</span>
           </a>
         </div>

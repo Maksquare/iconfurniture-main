@@ -48,7 +48,7 @@ export default function BrandStory() {
 
           {/* Story text */}
           <div className="lg:col-span-6 space-y-6 lg:pl-6">
-            <span className="text-xs uppercase tracking-widest font-semibold text-[#859F3C]">
+            <span className="text-xs uppercase tracking-widest font-semibold text-[#124903]">
               The Table as Sanctuary & Gathering
             </span>
             
@@ -60,9 +60,9 @@ export default function BrandStory() {
               Founded on the belief that human connection begins around the table, Icon Furniture specializes exclusively in bespoke luxury dining centerpieces. We handcraft generational heirloom tables from old-growth walnut, quarter-sawn white oak, and hand-honed Roman travertine.
             </p>
 
-            <blockquote className="p-4 border-l-2 border-[#859F3C] bg-white/70 italic font-serif text-stone-800 text-sm rounded-r-xl">
+            <blockquote className="p-4 border-l-2 border-[#124903] bg-white/70 italic font-serif text-stone-800 text-sm rounded-r-xl">
               &ldquo;The dining table is not mere furniture—it is the enduring hearth where families gather, feasts are shared, and generational memories are etched into solid timber.&rdquo;
-              <cite className="block not-italic font-sans text-xs text-[#859F3C] font-semibold mt-2 uppercase tracking-wider">
+              <cite className="block not-italic font-sans text-xs text-[#124903] font-semibold mt-2 uppercase tracking-wider">
                 — Icon Furniture Master Woodcrafters
               </cite>
             </blockquote>
@@ -70,7 +70,7 @@ export default function BrandStory() {
             <div className="pt-2">
               <Link
                 href="/about"
-                className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-[#1A1A1A] hover:text-[#859F3C] group"
+                className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-[#1A1A1A] hover:text-[#124903] group"
               >
                 <span>Read Full Design Monograph</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

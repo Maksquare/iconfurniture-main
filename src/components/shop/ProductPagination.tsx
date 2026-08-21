@@ -79,7 +79,7 @@ export default function ProductPagination({
     >
       {/* ─── 1. Left: Architectural Monograph Count ─────────────── */}
       <div className="flex items-center gap-2.5 text-xs text-stone-500 font-sans order-2 md:order-1">
-        <span className="w-2 h-2 rounded-full bg-[#859F3C] animate-pulse shadow-[0_0_8px_#859F3C]" />
+        <span className="w-2 h-2 rounded-full bg-[#124903] animate-pulse shadow-[0_0_8px_#124903]" />
         <span>
           Showing <strong className="text-stone-900 font-semibold">{startItem}–{endItem}</strong> of{' '}
           <strong className="text-stone-900 font-semibold">{totalItems}</strong> bespoke pieces
@@ -147,7 +147,7 @@ export default function ProductPagination({
                     }}
                   >
                     {/* Glowing Olive Accent Dot */}
-                    <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-[#859F3C] shadow-[0_0_6px_#859F3C]" />
+                    <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-[#124903] shadow-[0_0_6px_#124903]" />
                   </motion.div>
                 )}
                 <span>0{p}</span>
@@ -192,7 +192,7 @@ export default function ProductPagination({
                 onClick={() => onItemsPerPageChange(size)}
                 className={`px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold transition-all cursor-pointer ${
                   itemsPerPage === size
-                    ? 'bg-[#859F3C] text-white shadow-xs'
+                    ? 'bg-[#124903] text-white shadow-xs'
                     : 'text-stone-600 hover:text-stone-900'
                 }`}
               >

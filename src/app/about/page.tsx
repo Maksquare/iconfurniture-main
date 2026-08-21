@@ -99,7 +99,7 @@ export default function AboutPage() {
       {/* ─── 1. Editorial Hero Header ─────────────────────────────── */}
       <section className="relative pt-16 pb-20 sm:pt-24 sm:pb-28 overflow-hidden">
         {/* Ambient Blur Gradient */}
-        <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-[#859F3C]/12 rounded-full blur-3xl pointer-events-none -z-10" />
+        <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-[#124903]/12 rounded-full blur-3xl pointer-events-none -z-10" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center space-y-6">
@@ -121,7 +121,7 @@ export default function AboutPage() {
                   priority
                 />
               </div>
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-stone-200/80 shadow-2xs text-xs font-bold uppercase tracking-widest text-[#859F3C]">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-stone-200/80 shadow-2xs text-xs font-bold uppercase tracking-widest text-[#124903]">
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>The Atelier Monograph & Heritage</span>
               </div>
@@ -135,7 +135,7 @@ export default function AboutPage() {
               className="font-serif text-4xl sm:text-6xl lg:text-7xl font-normal text-[#1A1A1A] tracking-tight leading-[1.08]"
             >
               Sculpted For Permanence. <br />
-              <span className="italic font-normal text-[#859F3C]">Designed For The Senses.</span>
+              <span className="italic font-normal text-[#124903]">Designed For The Senses.</span>
             </motion.h1>
 
             {/* Intro Copy */}
@@ -157,14 +157,14 @@ export default function AboutPage() {
             >
               <Link
                 href="/shop"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-[#1A1A1A] hover:bg-[#859F3C] text-white text-xs uppercase tracking-widest font-semibold shadow-md hover:shadow-xl transition-all duration-300 group"
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-[#1A1A1A] hover:bg-[#124903] text-white text-xs uppercase tracking-widest font-semibold shadow-md hover:shadow-xl transition-all duration-300 group"
               >
                 <span>Explore The Collection</span>
                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-white hover:bg-stone-50 text-stone-800 text-xs uppercase tracking-widest font-semibold border border-stone-200/80 shadow-xs hover:border-[#859F3C] transition-all duration-300"
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-white hover:bg-stone-50 text-stone-800 text-xs uppercase tracking-widest font-semibold border border-stone-200/80 shadow-xs hover:border-[#124903] transition-all duration-300"
               >
                 <span>Private Consultation</span>
               </Link>
@@ -176,8 +176,8 @@ export default function AboutPage() {
       {/* ─── 2. Founder & Visionary Spotlight (High-End Editorial Showcase) ─── */}
       <section className="py-20 sm:py-28 bg-[#1A1A1A] text-white border-y border-white/10 relative overflow-hidden">
         {/* Ambient Radial Lighting */}
-        <div className="absolute -top-32 -left-32 w-[650px] h-[650px] bg-[#859F3C]/15 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute -bottom-32 -right-32 w-[550px] h-[550px] bg-[#859F3C]/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -top-32 -left-32 w-[650px] h-[650px] bg-[#124903]/15 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -bottom-32 -right-32 w-[550px] h-[550px] bg-[#124903]/10 rounded-full blur-3xl pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
@@ -209,24 +209,24 @@ export default function AboutPage() {
                   {/* Floating Luxury Founder Hallmark Badge */}
                   <div className="absolute bottom-4 inset-x-4 p-4 rounded-2xl bg-black/75 backdrop-blur-md border border-white/15 text-white flex items-center justify-between">
                     <div>
-                      <div className="text-[10px] uppercase font-bold tracking-widest text-[#859F3C]">
+                      <div className="text-[10px] uppercase font-bold tracking-widest text-[#124903]">
                         Founder & Creative Director
                       </div>
                       <div className="font-serif text-base font-semibold text-white">
                         Icon Furniture Design House
                       </div>
                     </div>
-                    <div className="w-10 h-10 rounded-xl bg-[#859F3C] text-white flex items-center justify-center shadow-[0_0_16px_rgba(133,159,60,0.6)]">
+                    <div className="w-10 h-10 rounded-xl bg-[#124903] text-white flex items-center justify-center shadow-[0_0_16px_rgba(18, 73, 3,0.6)]">
                       <Sparkles className="w-4 h-4 stroke-[2]" />
                     </div>
                   </div>
                 </div>
 
                 {/* Subtle Geometric Corner Accents */}
-                <span className="absolute top-2 left-2 w-3.5 h-3.5 border-t-2 border-l-2 border-[#859F3C]" />
-                <span className="absolute top-2 right-2 w-3.5 h-3.5 border-t-2 border-r-2 border-[#859F3C]" />
-                <span className="absolute bottom-2 left-2 w-3.5 h-3.5 border-b-2 border-l-2 border-[#859F3C]" />
-                <span className="absolute bottom-2 right-2 w-3.5 h-3.5 border-b-2 border-r-2 border-[#859F3C]" />
+                <span className="absolute top-2 left-2 w-3.5 h-3.5 border-t-2 border-l-2 border-[#124903]" />
+                <span className="absolute top-2 right-2 w-3.5 h-3.5 border-t-2 border-r-2 border-[#124903]" />
+                <span className="absolute bottom-2 left-2 w-3.5 h-3.5 border-b-2 border-l-2 border-[#124903]" />
+                <span className="absolute bottom-2 right-2 w-3.5 h-3.5 border-b-2 border-r-2 border-[#124903]" />
               </div>
 
               {/* Floating Quality Badge Behind/Side */}
@@ -235,7 +235,7 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.3 }}
-                className="hidden sm:flex absolute -bottom-6 -left-6 bg-[#859F3C] text-white px-5 py-3 rounded-2xl shadow-xl border border-white/20 items-center gap-3"
+                className="hidden sm:flex absolute -bottom-6 -left-6 bg-[#124903] text-white px-5 py-3 rounded-2xl shadow-xl border border-white/20 items-center gap-3"
               >
                 <Award className="w-6 h-6 text-white shrink-0" />
                 <div className="text-left">
@@ -249,14 +249,14 @@ export default function AboutPage() {
             <div className="lg:col-span-7 space-y-6 lg:pl-4">
               
               <div className="space-y-3">
-                <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/10 border border-white/15 text-xs font-bold uppercase tracking-widest text-[#859F3C]">
+                <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/10 border border-white/15 text-xs font-bold uppercase tracking-widest text-[#124903]">
                   <Sparkles className="w-3.5 h-3.5" />
                   <span>The Visionary Monograph</span>
                 </div>
 
                 <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-white leading-tight">
                   &ldquo;The Dining Table is the Hearth, <br />
-                  <span className="italic text-[#859F3C]">Where Families Truly Gather.&rdquo;</span>
+                  <span className="italic text-[#124903]">Where Families Truly Gather.&rdquo;</span>
                 </h2>
               </div>
 
@@ -270,20 +270,20 @@ export default function AboutPage() {
 
               {/* Founder's 3 Core Commitments */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 pt-2">
-                <div className="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-1.5 hover:border-[#859F3C]/60 transition-colors">
-                  <div className="text-xs font-bold text-[#859F3C] font-mono">01. Precision</div>
+                <div className="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-1.5 hover:border-[#124903]/60 transition-colors">
+                  <div className="text-xs font-bold text-[#124903] font-mono">01. Precision</div>
                   <div className="font-serif text-sm font-semibold text-white">Sub-Millimeter Joinery</div>
                   <div className="text-[11px] text-stone-400 font-sans">Mortise-and-tenon table joinery engineered for generational structural stability.</div>
                 </div>
 
-                <div className="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-1.5 hover:border-[#859F3C]/60 transition-colors">
-                  <div className="text-xs font-bold text-[#859F3C] font-mono">02. Purity</div>
+                <div className="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-1.5 hover:border-[#124903]/60 transition-colors">
+                  <div className="text-xs font-bold text-[#124903] font-mono">02. Purity</div>
                   <div className="font-serif text-sm font-semibold text-white">100% Solid Hardwood</div>
                   <div className="text-[11px] text-stone-400 font-sans">Certified renewable timber slabs finished with stain- & heat-resilient wax.</div>
                 </div>
 
-                <div className="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-1.5 hover:border-[#859F3C]/60 transition-colors">
-                  <div className="text-xs font-bold text-[#859F3C] font-mono">03. Customization</div>
+                <div className="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-1.5 hover:border-[#124903]/60 transition-colors">
+                  <div className="text-xs font-bold text-[#124903] font-mono">03. Customization</div>
                   <div className="font-serif text-sm font-semibold text-white">Bespoke Dimensions</div>
                   <div className="text-[11px] text-stone-400 font-sans">6 to 18 seater lengths, custom timber species, and edge chamfers.</div>
                 </div>
@@ -298,7 +298,7 @@ export default function AboutPage() {
 
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#859F3C] hover:bg-[#738b32] text-white font-bold text-xs uppercase tracking-widest transition-all shadow-md hover:shadow-xl hover:scale-102"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#124903] hover:bg-[#0e3802] text-white font-bold text-xs uppercase tracking-widest transition-all shadow-md hover:shadow-xl hover:scale-102"
                 >
                   <span>Private Consultation</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -357,7 +357,7 @@ export default function AboutPage() {
 
             {/* Right: Narrative & Manifesto */}
             <div className="lg:col-span-6 space-y-6 lg:pl-4">
-              <span className="text-xs uppercase tracking-widest font-bold text-[#859F3C]">
+              <span className="text-xs uppercase tracking-widest font-bold text-[#124903]">
                 Our Architectural Philosophy
               </span>
 
@@ -375,11 +375,11 @@ export default function AboutPage() {
 
               {/* Editorial Quote Card */}
               <div className="p-6 rounded-2xl bg-white border border-stone-200/80 shadow-xs space-y-3 relative overflow-hidden">
-                <div className="w-1.5 h-full bg-[#859F3C] absolute left-0 top-0" />
+                <div className="w-1.5 h-full bg-[#124903] absolute left-0 top-0" />
                 <p className="font-serif italic text-stone-800 text-sm sm:text-base leading-relaxed">
                   &ldquo;We don&apos;t design objects to merely occupy space. We sculpt permanent heirlooms that anchor moments of restful pause and human connection.&rdquo;
                 </p>
-                <div className="flex items-center justify-between text-xs text-[#859F3C] font-bold uppercase tracking-wider pt-2 border-t border-stone-100">
+                <div className="flex items-center justify-between text-xs text-[#124903] font-bold uppercase tracking-wider pt-2 border-t border-stone-100">
                   <span>Icon Furniture Atelier</span>
                   <span className="text-stone-400 font-sans font-medium">Head of Design Guild</span>
                 </div>
@@ -392,7 +392,7 @@ export default function AboutPage() {
       {/* ─── 4. Four Core Pillars ─────────────────────────────────── */}
       <section className="py-20 sm:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <span className="text-xs uppercase tracking-widest font-bold text-[#859F3C]">
+          <span className="text-xs uppercase tracking-widest font-bold text-[#124903]">
             Uncompromising Standards
           </span>
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-[#1A1A1A]">
@@ -414,11 +414,11 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="group bg-white p-8 rounded-3xl border border-stone-200/80 shadow-xs hover:shadow-xl hover:border-[#859F3C]/50 transition-all duration-300 flex flex-col justify-between"
+                className="group bg-white p-8 rounded-3xl border border-stone-200/80 shadow-xs hover:shadow-xl hover:border-[#124903]/50 transition-all duration-300 flex flex-col justify-between"
               >
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
-                    <div className="w-12 h-12 rounded-2xl bg-[#859F3C]/10 text-[#859F3C] flex items-center justify-center group-hover:bg-[#859F3C] group-hover:text-white transition-colors duration-300">
+                    <div className="w-12 h-12 rounded-2xl bg-[#124903]/10 text-[#124903] flex items-center justify-center group-hover:bg-[#124903] group-hover:text-white transition-colors duration-300">
                       <Icon className="w-6 h-6 stroke-1.5" />
                     </div>
                     <span className="font-mono text-xs text-stone-400 font-bold">
@@ -426,7 +426,7 @@ export default function AboutPage() {
                     </span>
                   </div>
 
-                  <h3 className="font-serif text-xl font-medium text-[#1A1A1A] group-hover:text-[#859F3C] transition-colors">
+                  <h3 className="font-serif text-xl font-medium text-[#1A1A1A] group-hover:text-[#124903] transition-colors">
                     {pillar.title}
                   </h3>
 
@@ -435,7 +435,7 @@ export default function AboutPage() {
                   </p>
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-stone-100 flex items-center gap-2 text-[11px] font-semibold text-[#859F3C] uppercase tracking-wider">
+                <div className="mt-6 pt-4 border-t border-stone-100 flex items-center gap-2 text-[11px] font-semibold text-[#124903] uppercase tracking-wider">
                   <CheckCircle2 className="w-3.5 h-3.5" />
                   <span>{pillar.material}</span>
                 </div>
@@ -449,7 +449,7 @@ export default function AboutPage() {
       <section className="py-20 sm:py-28 bg-[#1A1A1A] text-white border-t border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
           <div className="max-w-3xl space-y-4">
-            <span className="text-xs uppercase tracking-widest font-bold text-[#859F3C]">
+            <span className="text-xs uppercase tracking-widest font-bold text-[#124903]">
               The Atelier Process
             </span>
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-white">
@@ -479,12 +479,12 @@ export default function AboutPage() {
                     fill
                     className="object-cover group-hover:scale-108 transition-transform duration-700 ease-out opacity-85 group-hover:opacity-100"
                   />
-                  <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-black/70 backdrop-blur-xs text-[#859F3C] font-mono text-xs font-bold border border-white/10">
+                  <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-black/70 backdrop-blur-xs text-[#124903] font-mono text-xs font-bold border border-white/10">
                     Phase {item.step}
                   </div>
                 </div>
 
-                <h3 className="font-serif text-lg font-medium text-white group-hover:text-[#859F3C] transition-colors">
+                <h3 className="font-serif text-lg font-medium text-white group-hover:text-[#124903] transition-colors">
                   {item.phase}
                 </h3>
 
@@ -527,12 +527,12 @@ export default function AboutPage() {
         <div className="relative rounded-3xl p-8 sm:p-14 bg-gradient-to-br from-[#1A1A1A] via-[#222222] to-[#141414] text-white border border-white/10 shadow-2xl overflow-hidden">
           
           {/* Subtle Ambient Glow */}
-          <div className="absolute top-0 right-0 w-96 h-96 bg-[#859F3C]/15 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute top-0 right-0 w-96 h-96 bg-[#124903]/15 rounded-full blur-3xl pointer-events-none" />
 
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             
             <div className="lg:col-span-8 space-y-4">
-              <span className="text-xs uppercase tracking-widest font-bold text-[#859F3C]">
+              <span className="text-xs uppercase tracking-widest font-bold text-[#124903]">
                 Talk to Our Team
               </span>
               <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal leading-tight">
@@ -582,7 +582,7 @@ export default function AboutPage() {
                 </a>
                 <a
                   href={OFFICIAL_CONTACTS.phonePrimary.tel}
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#859F3C] hover:bg-[#738b32] text-white font-bold text-xs transition-all shadow-md"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#124903] hover:bg-[#0e3802] text-white font-bold text-xs transition-all shadow-md"
                 >
                   <Phone className="w-3.5 h-3.5" />
                   <span>{OFFICIAL_CONTACTS.phonePrimary.display}</span>
@@ -594,7 +594,7 @@ export default function AboutPage() {
             <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3 justify-end">
               <Link
                 href="/shop"
-                className="w-full text-center px-6 py-4 rounded-2xl bg-[#859F3C] hover:bg-[#738b32] text-white font-bold text-xs uppercase tracking-widest transition-all shadow-lg"
+                className="w-full text-center px-6 py-4 rounded-2xl bg-[#124903] hover:bg-[#0e3802] text-white font-bold text-xs uppercase tracking-widest transition-all shadow-lg"
               >
                 Browse Living Collection →
               </Link>

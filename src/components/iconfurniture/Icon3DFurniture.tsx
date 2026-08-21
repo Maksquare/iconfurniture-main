@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import * as THREE from 'three';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
 interface Icon3DFurnitureProps {
   interactive?: boolean;
@@ -14,27 +15,47 @@ export default function Icon3DFurniture({
 }: Icon3DFurnitureProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [currentColor, setCurrentColor] = useState<'olive' | 'ivory' | 'walnut'>('olive');
-  
+  const [isLoading, setIsLoading] = useState(true);
+
   // Direct mutable refs for 60-120fps animation loop without React state overhead
   const mouseRef = useRef({ x: 0, y: 0, targetX: 0, targetY: 0 });
   const scrollRef = useRef({ current: 0, target: 0 });
   const colorTargetRef = useRef(new THREE.Color('#859F3C'));
-  const upholsteryMatRef = useRef<THREE.MeshStandardMaterial | null>(null);
+  const fabricMaterialsRef = useRef<THREE.MeshStandardMaterial[]>([]);
+  const woodMaterialsRef = useRef<THREE.MeshStandardMaterial[]>([]);
 
-  // Color preset palette — Dining Table Wood & Stone Finishes
+  // Color preset palette — Luxury Dining Chair Finishes
   const colorPresets = {
-    olive: { hex: '#859F3C', roughness: 0.58, metalness: 0.04, label: 'Olive Hardwood' },
-    ivory: { hex: '#d6cfc2', roughness: 0.82, metalness: 0.01, label: 'Ivory Travertine' },
-    walnut: { hex: '#2c1a0e', roughness: 0.40, metalness: 0.08, label: 'Dark Walnut' },
+    olive: {
+      fabricHex: '#859F3C',
+      fabricRoughness: 0.65,
+      fabricMetalness: 0.05,
+      woodHex: '#3a2414',
+      label: 'Olive Signature',
+    },
+    ivory: {
+      fabricHex: '#d8d1c5',
+      fabricRoughness: 0.75,
+      fabricMetalness: 0.02,
+      woodHex: '#4a3220',
+      label: 'Ivory Bouclé',
+    },
+    walnut: {
+      fabricHex: '#34251a',
+      fabricRoughness: 0.55,
+      fabricMetalness: 0.08,
+      woodHex: '#22140a',
+      label: 'Dark Walnut',
+    },
   };
 
   const handleColorChange = useCallback((color: 'olive' | 'ivory' | 'walnut') => {
     setCurrentColor(color);
-    colorTargetRef.current.set(colorPresets[color].hex);
-    if (upholsteryMatRef.current) {
-      upholsteryMatRef.current.roughness = colorPresets[color].roughness;
-      upholsteryMatRef.current.metalness = colorPresets[color].metalness;
-    }
+    colorTargetRef.current.set(colorPresets[color].fabricHex);
+    fabricMaterialsRef.current.forEach((mat) => {
+      mat.roughness = colorPresets[color].fabricRoughness;
+      mat.metalness = colorPresets[color].fabricMetalness;
+    });
   }, []);
 
   useEffect(() => {
@@ -46,8 +67,8 @@ export default function Icon3DFurniture({
     const width = container.clientWidth || window.innerWidth;
     const height = container.clientHeight || window.innerHeight;
 
-    const camera = new THREE.PerspectiveCamera(38, width / height, 0.1, 100);
-    camera.position.set(0, 0.4, 8.2);
+    const camera = new THREE.PerspectiveCamera(36, width / height, 0.1, 100);
+    camera.position.set(0, 0.35, 7.8);
 
     const renderer = new THREE.WebGLRenderer({
       alpha: true,
@@ -55,14 +76,14 @@ export default function Icon3DFurniture({
       powerPreference: 'high-performance',
       stencil: false,
       depth: true,
-      precision: 'mediump', // Optimized for mobile and desktop GPU memory bandwidth
+      precision: 'highp',
     });
 
     renderer.setSize(width, height);
-    // Clamp DPR to 1.6 max to prevent GPU fill-rate choke on 3K/4K/Retina displays
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.6));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.8));
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.3;
+    renderer.toneMappingExposure = 1.35;
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
     container.appendChild(renderer.domElement);
 
     // 2. Master & Chair Groups
@@ -70,130 +91,140 @@ export default function Icon3DFurniture({
     scene.add(masterGroup);
 
     const chairGroup = new THREE.Group();
-    chairGroup.rotation.y = -Math.PI / 7;
-    chairGroup.rotation.x = 0.08;
+    chairGroup.rotation.y = -Math.PI / 6.5;
+    chairGroup.rotation.x = 0.06;
     masterGroup.add(chairGroup);
 
-    // 3. Optimized Lightweight Materials
-    const upholsteryMaterial = new THREE.MeshStandardMaterial({
-      color: new THREE.Color(colorPresets[currentColor].hex),
-      roughness: colorPresets[currentColor].roughness,
-      metalness: colorPresets[currentColor].metalness,
-    });
-    upholsteryMatRef.current = upholsteryMaterial;
+    // Reset material refs
+    fabricMaterialsRef.current = [];
+    woodMaterialsRef.current = [];
 
-    const walnutMaterial = new THREE.MeshStandardMaterial({
-      color: new THREE.Color('#321e12'),
-      roughness: 0.35,
-      metalness: 0.05,
-    });
+    // 3. Load Real GLB 3D Chair Model
+    const loader = new GLTFLoader();
+    const glbUrl = '/models/dining_chair_241120.glb';
 
+    loader.load(
+      glbUrl,
+      (gltf) => {
+        const model = gltf.scene;
+
+        // Compute Bounding Box to scale & center the model accurately
+        const box = new THREE.Box3().setFromObject(model);
+        const size = new THREE.Vector3();
+        box.getSize(size);
+        const center = new THREE.Vector3();
+        box.getCenter(center);
+
+        // Center geometry
+        model.position.x = -center.x;
+        model.position.y = -center.y;
+        model.position.z = -center.z;
+
+        // Normalize scale to fit nicely in the viewport (~2.8 units tall)
+        const maxDim = Math.max(size.x, size.y, size.z);
+        const scaleFactor = maxDim > 0 ? 3.0 / maxDim : 1;
+        model.scale.setScalar(scaleFactor);
+
+        // Enhance materials & store refs for live finish switching
+        model.traverse((child) => {
+          if ((child as THREE.Mesh).isMesh) {
+            const mesh = child as THREE.Mesh;
+            mesh.castShadow = true;
+            mesh.receiveShadow = true;
+
+            const materials = Array.isArray(mesh.material)
+              ? mesh.material
+              : [mesh.material];
+
+            materials.forEach((mat) => {
+              if (mat instanceof THREE.MeshStandardMaterial) {
+                const matName = (mat.name || '').toLowerCase();
+
+                if (matName.includes('fabric') || matName.includes('cloth') || matName.includes('leather') || matName.includes('seat')) {
+                  // Clone so we can tint cleanly
+                  const fabricMat = mat.clone();
+                  fabricMat.color.set(colorPresets[currentColor].fabricHex);
+                  fabricMat.roughness = colorPresets[currentColor].fabricRoughness;
+                  fabricMat.metalness = colorPresets[currentColor].fabricMetalness;
+                  fabricMat.envMapIntensity = 1.2;
+                  mesh.material = fabricMat;
+                  fabricMaterialsRef.current.push(fabricMat);
+                } else if (matName.includes('wood') || matName.includes('leg') || matName.includes('frame')) {
+                  const woodMat = mat.clone();
+                  woodMat.roughness = 0.4;
+                  woodMat.metalness = 0.05;
+                  woodMat.envMapIntensity = 1.0;
+                  mesh.material = woodMat;
+                  woodMaterialsRef.current.push(woodMat);
+                } else {
+                  // General default standard material
+                  const customMat = mat.clone();
+                  customMat.roughness = 0.55;
+                  mesh.material = customMat;
+                  fabricMaterialsRef.current.push(customMat);
+                }
+              }
+            });
+          }
+        });
+
+        const modelWrapper = new THREE.Group();
+        modelWrapper.add(model);
+        // Slightly offset chair so front seat faces camera invitingly
+        modelWrapper.rotation.y = 0.15;
+        chairGroup.add(modelWrapper);
+
+        setIsLoading(false);
+      },
+      undefined,
+      (error) => {
+        console.error('Error loading GLB chair model:', error);
+        setIsLoading(false);
+      }
+    );
+
+    // 4. Luxury Aesthetic Enhancements (Brass Rings & Stardust Particles)
     const brassMaterial = new THREE.MeshStandardMaterial({
       color: new THREE.Color('#e0b06b'),
-      metalness: 0.9,
-      roughness: 0.22,
+      metalness: 0.92,
+      roughness: 0.2,
     });
 
     const chromeMaterial = new THREE.MeshStandardMaterial({
       color: new THREE.Color('#e8ecf2'),
-      metalness: 0.94,
-      roughness: 0.12,
+      metalness: 0.95,
+      roughness: 0.1,
     });
 
-    // 4. Compressed Geometry Construction (Reduced draw-call & vertex overhead)
-    // A. Main Seat Cushion (Curved Lofted Seat)
-    const seatGeo = new THREE.CylinderGeometry(1.35, 1.3, 0.42, 32);
-    seatGeo.scale(1, 1, 1.08);
-    const seatMesh = new THREE.Mesh(seatGeo, upholsteryMaterial);
-    seatMesh.position.y = -0.1;
-    chairGroup.add(seatMesh);
-
-    // Top Comfort Cushion
-    const innerCushionGeo = new THREE.CylinderGeometry(1.22, 1.22, 0.18, 28);
-    innerCushionGeo.scale(1, 1, 1.04);
-    const innerCushion = new THREE.Mesh(innerCushionGeo, upholsteryMaterial);
-    innerCushion.position.y = 0.14;
-    chairGroup.add(innerCushion);
-
-    // B. Embracing Curved Backrest
-    const backrestGeo = new THREE.TorusGeometry(1.32, 0.36, 18, 44, Math.PI * 1.15);
-    const backrestMesh = new THREE.Mesh(backrestGeo, upholsteryMaterial);
-    backrestMesh.rotation.x = Math.PI / 2 + 0.15;
-    backrestMesh.rotation.z = Math.PI * 0.92;
-    backrestMesh.position.set(0, 0.72, 0.14);
-    chairGroup.add(backrestMesh);
-
-    // Ergonomic Lumbar Pill
-    const lumbarGeo = new THREE.CapsuleGeometry(0.3, 1.05, 12, 18);
-    const lumbarMesh = new THREE.Mesh(lumbarGeo, upholsteryMaterial);
-    lumbarMesh.rotation.z = Math.PI / 2;
-    lumbarMesh.rotation.x = 0.2;
-    lumbarMesh.position.set(0, 0.42, -0.68);
-    chairGroup.add(lumbarMesh);
-
-    // C. Underseat Base Plinth
-    const basePlinthGeo = new THREE.CylinderGeometry(1.15, 1.05, 0.14, 24);
-    const basePlinth = new THREE.Mesh(basePlinthGeo, walnutMaterial);
-    basePlinth.position.y = -0.36;
-    chairGroup.add(basePlinth);
-
-    // D. 4 Tapered Walnut Legs with Brass Ferrules
-    const legPositions = [
-      { x: -0.82, z: 0.72, rotX: 0.18, rotZ: 0.2 },
-      { x: 0.82, z: 0.72, rotX: 0.18, rotZ: -0.2 },
-      { x: -0.76, z: -0.72, rotX: -0.22, rotZ: 0.18 },
-      { x: 0.76, z: -0.72, rotX: -0.22, rotZ: -0.18 },
-    ];
-
-    const legGeo = new THREE.CylinderGeometry(0.062, 0.1, 1.25, 12);
-    const ferruleGeo = new THREE.CylinderGeometry(0.063, 0.072, 0.26, 12);
-
-    legPositions.forEach((pos) => {
-      const legGroup = new THREE.Group();
-      legGroup.position.set(pos.x, -0.42, pos.z);
-      legGroup.rotation.x = pos.rotX;
-      legGroup.rotation.z = pos.rotZ;
-
-      const legMesh = new THREE.Mesh(legGeo, walnutMaterial);
-      legMesh.position.y = -0.62;
-      legGroup.add(legMesh);
-
-      const ferruleMesh = new THREE.Mesh(ferruleGeo, brassMaterial);
-      ferruleMesh.position.y = -1.12;
-      legGroup.add(ferruleMesh);
-
-      chairGroup.add(legGroup);
-    });
-
-    // E. Floating Gyroscopic Motion Rings (Reduced segments for high-FPS performance)
+    // Floating Gyroscopic Orbit Rings
     const ringsGroup = new THREE.Group();
     masterGroup.add(ringsGroup);
 
-    const ring1Geo = new THREE.TorusGeometry(2.85, 0.02, 10, 64);
+    const ring1Geo = new THREE.TorusGeometry(2.9, 0.018, 10, 64);
     const ring1 = new THREE.Mesh(ring1Geo, brassMaterial);
-    ring1.rotation.x = Math.PI / 2.4;
-    ring1.rotation.y = 0.25;
+    ring1.rotation.x = Math.PI / 2.3;
+    ring1.rotation.y = 0.22;
     ringsGroup.add(ring1);
 
-    const ring2Geo = new THREE.TorusGeometry(3.15, 0.018, 10, 64);
+    const ring2Geo = new THREE.TorusGeometry(3.2, 0.015, 10, 64);
     const ring2 = new THREE.Mesh(ring2Geo, chromeMaterial);
-    ring2.rotation.x = -Math.PI / 3.1;
-    ring2.rotation.z = Math.PI / 5;
+    ring2.rotation.x = -Math.PI / 3.2;
+    ring2.rotation.z = Math.PI / 5.2;
     ringsGroup.add(ring2);
 
-    const ring3Geo = new THREE.TorusGeometry(3.45, 0.015, 10, 64);
+    const ring3Geo = new THREE.TorusGeometry(3.5, 0.014, 10, 64);
     const ring3 = new THREE.Mesh(ring3Geo, brassMaterial);
-    ring3.rotation.x = Math.PI / 3.8;
-    ring3.rotation.y = -Math.PI / 3.2;
+    ring3.rotation.x = Math.PI / 3.6;
+    ring3.rotation.y = -Math.PI / 3.1;
     ringsGroup.add(ring3);
 
-    // F. Ambient Floating Warm Stardust Particles
-    const particleCount = 48; // Compressed for minimal vertex shader load
+    // Ambient Stardust Particles
+    const particleCount = 52;
     const particleGeo = new THREE.BufferGeometry();
     const particlePositions = new Float32Array(particleCount * 3);
 
     for (let i = 0; i < particleCount; i++) {
-      const radius = 2.4 + Math.random() * 2.0;
+      const radius = 2.4 + Math.random() * 2.2;
       const theta = Math.random() * Math.PI * 2;
       const phi = Math.acos(Math.random() * 2 - 1);
 
@@ -206,39 +237,43 @@ export default function Icon3DFurniture({
 
     const particleMaterial = new THREE.PointsMaterial({
       color: new THREE.Color('#f6bd60'),
-      size: 0.055,
+      size: 0.052,
       transparent: true,
-      opacity: 0.7,
+      opacity: 0.75,
       blending: THREE.AdditiveBlending,
-      depthWrite: false, // Performance boost
+      depthWrite: false,
     });
 
     const particles = new THREE.Points(particleGeo, particleMaterial);
     masterGroup.add(particles);
 
-    // G. Lighting Setup (Optimized with minimal point light attenuation)
-    const ambientLight = new THREE.AmbientLight(0xfff8f0, 2.0);
+    // 5. Studio Lighting Setup (Rich Luxury Warm & Crisp Key Lights)
+    const ambientLight = new THREE.AmbientLight(0xfff9f2, 2.2);
     scene.add(ambientLight);
 
-    const keyLight = new THREE.DirectionalLight(0xffffff, 2.4);
-    keyLight.position.set(5, 7, 6);
+    const keyLight = new THREE.DirectionalLight(0xffffff, 2.6);
+    keyLight.position.set(5, 8, 6);
     scene.add(keyLight);
 
-    const warmFillLight = new THREE.DirectionalLight(0xffe8d6, 1.8);
+    const warmFillLight = new THREE.DirectionalLight(0xffecd6, 1.9);
     warmFillLight.position.set(-6, -2, 4);
     scene.add(warmFillLight);
 
-    const rimLight = new THREE.PointLight(0xd4a373, 2.8, 16);
+    const topSoftLight = new THREE.DirectionalLight(0xffffff, 1.4);
+    topSoftLight.position.set(0, 8, 2);
+    scene.add(topSoftLight);
+
+    const rimLight = new THREE.PointLight(0xd4a373, 2.6, 16);
     rimLight.position.set(0, 2, -3.5);
     scene.add(rimLight);
 
-    // 5. Passive High-Performance Event Listeners
+    // 6. Interactive Event Listeners
     const handleMouseMove = (e: MouseEvent) => {
       if (!interactive) return;
       const x = (e.clientX / window.innerWidth) * 2 - 1;
       const y = -(e.clientY / window.innerHeight) * 2 + 1;
-      mouseRef.current.targetX = x * 0.45;
-      mouseRef.current.targetY = y * 0.3;
+      mouseRef.current.targetX = x * 0.42;
+      mouseRef.current.targetY = y * 0.28;
     };
 
     const handleScroll = () => {
@@ -250,7 +285,6 @@ export default function Icon3DFurniture({
     window.addEventListener('mousemove', handleMouseMove, { passive: true });
     window.addEventListener('scroll', handleScroll, { passive: true });
 
-    // Initial scroll position
     handleScroll();
 
     let resizeTimer: ReturnType<typeof setTimeout>;
@@ -268,16 +302,16 @@ export default function Icon3DFurniture({
 
     window.addEventListener('resize', handleResize, { passive: true });
 
-    // 6. Ultra-Smooth 60-120fps Animation Loop with Delta Time & Lerp Interpolation
+    // 7. Ultra-Smooth 60-120fps Animation Loop
     let animationFrameId: number;
     const clock = new THREE.Clock();
 
     const animate = () => {
       animationFrameId = requestAnimationFrame(animate);
-      const delta = Math.min(clock.getDelta(), 0.1);
+      clock.getDelta();
       const elapsedTime = clock.getElapsedTime();
 
-      // Skip heavy operations if user has scrolled far down past the 3D showcase
+      // Skip heavy operations if user has scrolled past
       if (scrollRef.current.current > 1.45 && scrollRef.current.target > 1.45) {
         return;
       }
@@ -286,27 +320,27 @@ export default function Icon3DFurniture({
       mouseRef.current.x += (mouseRef.current.targetX - mouseRef.current.x) * 0.08;
       mouseRef.current.y += (mouseRef.current.targetY - mouseRef.current.y) * 0.08;
 
-      // Smooth Frame-Rate-Independent Scroll Lerp (Eliminates all scroll stutter/lag)
+      // Smooth Frame-Rate-Independent Scroll Lerp
       scrollRef.current.current += (scrollRef.current.target - scrollRef.current.current) * 0.08;
       const s = scrollRef.current.current;
 
       // Color Smooth Interpolation
-      if (upholsteryMaterial) {
-        upholsteryMaterial.color.lerp(colorTargetRef.current, 0.1);
-      }
+      fabricMaterialsRef.current.forEach((mat) => {
+        mat.color.lerp(colorTargetRef.current, 0.08);
+      });
 
       // Dynamic Chair Parallax & Natural Breathing Float
-      chairGroup.rotation.y = -Math.PI / 7 + elapsedTime * 0.12 + mouseRef.current.x * 0.7;
-      chairGroup.rotation.x = 0.08 + Math.sin(elapsedTime * 0.7) * 0.035 - mouseRef.current.y * 0.45;
-      chairGroup.position.y = Math.sin(elapsedTime * 1.1) * 0.1;
+      chairGroup.rotation.y = -Math.PI / 6.5 + elapsedTime * 0.1 + mouseRef.current.x * 0.65;
+      chairGroup.rotation.x = 0.06 + Math.sin(elapsedTime * 0.7) * 0.03 - mouseRef.current.y * 0.4;
+      chairGroup.position.y = Math.sin(elapsedTime * 1.1) * 0.08;
 
       // Ring Rotations
-      ring1.rotation.z = elapsedTime * 0.18;
-      ring2.rotation.y = -elapsedTime * 0.15;
-      ring3.rotation.x = elapsedTime * 0.12;
+      ring1.rotation.z = elapsedTime * 0.16;
+      ring2.rotation.y = -elapsedTime * 0.13;
+      ring3.rotation.x = elapsedTime * 0.11;
 
       // Stardust Particles Gentle Orbit
-      particles.rotation.y = elapsedTime * 0.05;
+      particles.rotation.y = elapsedTime * 0.04;
 
       // Scroll Transitions (Position, Depth & Opacity)
       masterGroup.position.y = -s * 2.5;
@@ -324,7 +358,7 @@ export default function Icon3DFurniture({
 
     animate();
 
-    // 7. Complete Memory & GPU Cleanup
+    // 8. Cleanup
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('scroll', handleScroll);
@@ -332,27 +366,11 @@ export default function Icon3DFurniture({
       clearTimeout(resizeTimer);
       cancelAnimationFrame(animationFrameId);
 
-      [
-        seatGeo,
-        innerCushionGeo,
-        backrestGeo,
-        lumbarGeo,
-        basePlinthGeo,
-        legGeo,
-        ferruleGeo,
-        ring1Geo,
-        ring2Geo,
-        ring3Geo,
-        particleGeo,
-      ].forEach((geo) => geo.dispose());
+      [ring1Geo, ring2Geo, ring3Geo, particleGeo].forEach((geo) => geo.dispose());
+      [brassMaterial, chromeMaterial, particleMaterial].forEach((mat) => mat.dispose());
 
-      [
-        upholsteryMaterial,
-        walnutMaterial,
-        brassMaterial,
-        chromeMaterial,
-        particleMaterial,
-      ].forEach((mat) => mat.dispose());
+      fabricMaterialsRef.current.forEach((mat) => mat.dispose());
+      woodMaterialsRef.current.forEach((mat) => mat.dispose());
 
       renderer.dispose();
       if (container.contains(renderer.domElement)) {
@@ -363,13 +381,22 @@ export default function Icon3DFurniture({
 
   return (
     <div className="relative w-full h-full">
+      {/* Loading Skeleton Pulse */}
+      {isLoading && (
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <div className="w-16 h-16 rounded-full border-2 border-[#859F3C]/30 border-t-[#859F3C] animate-spin" />
+        </div>
+      )}
+
       <div
         ref={containerRef}
-        className={`w-full h-full pointer-events-none select-none transition-opacity duration-300 ${className}`}
+        className={`w-full h-full pointer-events-none select-none transition-opacity duration-500 ${
+          isLoading ? 'opacity-0' : 'opacity-100'
+        } ${className}`}
         aria-hidden="true"
       />
 
-      {/* Floating 3D Wood Finish Switcher Capsule */}
+      {/* Floating 3D Wood & Upholstery Finish Switcher Capsule */}
       <div
         className="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 pointer-events-auto flex items-center gap-2.5 backdrop-blur-md px-4 py-2 rounded-full border shadow-lg transition-all duration-500"
         style={{
@@ -388,36 +415,32 @@ export default function Icon3DFurniture({
         }}
       >
         <span className="text-[10px] font-bold uppercase tracking-wider text-stone-500 mr-0.5 pl-0.5 select-none">
-          Wood Finish:
+          Finish:
         </span>
 
-        {/* Olive Hardwood */}
+        {/* Olive Signature */}
         <button
           onClick={() => handleColorChange('olive')}
           className="relative w-5 h-5 rounded-full cursor-pointer transition-all duration-300 hover:scale-110 focus:outline-none"
           style={{ background: '#859F3C' }}
-          title="Olive Hardwood (Brand Signature)"
-          aria-label="Olive Hardwood"
+          title="Olive Signature (Brand Finish)"
+          aria-label="Olive Signature"
         >
           {currentColor === 'olive' && (
-            <span
-              className="absolute inset-[-3px] rounded-full border-2 border-[#859F3C] shadow-[0_0_8px_rgba(133,159,60,0.7)] transition-all duration-300"
-            />
+            <span className="absolute inset-[-3px] rounded-full border-2 border-[#859F3C] shadow-[0_0_8px_rgba(133,159,60,0.7)] transition-all duration-300" />
           )}
         </button>
 
-        {/* Ivory Travertine */}
+        {/* Ivory Bouclé */}
         <button
           onClick={() => handleColorChange('ivory')}
           className="relative w-5 h-5 rounded-full cursor-pointer transition-all duration-300 hover:scale-110 focus:outline-none border border-stone-300"
-          style={{ background: '#d6cfc2' }}
-          title="Ivory Travertine"
-          aria-label="Ivory Travertine"
+          style={{ background: '#d8d1c5' }}
+          title="Ivory Bouclé"
+          aria-label="Ivory Bouclé"
         >
           {currentColor === 'ivory' && (
-            <span
-              className="absolute inset-[-3px] rounded-full border-2 border-[#859F3C] shadow-[0_0_8px_rgba(133,159,60,0.7)] transition-all duration-300"
-            />
+            <span className="absolute inset-[-3px] rounded-full border-2 border-[#859F3C] shadow-[0_0_8px_rgba(133,159,60,0.7)] transition-all duration-300" />
           )}
         </button>
 
@@ -425,14 +448,12 @@ export default function Icon3DFurniture({
         <button
           onClick={() => handleColorChange('walnut')}
           className="relative w-5 h-5 rounded-full cursor-pointer transition-all duration-300 hover:scale-110 focus:outline-none"
-          style={{ background: '#2c1a0e' }}
+          style={{ background: '#34251a' }}
           title="Dark Walnut"
           aria-label="Dark Walnut"
         >
           {currentColor === 'walnut' && (
-            <span
-              className="absolute inset-[-3px] rounded-full border-2 border-[#859F3C] shadow-[0_0_8px_rgba(133,159,60,0.7)] transition-all duration-300"
-            />
+            <span className="absolute inset-[-3px] rounded-full border-2 border-[#859F3C] shadow-[0_0_8px_rgba(133,159,60,0.7)] transition-all duration-300" />
           )}
         </button>
 

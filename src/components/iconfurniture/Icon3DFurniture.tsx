@@ -265,47 +265,40 @@ export default function Icon3DFurniture({
       }
     );
 
-    // 5. Aesthetic Brass Orbital Rings
-    const brassMaterial = new THREE.MeshStandardMaterial({
-      color: new THREE.Color('#e0b06b'),
-      metalness: 0.92,
-      roughness: 0.2,
+    // 5. Studio Ground Contact Shadow Plinth (Soft luxury showroom floor shadow)
+    const shadowCanvas = document.createElement('canvas');
+    shadowCanvas.width = 256;
+    shadowCanvas.height = 256;
+    const shadowCtx = shadowCanvas.getContext('2d');
+    if (shadowCtx) {
+      const gradient = shadowCtx.createRadialGradient(128, 128, 0, 128, 128, 120);
+      gradient.addColorStop(0, 'rgba(20, 18, 15, 0.45)');
+      gradient.addColorStop(0.35, 'rgba(30, 25, 20, 0.22)');
+      gradient.addColorStop(0.7, 'rgba(40, 35, 30, 0.06)');
+      gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
+      shadowCtx.fillStyle = gradient;
+      shadowCtx.fillRect(0, 0, 256, 256);
+    }
+    const shadowTexture = new THREE.CanvasTexture(shadowCanvas);
+    const shadowGeo = new THREE.PlaneGeometry(3.8, 3.8);
+    const shadowMat = new THREE.MeshBasicMaterial({
+      map: shadowTexture,
+      transparent: true,
+      depthWrite: false,
+      opacity: 0.85,
     });
+    const groundShadow = new THREE.Mesh(shadowGeo, shadowMat);
+    groundShadow.rotation.x = -Math.PI / 2;
+    groundShadow.position.y = -1.55;
+    masterGroup.add(groundShadow);
 
-    const chromeMaterial = new THREE.MeshStandardMaterial({
-      color: new THREE.Color('#e8ecf2'),
-      metalness: 0.95,
-      roughness: 0.1,
-    });
-
-    const ringsGroup = new THREE.Group();
-    masterGroup.add(ringsGroup);
-
-    const ring1Geo = new THREE.TorusGeometry(2.9, 0.018, 10, 64);
-    const ring1 = new THREE.Mesh(ring1Geo, brassMaterial);
-    ring1.rotation.x = Math.PI / 2.3;
-    ring1.rotation.y = 0.22;
-    ringsGroup.add(ring1);
-
-    const ring2Geo = new THREE.TorusGeometry(3.2, 0.015, 10, 64);
-    const ring2 = new THREE.Mesh(ring2Geo, chromeMaterial);
-    ring2.rotation.x = -Math.PI / 3.2;
-    ring2.rotation.z = Math.PI / 5.2;
-    ringsGroup.add(ring2);
-
-    const ring3Geo = new THREE.TorusGeometry(3.5, 0.014, 10, 64);
-    const ring3 = new THREE.Mesh(ring3Geo, brassMaterial);
-    ring3.rotation.x = Math.PI / 3.6;
-    ring3.rotation.y = -Math.PI / 3.1;
-    ringsGroup.add(ring3);
-
-    // 6. Ambient Floating Particles
-    const particleCount = 52;
+    // 6. Ambient Floating Warm Micro-Particles
+    const particleCount = 36;
     const particleGeo = new THREE.BufferGeometry();
     const particlePositions = new Float32Array(particleCount * 3);
 
     for (let i = 0; i < particleCount; i++) {
-      const radius = 2.4 + Math.random() * 2.2;
+      const radius = 2.2 + Math.random() * 2.0;
       const theta = Math.random() * Math.PI * 2;
       const phi = Math.acos(Math.random() * 2 - 1);
 
@@ -318,9 +311,9 @@ export default function Icon3DFurniture({
 
     const particleMaterial = new THREE.PointsMaterial({
       color: new THREE.Color('#f6bd60'),
-      size: 0.052,
+      size: 0.045,
       transparent: true,
-      opacity: 0.75,
+      opacity: 0.65,
       blending: THREE.AdditiveBlending,
       depthWrite: false,
     });
@@ -416,13 +409,8 @@ export default function Icon3DFurniture({
       chairGroup.rotation.x = 0.06 + Math.sin(elapsedTime * 0.7) * 0.03 - mouseRef.current.y * 0.4;
       chairGroup.position.y = Math.sin(elapsedTime * 1.1) * 0.08;
 
-      // Ring Rotations
-      ring1.rotation.z = elapsedTime * 0.16;
-      ring2.rotation.y = -elapsedTime * 0.13;
-      ring3.rotation.x = elapsedTime * 0.11;
-
-      // Particles
-      particles.rotation.y = elapsedTime * 0.04;
+      // Ambient Particles Orbit
+      particles.rotation.y = elapsedTime * 0.03;
 
       // Scroll Transitions
       masterGroup.position.y = -s * 2.5;
@@ -447,8 +435,8 @@ export default function Icon3DFurniture({
       clearTimeout(resizeTimer);
       cancelAnimationFrame(animationFrameId);
 
-      [ring1Geo, ring2Geo, ring3Geo, particleGeo].forEach((geo) => geo.dispose());
-      [brassMaterial, chromeMaterial, particleMaterial].forEach((mat) => mat.dispose());
+      [shadowGeo, particleGeo].forEach((geo) => geo.dispose());
+      [shadowMat, shadowTexture, particleMaterial].forEach((res) => res.dispose());
 
       fabricMaterialsRef.current.forEach((mat) => mat.dispose());
       woodMaterialsRef.current.forEach((mat) => mat.dispose());

@@ -31,11 +31,21 @@ export default function IconHero({
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Calculate smooth scale, translation, and opacity of the giant hero logo as it glides toward the navbar
-  const heroProgress = Math.min(1, Math.max(0, scrollY / 420));
-  const logoScale = 1 - heroProgress * 0.45;
-  const logoTranslateY = -heroProgress * 120;
-  const logoOpacity = Math.max(0, 1 - heroProgress * 1.35);
+  // High-End Parallax: Logo scales down from 1.0 to 0.24 and glides seamlessly up toward the navbar
+  const scrollRatio = Math.min(1, Math.max(0, scrollY / 320));
+  // Smooth cubic in-out easing for organic deceleration
+  const easeProgress =
+    scrollRatio < 0.5
+      ? 4 * scrollRatio * scrollRatio * scrollRatio
+      : 1 - Math.pow(-2 * scrollRatio + 2, 3) / 2;
+
+  const logoScale = Math.max(0.24, 1 - easeProgress * 0.74);
+  const logoTranslateY = -easeProgress * 235;
+  // Cross-fades seamlessly into the navbar logo at the docking threshold (scrollRatio > 0.80)
+  const logoOpacity =
+    scrollRatio >= 0.8
+      ? Math.max(0, 1 - (scrollRatio - 0.8) / 0.2)
+      : 1;
 
   return (
     <div className="relative w-full min-h-screen flex flex-col justify-between pt-28 pb-12 px-6 sm:px-10 max-w-7xl mx-auto select-none">
@@ -70,13 +80,13 @@ export default function IconHero({
         </svg>
       </div>
 
-      {/* ─── Giant Brand Logo Behind 3D Furniture (Transitions into navbar on scroll) ─── */}
+      {/* ─── Giant Brand Logo Behind 3D Furniture (Smoothly shrinks and docks into navbar on scroll) ─── */}
       <div
-        className="w-full flex flex-col items-center justify-center text-center relative z-0 mt-2 sm:mt-6 pointer-events-none will-change-transform"
+        className="w-full flex flex-col items-center justify-center text-center relative z-0 mt-2 sm:mt-6 pointer-events-none will-change-transform origin-top"
         style={{
           transform: `translateY(${logoTranslateY}px) scale(${logoScale})`,
           opacity: logoOpacity,
-          transition: 'transform 0.1s ease-out, opacity 0.15s ease-out',
+          transition: 'transform 0.08s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.12s ease-out',
         }}
       >
         <div className="relative w-[88vw] max-w-[820px] aspect-[3.2/1] flex items-center justify-center">

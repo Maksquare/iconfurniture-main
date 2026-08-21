@@ -36,13 +36,13 @@ export default function IconNavbar({ isDark = false }: IconNavbarProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
 
-  // Smooth scroll listener for navbar logo appearance
+  // Smooth scroll listener for navbar logo dock handoff
   useEffect(() => {
     let ticking = false;
     const handleScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
-          setShowNavbarLogo(window.scrollY > 150);
+          setShowNavbarLogo(window.scrollY > 240);
           ticking = false;
         });
         ticking = true;
@@ -132,10 +132,10 @@ export default function IconNavbar({ isDark = false }: IconNavbarProps) {
             {/* Docked Brand Logo from Hero on Scroll */}
             <Link
               href="/"
-              className={`flex items-center gap-2.5 transition-all duration-500 ease-out origin-left ${
+              className={`flex items-center gap-2.5 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] origin-left ${
                 showNavbarLogo
-                  ? 'opacity-100 scale-100 translate-x-0 max-w-[140px]'
-                  : 'opacity-0 scale-75 -translate-x-3 max-w-0 pointer-events-none overflow-hidden'
+                  ? 'opacity-100 scale-100 translate-x-0 max-w-[150px]'
+                  : 'opacity-0 scale-85 -translate-x-3 max-w-0 pointer-events-none overflow-hidden'
               }`}
               aria-label="Icon Furniture Home"
             >

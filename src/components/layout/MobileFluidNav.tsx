@@ -1,31 +1,58 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Search,
-  ArrowUpRight,
-  Phone,
-  Mail,
-  MapPin,
+  ShoppingBag,
+  ArrowRight,
   Sparkles,
 } from 'lucide-react';
 import SmartSearchModal from '@/components/search/SmartSearchModal';
+import { useCart } from '@/components/cart/CartContext';
 import {
-  InstagramIcon,
-  TelegramIcon,
-  TikTokIcon,
-  FacebookIcon,
   OFFICIAL_CONTACTS,
 } from '@/components/common/ProductContactChannels';
 
 export default function MobileFluidNav() {
   const [isOpen, setIsOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const lastScrollY = useRef(0);
   const pathname = usePathname();
+  const { totalItems, setIsCartOpen, subtotal } = useCart();
+
+  // Smart scroll handling: auto-hide on fast downward scroll, reveal on scroll up or stop
+  useEffect(() => {
+    let timeoutId: NodeJS.Timeout | null = null;
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      if (isOpen) return; // Don't hide if menu is open
+
+      if (currentScrollY > lastScrollY.current + 25 && currentScrollY > 120) {
+        setIsVisible(false); // scrolling down fast
+      } else if (currentScrollY < lastScrollY.current - 10 || currentScrollY < 80) {
+        setIsVisible(true); // scrolling up or near top
+      }
+
+      lastScrollY.current = currentScrollY;
+
+      if (timeoutId) clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        setIsVisible(true); // reveal when scrolling pauses
+      }, 1200);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (timeoutId) clearTimeout(timeoutId);
+    };
+  }, [isOpen]);
 
   // Close nav on route change
   useEffect(() => {
@@ -57,11 +84,11 @@ export default function MobileFluidNav() {
   }, [isOpen]);
 
   const navLinks = [
-    { name: 'Home', href: '/', isExternal: false },
-    { name: 'Collection', href: '/shop', isExternal: false },
-    { name: 'Cinema', href: '/cinema', isExternal: false },
-    { name: 'About', href: '/about', isExternal: false },
-    { name: 'Contact ↗', href: '/contact', isExternal: false },
+    { name: 'Home', href: '/' },
+    { name: 'Collection', href: '/shop' },
+    { name: 'Cinema', href: '/cinema' },
+    { name: 'About', href: '/about' },
+    { name: 'Contact ↗', href: '/contact' },
   ];
 
   return (
@@ -78,39 +105,43 @@ export default function MobileFluidNav() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
             onClick={() => setIsOpen(false)}
-            className="fixed inset-0 z-[140] bg-black/60 backdrop-blur-md md:hidden"
+            className="fixed inset-0 z-[140] bg-black/65 backdrop-blur-md md:hidden"
           />
         )}
       </AnimatePresence>
 
       {/* Floating Bottom Nav Container */}
-      <div className="fixed bottom-5 inset-x-4 z-[150] flex justify-center pointer-events-none md:hidden">
+      <div
+        className={`fixed bottom-5 inset-x-3 sm:inset-x-4 z-[150] flex justify-center pointer-events-none md:hidden transition-all duration-300 ${
+          isVisible || isOpen ? 'translate-y-0 opacity-100' : 'translate-y-16 opacity-0'
+        }`}
+      >
         <motion.div
           layout
           transition={{
             type: 'spring',
-            stiffness: 380,
-            damping: 30,
+            stiffness: 400,
+            damping: 32,
           }}
           className={`pointer-events-auto bg-white/95 backdrop-blur-2xl border border-stone-200/90 shadow-[0_20px_60px_rgba(0,0,0,0.28)] overflow-hidden ${
             isOpen
               ? 'w-full max-w-[360px] rounded-[32px] p-6'
-              : 'rounded-full px-4 py-2.5 flex items-center gap-3'
+              : 'rounded-full px-3.5 py-2 flex items-center gap-2.5 shadow-xl'
           }`}
         >
           {isOpen ? (
             /* ─── Expanded State (Inspo Card) ─────────────────────── */
-            <div className="w-full flex flex-col space-y-6">
+            <div className="w-full flex flex-col space-y-5">
               {/* Nav Links (Large Editorial Typography) */}
-              <div className="flex flex-col space-y-3 pt-1">
+              <div className="flex flex-col space-y-2.5 pt-1">
                 {navLinks.map((link, idx) => {
                   const isActive = pathname === link.href;
                   return (
                     <motion.div
                       key={link.name}
-                      initial={{ opacity: 0, x: -16 }}
+                      initial={{ opacity: 0, x: -14 }}
                       animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.05 + idx * 0.04 }}
+                      transition={{ delay: 0.04 + idx * 0.04 }}
                     >
                       <Link
                         href={link.href}
@@ -141,12 +172,37 @@ export default function MobileFluidNav() {
               >
                 <div className="flex items-center gap-2.5">
                   <Search className="w-4 h-4 text-[#869e32]" />
-                  <span className="font-medium text-stone-700">Search dining tables…</span>
+                  <span className="font-medium text-stone-700">Search catalog…</span>
                 </div>
                 <kbd className="px-2 py-0.5 bg-white border border-stone-200 rounded text-[10px] font-mono text-stone-400">
-                  Live Search
+                  Live
                 </kbd>
               </motion.button>
+
+              {/* Shopping Bag Quick Summary */}
+              {totalItems > 0 && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.24 }}
+                  onClick={() => {
+                    setIsOpen(false);
+                    setIsCartOpen(true);
+                  }}
+                  className="flex items-center justify-between p-3 rounded-2xl bg-[#869e32]/10 border border-[#869e32]/30 cursor-pointer"
+                >
+                  <div className="flex items-center gap-2.5">
+                    <ShoppingBag className="w-4 h-4 text-[#869e32]" />
+                    <span className="text-xs font-semibold text-stone-800">
+                      Bag: {totalItems} {totalItems === 1 ? 'item' : 'items'}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-1.5 text-xs font-mono font-bold text-[#869e32]">
+                    <span>{subtotal.toLocaleString()} ETB</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </div>
+                </motion.div>
+              )}
 
               {/* Divider */}
               <div className="h-px bg-stone-200/80" />
@@ -163,7 +219,7 @@ export default function MobileFluidNav() {
                   <span className="text-[10px] uppercase font-bold tracking-widest text-stone-400 block mb-2">
                     Socials
                   </span>
-                  <div className="flex flex-col space-y-1.5 font-medium text-stone-800">
+                  <div className="flex flex-col space-y-1 font-medium text-stone-800">
                     <a
                       href={OFFICIAL_CONTACTS.instagram.url}
                       target="_blank"
@@ -255,13 +311,13 @@ export default function MobileFluidNav() {
             /* ─── Collapsed State (Bottom Floating Dock / Pill) ─────── */
             <>
               {/* Brand Logo */}
-              <Link href="/" className="flex items-center pl-1">
+              <Link href="/" className="flex items-center pl-1 pr-1">
                 <Image
                   src="/assets/iconfurniture-logo.png"
                   alt="Icon Furniture"
-                  width={96}
-                  height={24}
-                  className="h-5 w-auto object-contain"
+                  width={88}
+                  height={22}
+                  className="h-4.5 w-auto object-contain"
                 />
               </Link>
 
@@ -272,6 +328,20 @@ export default function MobileFluidNav() {
                 aria-label="Search catalog"
               >
                 <Search className="w-3.5 h-3.5" />
+              </button>
+
+              {/* Shopping Bag Button (if has items or quick tap) */}
+              <button
+                onClick={() => setIsCartOpen(true)}
+                className="relative w-8 h-8 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-600 hover:text-[#869e32] flex items-center justify-center transition-colors cursor-pointer"
+                aria-label="View bag"
+              >
+                <ShoppingBag className="w-3.5 h-3.5" />
+                {totalItems > 0 && (
+                  <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-[#869e32] text-white text-[9px] font-bold flex items-center justify-center shadow-xs">
+                    {totalItems}
+                  </span>
+                )}
               </button>
 
               {/* Toggle Morph Button (Hamburger) */}

@@ -109,53 +109,8 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* ─── Intelligent High-End Live Search Modal ─── */}
+      {/* ─── Intelligent High-End Live Search Modal (Desktop) ─── */}
       <SmartSearchModal isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
-
-      {/* Mobile Drawer */}
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            className="pointer-events-auto lg:hidden max-w-md mx-auto mt-3 bg-white/95 backdrop-blur-md p-6 rounded-2xl border border-stone-200 shadow-2xl space-y-4"
-          >
-            <div className="flex flex-col space-y-3">
-              {/* Mobile Drawer Logo */}
-              <div className="pb-3 border-b border-stone-100 flex items-center justify-between">
-                <Link href="/" onClick={() => setMobileMenuOpen(false)}>
-                  <Image
-                    src="/assets/iconfurniture-logo.png"
-                    alt="Icon Furniture"
-                    width={110}
-                    height={30}
-                    className="h-6 w-auto object-contain"
-                  />
-                </Link>
-              </div>
-
-              {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="text-xs uppercase tracking-widest font-semibold text-stone-800 hover:text-[#869e32] py-2 border-b border-stone-100"
-                >
-                  {link.name}
-                </Link>
-              ))}
-              <Link
-                href="/shop"
-                onClick={() => setMobileMenuOpen(false)}
-                className="w-full text-center py-3 bg-[#869e32] text-white text-xs uppercase tracking-widest font-semibold rounded-xl hover:bg-[#0e3802] transition-colors"
-              >
-                Explore Catalog →
-              </Link>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </header>
   );
 }

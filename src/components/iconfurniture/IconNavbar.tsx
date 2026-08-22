@@ -160,80 +160,11 @@ export default function IconNavbar({ isDark = false }: IconNavbarProps) {
               <span>Explore Catalog</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
-
-            {/* Mobile Hamburger */}
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className={`md:hidden p-1.5 rounded-full transition-colors ${
-                isDark ? 'text-white' : 'text-stone-900'
-              }`}
-              aria-label="Toggle Navigation"
-            >
-              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </button>
           </div>
         </nav>
-
-        {/* Mobile Drawer */}
-        {mobileMenuOpen && (
-          <div
-            className={`pointer-events-auto absolute top-20 left-4 right-4 rounded-3xl p-6 shadow-2xl backdrop-blur-2xl md:hidden border ${
-              isDark
-                ? 'bg-[#151412]/95 border-white/15 text-white'
-                : 'bg-white/95 border-stone-200 text-stone-900'
-            }`}
-          >
-            <div className="flex flex-col gap-4 text-sm font-medium">
-              {/* Mobile Drawer Brand Logo */}
-              <div className="pb-2 border-b border-stone-200/50">
-                <Link href="/" onClick={() => setMobileMenuOpen(false)}>
-                  <div className="bg-white/95 px-3 py-1.5 rounded-xl inline-block shadow-2xs">
-                    <Image
-                      src="/assets/iconfurniture-logo.png"
-                      alt="Icon Furniture"
-                      width={110}
-                      height={30}
-                      className="h-6 w-auto object-contain"
-                    />
-                  </div>
-                </Link>
-              </div>
-
-              {/* Mobile search entry */}
-              <button
-                onClick={openSearch}
-                className={`flex items-center gap-3 px-4 py-3 rounded-2xl text-left ${
-                  isDark ? 'bg-white/8 text-stone-300' : 'bg-stone-50 text-stone-600'
-                }`}
-              >
-                <Search className="w-4 h-4 text-[#869e32]" />
-                <span className="text-xs">Search the collection…</span>
-              </button>
-              {navLinks.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="text-left py-1 hover:text-[#869e32] transition-colors"
-                >
-                  {item.name}
-                </Link>
-              ))}
-              <hr className={isDark ? 'border-white/10' : 'border-stone-200'} />
-              <Link
-                href="/shop"
-                onClick={() => setMobileMenuOpen(false)}
-                className="w-full text-center py-3 bg-[#869e32] hover:bg-[#0e3802] text-white rounded-2xl font-semibold flex items-center justify-center gap-2 transition-colors"
-              >
-                <span>Explore Entire Catalog</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
-          </div>
-        )}
       </header>
 
-      {/* ─── Intelligent High-End Live Search Modal ─── */}
+      {/* ─── Intelligent High-End Live Search Modal (Desktop) ─── */}
       <SmartSearchModal isOpen={searchOpen} onClose={closeSearch} />
     </>
   );

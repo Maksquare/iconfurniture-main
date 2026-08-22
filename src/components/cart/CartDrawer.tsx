@@ -139,7 +139,7 @@ export default function CartDrawer() {
                             <Plus className="w-3 h-3" />
                           </button>
                         </div>
-                        <span className="text-xs font-semibold text-[#124903]">
+                        <span className="text-xs font-semibold text-[#869e32]">
                           {(item.product.price * item.quantity).toLocaleString()} ETB
                         </span>
                       </div>

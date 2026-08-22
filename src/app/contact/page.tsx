@@ -95,8 +95,8 @@ export default function ContactPage() {
       handle: OFFICIAL_CONTACTS.phonePrimary.display,
       url: OFFICIAL_CONTACTS.phonePrimary.tel,
       icon: Phone,
-      iconColor: 'text-[#124903]',
-      bgHover: 'hover:border-[#124903]/40 hover:bg-[#124903]/10',
+      iconColor: 'text-[#869e32]',
+      bgHover: 'hover:border-[#869e32]/40 hover:bg-[#869e32]/10',
       actionText: 'Call 0911-96-70-49',
     },
     {
@@ -104,8 +104,8 @@ export default function ContactPage() {
       handle: OFFICIAL_CONTACTS.phoneSecondary.display,
       url: OFFICIAL_CONTACTS.phoneSecondary.tel,
       icon: Phone,
-      iconColor: 'text-[#124903]',
-      bgHover: 'hover:border-[#124903]/40 hover:bg-[#124903]/10',
+      iconColor: 'text-[#869e32]',
+      bgHover: 'hover:border-[#869e32]/40 hover:bg-[#869e32]/10',
       actionText: 'Call 0910-05-11-51',
     },
   ];
@@ -135,7 +135,7 @@ export default function ContactPage() {
         
         {/* ─── 1. Header Banner ───────────────────────────────────── */}
         <div className="relative rounded-3xl p-8 sm:p-14 bg-gradient-to-b from-[#f7f6f0] to-[#f0efe6] border border-stone-200/80 shadow-xs overflow-hidden">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-[#124903]/12 rounded-full blur-3xl pointer-events-none -z-10" />
+          <div className="absolute top-0 right-0 w-96 h-96 bg-[#869e32]/12 rounded-full blur-3xl pointer-events-none -z-10" />
 
           <div className="max-w-3xl space-y-4">
             <div className="flex items-center gap-3 flex-wrap">
@@ -149,7 +149,7 @@ export default function ContactPage() {
                   priority
                 />
               </div>
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white border border-stone-200/80 text-xs font-bold uppercase tracking-widest text-[#124903] shadow-2xs">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white border border-stone-200/80 text-xs font-bold uppercase tracking-widest text-[#869e32] shadow-2xs">
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>Official Showroom & Concierge</span>
               </div>
@@ -167,25 +167,25 @@ export default function ContactPage() {
             <div className="pt-2 flex flex-wrap items-center gap-3">
               <a
                 href={OFFICIAL_CONTACTS.phonePrimary.tel}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#1A1A1A] text-white hover:bg-[#124903] transition-all text-xs font-bold shadow-md cursor-pointer"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#1A1A1A] text-white hover:bg-[#869e32] transition-all text-xs font-bold shadow-md cursor-pointer"
               >
-                <Phone className="w-3.5 h-3.5 text-[#124903]" />
+                <Phone className="w-3.5 h-3.5 text-[#869e32]" />
                 <span>Call: {OFFICIAL_CONTACTS.phonePrimary.display}</span>
               </a>
               <a
                 href={OFFICIAL_CONTACTS.phoneSecondary.tel}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-stone-300 text-stone-900 hover:border-[#124903] hover:text-[#124903] transition-all text-xs font-bold shadow-xs cursor-pointer"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-stone-300 text-stone-900 hover:border-[#869e32] hover:text-[#869e32] transition-all text-xs font-bold shadow-xs cursor-pointer"
               >
-                <Phone className="w-3.5 h-3.5 text-[#124903]" />
+                <Phone className="w-3.5 h-3.5 text-[#869e32]" />
                 <span>Call: {OFFICIAL_CONTACTS.phoneSecondary.display}</span>
               </a>
               <a
                 href={OFFICIAL_CONTACTS.mapUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#124903]/15 border border-[#124903]/30 text-[#0b2e02] hover:bg-[#124903]/25 transition-all text-xs font-semibold"
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#869e32]/15 border border-[#869e32]/30 text-[#0b2e02] hover:bg-[#869e32]/25 transition-all text-xs font-semibold"
               >
-                <MapPin className="w-3.5 h-3.5 text-[#124903]" />
+                <MapPin className="w-3.5 h-3.5 text-[#869e32]" />
                 <span>Open Google Map Location</span>
                 <ArrowUpRight className="w-3 h-3" />
               </a>
@@ -199,8 +199,8 @@ export default function ContactPage() {
             <h2 className="font-serif text-2xl font-normal text-[#1A1A1A]">
               Official Contact & Social Channels
             </h2>
-            <span className="text-xs uppercase tracking-wider font-semibold text-[#124903] flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-[#124903] animate-pulse" />
+            <span className="text-xs uppercase tracking-wider font-semibold text-[#869e32] flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-[#869e32] animate-pulse" />
               <span>Concierge Active</span>
             </span>
           </div>
@@ -228,7 +228,7 @@ export default function ContactPage() {
                       title="Copy handle/number"
                     >
                       {isCopied ? (
-                        <span className="text-[#124903] font-semibold flex items-center gap-1 text-[11px]">
+                        <span className="text-[#869e32] font-semibold flex items-center gap-1 text-[11px]">
                           <CheckCircle2 className="w-3.5 h-3.5" /> Copied
                         </span>
                       ) : (
@@ -251,7 +251,7 @@ export default function ContactPage() {
                       href={channel.url}
                       target={isPhone ? undefined : '_blank'}
                       rel="noopener noreferrer"
-                      className="text-xs font-semibold text-[#124903] hover:text-[#0e3802] inline-flex items-center gap-1 group"
+                      className="text-xs font-semibold text-[#869e32] hover:text-[#0e3802] inline-flex items-center gap-1 group"
                     >
                       <span>{channel.actionText}</span>
                       <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -269,7 +269,7 @@ export default function ContactPage() {
           {/* Left: Consultation Form (7 Cols) */}
           <div className="lg:col-span-7 bg-white p-8 sm:p-10 rounded-3xl border border-stone-200/80 shadow-sm space-y-8">
             <div>
-              <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-[#124903] mb-2">
+              <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-[#869e32] mb-2">
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>Inquiry & Order Request</span>
               </div>
@@ -285,9 +285,9 @@ export default function ContactPage() {
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="py-12 px-6 rounded-2xl bg-[#124903]/10 border border-[#124903]/30 text-center space-y-4"
+                className="py-12 px-6 rounded-2xl bg-[#869e32]/10 border border-[#869e32]/30 text-center space-y-4"
               >
-                <div className="w-14 h-14 rounded-full bg-[#1A1A1A] text-[#124903] flex items-center justify-center mx-auto shadow-md">
+                <div className="w-14 h-14 rounded-full bg-[#1A1A1A] text-[#869e32] flex items-center justify-center mx-auto shadow-md">
                   <CheckCircle2 className="w-7 h-7 stroke-[2]" />
                 </div>
                 <h3 className="font-serif text-2xl font-semibold text-[#1A1A1A]">
@@ -298,7 +298,7 @@ export default function ContactPage() {
                 </p>
                 <button
                   onClick={() => setFormSubmitted(false)}
-                  className="px-6 py-2.5 rounded-full bg-[#1A1A1A] text-white text-xs uppercase tracking-widest font-semibold hover:bg-[#124903] transition-colors cursor-pointer"
+                  className="px-6 py-2.5 rounded-full bg-[#1A1A1A] text-white text-xs uppercase tracking-widest font-semibold hover:bg-[#869e32] transition-colors cursor-pointer"
                 >
                   Send Another Message
                 </button>
@@ -318,7 +318,7 @@ export default function ContactPage() {
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       placeholder="e.g. Samuel Bekele"
-                      className="w-full px-4 py-3 bg-stone-50 border border-stone-200/90 rounded-2xl text-xs sm:text-sm focus:outline-hidden focus:border-[#124903] focus:bg-white transition-all placeholder:text-stone-400"
+                      className="w-full px-4 py-3 bg-stone-50 border border-stone-200/90 rounded-2xl text-xs sm:text-sm focus:outline-hidden focus:border-[#869e32] focus:bg-white transition-all placeholder:text-stone-400"
                     />
                   </div>
 
@@ -332,7 +332,7 @@ export default function ContactPage() {
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       placeholder="e.g. 0911 00 00 00"
-                      className="w-full px-4 py-3 bg-stone-50 border border-stone-200/90 rounded-2xl text-xs sm:text-sm focus:outline-hidden focus:border-[#124903] focus:bg-white transition-all placeholder:text-stone-400"
+                      className="w-full px-4 py-3 bg-stone-50 border border-stone-200/90 rounded-2xl text-xs sm:text-sm focus:outline-hidden focus:border-[#869e32] focus:bg-white transition-all placeholder:text-stone-400"
                     />
                   </div>
                 </div>
@@ -348,7 +348,7 @@ export default function ContactPage() {
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       placeholder="samuel@example.com"
-                      className="w-full px-4 py-3 bg-stone-50 border border-stone-200/90 rounded-2xl text-xs sm:text-sm focus:outline-hidden focus:border-[#124903] focus:bg-white transition-all placeholder:text-stone-400"
+                      className="w-full px-4 py-3 bg-stone-50 border border-stone-200/90 rounded-2xl text-xs sm:text-sm focus:outline-hidden focus:border-[#869e32] focus:bg-white transition-all placeholder:text-stone-400"
                     />
                   </div>
 
@@ -359,7 +359,7 @@ export default function ContactPage() {
                     <select
                       value={formData.projectType}
                       onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
-                      className="w-full px-4 py-3 bg-stone-50 border border-stone-200/90 rounded-2xl text-xs sm:text-sm focus:outline-hidden focus:border-[#124903] focus:bg-white transition-all text-stone-800"
+                      className="w-full px-4 py-3 bg-stone-50 border border-stone-200/90 rounded-2xl text-xs sm:text-sm focus:outline-hidden focus:border-[#869e32] focus:bg-white transition-all text-stone-800"
                     >
                       <option>Solid Hardwood Dining Tables (Walnut/Oak)</option>
                       <option>Honed Stone & Travertine Tables</option>
@@ -381,14 +381,14 @@ export default function ContactPage() {
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     placeholder="Describe the dining table style, seating capacity (e.g. 8-seater, 10-seater, 14-seater), wood species, length, or model from our catalog..."
-                    className="w-full px-4 py-3 bg-stone-50 border border-stone-200/90 rounded-2xl text-xs sm:text-sm focus:outline-hidden focus:border-[#124903] focus:bg-white transition-all placeholder:text-stone-400 leading-relaxed"
+                    className="w-full px-4 py-3 bg-stone-50 border border-stone-200/90 rounded-2xl text-xs sm:text-sm focus:outline-hidden focus:border-[#869e32] focus:bg-white transition-all placeholder:text-stone-400 leading-relaxed"
                   />
                 </div>
 
                 {/* Submit Button */}
                 <button
                   type="submit"
-                  className="w-full py-4 bg-[#1A1A1A] hover:bg-[#124903] text-white text-xs uppercase tracking-widest font-semibold rounded-2xl transition-all duration-300 shadow-md hover:shadow-xl flex items-center justify-center gap-2 group cursor-pointer"
+                  className="w-full py-4 bg-[#1A1A1A] hover:bg-[#869e32] text-white text-xs uppercase tracking-widest font-semibold rounded-2xl transition-all duration-300 shadow-md hover:shadow-xl flex items-center justify-center gap-2 group cursor-pointer"
                 >
                   <Send className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
                   <span>Submit Inquiry</span>
@@ -402,12 +402,12 @@ export default function ContactPage() {
             
             {/* Showroom & Location Card */}
             <div className="bg-white p-7 rounded-3xl border border-stone-200/80 shadow-xs space-y-4">
-              <div className="w-12 h-12 rounded-2xl bg-[#124903]/10 text-[#124903] flex items-center justify-center">
+              <div className="w-12 h-12 rounded-2xl bg-[#869e32]/10 text-[#869e32] flex items-center justify-center">
                 <Building2 className="w-6 h-6 stroke-1.5" />
               </div>
 
               <div>
-                <span className="text-[10px] font-bold uppercase tracking-widest text-[#124903] block mb-0.5">
+                <span className="text-[10px] font-bold uppercase tracking-widest text-[#869e32] block mb-0.5">
                   Main Showroom & Studio
                 </span>
                 <h3 className="font-serif text-xl font-medium text-[#1A1A1A]">
@@ -417,14 +417,14 @@ export default function ContactPage() {
 
               <div className="space-y-1 text-xs sm:text-sm text-stone-600 font-sans leading-relaxed">
                 <div className="flex items-start gap-2">
-                  <MapPin className="w-4 h-4 text-[#124903] shrink-0 mt-0.5" />
+                  <MapPin className="w-4 h-4 text-[#869e32] shrink-0 mt-0.5" />
                   <span>Addis Ababa, Ethiopia</span>
                 </div>
                 <a
                   href={OFFICIAL_CONTACTS.mapUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs font-bold text-[#124903] hover:underline pt-1"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-[#869e32] hover:underline pt-1"
                 >
                   <span>Open exact location in Google Maps</span>
                   <ExternalLink className="w-3 h-3" />
@@ -433,15 +433,15 @@ export default function ContactPage() {
 
               <div className="pt-3 border-t border-stone-100 space-y-2.5 text-xs text-stone-600 font-sans">
                 <div className="flex items-center gap-2">
-                  <Phone className="w-3.5 h-3.5 text-[#124903]" />
+                  <Phone className="w-3.5 h-3.5 text-[#869e32]" />
                   <span>Primary: <strong>{OFFICIAL_CONTACTS.phonePrimary.display}</strong></span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Phone className="w-3.5 h-3.5 text-[#124903]" />
+                  <Phone className="w-3.5 h-3.5 text-[#869e32]" />
                   <span>Secondary: <strong>{OFFICIAL_CONTACTS.phoneSecondary.display}</strong></span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Clock className="w-3.5 h-3.5 text-[#124903]" />
+                  <Clock className="w-3.5 h-3.5 text-[#869e32]" />
                   <span>Mon – Sat: 9:00 AM – 7:30 PM</span>
                 </div>
               </div>
@@ -449,10 +449,10 @@ export default function ContactPage() {
 
             {/* Quality & Craftsmanship Pledge */}
             <div className="p-7 rounded-3xl bg-[#1A1A1A] text-white border border-white/10 shadow-xl space-y-3">
-              <div className="w-10 h-10 rounded-xl bg-[#124903]/20 text-[#124903] flex items-center justify-center">
+              <div className="w-10 h-10 rounded-xl bg-[#869e32]/20 text-[#869e32] flex items-center justify-center">
                 <ShieldCheck className="w-5 h-5 stroke-1.5" />
               </div>
-              <h4 className="font-serif text-lg font-medium text-[#124903]">
+              <h4 className="font-serif text-lg font-medium text-[#869e32]">
                 Handcrafted Quality Guarantee
               </h4>
               <p className="text-xs text-stone-300 font-sans leading-relaxed">
@@ -476,7 +476,7 @@ export default function ContactPage() {
                 href={OFFICIAL_CONTACTS.mapUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="absolute bottom-3 right-3 px-3 py-1.5 rounded-full bg-[#1A1A1A]/90 text-white text-[11px] font-semibold backdrop-blur-xs flex items-center gap-1.5 hover:bg-[#124903] transition-colors shadow-md"
+                className="absolute bottom-3 right-3 px-3 py-1.5 rounded-full bg-[#1A1A1A]/90 text-white text-[11px] font-semibold backdrop-blur-xs flex items-center gap-1.5 hover:bg-[#869e32] transition-colors shadow-md"
               >
                 <span>View Full Map</span>
                 <ExternalLink className="w-3 h-3" />
@@ -489,7 +489,7 @@ export default function ContactPage() {
         {/* ─── 4. Client FAQ Accordion ─────────────────────────────── */}
         <div className="bg-white p-8 sm:p-12 rounded-3xl border border-stone-200/80 shadow-xs space-y-8">
           <div className="text-center max-w-2xl mx-auto space-y-2">
-            <span className="text-xs uppercase tracking-widest font-bold text-[#124903]">
+            <span className="text-xs uppercase tracking-widest font-bold text-[#869e32]">
               Frequently Asked Questions
             </span>
             <h2 className="font-serif text-3xl font-normal text-[#1A1A1A]">
@@ -506,12 +506,12 @@ export default function ContactPage() {
                     onClick={() => setOpenFaq(isOpen ? null : index)}
                     className="w-full flex items-center justify-between text-left py-2 group cursor-pointer"
                   >
-                    <span className="font-serif text-base sm:text-lg font-medium text-[#1A1A1A] group-hover:text-[#124903] transition-colors pr-4">
+                    <span className="font-serif text-base sm:text-lg font-medium text-[#1A1A1A] group-hover:text-[#869e32] transition-colors pr-4">
                       {faq.q}
                     </span>
                     <ChevronDown
                       className={`w-4 h-4 text-stone-400 transition-transform duration-300 shrink-0 ${
-                        isOpen ? 'rotate-180 text-[#124903]' : ''
+                        isOpen ? 'rotate-180 text-[#869e32]' : ''
                       }`}
                     />
                   </button>

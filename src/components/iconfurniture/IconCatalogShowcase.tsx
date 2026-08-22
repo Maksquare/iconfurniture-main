@@ -16,7 +16,7 @@ export default function IconCatalogShowcase() {
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-16 pb-6 border-b border-stone-300/80">
           <div>
-            <div className="flex items-center gap-2 text-xs uppercase tracking-widest font-bold text-[#124903] mb-2">
+            <div className="flex items-center gap-2 text-xs uppercase tracking-widest font-bold text-[#869e32] mb-2">
               <Sparkles className="w-3.5 h-3.5" />
               <span>Curated Editorial Pieces</span>
             </div>
@@ -26,7 +26,7 @@ export default function IconCatalogShowcase() {
           </div>
           <Link
             href="/shop"
-            className="mt-4 sm:mt-0 inline-flex items-center gap-2 text-xs uppercase tracking-widest font-bold text-[#1A1A1A] hover:text-[#124903] transition-colors group"
+            className="mt-4 sm:mt-0 inline-flex items-center gap-2 text-xs uppercase tracking-widest font-bold text-[#1A1A1A] hover:text-[#869e32] transition-colors group"
           >
             <span>Explore Entire Catalog</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -59,7 +59,7 @@ export default function IconCatalogShowcase() {
                 <div>
                   <Link
                     href={`/shop/${product.slug}`}
-                    className="font-serif font-semibold text-lg text-[#1A1A1A] hover:text-[#124903] transition-colors line-clamp-1"
+                    className="font-serif font-semibold text-lg text-[#1A1A1A] hover:text-[#869e32] transition-colors line-clamp-1"
                   >
                     {product.name}
                   </Link>
@@ -72,12 +72,12 @@ export default function IconCatalogShowcase() {
               <div className="mt-4 space-y-3">
                 <div className="pt-3 border-t border-stone-100 flex items-center justify-between">
                   <span className="font-serif text-lg font-bold text-[#1A1A1A]">
-                    {product.price.toLocaleString()} <span className="text-xs font-mono font-bold text-[#124903]">ETB</span>
+                    {product.price.toLocaleString()} <span className="text-xs font-mono font-bold text-[#869e32]">ETB</span>
                   </span>
 
                   <Link
                     href={`/shop/${product.slug}`}
-                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-stone-50 hover:bg-[#124903] text-stone-800 hover:text-white transition-all text-xs font-semibold shadow-xs group/btn border border-stone-200/60"
+                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-stone-50 hover:bg-[#869e32] text-stone-800 hover:text-white transition-all text-xs font-semibold shadow-xs group/btn border border-stone-200/60"
                   >
                     <span>View Piece</span>
                     <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover/btn:translate-x-0.5" />

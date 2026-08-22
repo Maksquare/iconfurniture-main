@@ -41,7 +41,7 @@ export default function Navbar() {
                 key={link.name}
                 href={link.href}
                 className={`text-xs uppercase tracking-widest font-semibold transition-colors duration-200 ${
-                  isActive ? 'text-[#124903]' : 'text-stone-700 hover:text-[#124903]'
+                  isActive ? 'text-[#869e32]' : 'text-stone-700 hover:text-[#869e32]'
                 }`}
               >
                 {link.name}
@@ -80,7 +80,7 @@ export default function Navbar() {
           {/* Search Button */}
           <button
             onClick={() => setSearchOpen(!searchOpen)}
-            className="p-2.5 bg-white/90 backdrop-blur-md rounded-full border border-stone-200/80 text-stone-700 hover:text-[#124903] hover:border-[#124903] transition-colors shadow-xs cursor-pointer"
+            className="p-2.5 bg-white/90 backdrop-blur-md rounded-full border border-stone-200/80 text-stone-700 hover:text-[#869e32] hover:border-[#869e32] transition-colors shadow-xs cursor-pointer"
             aria-label="Search"
           >
             <Search className="w-4 h-4" />
@@ -89,7 +89,7 @@ export default function Navbar() {
           {/* Action CTA Pill (Explore Catalog) */}
           <Link
             href="/shop"
-            className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 bg-[#1A1A1A] hover:bg-[#124903] text-white text-xs uppercase tracking-widest font-semibold rounded-full shadow-md transition-all duration-300 group"
+            className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 bg-[#1A1A1A] hover:bg-[#869e32] text-white text-xs uppercase tracking-widest font-semibold rounded-full shadow-md transition-all duration-300 group"
           >
             <span>Explore Catalog</span>
             <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
@@ -122,13 +122,13 @@ export default function Navbar() {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Search velvet armchair, walnut table, travertine lamp..."
-                  className="w-full pl-9 pr-4 py-2.5 bg-stone-50 border border-stone-200 rounded-xl text-xs text-stone-900 focus:outline-hidden focus:border-[#124903]"
+                  className="w-full pl-9 pr-4 py-2.5 bg-stone-50 border border-stone-200 rounded-xl text-xs text-stone-900 focus:outline-hidden focus:border-[#869e32]"
                   autoFocus
                 />
               </div>
               <button
                 type="submit"
-                className="px-4 py-2.5 bg-[#1A1A1A] text-white text-xs uppercase tracking-wider font-semibold rounded-xl hover:bg-[#124903] transition-colors cursor-pointer"
+                className="px-4 py-2.5 bg-[#1A1A1A] text-white text-xs uppercase tracking-wider font-semibold rounded-xl hover:bg-[#869e32] transition-colors cursor-pointer"
               >
                 Search
               </button>
@@ -165,7 +165,7 @@ export default function Navbar() {
                   key={link.name}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="text-xs uppercase tracking-widest font-semibold text-stone-800 hover:text-[#124903] py-2 border-b border-stone-100"
+                  className="text-xs uppercase tracking-widest font-semibold text-stone-800 hover:text-[#869e32] py-2 border-b border-stone-100"
                 >
                   {link.name}
                 </Link>
@@ -173,7 +173,7 @@ export default function Navbar() {
               <Link
                 href="/shop"
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-full text-center py-3 bg-[#124903] text-white text-xs uppercase tracking-widest font-semibold rounded-xl hover:bg-[#0e3802] transition-colors"
+                className="w-full text-center py-3 bg-[#869e32] text-white text-xs uppercase tracking-widest font-semibold rounded-xl hover:bg-[#0e3802] transition-colors"
               >
                 Explore Catalog →
               </Link>

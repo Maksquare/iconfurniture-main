@@ -106,7 +106,7 @@ export default function FilmEditorModal({
           {/* Header */}
           <div className="px-6 py-5 border-b border-stone-200 flex items-center justify-between bg-stone-50 shrink-0">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-2xl bg-[#124903]/15 border border-[#124903]/30 flex items-center justify-center text-[#124903]">
+              <div className="w-10 h-10 rounded-2xl bg-[#869e32]/15 border border-[#869e32]/30 flex items-center justify-center text-[#869e32]">
                 <Film className="w-5 h-5" />
               </div>
               <div>
@@ -135,7 +135,7 @@ export default function FilmEditorModal({
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 placeholder="e.g. Master Sculptural Pedestal Assembly"
-                className="w-full px-4 py-2.5 rounded-xl border border-stone-300 focus:border-[#124903] text-sm font-medium text-stone-900"
+                className="w-full px-4 py-2.5 rounded-xl border border-stone-300 focus:border-[#869e32] text-sm font-medium text-stone-900"
               />
             </div>
 
@@ -181,7 +181,7 @@ export default function FilmEditorModal({
                       onClick={() => setVideoSourceTab(tab)}
                       className={`px-3 py-1 rounded-lg text-[11px] font-bold transition-all cursor-pointer ${
                         videoSourceTab === tab
-                          ? 'bg-[#124903] text-white shadow-sm'
+                          ? 'bg-[#869e32] text-white shadow-sm'
                           : 'text-stone-600 hover:text-stone-900'
                       }`}
                     >
@@ -295,7 +295,7 @@ export default function FilmEditorModal({
               </button>
               <button
                 type="submit"
-                className="px-6 py-2 rounded-full bg-[#124903] hover:bg-[#0e3802] text-white text-xs uppercase tracking-wider font-bold shadow-md flex items-center gap-2"
+                className="px-6 py-2 rounded-full bg-[#869e32] hover:bg-[#0e3802] text-white text-xs uppercase tracking-wider font-bold shadow-md flex items-center gap-2"
               >
                 <Check className="w-4 h-4" />
                 <span>Save Film Chapter</span>

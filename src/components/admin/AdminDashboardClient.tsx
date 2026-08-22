@@ -330,7 +330,7 @@ export default function AdminDashboardClient() {
   if (isAuthenticated === null) {
     return (
       <div className="min-h-screen bg-[#111111] flex flex-col items-center justify-center text-white space-y-4">
-        <div className="w-10 h-10 border-2 border-[#124903] border-t-transparent rounded-full animate-spin" />
+        <div className="w-10 h-10 border-2 border-[#869e32] border-t-transparent rounded-full animate-spin" />
         <span className="text-xs font-mono text-stone-400">Verifying secure admin session...</span>
       </div>
     );
@@ -348,7 +348,7 @@ export default function AdminDashboardClient() {
   }
 
   return (
-    <div className="min-h-screen bg-[#141414] text-stone-100 font-sans flex flex-col selection:bg-[#124903] selection:text-white">
+    <div className="min-h-screen bg-[#141414] text-stone-100 font-sans flex flex-col selection:bg-[#869e32] selection:text-white">
       {/* Toast Alert */}
       <AnimatePresence>
         {toastMessage && (
@@ -356,7 +356,7 @@ export default function AdminDashboardClient() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed top-6 right-6 z-100 bg-[#124903] text-white px-5 py-3 rounded-2xl shadow-2xl flex items-center gap-3 border border-white/20 text-xs font-semibold"
+            className="fixed top-6 right-6 z-100 bg-[#869e32] text-white px-5 py-3 rounded-2xl shadow-2xl flex items-center gap-3 border border-white/20 text-xs font-semibold"
           >
             <CheckCircle2 className="w-4 h-4" />
             <span>{toastMessage}</span>
@@ -369,7 +369,7 @@ export default function AdminDashboardClient() {
         {/* Brand & Console Status */}
         <div className="flex items-center gap-4">
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative w-9 h-9 rounded-xl bg-white/5 border border-white/10 p-1 flex items-center justify-center overflow-hidden shadow-[0_0_20px_rgba(18, 73, 3,0.25)] group-hover:border-[#124903]/50 transition-colors">
+            <div className="relative w-9 h-9 rounded-xl bg-white/5 border border-white/10 p-1 flex items-center justify-center overflow-hidden shadow-[0_0_20px_rgba(18, 73, 3,0.25)] group-hover:border-[#869e32]/50 transition-colors">
               <Image
                 src="/assets/if-favicon.png"
                 alt="ICON FURNITURE"
@@ -381,10 +381,10 @@ export default function AdminDashboardClient() {
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="font-serif text-base font-bold text-white tracking-wider group-hover:text-[#124903] transition-colors">
+                <span className="font-serif text-base font-bold text-white tracking-wider group-hover:text-[#869e32] transition-colors">
                   ICON ATELIER
                 </span>
-                <span className="text-[10px] font-mono uppercase tracking-widest px-2 py-0.5 rounded-full bg-[#124903]/20 text-[#124903] border border-[#124903]/40">
+                <span className="text-[10px] font-mono uppercase tracking-widest px-2 py-0.5 rounded-full bg-[#869e32]/20 text-[#869e32] border border-[#869e32]/40">
                   Control Console
                 </span>
               </div>
@@ -395,7 +395,7 @@ export default function AdminDashboardClient() {
           </Link>
 
           <div className="hidden xl:flex items-center gap-2 pl-4 border-l border-white/10 text-xs text-stone-400">
-            <div className="w-2 h-2 rounded-full bg-[#124903] animate-pulse" />
+            <div className="w-2 h-2 rounded-full bg-[#869e32] animate-pulse" />
             <span className="font-mono text-stone-300">{currentUserEmail}</span>
             <span className="text-stone-600">•</span>
             <span className="text-stone-500 font-mono">EAT: {timeString}</span>
@@ -410,7 +410,7 @@ export default function AdminDashboardClient() {
             className="px-3.5 py-1.5 rounded-full bg-white/5 hover:bg-white/10 text-stone-200 text-xs font-semibold transition-all border border-white/10 inline-flex items-center gap-1.5 group"
           >
             <span>View Live Site</span>
-            <ExternalLink className="w-3.5 h-3.5 text-[#124903] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            <ExternalLink className="w-3.5 h-3.5 text-[#869e32] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </Link>
 
           <button
@@ -480,7 +480,7 @@ export default function AdminDashboardClient() {
                 onClick={() => setActiveTab(tab.id)}
                 className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-semibold transition-all whitespace-nowrap cursor-pointer ${
                   isActive
-                    ? 'bg-[#124903] text-white shadow-[0_0_16px_rgba(18, 73, 3,0.35)]'
+                    ? 'bg-[#869e32] text-white shadow-[0_0_16px_rgba(18, 73, 3,0.35)]'
                     : 'text-stone-400 hover:text-white hover:bg-white/5'
                 }`}
               >
@@ -502,12 +502,12 @@ export default function AdminDashboardClient() {
             {/* Top Metric Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
               {/* Card 1: Dining Tables Catalog */}
-              <div className="bg-[#1C1C1C] border border-white/10 rounded-3xl p-6 relative overflow-hidden group hover:border-[#124903]/50 transition-all">
+              <div className="bg-[#1C1C1C] border border-white/10 rounded-3xl p-6 relative overflow-hidden group hover:border-[#869e32]/50 transition-all">
                 <div className="flex items-center justify-between">
                   <span className="text-xs uppercase tracking-widest font-mono text-stone-400">
                     Dining Table Catalog
                   </span>
-                  <div className="w-8 h-8 rounded-xl bg-[#124903]/20 text-[#124903] flex items-center justify-center">
+                  <div className="w-8 h-8 rounded-xl bg-[#869e32]/20 text-[#869e32] flex items-center justify-center">
                     <Award className="w-4 h-4" />
                   </div>
                 </div>
@@ -515,16 +515,16 @@ export default function AdminDashboardClient() {
                   <span className="font-serif text-3xl sm:text-4xl font-bold text-white">
                     {stats.total_products}
                   </span>
-                  <span className="text-xs text-[#124903] font-semibold">Masterpieces</span>
+                  <span className="text-xs text-[#869e32] font-semibold">Masterpieces</span>
                 </div>
                 <div className="mt-3 pt-3 border-t border-white/5 flex items-center justify-between text-xs text-stone-400">
                   <span>{stats.in_stock_count} Ready Stock</span>
-                  <span className="text-[#124903]">{stats.bespoke_count} Bespoke</span>
+                  <span className="text-[#869e32]">{stats.bespoke_count} Bespoke</span>
                 </div>
               </div>
 
               {/* Card 2: Videos */}
-              <div className="bg-[#1C1C1C] border border-white/10 rounded-3xl p-6 relative overflow-hidden group hover:border-[#124903]/50 transition-all">
+              <div className="bg-[#1C1C1C] border border-white/10 rounded-3xl p-6 relative overflow-hidden group hover:border-[#869e32]/50 transition-all">
                 <div className="flex items-center justify-between">
                   <span className="text-xs uppercase tracking-widest font-mono text-stone-400">
                     Video Chapters
@@ -546,7 +546,7 @@ export default function AdminDashboardClient() {
               </div>
 
               {/* Card 3: Atelier Cinema Chapters */}
-              <div className="bg-[#1C1C1C] border border-white/10 rounded-3xl p-6 relative overflow-hidden group hover:border-[#124903]/50 transition-all">
+              <div className="bg-[#1C1C1C] border border-white/10 rounded-3xl p-6 relative overflow-hidden group hover:border-[#869e32]/50 transition-all">
                 <div className="flex items-center justify-between">
                   <span className="text-xs uppercase tracking-widest font-mono text-stone-400">
                     Atelier Cinema
@@ -568,7 +568,7 @@ export default function AdminDashboardClient() {
               </div>
 
               {/* Card 4: Curated Collections */}
-              <div className="bg-[#1C1C1C] border border-white/10 rounded-3xl p-6 relative overflow-hidden group hover:border-[#124903]/50 transition-all">
+              <div className="bg-[#1C1C1C] border border-white/10 rounded-3xl p-6 relative overflow-hidden group hover:border-[#869e32]/50 transition-all">
                 <div className="flex items-center justify-between">
                   <span className="text-xs uppercase tracking-widest font-mono text-stone-400">
                     Collections Taxonomy
@@ -594,7 +594,7 @@ export default function AdminDashboardClient() {
             <div className="p-6 rounded-3xl bg-gradient-to-r from-[#1C1C1C] via-[#222222] to-[#1C1C1C] border border-white/10 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
               <div>
                 <h3 className="font-serif text-lg font-bold text-white flex items-center gap-2">
-                  <Sparkles className="w-4 h-4 text-[#124903]" />
+                  <Sparkles className="w-4 h-4 text-[#869e32]" />
                   <span>Atelier Quick Action Launchpad</span>
                 </h3>
                 <p className="text-xs text-stone-400 font-sans mt-1">
@@ -608,7 +608,7 @@ export default function AdminDashboardClient() {
                     setEditingProduct(null);
                     setIsProductModalOpen(true);
                   }}
-                  className="px-4 py-2.5 rounded-full bg-[#124903] hover:bg-[#0e3802] text-white text-xs uppercase tracking-wider font-bold shadow-md flex items-center gap-1.5 cursor-pointer"
+                  className="px-4 py-2.5 rounded-full bg-[#869e32] hover:bg-[#0e3802] text-white text-xs uppercase tracking-wider font-bold shadow-md flex items-center gap-1.5 cursor-pointer"
                 >
                   <Plus className="w-4 h-4" />
                   <span>New Dining Table</span>
@@ -648,7 +648,7 @@ export default function AdminDashboardClient() {
                   setEditingProduct(null);
                   setIsProductModalOpen(true);
                 }}
-                className="px-5 py-2.5 rounded-full bg-[#124903] hover:bg-[#0e3802] text-white text-xs uppercase tracking-wider font-bold shadow-lg shadow-[#124903]/30 flex items-center gap-2 cursor-pointer w-fit"
+                className="px-5 py-2.5 rounded-full bg-[#869e32] hover:bg-[#0e3802] text-white text-xs uppercase tracking-wider font-bold shadow-lg shadow-[#869e32]/30 flex items-center gap-2 cursor-pointer w-fit"
               >
                 <Plus className="w-4 h-4" />
                 <span>Add New Dining Table</span>
@@ -665,7 +665,7 @@ export default function AdminDashboardClient() {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Search dining table name, timber species, marble..."
-                  className="w-full pl-9 pr-4 py-2 bg-[#222222] border border-white/10 rounded-xl text-xs text-white placeholder:text-stone-500 focus:outline-none focus:border-[#124903]"
+                  className="w-full pl-9 pr-4 py-2 bg-[#222222] border border-white/10 rounded-xl text-xs text-white placeholder:text-stone-500 focus:outline-none focus:border-[#869e32]"
                 />
               </div>
 
@@ -674,7 +674,7 @@ export default function AdminDashboardClient() {
                 <select
                   value={selectedCategoryFilter}
                   onChange={(e) => setSelectedCategoryFilter(e.target.value)}
-                  className="w-full px-3 py-2 bg-[#222222] border border-white/10 rounded-xl text-xs text-stone-200 focus:outline-none focus:border-[#124903]"
+                  className="w-full px-3 py-2 bg-[#222222] border border-white/10 rounded-xl text-xs text-stone-200 focus:outline-none focus:border-[#869e32]"
                 >
                   <option value="all">All Dining Categories</option>
                   {categories.map((c, idx) => (
@@ -690,7 +690,7 @@ export default function AdminDashboardClient() {
                 <select
                   value={selectedStockFilter}
                   onChange={(e) => setSelectedStockFilter(e.target.value as any)}
-                  className="w-full px-3 py-2 bg-[#222222] border border-white/10 rounded-xl text-xs text-stone-200 focus:outline-none focus:border-[#124903]"
+                  className="w-full px-3 py-2 bg-[#222222] border border-white/10 rounded-xl text-xs text-stone-200 focus:outline-none focus:border-[#869e32]"
                 >
                   <option value="all">All Availability</option>
                   <option value="instock">Ready Stock Only</option>
@@ -752,7 +752,7 @@ export default function AdminDashboardClient() {
                           {/* Price */}
                           <td className="px-4 py-4 font-serif font-bold text-stone-100 text-sm">
                             {p.price.toLocaleString()}{' '}
-                            <span className="text-[10px] font-mono text-[#124903]">ETB</span>
+                            <span className="text-[10px] font-mono text-[#869e32]">ETB</span>
                           </td>
 
                           {/* Dimensions */}
@@ -769,7 +769,7 @@ export default function AdminDashboardClient() {
                               }}
                               className={`p-1.5 rounded-full transition-all cursor-pointer ${
                                 p.featured
-                                  ? 'bg-[#124903] text-white shadow-[0_0_10px_rgba(18, 73, 3,0.5)]'
+                                  ? 'bg-[#869e32] text-white shadow-[0_0_10px_rgba(18, 73, 3,0.5)]'
                                   : 'bg-white/5 text-stone-500 hover:text-stone-300'
                               }`}
                             >
@@ -787,7 +787,7 @@ export default function AdminDashboardClient() {
                               className={`px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider transition-all cursor-pointer ${
                                 p.in_stock
                                   ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40'
-                                  : 'bg-[#124903]/20 text-[#124903] border border-[#124903]/40'
+                                  : 'bg-[#869e32]/20 text-[#869e32] border border-[#869e32]/40'
                               }`}
                             >
                               {p.in_stock ? 'In Stock' : 'Bespoke'}
@@ -811,7 +811,7 @@ export default function AdminDashboardClient() {
                                   setIsProductModalOpen(true);
                                 }}
                                 title="Edit Table"
-                                className="p-2 rounded-xl bg-white/5 hover:bg-[#124903] text-stone-400 hover:text-white transition-colors cursor-pointer"
+                                className="p-2 rounded-xl bg-white/5 hover:bg-[#869e32] text-stone-400 hover:text-white transition-colors cursor-pointer"
                               >
                                 <Edit3 className="w-4 h-4" />
                               </button>
@@ -872,7 +872,7 @@ export default function AdminDashboardClient() {
                   setEditingCategory(null);
                   setIsCategoryModalOpen(true);
                 }}
-                className="px-5 py-2.5 rounded-full bg-[#124903] hover:bg-[#0e3802] text-white text-xs uppercase tracking-wider font-bold shadow-md flex items-center gap-2 cursor-pointer w-fit"
+                className="px-5 py-2.5 rounded-full bg-[#869e32] hover:bg-[#0e3802] text-white text-xs uppercase tracking-wider font-bold shadow-md flex items-center gap-2 cursor-pointer w-fit"
               >
                 <Plus className="w-4 h-4" />
                 <span>Create Collection</span>
@@ -885,14 +885,14 @@ export default function AdminDashboardClient() {
                 return (
                   <div
                     key={`cat-card-${cat.id || cat.slug || cIdx}`}
-                    className="p-6 rounded-3xl bg-[#1A1A1A] border border-white/10 flex flex-col justify-between space-y-4 hover:border-[#124903]/50 transition-all"
+                    className="p-6 rounded-3xl bg-[#1A1A1A] border border-white/10 flex flex-col justify-between space-y-4 hover:border-[#869e32]/50 transition-all"
                   >
                     <div>
                       <div className="flex items-center justify-between">
-                        <span className="w-8 h-8 rounded-xl bg-[#124903]/20 text-[#124903] flex items-center justify-center">
+                        <span className="w-8 h-8 rounded-xl bg-[#869e32]/20 text-[#869e32] flex items-center justify-center">
                           <Layers className="w-4 h-4" />
                         </span>
-                        <span className="text-xs font-mono text-[#124903] font-semibold">
+                        <span className="text-xs font-mono text-[#869e32] font-semibold">
                           {count} {count === 1 ? 'Table' : 'Tables'}
                         </span>
                       </div>
@@ -904,7 +904,7 @@ export default function AdminDashboardClient() {
                       <Link
                         href={`/shop?category=${cat.slug}`}
                         target="_blank"
-                        className="text-xs font-semibold text-stone-400 hover:text-[#124903] flex items-center gap-1"
+                        className="text-xs font-semibold text-stone-400 hover:text-[#869e32] flex items-center gap-1"
                       >
                         <span>View in Shop</span>
                         <ArrowUpRight className="w-3.5 h-3.5" />
@@ -916,7 +916,7 @@ export default function AdminDashboardClient() {
                             setEditingCategory(cat);
                             setIsCategoryModalOpen(true);
                           }}
-                          className="p-1.5 rounded-lg bg-white/5 hover:bg-[#124903] text-stone-400 hover:text-white transition-colors cursor-pointer"
+                          className="p-1.5 rounded-lg bg-white/5 hover:bg-[#869e32] text-stone-400 hover:text-white transition-colors cursor-pointer"
                         >
                           <Edit3 className="w-3.5 h-3.5" />
                         </button>
@@ -972,7 +972,7 @@ export default function AdminDashboardClient() {
                   setEditingFilm(null);
                   setIsFilmModalOpen(true);
                 }}
-                className="px-5 py-2.5 rounded-full bg-[#124903] hover:bg-[#0e3802] text-white text-xs uppercase tracking-wider font-bold shadow-md flex items-center gap-2 cursor-pointer w-fit"
+                className="px-5 py-2.5 rounded-full bg-[#869e32] hover:bg-[#0e3802] text-white text-xs uppercase tracking-wider font-bold shadow-md flex items-center gap-2 cursor-pointer w-fit"
               >
                 <Plus className="w-4 h-4" />
                 <span>Add Film Chapter</span>
@@ -983,7 +983,7 @@ export default function AdminDashboardClient() {
               {films.map((film, idx) => (
                 <div
                   key={`film-card-${film.id || idx}`}
-                  className="rounded-3xl bg-[#1A1A1A] border border-white/10 overflow-hidden flex flex-col justify-between hover:border-[#124903]/50 transition-all group"
+                  className="rounded-3xl bg-[#1A1A1A] border border-white/10 overflow-hidden flex flex-col justify-between hover:border-[#869e32]/50 transition-all group"
                 >
                   <div>
                     {/* Video Card Header / Preview trigger */}
@@ -1003,7 +1003,7 @@ export default function AdminDashboardClient() {
                       />
                       <button
                         onClick={() => setPreviewVideoUrl(film.src)}
-                        className="absolute inset-0 m-auto w-12 h-12 rounded-full bg-[#124903]/90 text-white flex items-center justify-center shadow-xl hover:scale-110 transition-transform cursor-pointer"
+                        className="absolute inset-0 m-auto w-12 h-12 rounded-full bg-[#869e32]/90 text-white flex items-center justify-center shadow-xl hover:scale-110 transition-transform cursor-pointer"
                       >
                         <Play className="w-5 h-5 fill-current ml-0.5" />
                       </button>
@@ -1012,13 +1012,13 @@ export default function AdminDashboardClient() {
                         {film.resolution || '4K Ultra HD'}
                       </div>
                       <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-black/70 text-[10px] font-mono text-white flex items-center gap-1">
-                        <Clock className="w-3 h-3 text-[#124903]" />
+                        <Clock className="w-3 h-3 text-[#869e32]" />
                         <span>{film.duration}</span>
                       </div>
                     </div>
 
                     <div className="p-5 space-y-2">
-                      <span className="text-[10px] font-mono uppercase tracking-widest text-[#124903] font-bold">
+                      <span className="text-[10px] font-mono uppercase tracking-widest text-[#869e32] font-bold">
                         {film.subtitle || `Chapter ${idx + 1}`}
                       </span>
                       <h3 className="font-serif text-lg font-bold text-white leading-snug">
@@ -1041,7 +1041,7 @@ export default function AdminDashboardClient() {
                           setEditingFilm(film);
                           setIsFilmModalOpen(true);
                         }}
-                        className="p-2 rounded-xl bg-white/5 hover:bg-[#124903] text-stone-400 hover:text-white transition-colors cursor-pointer"
+                        className="p-2 rounded-xl bg-white/5 hover:bg-[#869e32] text-stone-400 hover:text-white transition-colors cursor-pointer"
                       >
                         <Edit3 className="w-3.5 h-3.5" />
                       </button>
@@ -1083,7 +1083,7 @@ export default function AdminDashboardClient() {
               {/* Brand Copy & Identity */}
               <div className="bg-[#1A1A1A] border border-white/10 rounded-3xl p-6 space-y-4">
                 <h3 className="font-serif text-lg font-bold text-white flex items-center gap-2">
-                  <Sparkles className="w-4 h-4 text-[#124903]" />
+                  <Sparkles className="w-4 h-4 text-[#869e32]" />
                   <span>Brand Slogan & Hero Copy</span>
                 </h3>
 
@@ -1095,7 +1095,7 @@ export default function AdminDashboardClient() {
                     type="text"
                     value={brandSettings.brand_name}
                     onChange={(e) => updateBrandSettings({ brand_name: e.target.value })}
-                    className="w-full px-4 py-2.5 bg-[#222222] border border-white/10 rounded-xl text-sm font-serif font-bold text-white focus:border-[#124903]"
+                    className="w-full px-4 py-2.5 bg-[#222222] border border-white/10 rounded-xl text-sm font-serif font-bold text-white focus:border-[#869e32]"
                   />
                 </div>
 
@@ -1107,7 +1107,7 @@ export default function AdminDashboardClient() {
                     type="text"
                     value={brandSettings.tagline}
                     onChange={(e) => updateBrandSettings({ tagline: e.target.value })}
-                    className="w-full px-4 py-2.5 bg-[#222222] border border-white/10 rounded-xl text-xs text-stone-200 focus:border-[#124903]"
+                    className="w-full px-4 py-2.5 bg-[#222222] border border-white/10 rounded-xl text-xs text-stone-200 focus:border-[#869e32]"
                   />
                 </div>
 
@@ -1119,7 +1119,7 @@ export default function AdminDashboardClient() {
                     type="text"
                     value={brandSettings.hero_headline}
                     onChange={(e) => updateBrandSettings({ hero_headline: e.target.value })}
-                    className="w-full px-4 py-2.5 bg-[#222222] border border-white/10 rounded-xl text-xs text-stone-200 focus:border-[#124903]"
+                    className="w-full px-4 py-2.5 bg-[#222222] border border-white/10 rounded-xl text-xs text-stone-200 focus:border-[#869e32]"
                   />
                 </div>
 
@@ -1131,7 +1131,7 @@ export default function AdminDashboardClient() {
                     type="text"
                     value={brandSettings.hero_highlight_text}
                     onChange={(e) => updateBrandSettings({ hero_highlight_text: e.target.value })}
-                    className="w-full px-4 py-2.5 bg-[#222222] border border-white/10 rounded-xl text-xs text-stone-200 focus:border-[#124903]"
+                    className="w-full px-4 py-2.5 bg-[#222222] border border-white/10 rounded-xl text-xs text-stone-200 focus:border-[#869e32]"
                   />
                 </div>
 
@@ -1143,7 +1143,7 @@ export default function AdminDashboardClient() {
                     rows={3}
                     value={brandSettings.hero_description}
                     onChange={(e) => updateBrandSettings({ hero_description: e.target.value })}
-                    className="w-full px-4 py-2.5 bg-[#222222] border border-white/10 rounded-xl text-xs text-stone-200 focus:border-[#124903] resize-none"
+                    className="w-full px-4 py-2.5 bg-[#222222] border border-white/10 rounded-xl text-xs text-stone-200 focus:border-[#869e32] resize-none"
                   />
                 </div>
               </div>
@@ -1151,7 +1151,7 @@ export default function AdminDashboardClient() {
               {/* Official Contacts & Links */}
               <div className="bg-[#1A1A1A] border border-white/10 rounded-3xl p-6 space-y-4">
                 <h3 className="font-serif text-lg font-bold text-white flex items-center gap-2">
-                  <Phone className="w-4 h-4 text-[#124903]" />
+                  <Phone className="w-4 h-4 text-[#869e32]" />
                   <span>Official Workshop Contacts</span>
                 </h3>
 
@@ -1237,7 +1237,7 @@ export default function AdminDashboardClient() {
                     type="text"
                     value={brandSettings.developer_credit}
                     onChange={(e) => updateBrandSettings({ developer_credit: e.target.value })}
-                    className="w-full px-3 py-2 bg-[#222222] border border-white/10 rounded-xl font-mono text-xs text-[#124903]"
+                    className="w-full px-3 py-2 bg-[#222222] border border-white/10 rounded-xl font-mono text-xs text-[#869e32]"
                   />
                 </div>
               </div>
@@ -1258,7 +1258,7 @@ export default function AdminDashboardClient() {
                   type="checkbox"
                   checked={brandSettings.announcement_enabled}
                   onChange={(e) => updateBrandSettings({ announcement_enabled: e.target.checked })}
-                  className="w-5 h-5 accent-[#124903] cursor-pointer"
+                  className="w-5 h-5 accent-[#869e32] cursor-pointer"
                 />
               </div>
 
@@ -1266,7 +1266,7 @@ export default function AdminDashboardClient() {
                 type="text"
                 value={brandSettings.announcement_text}
                 onChange={(e) => updateBrandSettings({ announcement_text: e.target.value })}
-                className="w-full px-4 py-2.5 bg-[#222222] border border-white/10 rounded-xl text-xs text-stone-200 focus:border-[#124903]"
+                className="w-full px-4 py-2.5 bg-[#222222] border border-white/10 rounded-xl text-xs text-stone-200 focus:border-[#869e32]"
               />
             </div>
 
@@ -1275,7 +1275,7 @@ export default function AdminDashboardClient() {
               <div className="flex items-center justify-between">
                 <div>
                   <h3 className="font-serif text-lg font-bold text-white flex items-center gap-2">
-                    <Key className="w-4 h-4 text-[#124903]" />
+                    <Key className="w-4 h-4 text-[#869e32]" />
                     <span>Administrator Master Security Key</span>
                   </h3>
                   <p className="text-xs text-stone-400 font-sans">
@@ -1290,7 +1290,7 @@ export default function AdminDashboardClient() {
                   value={newPasswordInput}
                   onChange={(e) => setNewPasswordInput(e.target.value)}
                   placeholder="Enter new master password (e.g. mysecret2026)"
-                  className="flex-1 w-full px-4 py-2.5 bg-[#222222] border border-white/10 rounded-xl font-mono text-xs text-white placeholder-stone-500 focus:border-[#124903]"
+                  className="flex-1 w-full px-4 py-2.5 bg-[#222222] border border-white/10 rounded-xl font-mono text-xs text-white placeholder-stone-500 focus:border-[#869e32]"
                 />
                 <button
                   type="button"
@@ -1303,7 +1303,7 @@ export default function AdminDashboardClient() {
                     showToast('Master security key updated successfully!');
                     setNewPasswordInput('');
                   }}
-                  className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-[#124903] hover:bg-[#0e3802] text-white text-xs font-bold transition-all shadow-md cursor-pointer whitespace-nowrap"
+                  className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-[#869e32] hover:bg-[#0e3802] text-white text-xs font-bold transition-all shadow-md cursor-pointer whitespace-nowrap"
                 >
                   Update Password
                 </button>
@@ -1318,7 +1318,7 @@ export default function AdminDashboardClient() {
             <div className="bg-[#1A1A1A] border border-white/10 rounded-3xl p-6 space-y-4">
               <div>
                 <h3 className="font-serif text-lg font-bold text-white flex items-center gap-2">
-                  <UserPlus2 className="w-4 h-4 text-[#124903]" />
+                  <UserPlus2 className="w-4 h-4 text-[#869e32]" />
                   <span>Create New Admin Account</span>
                 </h3>
                 <p className="text-xs text-stone-400 font-sans mt-0.5">
@@ -1332,14 +1332,14 @@ export default function AdminDashboardClient() {
                   value={newAdminEmail}
                   onChange={(e) => setNewAdminEmail(e.target.value)}
                   placeholder="newadmin@iconfurniture.com"
-                  className="px-4 py-2.5 bg-[#222222] border border-white/10 rounded-xl font-mono text-xs text-white placeholder-stone-500 focus:border-[#124903] outline-none"
+                  className="px-4 py-2.5 bg-[#222222] border border-white/10 rounded-xl font-mono text-xs text-white placeholder-stone-500 focus:border-[#869e32] outline-none"
                 />
                 <input
                   type="text"
                   value={newAdminPassword}
                   onChange={(e) => setNewAdminPassword(e.target.value)}
                   placeholder="Choose a strong password"
-                  className="px-4 py-2.5 bg-[#222222] border border-white/10 rounded-xl font-mono text-xs text-white placeholder-stone-500 focus:border-[#124903] outline-none"
+                  className="px-4 py-2.5 bg-[#222222] border border-white/10 rounded-xl font-mono text-xs text-white placeholder-stone-500 focus:border-[#869e32] outline-none"
                 />
               </div>
 
@@ -1372,7 +1372,7 @@ export default function AdminDashboardClient() {
                     setIsCreatingAdmin(false);
                   }
                 }}
-                className="px-5 py-2.5 rounded-xl bg-[#124903] hover:bg-[#0e3802] disabled:opacity-50 text-white text-xs font-bold transition-all shadow-md cursor-pointer inline-flex items-center gap-2"
+                className="px-5 py-2.5 rounded-xl bg-[#869e32] hover:bg-[#0e3802] disabled:opacity-50 text-white text-xs font-bold transition-all shadow-md cursor-pointer inline-flex items-center gap-2"
               >
                 {isCreatingAdmin ? (
                   <div className="w-3.5 h-3.5 border-2 border-white border-t-transparent rounded-full animate-spin" />
@@ -1408,7 +1408,7 @@ export default function AdminDashboardClient() {
             {/* Device Photo Upload Dropzone */}
             <div className="bg-[#1A1A1A] border border-white/10 rounded-3xl p-6 space-y-4">
               <h3 className="font-serif text-lg font-bold text-white flex items-center gap-2">
-                <Upload className="w-4 h-4 text-[#124903]" />
+                <Upload className="w-4 h-4 text-[#869e32]" />
                 <span>Upload Photos from Any Device</span>
               </h3>
               <PhotoUploadDropzone
@@ -1422,7 +1422,7 @@ export default function AdminDashboardClient() {
             {/* Device Video Upload Dropzone */}
             <div className="bg-[#1A1A1A] border border-white/10 rounded-3xl p-6 space-y-4">
               <h3 className="font-serif text-lg font-bold text-white flex items-center gap-2">
-                <Film className="w-4 h-4 text-[#124903]" />
+                <Film className="w-4 h-4 text-[#869e32]" />
                 <span>Upload Cinema Video Clips from Any Device</span>
               </h3>
               <VideoUploadDropzone
@@ -1434,19 +1434,19 @@ export default function AdminDashboardClient() {
 
             {/* Uploaded Videos Section (if any) */}
             {uploadedVaultVideos.length > 0 && (
-              <div className="bg-[#1A1A1A] border border-[#124903]/30 rounded-3xl p-6 space-y-4">
+              <div className="bg-[#1A1A1A] border border-[#869e32]/30 rounded-3xl p-6 space-y-4">
                 <div className="flex items-center justify-between">
                   <h3 className="font-serif text-lg font-bold text-white flex items-center gap-2">
-                    <Sparkles className="w-4 h-4 text-[#124903]" />
+                    <Sparkles className="w-4 h-4 text-[#869e32]" />
                     <span>Uploaded Device Videos ({uploadedVaultVideos.length})</span>
                   </h3>
-                  <span className="text-xs font-mono text-[#124903]">Saved on Server Storage</span>
+                  <span className="text-xs font-mono text-[#869e32]">Saved on Server Storage</span>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                   {uploadedVaultVideos.map((vid, idx) => (
                     <div
                       key={`uploaded-video-${vid.url}-${idx}`}
-                      className="relative aspect-video rounded-2xl bg-black border border-[#124903]/40 overflow-hidden group shadow-md flex flex-col justify-between"
+                      className="relative aspect-video rounded-2xl bg-black border border-[#869e32]/40 overflow-hidden group shadow-md flex flex-col justify-between"
                     >
                       <video src={vid.url} muted playsInline className="w-full h-full object-cover" />
                       <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center p-3 text-center gap-2">
@@ -1456,7 +1456,7 @@ export default function AdminDashboardClient() {
                         <div className="flex items-center gap-2">
                           <button
                             onClick={() => setPreviewVideoUrl(vid.url)}
-                            className="px-3 py-1 bg-[#124903] text-white text-[10px] font-bold rounded-lg cursor-pointer hover:bg-[#0e3802]"
+                            className="px-3 py-1 bg-[#869e32] text-white text-[10px] font-bold rounded-lg cursor-pointer hover:bg-[#0e3802]"
                           >
                             Preview
                           </button>
@@ -1479,19 +1479,19 @@ export default function AdminDashboardClient() {
 
             {/* Uploaded Photos Section (if any) */}
             {uploadedVaultPhotos.length > 0 && (
-              <div className="bg-[#1A1A1A] border border-[#124903]/30 rounded-3xl p-6 space-y-4">
+              <div className="bg-[#1A1A1A] border border-[#869e32]/30 rounded-3xl p-6 space-y-4">
                 <div className="flex items-center justify-between">
                   <h3 className="font-serif text-lg font-bold text-white flex items-center gap-2">
-                    <Sparkles className="w-4 h-4 text-[#124903]" />
+                    <Sparkles className="w-4 h-4 text-[#869e32]" />
                     <span>Uploaded Device Photos ({uploadedVaultPhotos.length})</span>
                   </h3>
-                  <span className="text-xs font-mono text-[#124903]">Saved on Server &amp; Storage</span>
+                  <span className="text-xs font-mono text-[#869e32]">Saved on Server &amp; Storage</span>
                 </div>
                 <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-3">
                   {uploadedVaultPhotos.map((photo, idx) => (
                     <div
                       key={`uploaded-photo-${photo}-${idx}`}
-                      className="relative aspect-square rounded-2xl bg-stone-900 border border-[#124903]/40 overflow-hidden group shadow-md"
+                      className="relative aspect-square rounded-2xl bg-stone-900 border border-[#869e32]/40 overflow-hidden group shadow-md"
                     >
                       <Image
                         src={photo}
@@ -1509,7 +1509,7 @@ export default function AdminDashboardClient() {
                             navigator.clipboard.writeText(photo);
                             showToast(`Copied ${photo} to clipboard!`);
                           }}
-                          className="px-2.5 py-1 bg-[#124903] text-white text-[10px] font-bold rounded cursor-pointer"
+                          className="px-2.5 py-1 bg-[#869e32] text-white text-[10px] font-bold rounded cursor-pointer"
                         >
                           Copy Path
                         </button>
@@ -1523,7 +1523,7 @@ export default function AdminDashboardClient() {
             {/* 10 Videos Stream */}
             <div className="space-y-3">
               <h3 className="font-serif text-lg font-bold text-white flex items-center gap-2">
-                <Film className="w-4 h-4 text-[#124903]" />
+                <Film className="w-4 h-4 text-[#869e32]" />
                 <span>Cinema Video Clips ({COLLECTION_VIDEOS.length})</span>
               </h3>
               <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
@@ -1537,7 +1537,7 @@ export default function AdminDashboardClient() {
                       <span className="text-[10px] font-mono text-white font-bold">Clip #{idx + 1}</span>
                       <button
                         onClick={() => setPreviewVideoUrl(vid)}
-                        className="px-2.5 py-1 bg-[#124903] text-white text-[10px] font-bold rounded-lg cursor-pointer"
+                        className="px-2.5 py-1 bg-[#869e32] text-white text-[10px] font-bold rounded-lg cursor-pointer"
                       >
                         Play Preview
                       </button>
@@ -1550,7 +1550,7 @@ export default function AdminDashboardClient() {
             {/* 59 Photos Grid */}
             <div className="space-y-3 pt-6 border-t border-white/10">
               <h3 className="font-serif text-lg font-bold text-white flex items-center gap-2">
-                <ImageIcon className="w-4 h-4 text-[#124903]" />
+                <ImageIcon className="w-4 h-4 text-[#869e32]" />
                 <span>Authentic Dining Table Photos ({COLLECTION_PHOTOS.length})</span>
               </h3>
               <div className="grid grid-cols-3 sm:grid-cols-6 lg:grid-cols-8 gap-3">
@@ -1575,7 +1575,7 @@ export default function AdminDashboardClient() {
                           navigator.clipboard.writeText(photo);
                           showToast(`Copied ${photo} to clipboard!`);
                         }}
-                        className="px-2 py-1 bg-[#124903] text-white text-[9px] font-bold rounded cursor-pointer"
+                        className="px-2 py-1 bg-[#869e32] text-white text-[9px] font-bold rounded cursor-pointer"
                       >
                         Copy Path
                       </button>

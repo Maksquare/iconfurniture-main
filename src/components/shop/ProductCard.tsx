@@ -24,7 +24,7 @@ function HighlightText({ text, term }: { text: string; term?: string }) {
         part.toLowerCase() === term.toLowerCase() ? (
           <mark
             key={i}
-            className="bg-[#124903]/25 text-[#0b2e02] rounded px-0.5 not-italic font-semibold"
+            className="bg-[#869e32]/25 text-[#0b2e02] rounded px-0.5 not-italic font-semibold"
           >
             {part}
           </mark>
@@ -71,11 +71,11 @@ export default function ProductCard({ product, searchTerm, viewMode = 'grid' }: 
         <div className="flex flex-col flex-1 p-5 justify-between">
           <div className="space-y-1">
             {product.category && (
-              <span className="text-[10px] uppercase tracking-widest text-[#124903] font-bold block">
+              <span className="text-[10px] uppercase tracking-widest text-[#869e32] font-bold block">
                 {product.category.name}
               </span>
             )}
-            <Link href={`/shop/${product.slug}`} className="group-hover:text-[#124903] transition-colors block">
+            <Link href={`/shop/${product.slug}`} className="group-hover:text-[#869e32] transition-colors block">
               <h3 className="font-serif text-lg font-medium text-stone-900 leading-snug">
                 <HighlightText text={product.name} term={searchTerm} />
               </h3>
@@ -92,13 +92,13 @@ export default function ProductCard({ product, searchTerm, viewMode = 'grid' }: 
 
           <div className="mt-4 flex items-center justify-between flex-wrap gap-3 pt-3 border-t border-stone-100">
             <span className="font-serif text-xl font-semibold text-stone-900">
-              {product.price.toLocaleString()} <span className="text-xs font-mono font-bold text-[#124903]">ETB</span>
+              {product.price.toLocaleString()} <span className="text-xs font-mono font-bold text-[#869e32]">ETB</span>
             </span>
             <div className="flex items-center gap-2">
               <ProductContactChannels productName={product.name} variant="compact" />
               <Link
                 href={`/shop/${product.slug}`}
-                className="text-xs uppercase tracking-wider font-semibold py-1.5 px-3.5 rounded-full bg-stone-50 text-stone-700 hover:text-white hover:bg-[#124903] transition-all inline-flex items-center gap-1 group/btn border border-stone-200/60"
+                className="text-xs uppercase tracking-wider font-semibold py-1.5 px-3.5 rounded-full bg-stone-50 text-stone-700 hover:text-white hover:bg-[#869e32] transition-all inline-flex items-center gap-1 group/btn border border-stone-200/60"
               >
                 <span>View Details</span>
                 <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 transition-transform" />
@@ -137,7 +137,7 @@ export default function ProductCard({ product, searchTerm, viewMode = 'grid' }: 
               </span>
             )}
             {!product.in_stock && (
-              <span className="px-2.5 py-1 bg-[#124903] text-white text-[10px] uppercase font-bold tracking-widest rounded-full">
+              <span className="px-2.5 py-1 bg-[#869e32] text-white text-[10px] uppercase font-bold tracking-widest rounded-full">
                 Bespoke
               </span>
             )}
@@ -147,11 +147,11 @@ export default function ProductCard({ product, searchTerm, viewMode = 'grid' }: 
         {/* Info */}
         <div>
           {product.category && (
-            <span className="text-[10px] uppercase tracking-widest text-[#124903] font-bold block mb-1">
+            <span className="text-[10px] uppercase tracking-widest text-[#869e32] font-bold block mb-1">
               {product.category.name}
             </span>
           )}
-          <Link href={`/shop/${product.slug}`} className="group-hover:text-[#124903] transition-colors">
+          <Link href={`/shop/${product.slug}`} className="group-hover:text-[#869e32] transition-colors">
             <h3 className="font-serif text-lg font-medium text-stone-900 leading-snug line-clamp-1">
               <HighlightText text={product.name} term={searchTerm} />
             </h3>
@@ -166,11 +166,11 @@ export default function ProductCard({ product, searchTerm, viewMode = 'grid' }: 
       <div className="mt-4 space-y-3">
         <div className="flex items-center justify-between pt-2 border-t border-stone-100">
           <span className="font-serif text-lg font-semibold text-stone-900">
-            {product.price.toLocaleString()} <span className="text-xs font-mono font-bold text-[#124903]">ETB</span>
+            {product.price.toLocaleString()} <span className="text-xs font-mono font-bold text-[#869e32]">ETB</span>
           </span>
           <Link
             href={`/shop/${product.slug}`}
-            className="text-xs uppercase tracking-wider font-semibold py-1.5 px-3.5 rounded-full bg-stone-50 text-stone-700 hover:text-white hover:bg-[#124903] transition-all inline-flex items-center gap-1 group/btn border border-stone-200/60"
+            className="text-xs uppercase tracking-wider font-semibold py-1.5 px-3.5 rounded-full bg-stone-50 text-stone-700 hover:text-white hover:bg-[#869e32] transition-all inline-flex items-center gap-1 group/btn border border-stone-200/60"
           >
             <span>View Details</span>
             <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 transition-transform" />

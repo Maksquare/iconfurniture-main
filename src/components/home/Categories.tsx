@@ -39,7 +39,7 @@ export default function Categories() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
           <div>
-            <span className="text-xs uppercase tracking-widest font-semibold text-[#124903]">
+            <span className="text-xs uppercase tracking-widest font-semibold text-[#869e32]">
               Bespoke Dining Editions
             </span>
             <h2 className="font-serif text-3xl sm:text-4xl font-normal text-[#1A1A1A] mt-1">
@@ -48,7 +48,7 @@ export default function Categories() {
           </div>
           <Link
             href="/shop"
-            className="mt-4 md:mt-0 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-widest text-[#1A1A1A] hover:text-[#124903] transition-colors group"
+            className="mt-4 md:mt-0 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-widest text-[#1A1A1A] hover:text-[#869e32] transition-colors group"
           >
             <span>View All Products</span>
             <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -87,10 +87,10 @@ export default function Categories() {
                     </div>
                   </div>
                   <div>
-                    <span className="text-[10px] uppercase font-mono tracking-widest text-[#124903] font-semibold">
+                    <span className="text-[10px] uppercase font-mono tracking-widest text-[#869e32] font-semibold">
                       {cat.itemCount}
                     </span>
-                    <h3 className="font-serif text-xl font-medium mt-1 group-hover:text-[#124903] transition-colors">
+                    <h3 className="font-serif text-xl font-medium mt-1 group-hover:text-[#869e32] transition-colors">
                       {cat.title}
                     </h3>
                   </div>

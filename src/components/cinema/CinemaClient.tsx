@@ -204,7 +204,7 @@ export default function CinemaClient() {
         {/* ─── 1. Cinema Monograph Header ──────────────────────────── */}
         <div className="relative rounded-3xl p-8 sm:p-12 bg-gradient-to-br from-[#1A1A1A] via-[#222222] to-[#121212] text-white border border-white/10 shadow-2xl overflow-hidden">
           {/* Ambient Blur */}
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#124903]/15 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#869e32]/15 rounded-full blur-3xl pointer-events-none" />
 
           <div className="max-w-3xl space-y-4 relative z-10">
             <div className="flex items-center gap-3 flex-wrap">
@@ -217,7 +217,7 @@ export default function CinemaClient() {
                   className="h-5 w-auto object-contain brightness-125"
                 />
               </div>
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/15 text-xs font-bold uppercase tracking-widest text-[#124903]">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/15 text-xs font-bold uppercase tracking-widest text-[#869e32]">
                 <Film className="w-3.5 h-3.5" />
                 <span>Our Films &amp; Making-Of Videos</span>
               </div>
@@ -225,7 +225,7 @@ export default function CinemaClient() {
 
             <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-white leading-[1.12]">
               Dining Architecture in Motion. <br />
-              <span className="italic font-normal text-[#124903]">The Tablecraft Cinema.</span>
+              <span className="italic font-normal text-[#869e32]">The Tablecraft Cinema.</span>
             </h1>
 
             <p className="text-stone-300 text-sm sm:text-base font-sans leading-relaxed max-w-2xl">
@@ -237,7 +237,7 @@ export default function CinemaClient() {
         {/* ─── 2. Main Cinema Theater Stage ─────────────────────────── */}
         <div ref={theaterRef} className="scroll-mt-24 space-y-4">
           <div className="flex items-center justify-between px-1">
-            <div className="flex items-center gap-2 text-xs uppercase tracking-widest font-bold text-[#124903]">
+            <div className="flex items-center gap-2 text-xs uppercase tracking-widest font-bold text-[#869e32]">
               <Sparkles className="w-3.5 h-3.5" />
               <span>Now Screening in Theater</span>
             </div>
@@ -257,7 +257,7 @@ export default function CinemaClient() {
         <div className="space-y-6 pt-6 border-t border-stone-200/80">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div>
-              <span className="text-xs uppercase tracking-widest font-bold text-[#124903]">
+              <span className="text-xs uppercase tracking-widest font-bold text-[#869e32]">
                 Curated Film Index
               </span>
               <h2 className="font-serif text-2xl sm:text-3xl text-[#1A1A1A] font-normal">
@@ -304,7 +304,7 @@ export default function CinemaClient() {
                   onClick={() => handleSelectFilm(film)}
                   className={`group relative bg-white rounded-3xl overflow-hidden border transition-all duration-300 flex flex-col justify-between shadow-xs hover:shadow-xl cursor-pointer ${
                     isCurrent
-                      ? 'border-[#124903] ring-4 ring-[#124903]/20 shadow-lg'
+                      ? 'border-[#869e32] ring-4 ring-[#869e32]/20 shadow-lg'
                       : 'border-stone-200/80 hover:border-stone-400'
                   }`}
                 >
@@ -348,7 +348,7 @@ export default function CinemaClient() {
                       <span className="px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-xs font-bold border border-white/10">
                         {film.category}
                       </span>
-                      <span className="px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-xs text-[#124903] font-bold border border-white/10">
+                      <span className="px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-xs text-[#869e32] font-bold border border-white/10">
                         {film.resolution}
                       </span>
                     </div>
@@ -358,8 +358,8 @@ export default function CinemaClient() {
                       <div
                         className={`w-12 h-12 rounded-full flex items-center justify-center text-white transition-all duration-300 ${
                           isCurrent
-                            ? 'bg-[#124903] scale-110 shadow-[0_0_15px_#124903]'
-                            : 'bg-white/20 backdrop-blur-md group-hover:bg-[#124903] group-hover:scale-110'
+                            ? 'bg-[#869e32] scale-110 shadow-[0_0_15px_#869e32]'
+                            : 'bg-white/20 backdrop-blur-md group-hover:bg-[#869e32] group-hover:scale-110'
                         }`}
                       >
                         <Play className="w-5 h-5 fill-white ml-0.5" />
@@ -369,12 +369,12 @@ export default function CinemaClient() {
                     {/* Bottom Duration & Equalizer */}
                     <div className="absolute bottom-3 inset-x-3 flex items-center justify-between text-white text-[11px] font-mono z-20">
                       <div className="flex items-center gap-1.5">
-                        <Clock className="w-3.5 h-3.5 text-[#124903]" />
+                        <Clock className="w-3.5 h-3.5 text-[#869e32]" />
                         <span>{film.duration}</span>
                       </div>
 
                       {isCurrent && (
-                        <div className="flex items-center gap-1 bg-[#124903] text-white px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider">
+                        <div className="flex items-center gap-1 bg-[#869e32] text-white px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider">
                           <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
                           <span>Now Playing</span>
                         </div>
@@ -385,10 +385,10 @@ export default function CinemaClient() {
                   {/* Film Details */}
                   <div className="p-6 space-y-3 flex-1 flex flex-col justify-between">
                     <div className="space-y-1">
-                      <div className="text-[10px] uppercase tracking-widest font-mono font-semibold text-[#124903]">
+                      <div className="text-[10px] uppercase tracking-widest font-mono font-semibold text-[#869e32]">
                         {film.subtitle}
                       </div>
-                      <h3 className="font-serif text-lg font-medium text-[#1A1A1A] group-hover:text-[#124903] transition-colors leading-snug">
+                      <h3 className="font-serif text-lg font-medium text-[#1A1A1A] group-hover:text-[#869e32] transition-colors leading-snug">
                         {film.title}
                       </h3>
                       <p className="text-xs text-stone-500 font-sans leading-relaxed line-clamp-2 pt-1">
@@ -397,7 +397,7 @@ export default function CinemaClient() {
                     </div>
 
                     {/* Bottom Action */}
-                    <div className="pt-3 border-t border-stone-100 flex items-center justify-between text-xs font-semibold text-stone-700 group-hover:text-[#124903] transition-colors">
+                    <div className="pt-3 border-t border-stone-100 flex items-center justify-between text-xs font-semibold text-stone-700 group-hover:text-[#869e32] transition-colors">
                       <span>Watch in Cinema</span>
                       <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                     </div>
@@ -411,7 +411,7 @@ export default function CinemaClient() {
         {/* ─── 5. Direct Concierge Callout ─────────────────────────── */}
         <div className="mt-16 p-8 sm:p-12 rounded-3xl bg-[#1A1A1A] text-white border border-white/10 flex flex-col lg:flex-row items-center justify-between gap-8 shadow-2xl">
           <div className="space-y-2 text-center lg:text-left max-w-2xl">
-            <span className="text-xs uppercase tracking-widest font-bold text-[#124903]">
+            <span className="text-xs uppercase tracking-widest font-bold text-[#869e32]">
               Bespoke Dining Commissions
             </span>
             <h3 className="font-serif text-2xl sm:text-3xl text-white font-normal leading-tight">
@@ -425,7 +425,7 @@ export default function CinemaClient() {
           <div className="flex flex-wrap items-center gap-3 w-full lg:w-auto justify-center">
             <Link
               href="/shop"
-              className="px-6 py-3.5 rounded-full bg-[#124903] hover:bg-[#0e3802] text-white font-bold text-xs uppercase tracking-widest transition-all shadow-md hover:shadow-xl"
+              className="px-6 py-3.5 rounded-full bg-[#869e32] hover:bg-[#0e3802] text-white font-bold text-xs uppercase tracking-widest transition-all shadow-md hover:shadow-xl"
             >
               Browse Dining Collection
             </Link>

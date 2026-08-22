@@ -210,7 +210,7 @@ export default function VideoUploadDropzone({
           {/* Controls Overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-between p-4">
             <div className="flex items-center justify-between">
-              <span className="px-2.5 py-1 rounded-full bg-[#124903] text-white text-[10px] font-bold font-mono shadow-md">
+              <span className="px-2.5 py-1 rounded-full bg-[#869e32] text-white text-[10px] font-bold font-mono shadow-md">
                 {detectedDuration ? `Duration: ${detectedDuration}` : 'Active Video Track'}
               </span>
               <button
@@ -245,7 +245,7 @@ export default function VideoUploadDropzone({
               <button
                 type="button"
                 onClick={() => fileInputRef.current?.click()}
-                className="px-3 py-1.5 rounded-xl bg-[#124903] hover:bg-[#0e3802] text-white text-xs font-bold cursor-pointer"
+                className="px-3 py-1.5 rounded-xl bg-[#869e32] hover:bg-[#0e3802] text-white text-xs font-bold cursor-pointer"
               >
                 Change Video
               </button>
@@ -260,12 +260,12 @@ export default function VideoUploadDropzone({
           onClick={() => fileInputRef.current?.click()}
           className={`relative border-2 border-dashed rounded-3xl p-6 sm:p-8 transition-all cursor-pointer text-center ${
             isDragging
-              ? 'border-[#124903] bg-[#124903]/10 scale-[0.99]'
-              : 'border-stone-300 hover:border-[#124903] bg-stone-50/70 hover:bg-stone-100/70'
+              ? 'border-[#869e32] bg-[#869e32]/10 scale-[0.99]'
+              : 'border-stone-300 hover:border-[#869e32] bg-stone-50/70 hover:bg-stone-100/70'
           }`}
         >
           <div className="flex flex-col items-center justify-center space-y-3">
-            <div className="w-14 h-14 rounded-2xl bg-[#124903]/15 border border-[#124903]/30 flex items-center justify-center text-[#124903] shadow-sm">
+            <div className="w-14 h-14 rounded-2xl bg-[#869e32]/15 border border-[#869e32]/30 flex items-center justify-center text-[#869e32] shadow-sm">
               <Video className="w-7 h-7" />
             </div>
 
@@ -281,7 +281,7 @@ export default function VideoUploadDropzone({
               <button
                 type="button"
                 onClick={() => fileInputRef.current?.click()}
-                className="px-3.5 py-1.5 rounded-xl bg-[#1A1A1A] hover:bg-[#124903] text-white text-xs font-semibold flex items-center gap-1.5 transition-all shadow-xs cursor-pointer"
+                className="px-3.5 py-1.5 rounded-xl bg-[#1A1A1A] hover:bg-[#869e32] text-white text-xs font-semibold flex items-center gap-1.5 transition-all shadow-xs cursor-pointer"
               >
                 <HardDrive className="w-3.5 h-3.5" />
                 <span>Browse Files (PC/Mac)</span>
@@ -290,7 +290,7 @@ export default function VideoUploadDropzone({
               <button
                 type="button"
                 onClick={() => cameraInputRef.current?.click()}
-                className="px-3.5 py-1.5 rounded-xl bg-stone-200 hover:bg-[#124903] hover:text-white text-stone-800 text-xs font-semibold flex items-center gap-1.5 transition-all shadow-xs cursor-pointer"
+                className="px-3.5 py-1.5 rounded-xl bg-stone-200 hover:bg-[#869e32] hover:text-white text-stone-800 text-xs font-semibold flex items-center gap-1.5 transition-all shadow-xs cursor-pointer"
               >
                 <Smartphone className="w-3.5 h-3.5" />
                 <span>Record on Mobile Camera</span>
@@ -304,7 +304,7 @@ export default function VideoUploadDropzone({
       {isUploading && (
         <div className="p-3 rounded-2xl bg-stone-900 text-white space-y-2 animate-in fade-in">
           <div className="flex items-center justify-between text-xs">
-            <span className="flex items-center gap-2 text-[#124903] font-semibold">
+            <span className="flex items-center gap-2 text-[#869e32] font-semibold">
               <Loader2 className="w-3.5 h-3.5 animate-spin" />
               <span>Uploading video to Atelier server...</span>
             </span>
@@ -312,7 +312,7 @@ export default function VideoUploadDropzone({
           </div>
           <div className="w-full h-1.5 bg-stone-800 rounded-full overflow-hidden">
             <div
-              className="h-full bg-[#124903] transition-all duration-300 rounded-full"
+              className="h-full bg-[#869e32] transition-all duration-300 rounded-full"
               style={{ width: `${uploadProgress || 10}%` }}
             />
           </div>

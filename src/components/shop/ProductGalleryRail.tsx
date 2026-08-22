@@ -219,7 +219,7 @@ export default function ProductGalleryRail({ product }: ProductGalleryRailProps)
           >
             {/* Subtle Crosshair Guide */}
             <div className="absolute top-4 right-4 bg-black/70 backdrop-blur-md px-3 py-1 rounded-full text-white text-[10px] font-mono flex items-center gap-1.5 border border-white/15">
-              <Eye className="w-3 h-3 text-[#124903]" />
+              <Eye className="w-3 h-3 text-[#869e32]" />
               <span>2.4x Macro Texture Zoom</span>
             </div>
           </div>
@@ -235,7 +235,7 @@ export default function ProductGalleryRail({ product }: ProductGalleryRailProps)
               </span>
             )}
             {product.in_stock ? (
-              <span className="px-3.5 py-1 bg-[#124903] text-white text-[10px] uppercase font-bold tracking-widest rounded-full shadow-md">
+              <span className="px-3.5 py-1 bg-[#869e32] text-white text-[10px] uppercase font-bold tracking-widest rounded-full shadow-md">
                 In Stock
               </span>
             ) : (
@@ -252,8 +252,8 @@ export default function ProductGalleryRail({ product }: ProductGalleryRailProps)
               onClick={() => setIsPlayingTour(!isPlayingTour)}
               className={`px-3 py-1.5 rounded-full text-xs font-semibold flex items-center gap-1.5 transition-all shadow-md cursor-pointer ${
                 isPlayingTour
-                  ? 'bg-[#124903] text-white ring-2 ring-[#124903]/40 animate-pulse'
-                  : 'bg-white/85 hover:bg-white text-stone-800 backdrop-blur-md border border-stone-200/80 hover:text-[#124903]'
+                  ? 'bg-[#869e32] text-white ring-2 ring-[#869e32]/40 animate-pulse'
+                  : 'bg-white/85 hover:bg-white text-stone-800 backdrop-blur-md border border-stone-200/80 hover:text-[#869e32]'
               }`}
               title="Auto-Tour 360° Angles"
             >
@@ -273,7 +273,7 @@ export default function ProductGalleryRail({ product }: ProductGalleryRailProps)
             {/* Fullscreen Lightbox Button */}
             <button
               onClick={() => setIsFullscreen(true)}
-              className="p-2 rounded-full bg-white/85 hover:bg-white text-stone-800 backdrop-blur-md border border-stone-200/80 shadow-md hover:text-[#124903] transition-all cursor-pointer"
+              className="p-2 rounded-full bg-white/85 hover:bg-white text-stone-800 backdrop-blur-md border border-stone-200/80 shadow-md hover:text-[#869e32] transition-all cursor-pointer"
               title="Fullscreen Editorial Lightbox"
             >
               <Maximize2 className="w-4 h-4" />
@@ -285,7 +285,7 @@ export default function ProductGalleryRail({ product }: ProductGalleryRailProps)
         <div className="absolute inset-y-0 left-3 right-3 flex items-center justify-between pointer-events-none z-10">
           <button
             onClick={handlePrev}
-            className="pointer-events-auto w-10 h-10 rounded-full bg-white/90 hover:bg-white text-[#1A1A1A] hover:text-[#124903] shadow-lg border border-stone-200/70 backdrop-blur-md flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95 cursor-pointer"
+            className="pointer-events-auto w-10 h-10 rounded-full bg-white/90 hover:bg-white text-[#1A1A1A] hover:text-[#869e32] shadow-lg border border-stone-200/70 backdrop-blur-md flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95 cursor-pointer"
             aria-label="Previous perspective"
           >
             <ChevronLeft className="w-5 h-5" />
@@ -293,7 +293,7 @@ export default function ProductGalleryRail({ product }: ProductGalleryRailProps)
 
           <button
             onClick={handleNext}
-            className="pointer-events-auto w-10 h-10 rounded-full bg-white/90 hover:bg-white text-[#1A1A1A] hover:text-[#124903] shadow-lg border border-stone-200/70 backdrop-blur-md flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95 cursor-pointer"
+            className="pointer-events-auto w-10 h-10 rounded-full bg-white/90 hover:bg-white text-[#1A1A1A] hover:text-[#869e32] shadow-lg border border-stone-200/70 backdrop-blur-md flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95 cursor-pointer"
             aria-label="Next perspective"
           >
             <ChevronRight className="w-5 h-5" />
@@ -303,7 +303,7 @@ export default function ProductGalleryRail({ product }: ProductGalleryRailProps)
         {/* Bottom Angle Label Badge */}
         <div className="absolute bottom-4 inset-x-4 flex items-center justify-between pointer-events-none z-10">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#1A1A1A]/80 backdrop-blur-md text-white border border-white/15 shadow-md">
-            <span className="w-2 h-2 rounded-full bg-[#124903] animate-pulse" />
+            <span className="w-2 h-2 rounded-full bg-[#869e32] animate-pulse" />
             <span className="text-[11px] font-mono uppercase tracking-wider text-stone-300">
               Angle {activeIndex + 1}/{angles.length}
             </span>
@@ -315,7 +315,7 @@ export default function ProductGalleryRail({ product }: ProductGalleryRailProps)
 
           {/* Quick Compass Indicator */}
           <div className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/80 backdrop-blur-md text-stone-700 text-[10px] font-mono border border-stone-200/80">
-            <Compass className="w-3 h-3 text-[#124903]" />
+            <Compass className="w-3 h-3 text-[#869e32]" />
             <span>Multi-Angle Studio System</span>
           </div>
         </div>
@@ -335,7 +335,7 @@ export default function ProductGalleryRail({ product }: ProductGalleryRailProps)
                 onClick={() => selectAngle(idx)}
                 className={`relative group shrink-0 w-24 sm:w-28 aspect-4/3 rounded-2xl overflow-hidden border-2 transition-all duration-300 snap-center cursor-pointer ${
                   isActive
-                    ? 'border-[#124903] ring-4 ring-[#124903]/20 shadow-md scale-102 bg-white'
+                    ? 'border-[#869e32] ring-4 ring-[#869e32]/20 shadow-md scale-102 bg-white'
                     : 'border-stone-200/80 hover:border-stone-400 bg-stone-100 opacity-70 hover:opacity-100'
                 }`}
               >
@@ -357,7 +357,7 @@ export default function ProductGalleryRail({ product }: ProductGalleryRailProps)
 
                 {/* Active Indicator Dot */}
                 {isActive && (
-                  <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-[#124903] shadow-[0_0_8px_#124903]" />
+                  <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-[#869e32] shadow-[0_0_8px_#869e32]" />
                 )}
 
                 {/* Angle Name on Thumbnail */}
@@ -374,7 +374,7 @@ export default function ProductGalleryRail({ product }: ProductGalleryRailProps)
         {/* Rail Progress Track */}
         <div className="w-full h-1 bg-stone-200 rounded-full mt-2 overflow-hidden">
           <motion.div
-            className="h-full bg-[#124903] rounded-full"
+            className="h-full bg-[#869e32] rounded-full"
             initial={false}
             animate={{
               width: `${((activeIndex + 1) / angles.length) * 100}%`,
@@ -396,7 +396,7 @@ export default function ProductGalleryRail({ product }: ProductGalleryRailProps)
             {/* Top Lightbox Header */}
             <div className="flex items-center justify-between text-white border-b border-white/10 pb-4">
               <div className="flex items-center gap-3">
-                <div className="w-2.5 h-2.5 rounded-full bg-[#124903] animate-pulse shadow-[0_0_10px_#124903]" />
+                <div className="w-2.5 h-2.5 rounded-full bg-[#869e32] animate-pulse shadow-[0_0_10px_#869e32]" />
                 <div>
                   <h3 className="font-serif text-lg sm:text-xl text-white font-medium">
                     {product.name}
@@ -465,7 +465,7 @@ export default function ProductGalleryRail({ product }: ProductGalleryRailProps)
                     onClick={() => selectAngle(idx)}
                     className={`relative shrink-0 w-20 sm:w-24 aspect-4/3 rounded-xl overflow-hidden border-2 transition-all cursor-pointer ${
                       isActive
-                        ? 'border-[#124903] ring-2 ring-[#124903]/40 scale-105'
+                        ? 'border-[#869e32] ring-2 ring-[#869e32]/40 scale-105'
                         : 'border-white/20 opacity-50 hover:opacity-90'
                     }`}
                   >

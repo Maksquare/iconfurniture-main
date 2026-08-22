@@ -23,7 +23,7 @@ export const DEFAULT_BRAND_SETTINGS: BrandSettings = {
   hero_highlight_text: 'For Your Whole Family',
   hero_description:
     'Handmade luxury dining tables built from solid wood and natural marble stone. Built strong to last for generations in your home.',
-  primary_color: '#124903',
+  primary_color: '#869e32',
   secondary_color: '#1A1A1A',
   phone_primary: '0911-96-70-49',
   phone_secondary: '0910-05-11-51',

@@ -6,12 +6,12 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, Menu, X, ArrowRight } from 'lucide-react';
+import SmartSearchModal from '@/components/search/SmartSearchModal';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
   const pathname = usePathname();
 
   useEffect(() => {
@@ -20,6 +20,18 @@ export default function Navbar() {
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Keyboard shortcut (Cmd/Ctrl + K)
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        setSearchOpen((prev) => !prev);
+      }
+    };
+    window.addEventListener('keydown', handleKey);
+    return () => window.removeEventListener('keydown', handleKey);
   }, []);
 
   const navLinks = [
@@ -97,45 +109,8 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Search Bar Overlay */}
-      <AnimatePresence>
-        {searchOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            className="pointer-events-auto max-w-xl mx-auto mt-3 overflow-hidden bg-white/95 backdrop-blur-md p-4 rounded-2xl border border-stone-200 shadow-xl"
-          >
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                if (searchQuery.trim()) {
-                  window.location.href = `/shop?q=${encodeURIComponent(searchQuery)}`;
-                }
-              }}
-              className="flex items-center gap-2"
-            >
-              <div className="relative flex-1">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-stone-400" />
-                <input
-                  type="text"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Search velvet armchair, walnut table, travertine lamp..."
-                  className="w-full pl-9 pr-4 py-2.5 bg-stone-50 border border-stone-200 rounded-xl text-xs text-stone-900 focus:outline-hidden focus:border-[#869e32]"
-                  autoFocus
-                />
-              </div>
-              <button
-                type="submit"
-                className="px-4 py-2.5 bg-[#1A1A1A] text-white text-xs uppercase tracking-wider font-semibold rounded-xl hover:bg-[#869e32] transition-colors cursor-pointer"
-              >
-                Search
-              </button>
-            </form>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* ─── Intelligent High-End Live Search Modal ─── */}
+      <SmartSearchModal isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
 
       {/* Mobile Drawer */}
       <AnimatePresence>

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
@@ -23,6 +23,11 @@ export default function ProductDetailClient({
   relatedProducts: initialRelated,
 }: ProductDetailClientProps) {
   const { products } = useStore();
+
+  // Ensure user always starts at the very top of the product page
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  }, [initialProduct.slug]);
 
   // Prefer fresh reactive product from store if available
   const product = useMemo(() => {

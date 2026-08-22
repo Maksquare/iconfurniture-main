@@ -117,15 +117,22 @@ export default function ProductGalleryRail({ product }: ProductGalleryRailProps)
     return () => clearInterval(timer);
   }, [isPlayingTour, handleNext]);
 
-  // Scroll active thumbnail into view
+  // Scroll active thumbnail smoothly inside horizontal rail only (never scroll the window)
+  const isFirstMountRef = useRef(true);
   useEffect(() => {
+    if (isFirstMountRef.current) {
+      isFirstMountRef.current = false;
+      return;
+    }
     if (!railRef.current) return;
     const activeThumb = railRef.current.children[activeIndex] as HTMLElement;
-    if (activeThumb) {
-      activeThumb.scrollIntoView({
+    if (activeThumb && railRef.current) {
+      const thumbLeft = activeThumb.offsetLeft;
+      const thumbWidth = activeThumb.offsetWidth;
+      const containerWidth = railRef.current.offsetWidth;
+      railRef.current.scrollTo({
+        left: thumbLeft - containerWidth / 2 + thumbWidth / 2,
         behavior: 'smooth',
-        block: 'nearest',
-        inline: 'center',
       });
     }
   }, [activeIndex]);

@@ -4,15 +4,13 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { Search, ShoppingBag, ArrowRight } from 'lucide-react';
+import { Search, ArrowRight } from 'lucide-react';
 import SmartSearchModal from '@/components/search/SmartSearchModal';
-import { useCart } from '@/components/cart/CartContext';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const pathname = usePathname();
-  const { totalItems, setIsCartOpen } = useCart();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -44,7 +42,7 @@ export default function Navbar() {
   return (
     <header className="fixed top-0 inset-x-0 z-50 py-3 sm:py-4 px-4 sm:px-6 lg:px-8 pointer-events-none">
       <div className="max-w-7xl mx-auto flex items-center justify-between pointer-events-auto">
-        {/* Left Side: Brand Logo (takes hamburger's spot on mobile, perfectly aligned) */}
+        {/* Left Side: Brand Logo */}
         <Link
           href="/"
           className="bg-white/95 backdrop-blur-md px-3.5 py-2 sm:px-4 sm:py-2 rounded-full border border-stone-200/80 shadow-xs hover:shadow-md transition-all flex items-center gap-2 group shrink-0"
@@ -87,20 +85,6 @@ export default function Navbar() {
             aria-label="Search"
           >
             <Search className="w-4 h-4" />
-          </button>
-
-          {/* Cart Trigger Button */}
-          <button
-            onClick={() => setIsCartOpen(true)}
-            className="relative p-2.5 bg-white/90 backdrop-blur-md rounded-full border border-stone-200/80 text-stone-700 hover:text-[#869e32] hover:border-[#869e32] transition-colors shadow-xs cursor-pointer"
-            aria-label="Shopping Bag"
-          >
-            <ShoppingBag className="w-4 h-4" />
-            {totalItems > 0 && (
-              <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-[#869e32] text-white text-[9px] font-bold flex items-center justify-center shadow-xs">
-                {totalItems}
-              </span>
-            )}
           </button>
 
           {/* Desktop Explore CTA */}

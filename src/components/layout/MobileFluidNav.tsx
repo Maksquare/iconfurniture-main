@@ -5,17 +5,9 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import {
-  Search,
-  ShoppingBag,
-  ArrowRight,
-  Sparkles,
-} from 'lucide-react';
+import { Search } from 'lucide-react';
 import SmartSearchModal from '@/components/search/SmartSearchModal';
-import { useCart } from '@/components/cart/CartContext';
-import {
-  OFFICIAL_CONTACTS,
-} from '@/components/common/ProductContactChannels';
+import { OFFICIAL_CONTACTS } from '@/components/common/ProductContactChannels';
 
 export default function MobileFluidNav() {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,7 +15,6 @@ export default function MobileFluidNav() {
   const [isVisible, setIsVisible] = useState(true);
   const lastScrollY = useRef(0);
   const pathname = usePathname();
-  const { totalItems, setIsCartOpen, subtotal } = useCart();
 
   // Smart scroll handling: auto-hide on fast downward scroll, reveal on scroll up or stop
   useEffect(() => {
@@ -126,7 +117,7 @@ export default function MobileFluidNav() {
           className={`pointer-events-auto bg-white/95 backdrop-blur-2xl border border-stone-200/90 shadow-[0_20px_60px_rgba(0,0,0,0.28)] overflow-hidden ${
             isOpen
               ? 'w-full max-w-[360px] rounded-[32px] p-6'
-              : 'rounded-full px-3.5 py-2 flex items-center gap-2.5 shadow-xl'
+              : 'rounded-full px-4 py-2 flex items-center gap-3 shadow-xl'
           }`}
         >
           {isOpen ? (
@@ -178,31 +169,6 @@ export default function MobileFluidNav() {
                   Live
                 </kbd>
               </motion.button>
-
-              {/* Shopping Bag Quick Summary */}
-              {totalItems > 0 && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.24 }}
-                  onClick={() => {
-                    setIsOpen(false);
-                    setIsCartOpen(true);
-                  }}
-                  className="flex items-center justify-between p-3 rounded-2xl bg-[#869e32]/10 border border-[#869e32]/30 cursor-pointer"
-                >
-                  <div className="flex items-center gap-2.5">
-                    <ShoppingBag className="w-4 h-4 text-[#869e32]" />
-                    <span className="text-xs font-semibold text-stone-800">
-                      Bag: {totalItems} {totalItems === 1 ? 'item' : 'items'}
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-1.5 text-xs font-mono font-bold text-[#869e32]">
-                    <span>{subtotal.toLocaleString()} ETB</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </div>
-                </motion.div>
-              )}
 
               {/* Divider */}
               <div className="h-px bg-stone-200/80" />
@@ -315,9 +281,9 @@ export default function MobileFluidNav() {
                 <Image
                   src="/assets/iconfurniture-logo.png"
                   alt="Icon Furniture"
-                  width={88}
-                  height={22}
-                  className="h-4.5 w-auto object-contain"
+                  width={92}
+                  height={24}
+                  className="h-5 w-auto object-contain"
                 />
               </Link>
 
@@ -328,20 +294,6 @@ export default function MobileFluidNav() {
                 aria-label="Search catalog"
               >
                 <Search className="w-3.5 h-3.5" />
-              </button>
-
-              {/* Shopping Bag Button (if has items or quick tap) */}
-              <button
-                onClick={() => setIsCartOpen(true)}
-                className="relative w-8 h-8 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-600 hover:text-[#869e32] flex items-center justify-center transition-colors cursor-pointer"
-                aria-label="View bag"
-              >
-                <ShoppingBag className="w-3.5 h-3.5" />
-                {totalItems > 0 && (
-                  <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-[#869e32] text-white text-[9px] font-bold flex items-center justify-center shadow-xs">
-                    {totalItems}
-                  </span>
-                )}
               </button>
 
               {/* Toggle Morph Button (Hamburger) */}

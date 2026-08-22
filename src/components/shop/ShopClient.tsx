@@ -80,39 +80,60 @@ export default function ShopClient({ initialProducts, categories }: ShopClientPr
     router.replace(`${pathname}?${params.toString()}`, { scroll: false });
   };
 
-  // Debounced search term commit (350ms)
+  // Debounced search term commit
   const debounceTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const handleSearchInput = (value: string) => {
     setSearchInput(value);
-    setIsSearching(true);
+    setSearchTerm(value.trim());
+    setCurrentPage(1);
 
     if (debounceTimerRef.current) {
       clearTimeout(debounceTimerRef.current);
     }
 
     debounceTimerRef.current = setTimeout(() => {
-      setSearchTerm(value.trim());
-      setIsSearching(false);
-
-      const params = new URLSearchParams(searchParams.toString());
-      if (value.trim()) {
-        params.set('q', value.trim());
-      } else {
-        params.delete('q');
+      if (typeof window !== 'undefined') {
+        const url = new URL(window.location.href);
+        if (value.trim()) {
+          url.searchParams.set('q', value.trim());
+        } else {
+          url.searchParams.delete('q');
+        }
+        url.searchParams.delete('page');
+        window.history.replaceState(null, '', url.toString());
       }
-      router.replace(`${pathname}?${params.toString()}`, { scroll: false });
-    }, 320);
+    }, 350);
   };
 
   const clearSearch = useCallback(() => {
     setSearchInput('');
     setSearchTerm('');
-    const params = new URLSearchParams(searchParams.toString());
-    params.delete('q');
-    router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+    setCurrentPage(1);
+    if (typeof window !== 'undefined') {
+      const url = new URL(window.location.href);
+      url.searchParams.delete('q');
+      url.searchParams.delete('page');
+      window.history.replaceState(null, '', url.toString());
+    }
     inputRef.current?.focus();
-  }, [pathname, router, searchParams]);
+  }, []);
+
+  // Autocomplete Suggestions
+  const searchSuggestions = useMemo(() => {
+    if (!searchInput.trim()) return [];
+    const term = searchInput.toLowerCase();
+    return activeProducts
+      .filter(
+        (p) =>
+          p.name.toLowerCase().includes(term) ||
+          p.materials?.toLowerCase().includes(term) ||
+          p.category?.name.toLowerCase().includes(term)
+      )
+      .slice(0, 5);
+  }, [activeProducts, searchInput]);
+
+  const showSuggestions = searchFocused && searchInput.trim().length > 0 && searchSuggestions.length > 0;
 
   // Filter and sort products
   const filteredProducts = useMemo(() => {
@@ -180,20 +201,6 @@ export default function ShopClient({ initialProducts, categories }: ShopClientPr
     params.delete('page');
     router.replace(`${pathname}?${params.toString()}`, { scroll: false });
   };
-
-  // Search suggestions
-  const searchSuggestions = useMemo(() => {
-    if (!searchInput.trim() || searchInput.length < 2) return [];
-    const term = searchInput.toLowerCase();
-    return activeProducts
-      .filter((p) => p.name.toLowerCase().includes(term) || p.category?.name?.toLowerCase().includes(term))
-      .slice(0, 5);
-  }, [searchInput, activeProducts]);
-
-  const [showSuggestions, setShowSuggestions] = useState(false);
-  useEffect(() => {
-    setShowSuggestions(searchFocused && searchSuggestions.length > 0 && searchInput.length >= 2);
-  }, [searchFocused, searchSuggestions, searchInput]);
 
   return (
     <div className="py-12 bg-[#FDFCF7] min-h-screen">
@@ -307,7 +314,7 @@ export default function ShopClient({ initialProducts, categories }: ShopClientPr
                   value={searchInput}
                   onChange={(e) => handleSearchInput(e.target.value)}
                   onFocus={() => setSearchFocused(true)}
-                  onBlur={() => setTimeout(() => setSearchFocused(false), 150)}
+                  onBlur={() => setTimeout(() => setSearchFocused(false), 220)}
                   placeholder="Search by piece, wood, fabric or style..."
                   aria-label="Search furniture catalog"
                   className="w-full pl-10 pr-10 py-2.5 text-xs bg-stone-50 border border-stone-200/80 rounded-2xl focus:outline-none focus:border-[#869e32] placeholder:text-stone-400 transition-all"
@@ -325,7 +332,10 @@ export default function ShopClient({ initialProducts, categories }: ShopClientPr
 
               {/* Autocomplete Suggestions Dropdown */}
               {showSuggestions && (
-                <div className="absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl border border-stone-200/80 shadow-xl z-50 overflow-hidden">
+                <div
+                  onMouseDown={(e) => e.preventDefault()}
+                  className="absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl border border-stone-200/80 shadow-xl z-50 overflow-hidden"
+                >
                   <div className="px-3 py-2 border-b border-stone-100">
                     <span className="text-[10px] uppercase tracking-widest text-stone-400 font-bold">Suggestions</span>
                   </div>
@@ -340,7 +350,6 @@ export default function ShopClient({ initialProducts, categories }: ShopClientPr
                         onMouseDown={(e) => e.preventDefault()}
                         onClick={() => {
                           handleSearchInput(product.name);
-                          setShowSuggestions(false);
                           setSearchFocused(false);
                         }}
                         className="w-full text-left px-4 py-3 flex items-center gap-3 hover:bg-stone-50 transition-colors group"

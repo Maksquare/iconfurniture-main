@@ -183,15 +183,19 @@ export default function SmartSearchModal({ isOpen, onClose }: SmartSearchModalPr
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.96, y: -15 }}
             transition={{ type: 'spring', damping: 28, stiffness: 350 }}
+            onClick={(e) => e.stopPropagation()}
             className="relative z-10 w-full max-w-3xl bg-white border border-stone-200/80 rounded-3xl shadow-[0_25px_80px_rgba(0,0,0,0.5)] overflow-hidden flex flex-col max-h-[82vh]"
           >
             {/* Top Accent Line */}
             <div className="h-1 bg-gradient-to-r from-[#869e32] via-[#a2bf3d] to-[#869e32]" />
 
             {/* Search Input Bar */}
-            <div className="p-4 sm:p-6 border-b border-stone-100 bg-white sticky top-0 z-20">
+            <div
+              className="p-4 sm:p-6 border-b border-stone-100 bg-white sticky top-0 z-20 cursor-text"
+              onClick={() => inputRef.current?.focus()}
+            >
               <div className="relative flex items-center gap-3.5 bg-stone-50/80 border border-stone-200/80 focus-within:border-[#869e32] focus-within:ring-4 focus-within:ring-[#869e32]/10 focus-within:bg-white rounded-2xl px-4 py-3.5 transition-all shadow-inner">
-                <Search className="w-5 h-5 text-[#869e32] shrink-0" />
+                <Search className="w-5 h-5 text-[#869e32] shrink-0 pointer-events-none" />
                 <input
                   ref={inputRef}
                   type="text"
@@ -204,6 +208,7 @@ export default function SmartSearchModal({ isOpen, onClose }: SmartSearchModalPr
                   placeholder="Type anything (e.g. 'walnut', 'travertine', 'round table', 'oak')..."
                   className="w-full bg-transparent text-stone-900 text-sm sm:text-base font-sans placeholder:text-stone-400 focus:outline-none"
                   autoComplete="off"
+                  autoFocus
                   spellCheck={false}
                 />
 

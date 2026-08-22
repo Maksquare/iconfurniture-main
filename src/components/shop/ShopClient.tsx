@@ -80,60 +80,17 @@ export default function ShopClient({ initialProducts, categories }: ShopClientPr
     router.replace(`${pathname}?${params.toString()}`, { scroll: false });
   };
 
-  // Debounced search term commit
-  const debounceTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-
   const handleSearchInput = (value: string) => {
     setSearchInput(value);
     setSearchTerm(value.trim());
     setCurrentPage(1);
-
-    if (debounceTimerRef.current) {
-      clearTimeout(debounceTimerRef.current);
-    }
-
-    debounceTimerRef.current = setTimeout(() => {
-      if (typeof window !== 'undefined') {
-        const url = new URL(window.location.href);
-        if (value.trim()) {
-          url.searchParams.set('q', value.trim());
-        } else {
-          url.searchParams.delete('q');
-        }
-        url.searchParams.delete('page');
-        window.history.replaceState(null, '', url.toString());
-      }
-    }, 350);
   };
 
   const clearSearch = useCallback(() => {
     setSearchInput('');
     setSearchTerm('');
     setCurrentPage(1);
-    if (typeof window !== 'undefined') {
-      const url = new URL(window.location.href);
-      url.searchParams.delete('q');
-      url.searchParams.delete('page');
-      window.history.replaceState(null, '', url.toString());
-    }
-    inputRef.current?.focus();
   }, []);
-
-  // Autocomplete Suggestions
-  const searchSuggestions = useMemo(() => {
-    if (!searchInput.trim()) return [];
-    const term = searchInput.toLowerCase();
-    return activeProducts
-      .filter(
-        (p) =>
-          p.name.toLowerCase().includes(term) ||
-          p.materials?.toLowerCase().includes(term) ||
-          p.category?.name.toLowerCase().includes(term)
-      )
-      .slice(0, 5);
-  }, [activeProducts, searchInput]);
-
-  const showSuggestions = searchFocused && searchInput.trim().length > 0 && searchSuggestions.length > 0;
 
   // Filter and sort products
   const filteredProducts = useMemo(() => {
@@ -294,88 +251,28 @@ export default function ShopClient({ initialProducts, categories }: ShopClientPr
           {/* Search + Sort + View */}
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 pt-3 border-t border-stone-100">
 
-            {/* Search Input with Suggestions */}
-            <div className="relative w-full sm:w-96">
-              <div className={`relative flex items-center transition-all duration-300 ${
-                searchFocused
-                  ? 'ring-2 ring-[#869e32]/50 rounded-2xl'
-                  : ''
-              }`}>
-                {isSearching ? (
-                  <Loader2 className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#869e32] animate-spin" />
-                ) : (
-                  <Search className={`absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 transition-colors ${
-                    searchFocused ? 'text-[#869e32]' : 'text-stone-400'
-                  }`} />
-                )}
+            {/* Search Input Filter */}
+            <div className="relative w-full sm:w-80">
+              <div className="relative flex items-center bg-stone-50 border border-stone-200/80 rounded-2xl focus-within:border-[#869e32] focus-within:ring-2 focus-within:ring-[#869e32]/20 focus-within:bg-white transition-all">
+                <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-stone-400 pointer-events-none" />
                 <input
-                  ref={inputRef}
                   type="text"
                   value={searchInput}
                   onChange={(e) => handleSearchInput(e.target.value)}
-                  onFocus={() => setSearchFocused(true)}
-                  onBlur={() => setTimeout(() => setSearchFocused(false), 220)}
-                  placeholder="Search by piece, wood, fabric or style..."
-                  aria-label="Search furniture catalog"
-                  className="w-full pl-10 pr-10 py-2.5 text-xs bg-stone-50 border border-stone-200/80 rounded-2xl focus:outline-none focus:border-[#869e32] placeholder:text-stone-400 transition-all"
+                  placeholder="Filter tables by wood, stone, style..."
+                  aria-label="Filter tables"
+                  className="w-full pl-10 pr-9 py-2.5 text-xs bg-transparent text-stone-900 placeholder:text-stone-400 focus:outline-none"
                 />
                 {searchInput && (
                   <button
                     onClick={clearSearch}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 flex items-center justify-center rounded-full bg-stone-200 hover:bg-stone-300 transition-colors"
+                    className="absolute right-2.5 top-1/2 -translate-y-1/2 w-5 h-5 flex items-center justify-center rounded-full bg-stone-200 hover:bg-stone-300 text-stone-600 transition-colors"
                     aria-label="Clear search"
                   >
-                    <X className="w-3 h-3 text-stone-600" />
+                    <X className="w-3 h-3" />
                   </button>
                 )}
               </div>
-
-              {/* Autocomplete Suggestions Dropdown */}
-              {showSuggestions && (
-                <div
-                  onMouseDown={(e) => e.preventDefault()}
-                  className="absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl border border-stone-200/80 shadow-xl z-50 overflow-hidden"
-                >
-                  <div className="px-3 py-2 border-b border-stone-100">
-                    <span className="text-[10px] uppercase tracking-widest text-stone-400 font-bold">Suggestions</span>
-                  </div>
-                  {searchSuggestions.map((product: Product) => {
-                    const highlighted = product.name.replace(
-                      new RegExp(`(${searchInput.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi'),
-                      '|||$1|||'
-                    ).split('|||');
-                    return (
-                      <button
-                        key={product.id}
-                        onMouseDown={(e) => e.preventDefault()}
-                        onClick={() => {
-                          handleSearchInput(product.name);
-                          setSearchFocused(false);
-                        }}
-                        className="w-full text-left px-4 py-3 flex items-center gap-3 hover:bg-stone-50 transition-colors group"
-                      >
-                        <Search className="w-3.5 h-3.5 text-stone-400 shrink-0" />
-                        <span className="text-sm text-stone-800 leading-tight">
-                          {highlighted.map((part: string, i: number) =>
-                            part.toLowerCase() === searchInput.toLowerCase() ? (
-                              <mark key={i} className="bg-[#869e32]/25 text-[#0b2e02] rounded px-0.5 font-semibold not-italic">
-                                {part}
-                              </mark>
-                            ) : (
-                              <span key={i}>{part}</span>
-                            )
-                          )}
-                        </span>
-                        {product.category && (
-                          <span className="ml-auto text-[10px] uppercase tracking-wider text-stone-400 font-medium shrink-0">
-                            {product.category.name}
-                          </span>
-                        )}
-                      </button>
-                    );
-                  })}
-                </div>
-              )}
             </div>
 
             {/* Right Controls: Sort + View Mode */}

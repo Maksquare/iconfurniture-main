@@ -4,21 +4,21 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Search, Menu, X, ArrowRight } from 'lucide-react';
+import { Search, ShoppingBag, ArrowRight } from 'lucide-react';
 import SmartSearchModal from '@/components/search/SmartSearchModal';
+import { useCart } from '@/components/cart/CartContext';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const pathname = usePathname();
+  const { totalItems, setIsCartOpen } = useCart();
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -42,9 +42,25 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="fixed top-0 inset-x-0 z-50 py-4 px-4 sm:px-6 lg:px-8 pointer-events-none">
+    <header className="fixed top-0 inset-x-0 z-50 py-3 sm:py-4 px-4 sm:px-6 lg:px-8 pointer-events-none">
       <div className="max-w-7xl mx-auto flex items-center justify-between pointer-events-auto">
-        {/* Left Pill Menu */}
+        {/* Left Side: Brand Logo (takes hamburger's spot on mobile, perfectly aligned) */}
+        <Link
+          href="/"
+          className="bg-white/95 backdrop-blur-md px-3.5 py-2 sm:px-4 sm:py-2 rounded-full border border-stone-200/80 shadow-xs hover:shadow-md transition-all flex items-center gap-2 group shrink-0"
+          aria-label="Icon Furniture Home"
+        >
+          <Image
+            src="/assets/iconfurniture-logo.png"
+            alt="Icon Furniture"
+            width={120}
+            height={34}
+            className="h-6 sm:h-7 w-auto object-contain transition-transform group-hover:scale-103"
+            priority
+          />
+        </Link>
+
+        {/* Center: Desktop Editorial Nav Links */}
         <nav className="hidden lg:flex items-center bg-white/90 backdrop-blur-md px-6 py-2.5 rounded-full border border-stone-200/80 shadow-xs space-x-6">
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
@@ -62,46 +78,35 @@ export default function Navbar() {
           })}
         </nav>
 
-        {/* Mobile Menu Button */}
-        <button
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="lg:hidden p-3 bg-white/95 backdrop-blur-md rounded-full border border-stone-200 shadow-xs text-[#1A1A1A] cursor-pointer"
-          aria-label="Toggle Menu"
-        >
-          {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-        </button>
-
-        {/* Center Brand Pill with Official Logo */}
-        <Link
-          href="/"
-          className="bg-white/95 px-4 py-2 rounded-full border border-stone-200 shadow-sm hover:shadow-md transition-all flex items-center gap-2 group"
-          aria-label="Icon Furniture Home"
-        >
-          <Image
-            src="/assets/iconfurniture-logo.png"
-            alt="Icon Furniture"
-            width={120}
-            height={34}
-            className="h-7 w-auto object-contain transition-transform group-hover:scale-103"
-            priority
-          />
-        </Link>
-
-        {/* Right Actions Pill Container */}
-        <div className="flex items-center space-x-3">
-          {/* Search Button */}
+        {/* Right Actions Container */}
+        <div className="flex items-center space-x-2 sm:space-x-3">
+          {/* Live Search Trigger Button */}
           <button
-            onClick={() => setSearchOpen(!searchOpen)}
+            onClick={() => setSearchOpen(true)}
             className="p-2.5 bg-white/90 backdrop-blur-md rounded-full border border-stone-200/80 text-stone-700 hover:text-[#869e32] hover:border-[#869e32] transition-colors shadow-xs cursor-pointer"
             aria-label="Search"
           >
             <Search className="w-4 h-4" />
           </button>
 
-          {/* Action CTA Pill (Explore Catalog) */}
+          {/* Cart Trigger Button */}
+          <button
+            onClick={() => setIsCartOpen(true)}
+            className="relative p-2.5 bg-white/90 backdrop-blur-md rounded-full border border-stone-200/80 text-stone-700 hover:text-[#869e32] hover:border-[#869e32] transition-colors shadow-xs cursor-pointer"
+            aria-label="Shopping Bag"
+          >
+            <ShoppingBag className="w-4 h-4" />
+            {totalItems > 0 && (
+              <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-[#869e32] text-white text-[9px] font-bold flex items-center justify-center shadow-xs">
+                {totalItems}
+              </span>
+            )}
+          </button>
+
+          {/* Desktop Explore CTA */}
           <Link
             href="/shop"
-            className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 bg-[#1A1A1A] hover:bg-[#869e32] text-white text-xs uppercase tracking-widest font-semibold rounded-full shadow-md transition-all duration-300 group"
+            className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 bg-[#1A1A1A] hover:bg-[#869e32] text-white text-xs uppercase tracking-widest font-semibold rounded-full shadow-md transition-all duration-300 group shrink-0"
           >
             <span>Explore Catalog</span>
             <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
@@ -109,7 +114,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* ─── Intelligent High-End Live Search Modal (Desktop) ─── */}
+      {/* ─── Intelligent High-End Live Search Modal ─── */}
       <SmartSearchModal isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
     </header>
   );

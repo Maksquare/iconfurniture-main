@@ -59,23 +59,20 @@ export default function Navbar() {
         </Link>
 
         {/* Center: Desktop Editorial Nav Links with Luxury Active States */}
-        <nav className="hidden lg:flex items-center bg-white/95 backdrop-blur-md px-2.5 py-1.5 rounded-full border border-stone-200/80 shadow-xs gap-1.5">
+        <nav className="hidden lg:flex items-center bg-white/95 backdrop-blur-md px-2.5 py-1.5 rounded-full border border-stone-200/80 shadow-xs gap-0.5">
           {navLinks.map((link) => {
             const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href));
             return (
               <Link
                 key={link.name}
                 href={link.href}
-                className={`relative px-4 py-2 rounded-full text-xs uppercase tracking-widest transition-all duration-300 flex items-center gap-1.5 ${
+                className={`px-5 py-2 rounded-full text-xs uppercase tracking-widest font-semibold transition-all duration-300 ${
                   isActive
-                    ? 'bg-[#869e32]/12 text-[#869e32] border border-[#869e32]/40 shadow-[0_2px_12px_rgba(134,158,50,0.18)] font-bold'
-                    : 'text-stone-600 hover:text-[#1A1A1A] hover:bg-stone-100/80 border border-transparent font-semibold'
+                    ? 'bg-[#a8c44a] text-[#1A1A1A]'
+                    : 'text-stone-600 hover:text-[#1A1A1A] hover:bg-stone-100/80'
                 }`}
               >
-                {isActive && (
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#869e32] shadow-[0_0_8px_#869e32] inline-block animate-pulse" />
-                )}
-                <span>{link.name}</span>
+                {link.name}
               </Link>
             );
           })}

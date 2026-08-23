@@ -79,7 +79,7 @@ export default function MobileFluidNav() {
     { name: 'Collection', href: '/shop' },
     { name: 'Cinema', href: '/cinema' },
     { name: 'About', href: '/about' },
-    { name: 'Contact ↗', href: '/contact' },
+    { name: 'Contact', href: '/contact' },
   ];
 
   return (
@@ -123,8 +123,8 @@ export default function MobileFluidNav() {
           {isOpen ? (
             /* ─── Expanded State (Inspo Card) ─────────────────────── */
             <div className="w-full flex flex-col space-y-5">
-              {/* Nav Links with Luxury Active States */}
-              <div className="flex flex-col space-y-2 pt-1">
+              {/* Nav Links with Solid Pill Active States */}
+              <div className="flex flex-col space-y-1 pt-1">
                 {navLinks.map((link, idx) => {
                   const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href));
                   return (
@@ -139,30 +139,21 @@ export default function MobileFluidNav() {
                         onClick={() => setIsOpen(false)}
                         className={`group flex items-center justify-between px-4 py-3 rounded-2xl transition-all duration-300 ${
                           isActive
-                            ? 'bg-[#869e32]/12 border border-[#869e32]/35 shadow-[0_2px_12px_rgba(134,158,50,0.12)]'
-                            : 'hover:bg-stone-100/80 border border-transparent'
+                            ? 'bg-[#a8c44a]'
+                            : 'hover:bg-stone-100/80'
                         }`}
                       >
-                        <div className="flex items-center gap-3">
-                          {isActive && (
-                            <span className="w-2 h-2 rounded-full bg-[#869e32] shadow-[0_0_10px_#869e32] animate-pulse shrink-0" />
-                          )}
-                          <span
-                            className={`font-serif text-2xl sm:text-3xl tracking-tight transition-colors ${
-                              isActive
-                                ? 'text-[#869e32] font-semibold'
-                                : 'text-[#1A1A1A] group-hover:text-[#869e32] font-normal'
-                            }`}
-                          >
-                            {link.name}
-                          </span>
-                        </div>
+                        <span
+                          className={`font-serif text-2xl sm:text-3xl tracking-tight transition-colors ${
+                            isActive
+                              ? 'text-[#1A1A1A] font-semibold'
+                              : 'text-[#1A1A1A] group-hover:text-[#869e32] font-normal'
+                          }`}
+                        >
+                          {link.name}
+                        </span>
 
-                        {isActive ? (
-                          <span className="px-2.5 py-1 rounded-full bg-[#869e32] text-white text-[9px] font-bold font-mono tracking-widest uppercase shadow-2xs">
-                            Active
-                          </span>
-                        ) : (
+                        {!isActive && (
                           <ArrowRight className="w-4 h-4 text-stone-300 group-hover:text-[#869e32] group-hover:translate-x-0.5 transition-all" />
                         )}
                       </Link>

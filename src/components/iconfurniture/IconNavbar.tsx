@@ -109,25 +109,22 @@ export default function IconNavbar({ isDark = false }: IconNavbarProps) {
             </Link>
 
             {/* Desktop Nav Links */}
-            <div className="hidden md:flex items-center gap-1.5 text-xs font-semibold tracking-wider">
+            <div className="hidden md:flex items-center gap-0.5 text-xs font-semibold tracking-wider">
               {navLinks.map((item) => {
                 const isActive = pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href));
                 return (
                   <Link
                     key={item.name}
                     href={item.href}
-                    className={`px-3.5 py-1.5 rounded-full uppercase tracking-wider transition-all duration-300 flex items-center gap-1.5 ${
+                    className={`px-4 py-1.5 rounded-full uppercase tracking-wider font-semibold transition-all duration-300 ${
                       isActive
-                        ? 'bg-[#869e32]/15 text-[#869e32] border border-[#869e32]/40 shadow-[0_2px_10px_rgba(134,158,50,0.18)] font-bold'
+                        ? 'bg-[#a8c44a] text-[#1A1A1A]'
                         : isDark
-                        ? 'text-stone-300 hover:text-white hover:bg-white/8 border border-transparent'
-                        : 'text-stone-600 hover:text-stone-900 hover:bg-stone-100/80 border border-transparent'
+                        ? 'text-stone-300 hover:text-white hover:bg-white/10'
+                        : 'text-stone-600 hover:text-stone-900 hover:bg-stone-100/80'
                     }`}
                   >
-                    {isActive && (
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#869e32] shadow-[0_0_8px_#869e32] inline-block animate-pulse" />
-                    )}
-                    <span>{item.name}</span>
+                    {item.name}
                   </Link>
                 );
               })}

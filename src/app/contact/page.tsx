@@ -418,7 +418,10 @@ export default function ContactPage() {
               <div className="space-y-1 text-xs sm:text-sm text-stone-600 font-sans leading-relaxed">
                 <div className="flex items-start gap-2">
                   <MapPin className="w-4 h-4 text-[#869e32] shrink-0 mt-0.5" />
-                  <span>Addis Ababa, Ethiopia</span>
+                  <div>
+                    <span className="font-semibold text-stone-800">Bole Bulbula / ቦሌ ቡልቡላ</span>
+                    <span className="block text-stone-500 text-xs">Addis Ababa, Ethiopia</span>
+                  </div>
                 </div>
                 <a
                   href={OFFICIAL_CONTACTS.mapUrl}
@@ -463,7 +466,7 @@ export default function ContactPage() {
             {/* Interactive Google Map Embed */}
             <div className="h-64 rounded-3xl overflow-hidden border border-stone-200/80 shadow-xs relative group">
               <iframe
-                src="https://maps.google.com/maps?q=Bole,%20Addis%20Ababa,%20Ethiopia&t=&z=14&ie=UTF8&iwloc=&output=embed"
+                src="https://maps.google.com/maps?q=Bole%20Bulbula,%20Addis%20Ababa,%20Ethiopia&t=&z=14&ie=UTF8&iwloc=&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}

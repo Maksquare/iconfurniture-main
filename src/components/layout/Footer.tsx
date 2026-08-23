@@ -52,7 +52,7 @@ export default function Footer() {
             <div className="pt-2 text-xs text-stone-300 space-y-1.5 font-sans">
               <div className="flex items-center gap-2">
                 <MapPin className="w-3.5 h-3.5 text-[#869e32] shrink-0" />
-                <span>{brandSettings?.showroom_address || 'Addis Ababa, Ethiopia'}</span>
+                <span>{brandSettings?.showroom_address || 'Bole Bulbula / ቦሌ ቡልቡላ, Addis Ababa, Ethiopia'}</span>
                 <a
                   href={brandSettings?.google_maps_url || OFFICIAL_CONTACTS.mapUrl}
                   target="_blank"

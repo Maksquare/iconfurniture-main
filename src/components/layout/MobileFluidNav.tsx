@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search } from 'lucide-react';
+import { Search, ArrowRight, MapPin } from 'lucide-react';
 import SmartSearchModal from '@/components/search/SmartSearchModal';
 import { OFFICIAL_CONTACTS } from '@/components/common/ProductContactChannels';
 
@@ -123,10 +123,10 @@ export default function MobileFluidNav() {
           {isOpen ? (
             /* ─── Expanded State (Inspo Card) ─────────────────────── */
             <div className="w-full flex flex-col space-y-5">
-              {/* Nav Links (Large Editorial Typography) */}
-              <div className="flex flex-col space-y-2.5 pt-1">
+              {/* Nav Links with Luxury Active States */}
+              <div className="flex flex-col space-y-2 pt-1">
                 {navLinks.map((link, idx) => {
-                  const isActive = pathname === link.href;
+                  const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href));
                   return (
                     <motion.div
                       key={link.name}
@@ -137,13 +137,34 @@ export default function MobileFluidNav() {
                       <Link
                         href={link.href}
                         onClick={() => setIsOpen(false)}
-                        className={`block font-serif text-3xl sm:text-4xl font-normal transition-colors tracking-tight ${
+                        className={`group flex items-center justify-between px-4 py-3 rounded-2xl transition-all duration-300 ${
                           isActive
-                            ? 'text-[#869e32]'
-                            : 'text-[#1A1A1A] hover:text-[#869e32]'
+                            ? 'bg-[#869e32]/12 border border-[#869e32]/35 shadow-[0_2px_12px_rgba(134,158,50,0.12)]'
+                            : 'hover:bg-stone-100/80 border border-transparent'
                         }`}
                       >
-                        {link.name}
+                        <div className="flex items-center gap-3">
+                          {isActive && (
+                            <span className="w-2 h-2 rounded-full bg-[#869e32] shadow-[0_0_10px_#869e32] animate-pulse shrink-0" />
+                          )}
+                          <span
+                            className={`font-serif text-2xl sm:text-3xl tracking-tight transition-colors ${
+                              isActive
+                                ? 'text-[#869e32] font-semibold'
+                                : 'text-[#1A1A1A] group-hover:text-[#869e32] font-normal'
+                            }`}
+                          >
+                            {link.name}
+                          </span>
+                        </div>
+
+                        {isActive ? (
+                          <span className="px-2.5 py-1 rounded-full bg-[#869e32] text-white text-[9px] font-bold font-mono tracking-widest uppercase shadow-2xs">
+                            Active
+                          </span>
+                        ) : (
+                          <ArrowRight className="w-4 h-4 text-stone-300 group-hover:text-[#869e32] group-hover:translate-x-0.5 transition-all" />
+                        )}
                       </Link>
                     </motion.div>
                   );
@@ -239,8 +260,9 @@ export default function MobileFluidNav() {
                     >
                       contact@iconfurniture.com
                     </a>
-                    <span className="text-stone-400 text-[11px] pt-0.5">
-                      Bole, Addis Ababa
+                    <span className="text-stone-500 text-[11px] pt-0.5 font-medium flex items-center gap-1">
+                      <MapPin className="w-3 h-3 text-[#869e32] shrink-0" />
+                      <span>Bole Bulbula / ቦሌ ቡልቡላ</span>
                     </span>
                   </div>
                 </div>

@@ -1,10 +1,8 @@
-'use client';
-
 import React, { useState, useEffect } from 'react';
-import { Search, Menu, X, ArrowRight } from 'lucide-react';
+import { Search, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 
 import SmartSearchModal from '@/components/search/SmartSearchModal';
 
@@ -14,6 +12,7 @@ interface IconNavbarProps {
 
 export default function IconNavbar({ isDark = false }: IconNavbarProps) {
   const router = useRouter();
+  const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [showNavbarLogo, setShowNavbarLogo] = useState(false);
@@ -110,20 +109,28 @@ export default function IconNavbar({ isDark = false }: IconNavbarProps) {
             </Link>
 
             {/* Desktop Nav Links */}
-            <div className="hidden md:flex items-center gap-6 text-[13px] font-medium tracking-wide">
-              {navLinks.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className={`transition-colors duration-200 py-1 ${
-                    isDark
-                      ? 'text-stone-400 hover:text-[#869e32]'
-                      : 'text-stone-600 hover:text-[#869e32]'
-                  }`}
-                >
-                  {item.name}
-                </Link>
-              ))}
+            <div className="hidden md:flex items-center gap-1.5 text-xs font-semibold tracking-wider">
+              {navLinks.map((item) => {
+                const isActive = pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href));
+                return (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className={`px-3.5 py-1.5 rounded-full uppercase tracking-wider transition-all duration-300 flex items-center gap-1.5 ${
+                      isActive
+                        ? 'bg-[#869e32]/15 text-[#869e32] border border-[#869e32]/40 shadow-[0_2px_10px_rgba(134,158,50,0.18)] font-bold'
+                        : isDark
+                        ? 'text-stone-300 hover:text-white hover:bg-white/8 border border-transparent'
+                        : 'text-stone-600 hover:text-stone-900 hover:bg-stone-100/80 border border-transparent'
+                    }`}
+                  >
+                    {isActive && (
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#869e32] shadow-[0_0_8px_#869e32] inline-block animate-pulse" />
+                    )}
+                    <span>{item.name}</span>
+                  </Link>
+                );
+              })}
             </div>
           </div>
 

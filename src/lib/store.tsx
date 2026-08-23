@@ -32,7 +32,7 @@ export const DEFAULT_BRAND_SETTINGS: BrandSettings = {
   tiktok_url: 'https://www.tiktok.com/@iconfurniture3',
   facebook_url: 'https://web.facebook.com/profile.php?id=100063936008382',
   google_maps_url: 'https://maps.app.goo.gl/woqxA7cF31nP7J387?g_st=i&utm_campaign=ac-im',
-  showroom_address: 'Bole Medhanialem, Addis Ababa, Ethiopia',
+  showroom_address: 'Bole Bulbula / ቦሌ ቡልቡላ, Addis Ababa, Ethiopia',
   announcement_enabled: true,
   announcement_text:
     'Free Delivery & Installation Across Addis Ababa • 100% Solid Natural Wood Dining Tables',

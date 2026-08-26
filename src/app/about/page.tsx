@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
@@ -11,10 +11,11 @@ import {
   Compass,
   TreePine,
   Layers,
-  Star,
   Phone,
   CheckCircle2,
   Award,
+  HeartHandshake,
+  DollarSign,
 } from 'lucide-react';
 import {
   InstagramIcon,
@@ -26,71 +27,69 @@ import {
 import IconImage from '@/components/common/IconImage';
 
 export default function AboutPage() {
-  const [activeTab, setActiveTab] = useState<'philosophy' | 'materials' | 'craft' | 'sustainability'>('philosophy');
-
   const pillars = [
     {
       icon: Compass,
       number: '01',
-      title: 'Architectural Scale & Proportion',
-      desc: 'Every dining table begins with structural discipline. We calculate optimal legroom clearance, overhang ratios, and spatial balance for 6 to 18 seated guests.',
-      material: 'Ergonomic Clearance & Flow',
+      title: 'Specialized Table Ergonomics',
+      desc: 'By focusing exclusively on dining tables, we have perfected legroom clearance, elbow spacing, and structural balance for 4 to 18 seated guests.',
+      material: 'Engineered For Real Living',
     },
     {
       icon: Layers,
       number: '02',
-      title: 'Continuous Wood Grain',
-      desc: 'We work exclusively with unadulterated natural materials—solid American walnut slabs, quarter-sawn white oak, and hand-honed Roman travertine monoliths.',
-      material: 'Old-Growth Kiln-Dried Hardwoods',
+      title: '100% Solid Wood & Resin Craft',
+      desc: 'We use genuine solid hardwoods—kiln-dried walnut, oak, and rich mahogany paired with crystal-clear resin epoxy. No weak particle boards or hollow veneers.',
+      material: 'Real Solid Timber & Epoxy',
     },
     {
-      icon: ShieldCheck,
+      icon: DollarSign,
       number: '03',
-      title: 'Sub-Millimeter Table Joinery',
-      desc: 'Constructed by master woodcrafters using centuries-old blind mortise-and-tenon and butterfly joints. Engineered to breathe, expand, and age gracefully across decades.',
-      material: 'Generational Joinery Guarantee',
+      title: 'Direct-Workshop Affordability',
+      desc: 'By designing and building directly in our own workshop, we eliminate distributor margins and retail markups—delivering high-end luxury at honest, accessible prices.',
+      material: 'Zero Middleman Markups',
     },
     {
       icon: TreePine,
       number: '04',
-      title: 'Spill & Heat Resilience',
-      desc: 'Finished with multi-coat organic botanical hardwax oils that protect against wine and dining spills while celebrating the natural tactile warmth of solid timber.',
-      material: 'Zero-VOC Botanical Hardwax',
+      title: 'Spill & Daily Life Resilience',
+      desc: 'Every tabletop is treated with food-safe botanical sealants and scratch-resistant finishes that handle hot plates, wine spills, and active family life with ease.',
+      material: 'Family-Safe Protective Finish',
     },
   ];
 
   const processSteps = [
     {
       step: '01',
-      phase: 'Lumber & Quarry Selection',
-      desc: 'Each tree slab and travertine block is individually inspected for grain continuity, moisture stability, and unique tactile character before entering our drying kilns.',
+      phase: 'Slab & Timber Selection',
+      desc: 'Each solid wood slab is inspected for natural grain character, structural density, and moisture stability before shaping.',
       image: '/collections/if018.jpg',
     },
     {
       step: '02',
-      phase: 'Sculptural Milling',
-      desc: 'Primary forms are cut using high-precision 5-axis tooling, followed immediately by artisan hand-planing to achieve seamless compound radiuses.',
+      phase: 'Precision Shaping & Epoxy Cast',
+      desc: 'Live edges are sculpted with precision, and clear or tinted epoxy is poured seamlessly to lock in natural wood beauty forever.',
       image: '/collections/if006.jpg',
     },
     {
       step: '03',
-      phase: 'Artisan Hand Joinery',
-      desc: 'Mortise-and-tenon joints are hand-fitted, glued with natural non-toxic resins, and clamped with bespoke jigs to guarantee seamless structural integrity.',
+      phase: 'Artisan Joinery & Framing',
+      desc: 'Master woodworkers reinforce every leg and joint using reinforced mortise-and-tenon connections engineered to withstand decades of daily use.',
       image: '/collections/if031.jpg',
     },
     {
       step: '04',
-      phase: 'Organic Oil & Waxing',
-      desc: 'Triple-hand-buffed with organic linseed and beeswax finishes that nourish the wood fibers and cultivate a deep, luminous heirloom patina over time.',
+      phase: 'Protective Finishing & Buffing',
+      desc: 'Hand-buffed with durable, eco-friendly sealants that enrich the natural wood warmth and protect against daily dining spills.',
       image: '/collections/if007.jpg',
     },
   ];
 
   const stats = [
-    { value: '15k+', label: 'Bespoke Living Spaces Crafted' },
-    { value: '100%', label: 'Solid Certified Hardwood' },
-    { value: '10-Yr', label: 'Master Joinery Warranty' },
-    { value: '1:1', label: 'Dedicated Atelier Concierge' },
+    { value: '21k+', label: 'Dining Tables Crafted' },
+    { value: '3+ Yrs', label: 'Years of Dedicated Experience' },
+    { value: '100%', label: 'Solid Wood & Quality Resin' },
+    { value: 'Direct', label: 'Affordable Workshop Pricing' },
   ];
 
   return (
@@ -104,7 +103,7 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center space-y-6">
             
-            {/* Official Brand Logo + Monograph Badge */}
+            {/* Official Brand Logo + Purpose Badge */}
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
@@ -123,7 +122,7 @@ export default function AboutPage() {
               </div>
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-stone-200/80 shadow-2xs text-xs font-bold uppercase tracking-widest text-[#869e32]">
                 <Sparkles className="w-3.5 h-3.5" />
-                <span>The Atelier Monograph & Heritage</span>
+                <span>Our Singular Specialization</span>
               </div>
             </motion.div>
 
@@ -134,8 +133,8 @@ export default function AboutPage() {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="font-serif text-4xl sm:text-6xl lg:text-7xl font-normal text-[#1A1A1A] tracking-tight leading-[1.08]"
             >
-              Sculpted For Permanence. <br />
-              <span className="italic font-normal text-[#869e32]">Designed For The Senses.</span>
+              Crafted For Generations. <br />
+              <span className="italic font-normal text-[#869e32]">Priced For Real Living.</span>
             </motion.h1>
 
             {/* Intro Copy */}
@@ -145,7 +144,7 @@ export default function AboutPage() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-stone-600 text-base sm:text-lg font-sans leading-relaxed max-w-2xl mx-auto"
             >
-              Icon Furniture was established on a singular premise: that the objects in our homes should instill quiet clarity, celebrate natural materiality, and outlive the ephemeral trends of modern mass production.
+              At Icon Furniture, we made a deliberate commitment: to specialize exclusively in dining tables. By focusing 100% on this central piece of the home, we design and craft new, high-quality, and timeless dining tables that are truly affordable for every family.
             </motion.p>
 
             {/* Quick Actions */}
@@ -159,21 +158,21 @@ export default function AboutPage() {
                 href="/shop"
                 className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-[#1A1A1A] hover:bg-[#869e32] text-white text-xs uppercase tracking-widest font-semibold shadow-md hover:shadow-xl transition-all duration-300 group"
               >
-                <span>Explore The Collection</span>
+                <span>Explore Dining Tables</span>
                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
                 href="/contact"
                 className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-white hover:bg-stone-50 text-stone-800 text-xs uppercase tracking-widest font-semibold border border-stone-200/80 shadow-xs hover:border-[#869e32] transition-all duration-300"
               >
-                <span>Private Consultation</span>
+                <span>Custom Order Inquiry</span>
               </Link>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* ─── 2. Founder & Visionary Spotlight (High-End Editorial Showcase) ─── */}
+      {/* ─── 2. The Specialization Manifesto (Atelier Craft Showcase) ─── */}
       <section className="py-20 sm:py-28 bg-[#1A1A1A] text-white border-y border-white/10 relative overflow-hidden">
         {/* Ambient Radial Lighting */}
         <div className="absolute -top-32 -left-32 w-[650px] h-[650px] bg-[#869e32]/15 rounded-full blur-3xl pointer-events-none" />
@@ -182,7 +181,7 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             
-            {/* Left: Founder's Framed High-End Editorial Portrait */}
+            {/* Left: Master Table Craft Visual Showcase (Replaced CEO Photo) */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 30 }}
               whileInView={{ opacity: 1, scale: 1, y: 0 }}
@@ -193,27 +192,27 @@ export default function AboutPage() {
               {/* Outer Luxury Architectural Glow Frame */}
               <div className="relative rounded-3xl p-3 bg-gradient-to-br from-white/20 via-white/5 to-white/15 border border-white/20 shadow-2xl backdrop-blur-md">
                 
-                {/* Inner Image Container with High-Res Founder Portrait */}
+                {/* Inner Image Container with Real Master Dining Table Showcase */}
                 <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-stone-950 shadow-inner group">
                   <Image
-                    src="/about/Founder.jpg"
-                    alt="Founder of Icon Furniture"
+                    src="/collections/if011.jpg"
+                    alt="Icon Furniture Master Dining Table Craft"
                     fill
                     priority
-                    className="object-cover object-center group-hover:scale-104 transition-transform duration-700 ease-out"
+                    className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
                   />
                   
                   {/* Subtle Vignette Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-transparent pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent pointer-events-none" />
 
-                  {/* Floating Luxury Founder Hallmark Badge */}
-                  <div className="absolute bottom-4 inset-x-4 p-4 rounded-2xl bg-black/75 backdrop-blur-md border border-white/15 text-white flex items-center justify-between">
+                  {/* Floating Luxury Workshop Hallmark Badge */}
+                  <div className="absolute bottom-4 inset-x-4 p-4 rounded-2xl bg-black/80 backdrop-blur-md border border-white/15 text-white flex items-center justify-between">
                     <div>
                       <div className="text-[10px] uppercase font-bold tracking-widest text-[#869e32]">
-                        Founder & Creative Director
+                        100% Dedicated Craft
                       </div>
                       <div className="font-serif text-base font-semibold text-white">
-                        Icon Furniture Design House
+                        Specialized Dining Table Workshop
                       </div>
                     </div>
                     <div className="w-10 h-10 rounded-xl bg-[#869e32] text-white flex items-center justify-center shadow-[0_0_16px_rgba(18, 73, 3,0.6)]">
@@ -229,7 +228,7 @@ export default function AboutPage() {
                 <span className="absolute bottom-2 right-2 w-3.5 h-3.5 border-b-2 border-r-2 border-[#869e32]" />
               </div>
 
-              {/* Floating Quality Badge Behind/Side */}
+              {/* Floating Value Proposition Badge */}
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -237,70 +236,70 @@ export default function AboutPage() {
                 transition={{ duration: 0.6, delay: 0.3 }}
                 className="hidden sm:flex absolute -bottom-6 -left-6 bg-[#869e32] text-white px-5 py-3 rounded-2xl shadow-xl border border-white/20 items-center gap-3"
               >
-                <Award className="w-6 h-6 text-white shrink-0" />
+                <HeartHandshake className="w-6 h-6 text-white shrink-0" />
                 <div className="text-left">
-                  <div className="text-[10px] uppercase font-bold tracking-wider text-white/90">Ethically Handcrafted</div>
-                  <div className="text-xs font-bold text-white">Master Artisanal Standard</div>
+                  <div className="text-[10px] uppercase font-bold tracking-wider text-white/90">Direct From Workshop</div>
+                  <div className="text-xs font-bold text-white">Affordable Heirloom Luxury</div>
                 </div>
               </motion.div>
             </motion.div>
 
-            {/* Right: Founder's Story, Vision & Manifesto */}
+            {/* Right: The Specialization Story & Vision */}
             <div className="lg:col-span-7 space-y-6 lg:pl-4">
               
               <div className="space-y-3">
                 <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/10 border border-white/15 text-xs font-bold uppercase tracking-widest text-[#869e32]">
                   <Sparkles className="w-3.5 h-3.5" />
-                  <span>The Visionary Monograph</span>
+                  <span>Why Dining Tables?</span>
                 </div>
 
                 <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-white leading-tight">
-                  &ldquo;The Dining Table is the Hearth, <br />
-                  <span className="italic text-[#869e32]">Where Families Truly Gather.&rdquo;</span>
+                  &ldquo;The Dining Table is the Heart, <br />
+                  <span className="italic text-[#869e32]">Where Life and Memories Unfold.&rdquo;</span>
                 </h2>
               </div>
 
               <p className="text-stone-300 text-sm sm:text-base font-sans leading-relaxed">
-                When Icon Furniture was founded, our mission was simple: to focus 100% on making the best luxury dining tables—the centerpiece of your home where family gatherings, meals, and memories happen.
+                Most furniture brands try to build everything—sofas, beds, cabinets, and decor. At Icon Furniture, we chose the opposite path: we pour all of our energy, creativity, and craftsmanship into **mastering the dining table**.
               </p>
 
               <p className="text-stone-300 text-sm sm:text-base font-sans leading-relaxed">
-                Every dining table made in our workshop is crafted from solid natural woods and natural stone with safe, durable finishes designed to last for generations.
+                We believe everyone deserves a dining table that is durable, stylish, and timeless—without having to pay inflated retail prices. By building directly in our workshop, we deliver solid wood and epoxy tables that last generations at prices that make sense for real families.
               </p>
 
-              {/* Founder's 3 Core Commitments */}
+              {/* 3 Core Specialization Pillars */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 pt-2">
                 <div className="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-1.5 hover:border-[#869e32]/60 transition-colors">
-                  <div className="text-xs font-bold text-[#869e32] font-mono">01. Precision</div>
-                  <div className="font-serif text-sm font-semibold text-white">Sub-Millimeter Joinery</div>
-                  <div className="text-[11px] text-stone-400 font-sans">Mortise-and-tenon table joinery engineered for generational structural stability.</div>
+                  <div className="text-xs font-bold text-[#869e32] font-mono">01. Focused Craft</div>
+                  <div className="font-serif text-sm font-semibold text-white">100% Dining Tables</div>
+                  <div className="text-[11px] text-stone-400 font-sans">Every joinery angle, edge chamfer, and leg clearance is optimized for dining comfort.</div>
                 </div>
 
                 <div className="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-1.5 hover:border-[#869e32]/60 transition-colors">
-                  <div className="text-xs font-bold text-[#869e32] font-mono">02. Purity</div>
-                  <div className="font-serif text-sm font-semibold text-white">100% Solid Hardwood</div>
-                  <div className="text-[11px] text-stone-400 font-sans">Certified renewable timber slabs finished with stain- & heat-resilient wax.</div>
+                  <div className="text-xs font-bold text-[#869e32] font-mono">02. Solid Quality</div>
+                  <div className="font-serif text-sm font-semibold text-white">Real Wood & Epoxy</div>
+                  <div className="text-[11px] text-stone-400 font-sans">Kiln-dried hardwoods and food-safe resin finishes built to resist scratches and heat.</div>
                 </div>
 
                 <div className="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-1.5 hover:border-[#869e32]/60 transition-colors">
-                  <div className="text-xs font-bold text-[#869e32] font-mono">03. Customization</div>
-                  <div className="font-serif text-sm font-semibold text-white">Bespoke Dimensions</div>
-                  <div className="text-[11px] text-stone-400 font-sans">6 to 18 seater lengths, custom timber species, and edge chamfers.</div>
+                  <div className="text-xs font-bold text-[#869e32] font-mono">03. Real Value</div>
+                  <div className="font-serif text-sm font-semibold text-white">Honest Pricing</div>
+                  <div className="text-[11px] text-stone-400 font-sans">Direct from the workshop floor to your dining room with zero retail markups.</div>
                 </div>
               </div>
 
-              {/* Founder Signature & Contact Link */}
+              {/* Action Link Strip */}
               <div className="pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-4">
                 <div className="space-y-0.5">
-                  <div className="font-serif font-bold text-lg text-white">Icon Furniture Founder & Atelier</div>
-                  <div className="text-xs text-stone-400 font-sans">Addis Ababa, Ethiopia • Available via Telegram & Direct Concierge</div>
+                  <div className="font-serif font-bold text-lg text-white">Icon Furniture Workshop Guild</div>
+                  <div className="text-xs text-stone-400 font-sans">Bole Bulbula, Addis Ababa • Direct Orders & Custom Commissions</div>
                 </div>
 
                 <Link
-                  href="/contact"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#869e32] hover:bg-[#0e3802] text-white font-bold text-xs uppercase tracking-widest transition-all shadow-md hover:shadow-xl hover:scale-102"
+                  href="/shop"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#869e32] hover:bg-[#738827] text-white font-bold text-xs uppercase tracking-widest transition-all shadow-md hover:shadow-xl hover:scale-102"
                 >
-                  <span>Private Consultation</span>
+                  <span>View Dining Collection</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
@@ -311,7 +310,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ─── 3. Editorial Dual-Image & Manifesto Story ────────────── */}
+      {/* ─── 3. Design Philosophy & Gallery Showcase ─────────────── */}
       <section className="py-16 sm:py-24 border-y border-stone-200/70 bg-[#f7f6f0]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
@@ -326,13 +325,13 @@ export default function AboutPage() {
                 className="relative aspect-3/4 rounded-3xl overflow-hidden shadow-xl bg-stone-200 border border-stone-200/60 group"
               >
                 <IconImage
-                  src="/collections/if011.jpg"
+                  src="/collections/if018.jpg"
                   alt="Solid Wood Dining Table Craftsmanship"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
-                  <span className="text-white text-xs font-serif italic">Handcrafted solid wood joinery</span>
+                  <span className="text-white text-xs font-serif italic">Handcrafted solid natural timber</span>
                 </div>
               </motion.div>
 
@@ -345,12 +344,12 @@ export default function AboutPage() {
               >
                 <IconImage
                   src="/collections/if035.jpg"
-                  alt="Architectural Material Details"
+                  alt="Epoxy & Wood River Table Details"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
-                  <span className="text-white text-xs font-serif italic">Honed Roman travertine</span>
+                  <span className="text-white text-xs font-serif italic">Seamless crystal-clear resin epoxy</span>
                 </div>
               </motion.div>
             </div>
@@ -358,30 +357,30 @@ export default function AboutPage() {
             {/* Right: Narrative & Manifesto */}
             <div className="lg:col-span-6 space-y-6 lg:pl-4">
               <span className="text-xs uppercase tracking-widest font-bold text-[#869e32]">
-                Our Architectural Philosophy
+                Timeless Modern Design
               </span>
 
               <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-[#1A1A1A] leading-tight">
-                Where Pure Architectural Form Meets Tactile Warmth.
+                New, Elegant Designs Built For Real Everyday Family Living.
               </h2>
 
               <p className="text-stone-600 text-sm sm:text-base leading-relaxed font-sans">
-                Every piece in our catalog is engineered like a micro-architectural pavilion. We look at the interplay of gravity, proportion, and shadow before selecting the wood grain that completes its narrative.
+                We believe great design shouldn&apos;t be delicate or out of reach. Our tables are designed to look breathtaking on day one, and grow even more charming after thousands of shared family breakfasts, dinner parties, and late-night talks.
               </p>
 
               <p className="text-stone-600 text-sm sm:text-base leading-relaxed font-sans">
-                We believe that true luxury is tactile. It is felt when resting your palm against the hand-sculpted curve of an armrest, or running your fingers over the cool, natural veining of unpolished travertine stone.
+                By combining solid hardwoods, epoxy resin rivers, and modern geometric leg profiles, we craft timeless tables that elevate any dining space without ever going out of style.
               </p>
 
               {/* Editorial Quote Card */}
               <div className="p-6 rounded-2xl bg-white border border-stone-200/80 shadow-xs space-y-3 relative overflow-hidden">
                 <div className="w-1.5 h-full bg-[#869e32] absolute left-0 top-0" />
                 <p className="font-serif italic text-stone-800 text-sm sm:text-base leading-relaxed">
-                  &ldquo;We don&apos;t design objects to merely occupy space. We sculpt permanent heirlooms that anchor moments of restful pause and human connection.&rdquo;
+                  &ldquo;A great dining table doesn&apos;t just fill a room — it creates a welcoming reason for families to sit together, connect, and celebrate life.&rdquo;
                 </p>
                 <div className="flex items-center justify-between text-xs text-[#869e32] font-bold uppercase tracking-wider pt-2 border-t border-stone-100">
-                  <span>Icon Furniture Atelier</span>
-                  <span className="text-stone-400 font-sans font-medium">Head of Design Guild</span>
+                  <span>Icon Furniture Workshop</span>
+                  <span className="text-stone-400 font-sans font-medium">Addis Ababa Atelier</span>
                 </div>
               </div>
             </div>
@@ -389,17 +388,17 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ─── 4. Four Core Pillars ─────────────────────────────────── */}
+      {/* ─── 4. Four Core Pillars of Icon Dining Tables ───────────── */}
       <section className="py-20 sm:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
         <div className="text-center max-w-3xl mx-auto space-y-4">
           <span className="text-xs uppercase tracking-widest font-bold text-[#869e32]">
-            Uncompromising Standards
+            Our Uncompromising Standard
           </span>
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-[#1A1A1A]">
-            The Four Tenets of Icon Craft
+            The 4 Pillars of Icon Dining Tables
           </h2>
           <p className="text-stone-600 text-sm sm:text-base font-sans max-w-xl mx-auto leading-relaxed">
-            Four guiding principles that govern every sketch, joint, fabric swatch, and bespoke commission we accept.
+            Every table we design and build follows four core principles: ergonomic comfort, authentic materials, honest pricing, and daily durability.
           </p>
         </div>
 
@@ -450,13 +449,13 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
           <div className="max-w-3xl space-y-4">
             <span className="text-xs uppercase tracking-widest font-bold text-[#869e32]">
-              The Atelier Process
+              The Production Process
             </span>
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-white">
-              From Raw Timber Slab to Living Heirloom
+              From Raw Timber to Your Family Dining Room
             </h2>
             <p className="text-stone-400 text-sm sm:text-base font-sans leading-relaxed">
-              Every curve is shaped by hand. Every mortise joint is measured to sub-millimeter tolerances. Take a look inside our meticulous four-phase production lifecycle.
+              Every table is hand-shaped, sanded, and finished inside our local workshop. Take a look at how we build dining tables designed to last for generations.
             </p>
           </div>
 
@@ -497,7 +496,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ─── 6. Atelier Key Metrics ───────────────────────────────── */}
+      {/* ─── 6. Key Metrics ───────────────────────────────────────── */}
       <section className="py-16 sm:py-24 bg-[#F2EDE4] border-y border-stone-300/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center divide-y sm:divide-y-0 sm:divide-x divide-stone-300/80">
@@ -522,7 +521,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ─── 7. Direct Concierge Channels & Final CTA ─────────────── */}
+      {/* ─── 7. Direct Channels & Final CTA ───────────────────────── */}
       <section className="py-20 sm:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative rounded-3xl p-8 sm:p-14 bg-gradient-to-br from-[#1A1A1A] via-[#222222] to-[#141414] text-white border border-white/10 shadow-2xl overflow-hidden">
           
@@ -533,13 +532,13 @@ export default function AboutPage() {
             
             <div className="lg:col-span-8 space-y-4">
               <span className="text-xs uppercase tracking-widest font-bold text-[#869e32]">
-                Talk to Our Team
+                Talk Directly With Our Workshop
               </span>
               <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal leading-tight">
-                Ready to Order Your Custom Dining Table?
+                Find Your Family&apos;s Forever Dining Table
               </h2>
               <p className="text-stone-300 text-sm sm:text-base font-sans leading-relaxed max-w-2xl">
-                Whether you need a dining table for your home or a large custom table for a special project, our team is ready to assist you directly by phone, Telegram, or message.
+                Whether you want to pick from our ready dining table collections or custom-order a table built to your exact room dimensions, our workshop team is here to help you directly by phone, Telegram, or message.
               </p>
 
               {/* Instant Social Channels Strip */}
@@ -594,15 +593,15 @@ export default function AboutPage() {
             <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3 justify-end">
               <Link
                 href="/shop"
-                className="w-full text-center px-6 py-4 rounded-2xl bg-[#869e32] hover:bg-[#0e3802] text-white font-bold text-xs uppercase tracking-widest transition-all shadow-lg"
+                className="w-full text-center px-6 py-4 rounded-2xl bg-[#869e32] hover:bg-[#738827] text-white font-bold text-xs uppercase tracking-widest transition-all shadow-lg"
               >
-                Browse Living Collection →
+                Browse Dining Tables →
               </Link>
               <Link
                 href="/contact"
                 className="w-full text-center px-6 py-4 rounded-2xl bg-white/10 hover:bg-white/15 border border-white/20 text-white font-semibold text-xs uppercase tracking-widest transition-all"
               >
-                Inquire With Atelier
+                Request Custom Quote
               </Link>
             </div>
           </div>

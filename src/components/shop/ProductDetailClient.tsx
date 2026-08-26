@@ -16,8 +16,6 @@ interface ProductDetailClientProps {
   relatedProducts: Product[];
 }
 
-const FINISHES = ['Natural Solid White Oak', 'Kiln-Dried American Walnut', 'Smoked Black Ash', 'Custom Heritage Stain'];
-
 export default function ProductDetailClient({
   product: initialProduct,
   relatedProducts: initialRelated,
@@ -44,9 +42,7 @@ export default function ProductDetailClient({
     return initialRelated;
   }, [products, product, initialRelated]);
 
-  const [selectedFinish, setSelectedFinish] = useState(FINISHES[0]);
   const [inquirySent, setInquirySent] = useState(false);
-  const [activeTab, setActiveTab] = useState<'specs' | 'shipping' | 'care'>('specs');
 
   const handleInquire = () => {
     setInquirySent(true);
@@ -104,30 +100,104 @@ export default function ProductDetailClient({
               </p>
             </div>
 
-            <p className="text-stone-600 text-sm leading-relaxed font-sans border-t border-b border-stone-200/80 py-4">
-              {product.description}
-            </p>
+            {/* Product Description */}
+            <div className="space-y-4 border-t border-b border-stone-200/80 py-5">
+              <p className="text-stone-600 text-sm leading-relaxed font-sans">
+                {product.description}
+              </p>
 
-            {/* Finish Options */}
-            <div className="space-y-3">
-              <label className="text-xs uppercase tracking-wider font-semibold text-[#1A1A1A] block">
-                Select Hardwood / Finish: <span className="text-[#869e32]">{selectedFinish}</span>
-              </label>
-              <div className="grid grid-cols-2 gap-2">
-                {FINISHES.map((finish) => (
-                  <button
-                    key={finish}
-                    onClick={() => setSelectedFinish(finish)}
-                    className={`p-3 text-xs font-medium rounded-2xl border text-left transition-all cursor-pointer ${
-                      selectedFinish === finish
-                        ? 'border-[#869e32] bg-[#869e32]/10 text-[#1A1A1A] font-semibold'
-                        : 'border-stone-200 bg-white text-stone-700 hover:bg-stone-50'
-                    }`}
-                  >
-                    {finish}
-                  </button>
-                ))}
+              {/* ─── High-End Luxury Materials Showcase Plinth ─── */}
+              <div className="bg-stone-50/80 rounded-2xl p-4 border border-stone-200/90 space-y-3.5">
+                <div className="flex items-center justify-between">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-[#869e32]">
+                    Master Artisanal Specifications
+                  </span>
+                  <span className="text-[10px] font-mono text-stone-500 bg-white px-2 py-0.5 rounded-full border border-stone-200/70">
+                    Premium Standard
+                  </span>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {/* Maleda Foam Luxury Card with Authentic Logo */}
+                  <div className="bg-white p-3.5 rounded-xl border border-stone-200/80 shadow-2xs flex items-center gap-3.5 group hover:border-[#869e32]/40 transition-colors">
+                    <div className="w-13 h-13 rounded-xl bg-[#041f76] border border-[#062991]/50 p-1.5 flex items-center justify-center shrink-0 shadow-xs overflow-hidden">
+                      <Image
+                        src="/assets/maleda-foam-logo.svg"
+                        alt="Maleda Super HD Foam"
+                        width={44}
+                        height={44}
+                        className="w-full h-full object-contain drop-shadow-xs"
+                      />
+                    </div>
+                    <div>
+                      <div className="text-xs font-bold text-[#1A1A1A]">
+                        Maleda Super HD Foam
+                      </div>
+                      <div className="text-[11px] text-stone-500 font-sans">
+                        High-density orthopedic resilience & shape memory
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Imported & Waterproof Fabric Card */}
+                  <div className="bg-white p-3 rounded-xl border border-stone-200/80 shadow-2xs flex items-center gap-3 group hover:border-[#869e32]/40 transition-colors">
+                    <div className="w-12 h-12 rounded-lg bg-[#869e32]/10 border border-[#869e32]/20 flex items-center justify-center shrink-0 text-[#869e32]">
+                      <ShieldCheck className="w-6 h-6 stroke-[1.8]" />
+                    </div>
+                    <div>
+                      <div className="text-xs font-bold text-[#1A1A1A]">
+                        Imported Water-Proof Fabric
+                      </div>
+                      <div className="text-[11px] text-stone-500 font-sans">
+                        Hydrophobic spill-resistant luxury weave
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
+
+              {/* ─── Free Delivery Strip to Key Locations ─── */}
+              <div className="rounded-2xl p-4 bg-gradient-to-r from-[#869e32]/10 via-[#869e32]/5 to-white border border-[#869e32]/30 space-y-2.5">
+                <div className="flex items-center justify-between flex-wrap gap-2">
+                  <div className="flex items-center gap-2 text-xs font-bold text-[#1A1A1A]">
+                    <Truck className="w-4 h-4 text-[#869e32]" />
+                    <span>Free Direct Delivery & Assembly</span>
+                  </div>
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-white bg-[#869e32] px-2.5 py-0.5 rounded-full shadow-2xs">
+                    100% Free Shipping
+                  </span>
+                </div>
+
+                <div className="flex flex-wrap items-center gap-2 pt-1">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-stone-200 text-xs font-medium text-stone-800 shadow-2xs">
+                    <span className="w-2 h-2 rounded-full bg-[#869e32]" />
+                    <span>Addis Ababa / አዲስ አበባ</span>
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-stone-200 text-xs font-medium text-stone-800 shadow-2xs">
+                    <span className="w-2 h-2 rounded-full bg-[#869e32]" />
+                    <span>Dukem / ዱከም</span>
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-stone-200 text-xs font-medium text-stone-800 shadow-2xs">
+                    <span className="w-2 h-2 rounded-full bg-[#869e32]" />
+                    <span>Debrezeyit / ደብረዘይት</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Bespoke Table Sizing & Seating Note */}
+            <div className="p-4 rounded-2xl bg-white border border-stone-200/80 shadow-2xs space-y-2">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-bold uppercase tracking-wider text-[#1A1A1A]">
+                  Custom Sizing & Seating
+                </span>
+                <span className="text-[11px] font-semibold text-[#869e32]">
+                  Made To Order
+                </span>
+              </div>
+              <p className="text-xs text-stone-600 font-sans leading-relaxed">
+                Available in custom lengths from intimate 4-seater settings to grand 18-seater banquet scales. Handcrafted to fit your exact dining room dimensions.
+              </p>
             </div>
 
             {/* Consultation / Bespoke Inquiry Action */}
@@ -157,74 +227,12 @@ export default function ProductDetailClient({
               <div className="grid grid-cols-2 gap-4 pt-4 border-t border-stone-200 text-xs text-stone-600">
                 <div className="flex items-center gap-2">
                   <Truck className="w-4 h-4 text-[#869e32]" />
-                  <span>White-Glove Dining Room Setup</span>
+                  <span>Free White-Glove Setup</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <ShieldCheck className="w-4 h-4 text-[#869e32]" />
-                  <span>Generational Table Warranty</span>
+                  <span>We use Maleda HD Foam</span>
                 </div>
-              </div>
-            </div>
-
-            {/* Accordion Tabs */}
-            <div className="border border-stone-200 rounded-2xl bg-white overflow-hidden">
-              <div className="flex border-b border-stone-200">
-                <button
-                  onClick={() => setActiveTab('specs')}
-                  className={`flex-1 py-3 text-xs uppercase tracking-wider font-semibold border-b-2 transition-colors cursor-pointer ${
-                    activeTab === 'specs'
-                      ? 'border-[#869e32] text-[#869e32] bg-[#869e32]/10'
-                      : 'border-transparent text-stone-600 hover:text-[#1A1A1A]'
-                  }`}
-                >
-                  Specifications
-                </button>
-                <button
-                  onClick={() => setActiveTab('shipping')}
-                  className={`flex-1 py-3 text-xs uppercase tracking-wider font-semibold border-b-2 transition-colors cursor-pointer ${
-                    activeTab === 'shipping'
-                      ? 'border-[#869e32] text-[#869e32] bg-[#869e32]/10'
-                      : 'border-transparent text-stone-600 hover:text-[#1A1A1A]'
-                  }`}
-                >
-                  Delivery & Assembly
-                </button>
-                <button
-                  onClick={() => setActiveTab('care')}
-                  className={`flex-1 py-3 text-xs uppercase tracking-wider font-semibold border-b-2 transition-colors cursor-pointer ${
-                    activeTab === 'care'
-                      ? 'border-[#869e32] text-[#869e32] bg-[#869e32]/10'
-                      : 'border-transparent text-stone-600 hover:text-[#1A1A1A]'
-                  }`}
-                >
-                  Care & Maintenance
-                </button>
-              </div>
-
-              <div className="p-5 text-xs text-stone-600 leading-relaxed font-sans">
-                {activeTab === 'specs' && (
-                  <div className="space-y-2">
-                    <p>
-                      <strong className="text-[#1A1A1A]">Dimensions & Seating:</strong> {product.dimensions || 'L 84" x W 38" x H 30" | 8-Seater'}
-                    </p>
-                    <p>
-                      <strong className="text-[#1A1A1A]">Materials:</strong> {product.materials || '100% Solid Kiln-Dried Hardwood'}
-                    </p>
-                    <p>
-                      <strong className="text-[#1A1A1A]">Origin:</strong> Handcrafted in Addis Ababa, Ethiopia
-                    </p>
-                  </div>
-                )}
-                {activeTab === 'shipping' && (
-                  <p>
-                    Includes white-glove dining room delivery, precision leveling, pedestal bolting, and eco-friendly packing material removal.
-                  </p>
-                )}
-                {activeTab === 'care' && (
-                  <p>
-                    Wipe tabletop with a damp cloth and mild natural soap. Heat- and spill-resistant botanical hardwax oil protects against wine and dining spills. Apply organic botanical wax annually.
-                  </p>
-                )}
               </div>
             </div>
           </motion.div>

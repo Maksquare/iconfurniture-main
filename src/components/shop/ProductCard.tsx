@@ -83,6 +83,15 @@ export default function ProductCard({ product, searchTerm, viewMode = 'grid' }: 
             <p className="text-xs text-stone-500 leading-relaxed font-sans line-clamp-2">
               <HighlightText text={product.description || ''} term={searchTerm} />
             </p>
+            <div className="flex flex-wrap gap-1.5 pt-1">
+              <span className="inline-flex items-center gap-1 text-[10px] font-medium text-stone-600 bg-stone-100 px-2 py-0.5 rounded-md border border-stone-200/60">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#869e32]" />
+                <span>Maleda HD Foam & Water-Proof Fabric</span>
+              </span>
+              <span className="inline-flex items-center gap-1 text-[10px] font-semibold text-[#869e32] bg-[#869e32]/10 px-2 py-0.5 rounded-md">
+                <span>Free Delivery: Addis Ababa • Dukem • Debrezeyit</span>
+              </span>
+            </div>
             {product.materials && (
               <p className="text-[10px] text-stone-400 font-sans pt-0.5">
                 Materials: <HighlightText text={product.materials} term={searchTerm} />
@@ -159,6 +168,17 @@ export default function ProductCard({ product, searchTerm, viewMode = 'grid' }: 
           <p className="text-xs text-stone-500 line-clamp-2 mt-1.5 leading-relaxed font-sans">
             <HighlightText text={product.description || ''} term={searchTerm} />
           </p>
+
+          {/* Luxury Specification & Delivery Badges */}
+          <div className="mt-2.5 flex flex-wrap gap-1.5">
+            <span className="inline-flex items-center gap-1 text-[10px] font-medium text-stone-600 bg-stone-100 px-2 py-0.5 rounded-md border border-stone-200/60">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#869e32]" />
+              <span>Maleda HD Foam & Water-Proof Fabric</span>
+            </span>
+            <span className="inline-flex items-center gap-1 text-[10px] font-semibold text-[#869e32] bg-[#869e32]/10 px-2 py-0.5 rounded-md">
+              <span>Free Delivery: Addis • Dukem • Debrezeyit</span>
+            </span>
+          </div>
         </div>
       </div>
 

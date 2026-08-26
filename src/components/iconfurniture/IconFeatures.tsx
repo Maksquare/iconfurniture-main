@@ -31,12 +31,12 @@ const features: FeatureItem[] = [
     tag: 'Solid Hardwood',
   },
   {
-    id: 'stonework',
+    id: 'epoxy-wood',
     icon: Layers,
-    title: 'Stone & Marble Tops',
+    title: 'Epoxy and Wood',
     description:
-      'Honed travertine, Nero Marquina, and book-matched marble slabs transform each dining surface into an architectural statement piece.',
-    tag: 'Natural Stone',
+      'Solid natural wood paired with crystal-clear epoxy resin to create durable, beautifully unique dining tables.',
+    tag: 'Epoxy & Wood',
   },
   {
     id: 'seating',

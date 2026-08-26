@@ -48,7 +48,7 @@ export default function IconHero({
       : 1;
 
   return (
-    <div className="relative w-full min-h-screen flex flex-col justify-between pt-28 pb-12 px-6 sm:px-10 max-w-7xl mx-auto select-none">
+    <div className="relative w-full min-h-[100dvh] flex flex-col justify-between pt-24 sm:pt-28 pb-32 sm:pb-12 px-5 sm:px-10 max-w-7xl mx-auto select-none">
       {/* Background Organic Topographic Design Lines */}
       <div className="absolute inset-0 pointer-events-none opacity-30 overflow-hidden -z-10">
         <svg
@@ -82,14 +82,14 @@ export default function IconHero({
 
       {/* ─── Giant Brand Logo Behind 3D Furniture (Smoothly shrinks and docks into navbar on scroll) ─── */}
       <div
-        className="w-full flex flex-col items-center justify-center text-center relative z-0 mt-2 sm:mt-6 pointer-events-none will-change-transform origin-top"
+        className="w-full flex flex-col items-center justify-center text-center relative z-0 mt-1 sm:mt-6 pointer-events-none will-change-transform origin-top"
         style={{
           transform: `translateY(${logoTranslateY}px) scale(${logoScale})`,
           opacity: logoOpacity,
           transition: 'transform 0.08s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.12s ease-out',
         }}
       >
-        <div className="relative w-[88vw] max-w-[820px] aspect-[3.2/1] flex items-center justify-center">
+        <div className="relative w-[86vw] max-w-[820px] aspect-[3.2/1] flex items-center justify-center">
           <Image
             src="/assets/iconfurniture-logo.png"
             alt="Icon Furniture"
@@ -100,13 +100,13 @@ export default function IconHero({
         </div>
       </div>
 
-      {/* Middle & Lower Hero Content (Framed around center 3D luxury centerpiece) */}
-      <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 items-end relative z-10 mt-auto pt-16 sm:pt-24">
-        {/* Left Column: Client Heritage & Architectural Tagline */}
-        <div className="flex flex-col gap-5 max-w-md pointer-events-auto">
-          {/* Avatar Cluster + 15k+ Counter */}
-          <div className="flex items-center gap-3.5 bg-white/85 backdrop-blur-md px-4 py-2.5 rounded-2xl border border-stone-200/70 shadow-xs w-fit">
-            <div className="flex -space-x-2.5 overflow-hidden">
+      {/* ─── Middle & Lower Hero Content (Framed around center 3D luxury centerpiece) ─── */}
+      <div className="w-full flex flex-col md:grid md:grid-cols-2 gap-5 sm:gap-8 items-center md:items-end relative z-20 mt-auto pt-8 sm:pt-24">
+        {/* Left Column / Mobile Top: Client Heritage & Architectural Tagline */}
+        <div className="flex flex-col items-center md:items-start gap-4 sm:gap-5 max-w-md w-full pointer-events-auto text-center md:text-left">
+          {/* Avatar Cluster + 15k+ Counter Pill */}
+          <div className="flex items-center gap-3.5 bg-white/90 backdrop-blur-xl px-4 py-2.5 rounded-2xl border border-stone-200/80 shadow-[0_10px_25px_-5px_rgba(0,0,0,0.06)] hover:shadow-[0_12px_30px_-5px_rgba(134,158,50,0.15)] transition-all duration-300">
+            <div className="flex -space-x-2.5 overflow-hidden shrink-0">
               <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full ring-2 ring-white bg-[#869e32] text-white flex items-center justify-center text-xs font-bold shadow-xs">
                 MK
               </div>
@@ -117,11 +117,14 @@ export default function IconHero({
                 SR
               </div>
             </div>
-            <div>
-              <div className="font-extrabold text-[#1A1A1A] text-base sm:text-lg leading-tight tracking-tight flex items-center gap-1.5">
-                <span>15k+</span>
+            <div className="text-left">
+              <div className="font-extrabold text-[#1A1A1A] text-sm sm:text-base leading-tight tracking-tight flex items-center gap-1.5">
+                <span>21k+</span>
                 <span className="flex text-[#869e32] text-xs">
                   <Star className="w-3.5 h-3.5 fill-[#869e32]" />
+                </span>
+                <span className="text-[10px] font-semibold uppercase tracking-wider text-[#869e32] bg-[#869e32]/10 px-1.5 py-0.5 rounded-full">
+                  Verified
                 </span>
               </div>
               <div className="text-[11px] sm:text-[11.5px] font-medium text-stone-500 tracking-tight">
@@ -130,7 +133,7 @@ export default function IconHero({
             </div>
           </div>
 
-          {/* Tagline - Simple, clear dining table statement */}
+          {/* Tagline - Desktop Full Statement */}
           <div className="relative hidden md:block">
             <p className="text-[#1A1A1A] font-serif font-normal text-xl sm:text-[23px] leading-snug tracking-tight">
               Handmade luxury dining tables crafted from solid wood and natural marble stone. Built strong to last for generations in your home.
@@ -142,16 +145,16 @@ export default function IconHero({
           </div>
         </div>
 
-        {/* Right Column: Metadata Index Markers & Glowing CTA Button */}
-        <div className="flex flex-col items-start md:items-end justify-between gap-6 sm:gap-10 pointer-events-auto">
+        {/* Right Column / Mobile Bottom: Metadata Index Markers & Glowing CTA Button */}
+        <div className="flex flex-col items-center md:items-end justify-between gap-4 sm:gap-8 w-full md:w-auto pointer-events-auto">
           {/* Metadata Index List - Hidden on mobile */}
-          <div className="hidden md:flex flex-col items-start md:items-end gap-1.5 text-stone-500 font-medium text-sm tracking-tight">
+          <div className="hidden md:flex flex-col items-end gap-1.5 text-stone-500 font-medium text-sm tracking-tight">
             <div className="flex items-center gap-2 hover:text-[#1A1A1A] transition-colors">
               <span className="text-[#1A1A1A] font-medium">Handcrafted Solid Wood</span>
               <span className="text-[#869e32] font-mono text-xs font-semibold">/01</span>
             </div>
             <div className="flex items-center gap-2 hover:text-[#1A1A1A] transition-colors">
-              <span className="text-[#1A1A1A] font-medium">Natural Marble & Stone</span>
+              <span className="text-[#1A1A1A] font-medium">Epoxy & Solid Wood</span>
               <span className="text-[#869e32] font-mono text-xs font-semibold">/02</span>
             </div>
             <div className="flex items-center gap-2 hover:text-[#1A1A1A] transition-colors">
@@ -163,16 +166,13 @@ export default function IconHero({
           {/* Glowing Brand Primary Luxury Pill CTA Button */}
           <Link
             href="/shop"
-            className="group relative inline-flex items-center gap-3 px-6 py-3.5 rounded-full bg-[#869e32] hover:bg-[#0e3802] text-white font-bold text-sm sm:text-base tracking-tight shadow-[0_4px_24px_rgba(18, 73, 3,0.5)] hover:shadow-[0_6px_32px_rgba(18, 73, 3,0.7)] hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer"
+            className="group relative w-full sm:w-auto max-w-[320px] sm:max-w-none inline-flex items-center justify-center gap-3.5 px-7 py-3.5 sm:py-4 rounded-full bg-[#869e32] hover:bg-[#738827] text-white font-bold text-sm sm:text-base tracking-wide shadow-[0_8px_28px_rgba(134,158,50,0.38)] hover:shadow-[0_12px_36px_rgba(134,158,50,0.52)] hover:scale-[1.02] active:scale-[0.97] transition-all duration-300 cursor-pointer ring-4 ring-[#869e32]/20"
           >
-            {/* Arrow Icon */}
-            <span className="w-6 h-6 rounded-full bg-[#1A1A1A] text-white flex items-center justify-center transition-transform duration-300 group-hover:translate-x-0.5 group-hover:scale-110">
+            {/* Arrow Icon in Onyx Disc */}
+            <span className="w-7 h-7 rounded-full bg-[#1A1A1A] text-white flex items-center justify-center shadow-xs transition-transform duration-300 group-hover:translate-x-1 shrink-0">
               <ArrowRight className="w-3.5 h-3.5 stroke-[2.5]" />
             </span>
-            <span>View Dining Tables</span>
-
-            {/* Pulsing aura */}
-            <span className="absolute -inset-1 rounded-full bg-[#869e32]/40 animate-ping pointer-events-none -z-10 opacity-75" />
+            <span className="truncate">View Dining Tables</span>
           </Link>
         </div>
       </div>

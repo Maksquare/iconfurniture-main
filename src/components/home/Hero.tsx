@@ -51,7 +51,7 @@ export default function Hero() {
                 </div>
               </div>
               <div>
-                <p className="font-serif text-lg font-bold text-[#1A1A1A] leading-tight">15k+ Homes</p>
+                <p className="font-serif text-lg font-bold text-[#1A1A1A] leading-tight">21k+ Homes</p>
                 <p className="text-[11px] text-stone-500 font-sans">Dining tables crafted for families across Addis Ababa</p>
               </div>
             </motion.div>

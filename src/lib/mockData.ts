@@ -10,318 +10,543 @@ export const MOCK_CATEGORIES: Category[] = [
 
 export const MOCK_PRODUCTS: Product[] = [
   {
-    id: 'p1',
-    name: 'Kanso Organic Walnut Dining Table',
-    slug: 'kanso-organic-walnut-dining-table',
-    description:
-      'Mastercrafted from sustainably sourced solid American Walnut. The Kanso dining centerpiece highlights continuous timber grain movement, softened organic bevel edges, and precision mortise-and-tenon joinery.',
-    price: 185000,
-    category_id: 'c1',
-    category: { id: 'c1', name: 'Solid Hardwood Tables', slug: 'solid-hardwood' },
-    image_url: '/collections/if001.jpg',
-    gallery: [
-      { label: 'Full Table Silhouette', url: '/collections/if001.jpg' },
-      { label: 'Tapered Leg & Tenon Joint', url: '/collections/if002.jpg' },
-      { label: 'Solid Timber Surface Macro', url: '/collections/if003.jpg' },
-      { label: 'Dining Pavilion Ambience', url: '/collections/if004.jpg' },
+    "id": "p1",
+    "name": "Kanso Organic Walnut Dining Table",
+    "slug": "kanso-organic-walnut-dining-table",
+    "description": "Mastercrafted from sustainably sourced solid American Walnut. The Kanso dining centerpiece highlights continuous timber grain movement, softened organic bevel edges, and precision mortise-and-tenon joinery. Crafted with imported fabric, 100% water-proof fabric protection, and certified Maleda Super HD foam. Free white-glove delivery to Addis Ababa (አዲስ አበባ), Dukem (ዱከም), and Debrezeyit (ደብረዘይት).",
+    "price": 185000,
+    "category_id": "c1",
+    "category": {
+      "id": "c1",
+      "name": "Solid Hardwood Tables",
+      "slug": "solid-hardwood"
+    },
+    "image_url": "/collections/if001.jpg",
+    "gallery": [
+      {
+        "label": "Full Table Silhouette",
+        "url": "/collections/if001.jpg"
+      },
+      {
+        "label": "Tapered Leg & Tenon Joint",
+        "url": "/collections/if002.jpg"
+      },
+      {
+        "label": "Solid Timber Surface Macro",
+        "url": "/collections/if003.jpg"
+      },
+      {
+        "label": "Dining Pavilion Ambience",
+        "url": "/collections/if004.jpg"
+      }
     ],
-    in_stock: true,
-    featured: true,
-    dimensions: 'L 84" x W 38" x H 30" | 8-Seater Capacity',
-    materials: '100% Solid Kiln-Dried American Walnut, Hand-Rubbed Botanical Hardwax Oil',
+    "in_stock": true,
+    "featured": true,
+    "dimensions": "L 84\" x W 38\" x H 30\" | 8-Seater Capacity",
+    "materials": "100% Solid Kiln-Dried American Walnut, Hand-Rubbed Botanical Hardwax Oil, Imported Water-Proof Fabric, Maleda Super HD Foam"
   },
   {
-    id: 'p2',
-    name: 'Pavilion Round Gathering Dining Table',
-    slug: 'pavilion-round-gathering-dining-table',
-    description:
-      'An intimate circular dining table designed to inspire continuous conversation. Features a radial sunburst timber layout atop an architectural fluted conical pedestal base.',
-    price: 165000,
-    category_id: 'c3',
-    category: { id: 'c3', name: 'Round & Gathering Tables', slug: 'round-gathering' },
-    image_url: '/collections/if005.jpg',
-    gallery: [
-      { label: 'Radial Sunburst Top', url: '/collections/if005.jpg' },
-      { label: 'Fluted Pedestal Column', url: '/collections/if006.jpg' },
-      { label: 'Profile Edge Detail', url: '/collections/if007.jpg' },
-      { label: 'Salon Dining Experience', url: '/collections/if008.jpg' },
+    "id": "p2",
+    "name": "Pavilion Round Gathering Dining Table",
+    "slug": "pavilion-round-gathering-dining-table",
+    "description": "An intimate circular dining table designed to inspire continuous conversation. Features a radial sunburst timber layout atop an architectural fluted conical pedestal base. Crafted with imported fabric, 100% water-proof fabric protection, and certified Maleda Super HD foam. Free white-glove delivery to Addis Ababa (አዲስ አበባ), Dukem (ዱከም), and Debrezeyit (ደብረዘይት).",
+    "price": 165000,
+    "category_id": "c3",
+    "category": {
+      "id": "c3",
+      "name": "Round & Gathering Tables",
+      "slug": "round-gathering"
+    },
+    "image_url": "/collections/if005.jpg",
+    "gallery": [
+      {
+        "label": "Radial Sunburst Top",
+        "url": "/collections/if005.jpg"
+      },
+      {
+        "label": "Fluted Pedestal Column",
+        "url": "/collections/if006.jpg"
+      },
+      {
+        "label": "Profile Edge Detail",
+        "url": "/collections/if007.jpg"
+      },
+      {
+        "label": "Salon Dining Experience",
+        "url": "/collections/if008.jpg"
+      }
     ],
-    in_stock: true,
-    featured: true,
-    dimensions: 'Dia 60" x H 30" | 6–8 Seater Capacity',
-    materials: 'Solid White Oak, Precision Turned Timber Core, Spill-Resilient Matte Finish',
+    "in_stock": true,
+    "featured": true,
+    "dimensions": "Dia 60\" x H 30\" | 6–8 Seater Capacity",
+    "materials": "Solid White Oak, Precision Turned Timber Core, Spill-Resilient Matte Finish, Imported Water-Proof Fabric, Maleda Super HD Foam"
   },
   {
-    id: 'p3',
-    name: 'Lumina Travertine & Smoked Oak Dining Table',
-    slug: 'lumina-travertine-smoked-oak-dining-table',
-    description:
-      'Monumental dining architecture blending a hand-honed porous Italian Travertine stone tabletop with heavy smoked solid oak trestle supports and brushed brass accents.',
-    price: 245000,
-    category_id: 'c2',
-    category: { id: 'c2', name: 'Stone & Marble Tables', slug: 'stone-marble' },
-    image_url: '/collections/if009.jpg',
-    gallery: [
-      { label: 'Honed Travertine Top', url: '/collections/if009.jpg' },
-      { label: 'Smoked Oak Base Joinery', url: '/collections/if010.jpg' },
-      { label: 'Natural Stone Veining', url: '/collections/if011.jpg' },
-      { label: 'Architectural Dining Setting', url: '/collections/if012.jpg' },
+    "id": "p3",
+    "name": "Lumina Travertine & Smoked Oak Dining Table",
+    "slug": "lumina-travertine-smoked-oak-dining-table",
+    "description": "Monumental dining architecture blending a hand-honed porous Italian Travertine stone tabletop with heavy smoked solid oak trestle supports and brushed brass accents. Crafted with imported fabric, 100% water-proof fabric protection, and certified Maleda Super HD foam. Free white-glove delivery to Addis Ababa (አዲስ አበባ), Dukem (ዱከም), and Debrezeyit (ደብረዘይት).",
+    "price": 245000,
+    "category_id": "c2",
+    "category": {
+      "id": "c2",
+      "name": "Stone & Marble Tables",
+      "slug": "stone-marble"
+    },
+    "image_url": "/collections/if009.jpg",
+    "gallery": [
+      {
+        "label": "Honed Travertine Top",
+        "url": "/collections/if009.jpg"
+      },
+      {
+        "label": "Smoked Oak Base Joinery",
+        "url": "/collections/if010.jpg"
+      },
+      {
+        "label": "Natural Stone Veining",
+        "url": "/collections/if011.jpg"
+      },
+      {
+        "label": "Architectural Dining Setting",
+        "url": "/collections/if012.jpg"
+      }
     ],
-    in_stock: true,
-    featured: true,
-    dimensions: 'L 96" x W 42" x H 30" | 8–10 Seater Capacity',
-    materials: 'Honed Roman Travertine, Solid Smoked Oak, Solid Brass Stabilizers',
+    "in_stock": true,
+    "featured": true,
+    "dimensions": "L 96\" x W 42\" x H 30\" | 8–10 Seater Capacity",
+    "materials": "Honed Roman Travertine, Solid Smoked Oak, Solid Brass Stabilizers, Imported Water-Proof Fabric, Maleda Super HD Foam"
   },
   {
-    id: 'p4',
-    name: 'Solstice Minimalist Trestle Dining Table',
-    slug: 'solstice-minimalist-trestle-dining-table',
-    description:
-      'Refined Nordic clarity. Dual sculpted trestle legs united by an exposed through-tenon structural beam, supporting a monolithic floating tabletop with aerofoil chamfered edges.',
-    price: 175000,
-    category_id: 'c1',
-    category: { id: 'c1', name: 'Solid Hardwood Tables', slug: 'solid-hardwood' },
-    image_url: '/collections/if013.jpg',
-    gallery: [
-      { label: 'Trestle Perspective', url: '/collections/if013.jpg' },
-      { label: 'Through-Tenon Joint', url: '/collections/if014.jpg' },
-      { label: 'Surface Grain & Edge', url: '/collections/if015.jpg' },
-      { label: 'Minimalist Dining Vignette', url: '/collections/if016.jpg' },
+    "id": "p4",
+    "name": "Solstice Minimalist Trestle Dining Table",
+    "slug": "solstice-minimalist-trestle-dining-table",
+    "description": "Refined Nordic clarity. Dual sculpted trestle legs united by an exposed through-tenon structural beam, supporting a monolithic floating tabletop with aerofoil chamfered edges. Crafted with imported fabric, 100% water-proof fabric protection, and certified Maleda Super HD foam. Free white-glove delivery to Addis Ababa (አዲስ አበባ), Dukem (ዱከም), and Debrezeyit (ደብረዘይት).",
+    "price": 175000,
+    "category_id": "c1",
+    "category": {
+      "id": "c1",
+      "name": "Solid Hardwood Tables",
+      "slug": "solid-hardwood"
+    },
+    "image_url": "/collections/if013.jpg",
+    "gallery": [
+      {
+        "label": "Trestle Perspective",
+        "url": "/collections/if013.jpg"
+      },
+      {
+        "label": "Through-Tenon Joint",
+        "url": "/collections/if014.jpg"
+      },
+      {
+        "label": "Surface Grain & Edge",
+        "url": "/collections/if015.jpg"
+      },
+      {
+        "label": "Minimalist Dining Vignette",
+        "url": "/collections/if016.jpg"
+      }
     ],
-    in_stock: true,
-    featured: true,
-    dimensions: 'L 90" x W 39" x H 30" | 8–10 Seater Capacity',
-    materials: 'Solid Hard White Ash, Natural Plant Oil Emulsion Finish',
+    "in_stock": true,
+    "featured": true,
+    "dimensions": "L 90\" x W 39\" x H 30\" | 8–10 Seater Capacity",
+    "materials": "Solid Hard White Ash, Natural Plant Oil Emulsion Finish, Imported Water-Proof Fabric, Maleda Super HD Foam"
   },
   {
-    id: 'p5',
-    name: 'Atelier Live-Edge Heritage Dining Table',
-    slug: 'atelier-live-edge-heritage-dining-table',
-    description:
-      'Celebrates the raw organic contours of century-old hardwood slabs. Bookmatched pairs connected with hand-inlaid bronze butterfly tenons, preserving natural bark line topography.',
-    price: 295000,
-    category_id: 'c1',
-    category: { id: 'c1', name: 'Solid Hardwood Tables', slug: 'solid-hardwood' },
-    image_url: '/collections/if017.jpg',
-    gallery: [
-      { label: 'Live Edge Slabs', url: '/collections/if017.jpg' },
-      { label: 'Handmade Bronze Tenons', url: '/collections/if018.jpg' },
-      { label: 'Natural Edge Contour', url: '/collections/if019.jpg' },
-      { label: 'Estate Dining Room Staging', url: '/collections/if020.jpg' },
+    "id": "p5",
+    "name": "Atelier Live-Edge Heritage Dining Table",
+    "slug": "atelier-live-edge-heritage-dining-table",
+    "description": "Celebrates the raw organic contours of century-old hardwood slabs. Bookmatched pairs connected with hand-inlaid bronze butterfly tenons, preserving natural bark line topography. Crafted with imported fabric, 100% water-proof fabric protection, and certified Maleda Super HD foam. Free white-glove delivery to Addis Ababa (አዲስ አበባ), Dukem (ዱከም), and Debrezeyit (ደብረዘይት).",
+    "price": 295000,
+    "category_id": "c1",
+    "category": {
+      "id": "c1",
+      "name": "Solid Hardwood Tables",
+      "slug": "solid-hardwood"
+    },
+    "image_url": "/collections/if017.jpg",
+    "gallery": [
+      {
+        "label": "Live Edge Slabs",
+        "url": "/collections/if017.jpg"
+      },
+      {
+        "label": "Handmade Bronze Tenons",
+        "url": "/collections/if018.jpg"
+      },
+      {
+        "label": "Natural Edge Contour",
+        "url": "/collections/if019.jpg"
+      },
+      {
+        "label": "Estate Dining Room Staging",
+        "url": "/collections/if020.jpg"
+      }
     ],
-    in_stock: true,
-    featured: true,
-    dimensions: 'L 108" x W 44" x H 30" | 10–12 Seater Capacity',
-    materials: 'Single Heritage Hardwood Slab, Hand-Poured Bronze Tenons, Matte Ceramic Seal',
+    "in_stock": true,
+    "featured": true,
+    "dimensions": "L 108\" x W 44\" x H 30\" | 10–12 Seater Capacity",
+    "materials": "Single Heritage Hardwood Slab, Hand-Poured Bronze Tenons, Matte Ceramic Seal, Imported Water-Proof Fabric, Maleda Super HD Foam"
   },
   {
-    id: 'p6',
-    name: 'Sora Sculptural Oval Dining Table',
-    slug: 'sora-sculptural-oval-dining-table',
-    description:
-      'A harmonious racetrack oval dining table anchored by dual monolithic cylindrical columns. Soft curved geometry creates fluid seating flow around the entire perimeter.',
-    price: 210000,
-    category_id: 'c4',
-    category: { id: 'c4', name: 'Sculptural Pedestal Tables', slug: 'sculptural-pedestal' },
-    image_url: '/collections/if021.jpg',
-    gallery: [
-      { label: 'Oval Silhouette', url: '/collections/if021.jpg' },
-      { label: 'Dual Pillar Bases', url: '/collections/if022.jpg' },
-      { label: 'Beveled Table Rim', url: '/collections/if023.jpg' },
-      { label: 'Residential Dining Suite', url: '/collections/if024.jpg' },
+    "id": "p6",
+    "name": "Sora Sculptural Oval Dining Table",
+    "slug": "sora-sculptural-oval-dining-table",
+    "description": "A harmonious racetrack oval dining table anchored by dual monolithic cylindrical columns. Soft curved geometry creates fluid seating flow around the entire perimeter. Crafted with imported fabric, 100% water-proof fabric protection, and certified Maleda Super HD foam. Free white-glove delivery to Addis Ababa (አዲስ አበባ), Dukem (ዱከም), and Debrezeyit (ደብረዘይት).",
+    "price": 210000,
+    "category_id": "c4",
+    "category": {
+      "id": "c4",
+      "name": "Sculptural Pedestal Tables",
+      "slug": "sculptural-pedestal"
+    },
+    "image_url": "/collections/if021.jpg",
+    "gallery": [
+      {
+        "label": "Oval Silhouette",
+        "url": "/collections/if021.jpg"
+      },
+      {
+        "label": "Dual Pillar Bases",
+        "url": "/collections/if022.jpg"
+      },
+      {
+        "label": "Beveled Table Rim",
+        "url": "/collections/if023.jpg"
+      },
+      {
+        "label": "Residential Dining Suite",
+        "url": "/collections/if024.jpg"
+      }
     ],
-    in_stock: true,
-    featured: false,
-    dimensions: 'L 94" x W 44" x H 30" | 8–10 Seater Capacity',
-    materials: 'Solid White Oak, Internal Steel Reinforcement, Zero-VOC Hardwax Finish',
+    "in_stock": true,
+    "featured": false,
+    "dimensions": "L 94\" x W 44\" x H 30\" | 8–10 Seater Capacity",
+    "materials": "Solid White Oak, Internal Steel Reinforcement, Zero-VOC Hardwax Finish, Imported Water-Proof Fabric, Maleda Super HD Foam"
   },
   {
-    id: 'p7',
-    name: 'Elysian Extendable Grand Banquet Table',
-    slug: 'elysian-extendable-grand-banquet-table',
-    description:
-      'Seamless transition from everyday intimate family dining to monumental 14-person celebratory banquets with concealed whisper-glide German butterfly extension mechanics.',
-    price: 320000,
-    category_id: 'c5',
-    category: { id: 'c5', name: 'Extendable & Grand Tables', slug: 'extendable-grand' },
-    image_url: '/collections/if025.jpg',
-    gallery: [
-      { label: 'Extended Banquet Mode', url: '/collections/if025.jpg' },
-      { label: 'Concealed Glide Mechanics', url: '/collections/if026.jpg' },
-      { label: 'Continuous Grain Match', url: '/collections/if027.jpg' },
-      { label: 'Celebratory Dining Setting', url: '/collections/if028.jpg' },
+    "id": "p7",
+    "name": "Elysian Extendable Grand Banquet Table",
+    "slug": "elysian-extendable-grand-banquet-table",
+    "description": "Seamless transition from everyday intimate family dining to monumental 14-person celebratory banquets with concealed whisper-glide German butterfly extension mechanics. Crafted with imported fabric, 100% water-proof fabric protection, and certified Maleda Super HD foam. Free white-glove delivery to Addis Ababa (አዲስ አበባ), Dukem (ዱከም), and Debrezeyit (ደብረዘይት).",
+    "price": 320000,
+    "category_id": "c5",
+    "category": {
+      "id": "c5",
+      "name": "Extendable & Grand Tables",
+      "slug": "extendable-grand"
+    },
+    "image_url": "/collections/if025.jpg",
+    "gallery": [
+      {
+        "label": "Extended Banquet Mode",
+        "url": "/collections/if025.jpg"
+      },
+      {
+        "label": "Concealed Glide Mechanics",
+        "url": "/collections/if026.jpg"
+      },
+      {
+        "label": "Continuous Grain Match",
+        "url": "/collections/if027.jpg"
+      },
+      {
+        "label": "Celebratory Dining Setting",
+        "url": "/collections/if028.jpg"
+      }
     ],
-    in_stock: true,
-    featured: true,
-    dimensions: 'L 88"–132" x W 42" x H 30" | 8–14 Seater Capacity',
-    materials: 'Solid American Walnut, Heavy Aircraft-Grade Aluminum Extension Rails',
+    "in_stock": true,
+    "featured": true,
+    "dimensions": "L 88\"–132\" x W 42\" x H 30\" | 8–14 Seater Capacity",
+    "materials": "Solid American Walnut, Heavy Aircraft-Grade Aluminum Extension Rails, Imported Water-Proof Fabric, Maleda Super HD Foam"
   },
   {
-    id: 'p8',
-    name: 'Brutalist Smoked Glass & Timber Dining Table',
-    slug: 'brutalist-smoked-glass-timber-dining-table',
-    description:
-      'Bold architectural statement featuring an exposed geometric timber frame supporting a floating 19mm heavy tempered smoked crystal glass top with polished bevel edges.',
-    price: 195000,
-    category_id: 'c4',
-    category: { id: 'c4', name: 'Sculptural Pedestal Tables', slug: 'sculptural-pedestal' },
-    image_url: '/collections/if029.jpg',
-    gallery: [
-      { label: 'Glass & Timber Harmony', url: '/collections/if029.jpg' },
-      { label: 'Exposed Geometric Joinery', url: '/collections/if030.jpg' },
-      { label: 'Smoked Crystal Edge', url: '/collections/if031.jpg' },
-      { label: 'Modern Sanctuary Setting', url: '/collections/if032.jpg' },
+    "id": "p8",
+    "name": "Brutalist Smoked Glass & Timber Dining Table",
+    "slug": "brutalist-smoked-glass-timber-dining-table",
+    "description": "Bold architectural statement featuring an exposed geometric timber frame supporting a floating 19mm heavy tempered smoked crystal glass top with polished bevel edges. Crafted with imported fabric, 100% water-proof fabric protection, and certified Maleda Super HD foam. Free white-glove delivery to Addis Ababa (አዲስ አበባ), Dukem (ዱከም), and Debrezeyit (ደብረዘይት).",
+    "price": 195000,
+    "category_id": "c4",
+    "category": {
+      "id": "c4",
+      "name": "Sculptural Pedestal Tables",
+      "slug": "sculptural-pedestal"
+    },
+    "image_url": "/collections/if029.jpg",
+    "gallery": [
+      {
+        "label": "Glass & Timber Harmony",
+        "url": "/collections/if029.jpg"
+      },
+      {
+        "label": "Exposed Geometric Joinery",
+        "url": "/collections/if030.jpg"
+      },
+      {
+        "label": "Smoked Crystal Edge",
+        "url": "/collections/if031.jpg"
+      },
+      {
+        "label": "Modern Sanctuary Setting",
+        "url": "/collections/if032.jpg"
+      }
     ],
-    in_stock: true,
-    featured: false,
-    dimensions: 'L 86" x W 40" x H 30" | 8-Seater Capacity',
-    materials: '19mm Tempered Smoked Glass, Kiln-Dried Solid Walnut Frame',
+    "in_stock": true,
+    "featured": false,
+    "dimensions": "L 86\" x W 40\" x H 30\" | 8-Seater Capacity",
+    "materials": "19mm Tempered Smoked Glass, Kiln-Dried Solid Walnut Frame, Imported Water-Proof Fabric, Maleda Super HD Foam"
   },
   {
-    id: 'p9',
-    name: 'Aura Fluted Pillar Round Dining Table',
-    slug: 'aura-fluted-pillar-round-dining-table',
-    description:
-      'A compact circular dining centerpiece highlighting a 360-degree hand-fluted solid timber pedestal. Perfect for urban penthouses, breakfast pavilions, and intimate dining alcoves.',
-    price: 145000,
-    category_id: 'c3',
-    category: { id: 'c3', name: 'Round & Gathering Tables', slug: 'round-gathering' },
-    image_url: '/collections/if033.jpg',
-    gallery: [
-      { label: 'Round Table View', url: '/collections/if033.jpg' },
-      { label: 'Hand-Fluted Pedestal', url: '/collections/if034.jpg' },
-      { label: 'Under-Bevel Rim', url: '/collections/if035.jpg' },
-      { label: 'Sunlit Breakfast Setting', url: '/collections/if036.jpg' },
+    "id": "p9",
+    "name": "Aura Fluted Pillar Round Dining Table",
+    "slug": "aura-fluted-pillar-round-dining-table",
+    "description": "A compact circular dining centerpiece highlighting a 360-degree hand-fluted solid timber pedestal. Perfect for urban penthouses, breakfast pavilions, and intimate dining alcoves. Crafted with imported fabric, 100% water-proof fabric protection, and certified Maleda Super HD foam. Free white-glove delivery to Addis Ababa (አዲስ አበባ), Dukem (ዱከም), and Debrezeyit (ደብረዘይት).",
+    "price": 145000,
+    "category_id": "c3",
+    "category": {
+      "id": "c3",
+      "name": "Round & Gathering Tables",
+      "slug": "round-gathering"
+    },
+    "image_url": "/collections/if033.jpg",
+    "gallery": [
+      {
+        "label": "Round Table View",
+        "url": "/collections/if033.jpg"
+      },
+      {
+        "label": "Hand-Fluted Pedestal",
+        "url": "/collections/if034.jpg"
+      },
+      {
+        "label": "Under-Bevel Rim",
+        "url": "/collections/if035.jpg"
+      },
+      {
+        "label": "Sunlit Breakfast Setting",
+        "url": "/collections/if036.jpg"
+      }
     ],
-    in_stock: true,
-    featured: false,
-    dimensions: 'Dia 48" x H 30" | 4–6 Seater Capacity',
-    materials: 'Solid European Ash, Fluted Tambour Column, Organic Matte Lacquer',
+    "in_stock": true,
+    "featured": false,
+    "dimensions": "Dia 48\" x H 30\" | 4–6 Seater Capacity",
+    "materials": "Solid European Ash, Fluted Tambour Column, Organic Matte Lacquer, Imported Water-Proof Fabric, Maleda Super HD Foam"
   },
   {
-    id: 'p10',
-    name: 'Vesper Nero Marquina Marble Dining Table',
-    slug: 'vesper-nero-marquina-marble-dining-table',
-    description:
-      'Extravagant Spanish Nero Marquina black marble top adorned with striking organic white and gold calcite veins, anchored by twin monolithic carbon obsidian steel pillars.',
-    price: 280000,
-    category_id: 'c2',
-    category: { id: 'c2', name: 'Stone & Marble Tables', slug: 'stone-marble' },
-    image_url: '/collections/if037.jpg',
-    gallery: [
-      { label: 'Black Marble Top', url: '/collections/if037.jpg' },
-      { label: 'Calcite Veining Close-up', url: '/collections/if038.jpg' },
-      { label: 'Steel Monolith Pillar Base', url: '/collections/if039.jpg' },
-      { label: 'Evening Dinner Showcase', url: '/collections/if040.jpg' },
+    "id": "p10",
+    "name": "Vesper Nero Marquina Marble Dining Table",
+    "slug": "vesper-nero-marquina-marble-dining-table",
+    "description": "Extravagant Spanish Nero Marquina black marble top adorned with striking organic white and gold calcite veins, anchored by twin monolithic carbon obsidian steel pillars. Crafted with imported fabric, 100% water-proof fabric protection, and certified Maleda Super HD foam. Free white-glove delivery to Addis Ababa (አዲስ አበባ), Dukem (ዱከም), and Debrezeyit (ደብረዘይት).",
+    "price": 280000,
+    "category_id": "c2",
+    "category": {
+      "id": "c2",
+      "name": "Stone & Marble Tables",
+      "slug": "stone-marble"
+    },
+    "image_url": "/collections/if037.jpg",
+    "gallery": [
+      {
+        "label": "Black Marble Top",
+        "url": "/collections/if037.jpg"
+      },
+      {
+        "label": "Calcite Veining Close-up",
+        "url": "/collections/if038.jpg"
+      },
+      {
+        "label": "Steel Monolith Pillar Base",
+        "url": "/collections/if039.jpg"
+      },
+      {
+        "label": "Evening Dinner Showcase",
+        "url": "/collections/if040.jpg"
+      }
     ],
-    in_stock: true,
-    featured: false,
-    dimensions: 'L 94" x W 42" x H 30" | 8–10 Seater Capacity',
-    materials: 'Honed Nero Marquina Marble Slab, Powder-Coated Obsidian Steel Substructure',
+    "in_stock": true,
+    "featured": false,
+    "dimensions": "L 94\" x W 42\" x H 30\" | 8–10 Seater Capacity",
+    "materials": "Honed Nero Marquina Marble Slab, Powder-Coated Obsidian Steel Substructure, Imported Water-Proof Fabric, Maleda Super HD Foam"
   },
   {
-    id: 'p11',
-    name: 'Nordic Minimalist Plank Dining Table',
-    slug: 'nordic-minimalist-plank-dining-table',
-    description:
-      'Two full-length matched solid oak planks separated by a central shadow gap. Exposed through-tenon dowel joints showcase the authentic craftsmanship of heritage woodcraft.',
-    price: 168000,
-    category_id: 'c1',
-    category: { id: 'c1', name: 'Solid Hardwood Tables', slug: 'solid-hardwood' },
-    image_url: '/collections/if041.jpg',
-    gallery: [
-      { label: 'Twin Plank Layout', url: '/collections/if041.jpg' },
-      { label: 'Central Shadow Gap Detail', url: '/collections/if042.jpg' },
-      { label: 'Exposed Dowel Joinery', url: '/collections/if043.jpg' },
-      { label: 'Scandinavian Dining Room', url: '/collections/if044.jpg' },
+    "id": "p11",
+    "name": "Nordic Minimalist Plank Dining Table",
+    "slug": "nordic-minimalist-plank-dining-table",
+    "description": "Two full-length matched solid oak planks separated by a central shadow gap. Exposed through-tenon dowel joints showcase the authentic craftsmanship of heritage woodcraft. Crafted with imported fabric, 100% water-proof fabric protection, and certified Maleda Super HD foam. Free white-glove delivery to Addis Ababa (አዲስ አበባ), Dukem (ዱከም), and Debrezeyit (ደብረዘይት).",
+    "price": 168000,
+    "category_id": "c1",
+    "category": {
+      "id": "c1",
+      "name": "Solid Hardwood Tables",
+      "slug": "solid-hardwood"
+    },
+    "image_url": "/collections/if041.jpg",
+    "gallery": [
+      {
+        "label": "Twin Plank Layout",
+        "url": "/collections/if041.jpg"
+      },
+      {
+        "label": "Central Shadow Gap Detail",
+        "url": "/collections/if042.jpg"
+      },
+      {
+        "label": "Exposed Dowel Joinery",
+        "url": "/collections/if043.jpg"
+      },
+      {
+        "label": "Scandinavian Dining Room",
+        "url": "/collections/if044.jpg"
+      }
     ],
-    in_stock: true,
-    featured: false,
-    dimensions: 'L 84" x W 38" x H 30" | 8-Seater Capacity',
-    materials: 'Solid Quarter-Sawn White Oak, Soap Wax Protective Coat',
+    "in_stock": true,
+    "featured": false,
+    "dimensions": "L 84\" x W 38\" x H 30\" | 8-Seater Capacity",
+    "materials": "Solid Quarter-Sawn White Oak, Soap Wax Protective Coat, Imported Water-Proof Fabric, Maleda Super HD Foam"
   },
   {
-    id: 'p12',
-    name: 'Kyoto Floating Cantilever Dining Table',
-    slug: 'kyoto-floating-cantilever-dining-table',
-    description:
-      'Japanese-inspired spatial dining table featuring recessed shadowline aprons that create the illusion of a floating solid timber plane above angled bridge supports.',
-    price: 215000,
-    category_id: 'c1',
-    category: { id: 'c1', name: 'Solid Hardwood Tables', slug: 'solid-hardwood' },
-    image_url: '/collections/if045.jpg',
-    gallery: [
-      { label: 'Cantilevered Profile', url: '/collections/if045.jpg' },
-      { label: 'Floating Shadowline Edge', url: '/collections/if046.jpg' },
-      { label: 'Angled Leg Geometry', url: '/collections/if047.jpg' },
-      { label: 'Tea & Dining Pavilion', url: '/collections/if048.jpg' },
+    "id": "p12",
+    "name": "Kyoto Floating Cantilever Dining Table",
+    "slug": "kyoto-floating-cantilever-dining-table",
+    "description": "Japanese-inspired spatial dining table featuring recessed shadowline aprons that create the illusion of a floating solid timber plane above angled bridge supports. Crafted with imported fabric, 100% water-proof fabric protection, and certified Maleda Super HD foam. Free white-glove delivery to Addis Ababa (አዲስ አበባ), Dukem (ዱከም), and Debrezeyit (ደብረዘይት).",
+    "price": 215000,
+    "category_id": "c1",
+    "category": {
+      "id": "c1",
+      "name": "Solid Hardwood Tables",
+      "slug": "solid-hardwood"
+    },
+    "image_url": "/collections/if045.jpg",
+    "gallery": [
+      {
+        "label": "Cantilevered Profile",
+        "url": "/collections/if045.jpg"
+      },
+      {
+        "label": "Floating Shadowline Edge",
+        "url": "/collections/if046.jpg"
+      },
+      {
+        "label": "Angled Leg Geometry",
+        "url": "/collections/if047.jpg"
+      },
+      {
+        "label": "Tea & Dining Pavilion",
+        "url": "/collections/if048.jpg"
+      }
     ],
-    in_stock: true,
-    featured: false,
-    dimensions: 'L 92" x W 40" x H 30" | 8–10 Seater Capacity',
-    materials: 'Solid Japanese Hinoki & Dark American Walnut, Hand-Burnished Oil',
+    "in_stock": true,
+    "featured": false,
+    "dimensions": "L 92\" x W 40\" x H 30\" | 8–10 Seater Capacity",
+    "materials": "Solid Japanese Hinoki & Dark American Walnut, Hand-Burnished Oil, Imported Water-Proof Fabric, Maleda Super HD Foam"
   },
   {
-    id: 'p13',
-    name: 'Bespoke Grand Residence Feast Table',
-    slug: 'bespoke-grand-residence-feast-table',
-    description:
-      'A monumental 14-foot dining table engineered for grand estates, diplomatic residences, and luxury banquet halls. Custom crafted with continuous timber grain and triple pedestal columns.',
-    price: 450000,
-    category_id: 'c5',
-    category: { id: 'c5', name: 'Extendable & Grand Tables', slug: 'extendable-grand' },
-    image_url: '/collections/if049.jpg',
-    gallery: [
-      { label: 'Monumental 14ft Elevation', url: '/collections/if049.jpg' },
-      { label: 'Triple Column Base', url: '/collections/if050.jpg' },
-      { label: 'Continuous Grain Flow', url: '/collections/if051.jpg' },
-      { label: 'Grand Banquet Staging', url: '/collections/if052.jpg' },
+    "id": "p13",
+    "name": "Bespoke Grand Residence Feast Table",
+    "slug": "bespoke-grand-residence-feast-table",
+    "description": "A monumental 14-foot dining table engineered for grand estates, diplomatic residences, and luxury banquet halls. Custom crafted with continuous timber grain and triple pedestal columns. Crafted with imported fabric, 100% water-proof fabric protection, and certified Maleda Super HD foam. Free white-glove delivery to Addis Ababa (አዲስ አበባ), Dukem (ዱከም), and Debrezeyit (ደብረዘይት).",
+    "price": 450000,
+    "category_id": "c5",
+    "category": {
+      "id": "c5",
+      "name": "Extendable & Grand Tables",
+      "slug": "extendable-grand"
+    },
+    "image_url": "/collections/if049.jpg",
+    "gallery": [
+      {
+        "label": "Monumental 14ft Elevation",
+        "url": "/collections/if049.jpg"
+      },
+      {
+        "label": "Triple Column Base",
+        "url": "/collections/if050.jpg"
+      },
+      {
+        "label": "Continuous Grain Flow",
+        "url": "/collections/if051.jpg"
+      },
+      {
+        "label": "Grand Banquet Staging",
+        "url": "/collections/if052.jpg"
+      }
     ],
-    in_stock: true,
-    featured: true,
-    dimensions: 'L 168" x W 48" x H 30" | 14–18 Seater Capacity',
-    materials: 'Solid Old-Growth Hardwood, Internal Structural Steel I-Beam, Botanical Wax',
+    "in_stock": true,
+    "featured": true,
+    "dimensions": "L 168\" x W 48\" x H 30\" | 14–18 Seater Capacity",
+    "materials": "Solid Old-Growth Hardwood, Internal Structural Steel I-Beam, Botanical Wax, Imported Water-Proof Fabric, Maleda Super HD Foam"
   },
   {
-    id: 'p14',
-    name: 'Terra Fluted Pedestal Dining Table',
-    slug: 'terra-fluted-pedestal-dining-table',
-    description:
-      'Warm artisanal earthy luxury. Rich oiled chestnut tabletop resting atop an architectural fluted terracotta-hued ceramic and timber monolithic column.',
-    price: 190000,
-    category_id: 'c3',
-    category: { id: 'c3', name: 'Round & Gathering Tables', slug: 'round-gathering' },
-    image_url: '/collections/if053.jpg',
-    gallery: [
-      { label: 'Terra Pedestal Table', url: '/collections/if053.jpg' },
-      { label: 'Ceramic & Wood Texture', url: '/collections/if054.jpg' },
-      { label: 'Deep Chamfer Edge', url: '/collections/if055.jpg' },
-      { label: 'Warm Earthy Dining Staging', url: '/collections/if056.jpg' },
+    "id": "p14",
+    "name": "Terra Fluted Pedestal Dining Table",
+    "slug": "terra-fluted-pedestal-dining-table",
+    "description": "Warm artisanal earthy luxury. Rich oiled chestnut tabletop resting atop an architectural fluted terracotta-hued ceramic and timber monolithic column. Crafted with imported fabric, 100% water-proof fabric protection, and certified Maleda Super HD foam. Free white-glove delivery to Addis Ababa (አዲስ አበባ), Dukem (ዱከም), and Debrezeyit (ደብረዘይት).",
+    "price": 190000,
+    "category_id": "c3",
+    "category": {
+      "id": "c3",
+      "name": "Round & Gathering Tables",
+      "slug": "round-gathering"
+    },
+    "image_url": "/collections/if053.jpg",
+    "gallery": [
+      {
+        "label": "Terra Pedestal Table",
+        "url": "/collections/if053.jpg"
+      },
+      {
+        "label": "Ceramic & Wood Texture",
+        "url": "/collections/if054.jpg"
+      },
+      {
+        "label": "Deep Chamfer Edge",
+        "url": "/collections/if055.jpg"
+      },
+      {
+        "label": "Warm Earthy Dining Staging",
+        "url": "/collections/if056.jpg"
+      }
     ],
-    in_stock: true,
-    featured: false,
-    dimensions: 'Dia 54" x H 30" | 6–8 Seater Capacity',
-    materials: 'Solid Chestnut Wood, Artisanal Fluted Ceramic Base, Spill-Proof Matte Seal',
+    "in_stock": true,
+    "featured": false,
+    "dimensions": "Dia 54\" x H 30\" | 6–8 Seater Capacity",
+    "materials": "Solid Chestnut Wood, Artisanal Fluted Ceramic Base, Spill-Proof Matte Seal, Imported Water-Proof Fabric, Maleda Super HD Foam"
   },
   {
-    id: 'p15',
-    name: 'Zenith Elliptical Sculptural Dining Table',
-    slug: 'zenith-elliptical-sculptural-dining-table',
-    description:
-      'Aerodynamic sculptural dining centerpiece with compound curved aerofoil edge profiling and monolithic angled timber blade legs that maximize legroom for every guest.',
-    price: 235000,
-    category_id: 'c4',
-    category: { id: 'c4', name: 'Sculptural Pedestal Tables', slug: 'sculptural-pedestal' },
-    image_url: '/collections/if057.jpg',
-    gallery: [
-      { label: 'Elliptical Aerofoil Top', url: '/collections/if057.jpg' },
-      { label: 'Angled Blade Legs', url: '/collections/if058.jpg' },
-      { label: 'Precision Wood Joint', url: '/collections/if059.jpg' },
-      { label: 'Contemporary Dining Room', url: '/collections/if001.jpg' },
+    "id": "p15",
+    "name": "Zenith Elliptical Sculptural Dining Table",
+    "slug": "zenith-elliptical-sculptural-dining-table",
+    "description": "Aerodynamic sculptural dining centerpiece with compound curved aerofoil edge profiling and monolithic angled timber blade legs that maximize legroom for every guest. Crafted with imported fabric, 100% water-proof fabric protection, and certified Maleda Super HD foam. Free white-glove delivery to Addis Ababa (አዲስ አበባ), Dukem (ዱከም), and Debrezeyit (ደብረዘይት).",
+    "price": 235000,
+    "category_id": "c4",
+    "category": {
+      "id": "c4",
+      "name": "Sculptural Pedestal Tables",
+      "slug": "sculptural-pedestal"
+    },
+    "image_url": "/collections/if057.jpg",
+    "gallery": [
+      {
+        "label": "Elliptical Aerofoil Top",
+        "url": "/collections/if057.jpg"
+      },
+      {
+        "label": "Angled Blade Legs",
+        "url": "/collections/if058.jpg"
+      },
+      {
+        "label": "Precision Wood Joint",
+        "url": "/collections/if059.jpg"
+      },
+      {
+        "label": "Contemporary Dining Room",
+        "url": "/collections/if001.jpg"
+      }
     ],
-    in_stock: true,
-    featured: true,
-    dimensions: 'L 96" x W 42" x H 30" | 8–10 Seater Capacity',
-    materials: 'Solid Black Walnut, Precision CNC & Hand-Finished Joinery, Protective Hardwax',
-  },
+    "in_stock": true,
+    "featured": true,
+    "dimensions": "L 96\" x W 42\" x H 30\" | 8–10 Seater Capacity",
+    "materials": "Solid Black Walnut, Precision CNC & Hand-Finished Joinery, Protective Hardwax, Imported Water-Proof Fabric, Maleda Super HD Foam"
+  }
 ];
